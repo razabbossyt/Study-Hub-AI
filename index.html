@@ -1,432 +1,929 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Notes Generator | Study Hub AI</title>
 
-<html lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Study Hub AI – Free AI Study Tools for Students</title>
+    <!-- Basic SEO -->
+    <meta name="description" content="Free AI Notes Generator tool for students. Convert paragraphs into quick study notes instantly.">
+    <meta name="keywords" content="AI notes generator, study notes maker, paragraph to notes, student tools, Study Hub AI">
+    <meta name="author" content="Study Hub AI">
+    <meta name="robots" content="index, follow">
 
-<!-- Basic SEO -->
-<meta name="description" content="Study Hub AI offers free AI study tools for students. Generate notes, convert paragraphs to bullet points, create exam answers, and build study plans instantly.">
-<meta name="keywords" content="AI study tools, notes generator, exam answer generator, study planner, paragraph to bullet points, student AI tools">
-<meta name="author" content="Study Hub AI">
-<meta name="robots" content="index, follow">
+    <!-- Open Graph -->
+    <meta property="og:title" content="AI Notes Generator | Study Hub AI">
+    <meta property="og:description" content="Free AI Notes Generator tool for students. Convert paragraphs into quick study notes instantly.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://studyhubai.com/tools/notes-generator.html">
+    <link rel="canonical" href="https://razabbossyt.github.io/Study-Hub-AI/tools/notes-generator.html">
 
-<!-- Social Preview (Open Graph) -->
-<meta property="og:title" content="Study Hub AI – AI Study Tools for Students">
-<meta property="og:description" content="Generate notes, exam answers, and study plans instantly using AI.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://studyhubai.com">
-<meta property="og:image" content="https://studyhubai.com/preview.png">
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#135bec",
-                        "background-light": "#f6f6f8",
-                        "background-dark": "#101622",
-                    },
-                    fontFamily: {
-                        "display": ["Inter", "sans-serif"]
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                },
-            },
-        }
-    </script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
 <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-    </style>
-</head>
-<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
-<!-- Header / Navbar -->
-<header class="sticky top-0 z-50 w-full bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-primary/10">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="flex justify-between items-center h-16">
-<!-- Logo -->
-<div class="flex items-center gap-2">
-<div class="bg-primary p-1.5 rounded-lg flex items-center justify-center text-white">
-<span class="material-symbols-outlined !text-xl">auto_awesome</span>
-</div>
-<span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Study Hub AI</span>
-</div>
-<!-- Desktop Nav -->
-<nav class="hidden md:flex items-center gap-8">
-<a class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-primary transition-colors" href="#">Home</a>
-<a class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-primary transition-colors" href="tools.html">Tools</a>
-<a class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-primary transition-colors" href="#">Blog</a>
-<a class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-primary transition-colors" href="#">About</a>
-</nav>
-<!-- CTA & Mobile Toggle -->
-<div class="flex items-center gap-4">
-<button class="hidden sm:flex bg-primary text-white px-5 py-2 rounded-lg text-sm font-bold hover:bg-primary/90 transition-all shadow-md shadow-primary/20">
-                        Get Started
-                    </button>
-<button class="md:hidden p-2 text-slate-600 dark:text-slate-300">
-<span class="material-symbols-outlined">menu</span>
-</button>
-</div>
-</div>
-</div>
-</header>
-<main>
-<!-- Hero Section -->
-<section class="relative overflow-hidden pt-16 pb-20 lg:pt-24 lg:pb-32 bg-gradient-to-br from-primary/5 via-transparent to-primary/5">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-<div class="flex flex-col lg:flex-row items-center gap-12">
-<div class="flex-1 text-center lg:text-left space-y-6">
-<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider">
-<span class="material-symbols-outlined !text-sm">bolt</span>
-                            The Future of Learning
-                        </div>
-<h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white leading-[1.1] tracking-tight">
-                            AI Study Tools <br/><span class="text-primary">for Students</span>
-</h1>
-<p class="text-lg text-slate-600 dark:text-slate-400 max-w-xl mx-auto lg:mx-0">
-                            Generate notes, exam answers, and study plans instantly. Elevate your academic performance with our suite of AI-powered assistants.
-                        </p>
-<div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-<a href="tools.html" class="w-full sm:w-auto bg-primary text-white px-8 py-4 rounded-xl text-base font-bold hover:translate-y-[-2px] transition-all shadow-lg shadow-primary/25 flex items-center justify-center">
-                                Explore Tools
-                            </a>
-<button class="w-full sm:w-auto bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-8 py-4 rounded-xl text-base font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition-all">
-                                Watch Demo
-                            </button>
-</div>
-</div>
-<div class="flex-1 w-full max-w-[600px]">
-<div class="relative group">
-<div class="absolute -inset-1 bg-gradient-to-r from-primary to-blue-400 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
-<div class="relative bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-2xl">
-<div class="bg-slate-50 dark:bg-slate-800/50 p-4 border-b border-slate-200 dark:border-slate-800 flex items-center gap-2">
-<div class="flex gap-1.5">
-<div class="size-3 rounded-full bg-red-400"></div>
-<div class="size-3 rounded-full bg-yellow-400"></div>
-<div class="size-3 rounded-full bg-green-400"></div>
-</div>
-<div class="h-6 w-full bg-slate-200 dark:bg-slate-700 rounded mx-4"></div>
-</div>
-<div class="p-6 aspect-video bg-slate-50 dark:bg-slate-900/50 flex items-center justify-center">
-<div class="w-full h-full bg-center bg-no-repeat bg-cover rounded-lg" data-alt="Dashboard interface preview with study statistics and tool modules" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBymEJ-CcwKdHw24U_FrQrDECmNnCZiUHjbWSWxK6N0OpwOWR2XHUwRiRNKF1VxPQQvjh5KxpcJgJOgqrCJ-S7I7F1LTY75qMCvKvlYZxKg73VXxk0W8W99OJfpKuLr0M38GRV2zXP1rRcbHSF69IvrbjpbW6tOQsUhEm14EHcDH9t2mt2-OMEwSZqSUDunioFMobTg73IpHa0M4qXvRtTIIClkmu7DTtF6ndOV3MaxRapwMYRf1cluauk1yiVgtCMk-ATUibjqCGY')"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Popular Tools Section -->
-<section class="py-20 bg-white dark:bg-background-dark/50">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="text-center mb-16">
-<h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4">Popular Study Tools</h2>
-<p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Everything you need to master your courses in half the time. Powered by cutting-edge language models.</p>
-</div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-<!-- Tool 1 -->
-<div class="group p-8 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-primary/50 hover:bg-white dark:hover:bg-slate-800 transition-all shadow-sm hover:shadow-xl hover:shadow-primary/5">
-<div class="size-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined">edit_note</span>
-</div>
-<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-3">Notes Generator</h3>
-<p class="text-sm text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Transform messy lecture recordings or slides into structured, comprehensive study notes instantly.</p>
-<button class="flex items-center gap-2 text-primary text-sm font-bold group-hover:gap-3 transition-all">
-                            Open Tool <span class="material-symbols-outlined !text-sm">arrow_forward</span>
-</button>
-</div>
-<!-- Tool 2 -->
-<div class="group p-8 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-primary/50 hover:bg-white dark:hover:bg-slate-800 transition-all shadow-sm hover:shadow-xl hover:shadow-primary/5">
-<div class="size-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined">format_list_bulleted</span>
-</div>
-<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-3">Bullet Points</h3>
-<p class="text-sm text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Turn long, dense paragraphs into concise, easy-to-read bullet points for quick revision sessions.</p>
-<button class="flex items-center gap-2 text-primary text-sm font-bold group-hover:gap-3 transition-all">
-                            Open Tool <span class="material-symbols-outlined !text-sm">arrow_forward</span>
-</button>
-</div>
-<!-- Tool 3 -->
-<div class="group p-8 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-primary/50 hover:bg-white dark:hover:bg-slate-800 transition-all shadow-sm hover:shadow-xl hover:shadow-primary/5">
-<div class="size-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined">quiz</span>
-</div>
-<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-3">Exam Answers</h3>
-<p class="text-sm text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Get detailed, step-by-step explanations for complex problems across math, science, and humanities.</p>
-<button class="flex items-center gap-2 text-primary text-sm font-bold group-hover:gap-3 transition-all">
-                            Open Tool <span class="material-symbols-outlined !text-sm">arrow_forward</span>
-</button>
-</div>
-<!-- Tool 4 -->
-<div class="group p-8 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 hover:border-primary/50 hover:bg-white dark:hover:bg-slate-800 transition-all shadow-sm hover:shadow-xl hover:shadow-primary/5">
-<div class="size-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined">calendar_today</span>
-</div>
-<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-3">Study Planner</h3>
-<p class="text-sm text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Create personalized study schedules based on your exam dates, difficulty, and your personal goals.</p>
-<button class="flex items-center gap-2 text-primary text-sm font-bold group-hover:gap-3 transition-all">
-                            Open Tool <span class="material-symbols-outlined !text-sm">arrow_forward</span>
-</button>
-</div>
-</div>
-</div>
-</section>
-<!-- How It Works Section -->
-<section class="py-20">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="text-center mb-16">
-<h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4">How It Works</h2>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<!-- Step 1 -->
-<div class="relative text-center p-8 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800">
-<div class="size-14 rounded-full bg-primary text-white flex items-center justify-center text-xl font-black mx-auto mb-6">1</div>
-<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-3">Enter Your Topic</h3>
-<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Just enter your topic, paragraph, or question into one of the tools on the platform.</p>
-</div>
-<!-- Step 2 -->
-<div class="relative text-center p-8 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800">
-<div class="size-14 rounded-full bg-primary text-white flex items-center justify-center text-xl font-black mx-auto mb-6">2</div>
-<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-3">AI Analyzes It</h3>
-<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">The AI quickly analyzes the input and generates clear notes, structured bullet points, exam-style answers, or personalized study plans.</p>
-</div>
-<!-- Step 3 -->
-<div class="relative text-center p-8 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800">
-<div class="size-14 rounded-full bg-primary text-white flex items-center justify-center text-xl font-black mx-auto mb-6">3</div>
-<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-3">Get Study Material</h3>
-<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Within seconds, students get organized study material that helps them revise faster and understand topics better.</p>
-</div>
-</div>
-</div>
-</section>
-
-<!-- Why Students Love Study Hub AI Section -->
-<section class="py-20 bg-white dark:bg-background-dark/50">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="text-center mb-12">
-<h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-6">Why Students Love Study Hub AI</h2>
-<p class="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed">Students love Study Hub AI because it makes studying easier and more efficient. Instead of spending hours creating notes or summarizing chapters, they can generate useful study material instantly.</p>
-</div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-<div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 text-center">
-<div class="size-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mx-auto mb-4">
-<span class="material-symbols-outlined">touch_app</span>
-</div>
-<h3 class="text-base font-bold text-slate-900 dark:text-white mb-2">Simple to Use</h3>
-<p class="text-sm text-slate-600 dark:text-slate-400">The tools are simple to use and designed specifically for students.</p>
-</div>
-<div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 text-center">
-<div class="size-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mx-auto mb-4">
-<span class="material-symbols-outlined">devices</span>
-</div>
-<h3 class="text-base font-bold text-slate-900 dark:text-white mb-2">Works on Any Device</h3>
-<p class="text-sm text-slate-600 dark:text-slate-400">Access Study Hub AI on your phone, tablet, or computer.</p>
-</div>
-<div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 text-center">
-<div class="size-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mx-auto mb-4">
-<span class="material-symbols-outlined">bolt</span>
-</div>
-<h3 class="text-base font-bold text-slate-900 dark:text-white mb-2">Fast Results</h3>
-<p class="text-sm text-slate-600 dark:text-slate-400">Get organized study material within seconds for quick revisions.</p>
-</div>
-<div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 text-center">
-<div class="size-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mx-auto mb-4">
-<span class="material-symbols-outlined">school</span>
-</div>
-<h3 class="text-base font-bold text-slate-900 dark:text-white mb-2">Built for Students</h3>
-<p class="text-sm text-slate-600 dark:text-slate-400">Designed for exams, assignments, and quick revision sessions.</p>
-</div>
-</div>
-</div>
-</section>
-
-<!-- FAQ Section -->
-<section class="py-20">
-<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="text-center mb-16">
-<h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4">FAQ</h2>
-</div>
-<div class="space-y-4">
-<!-- FAQ 1 -->
-<details class="group bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden">
-<summary class="flex items-center justify-between cursor-pointer p-6 text-base font-bold text-slate-900 dark:text-white">
-What is Study Hub AI?
-<span class="material-symbols-outlined text-primary transition-transform group-open:rotate-180">expand_more</span>
-</summary>
-<div class="px-6 pb-6 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-Study Hub AI is a platform that provides AI-powered study tools to help students generate notes, summaries, answers, and study plans quickly and easily.
-</div>
-</details>
-<!-- FAQ 2 -->
-<details class="group bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden">
-<summary class="flex items-center justify-between cursor-pointer p-6 text-base font-bold text-slate-900 dark:text-white">
-Are the tools free to use?
-<span class="material-symbols-outlined text-primary transition-transform group-open:rotate-180">expand_more</span>
-</summary>
-<div class="px-6 pb-6 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-Yes, most of the tools on Study Hub AI are free and designed to help students improve their study process.
-</div>
-</details>
-<!-- FAQ 3 -->
-<details class="group bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden">
-<summary class="flex items-center justify-between cursor-pointer p-6 text-base font-bold text-slate-900 dark:text-white">
-What tools are available on Study Hub AI?
-<span class="material-symbols-outlined text-primary transition-transform group-open:rotate-180">expand_more</span>
-</summary>
-<div class="px-6 pb-6 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-You can use tools like a Notes Generator, Bullet Points Converter, Exam Answer Generator, and Study Planner.
-</div>
-</details>
-<!-- FAQ 4 -->
-<details class="group bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden">
-<summary class="flex items-center justify-between cursor-pointer p-6 text-base font-bold text-slate-900 dark:text-white">
-Who can use Study Hub AI?
-<span class="material-symbols-outlined text-primary transition-transform group-open:rotate-180">expand_more</span>
-</summary>
-<div class="px-6 pb-6 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-Study Hub AI is designed for school students, college students, and anyone who wants to study more efficiently.
-</div>
-</details>
-</div>
-</div>
-</section>
-
-<!-- AI Study Tools for Students Section -->
-<section class="py-20 bg-white dark:bg-background-dark/50">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="max-w-3xl mx-auto text-center space-y-6">
-<h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4">AI Study Tools for Students</h2>
-<p class="text-base text-slate-600 dark:text-slate-400 leading-relaxed">Study Hub AI provides a collection of powerful AI study tools designed to help students learn faster and stay organized. With tools like notes generators, paragraph-to-bullet converters, exam answer generators, and study planners, students can transform complex information into easy-to-understand study material within seconds. These AI tools save time, improve revision, and make exam preparation more efficient for learners.</p>
-<p class="text-base text-slate-600 dark:text-slate-400 leading-relaxed">Artificial intelligence is changing the way students study. Instead of manually summarizing long chapters or rewriting notes, AI can instantly convert information into clear and structured formats. Study Hub AI uses smart technology to simplify learning and help students focus more on understanding concepts rather than spending time organizing study materials.</p>
-</div>
-</div>
-</section>
-
-<!-- CTA Section -->
-<section class="py-20">
-<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="relative bg-primary rounded-3xl overflow-hidden px-8 py-16 sm:px-16 text-center shadow-2xl">
-<!-- Background blobs -->
-<div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
-<div class="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
-<div class="relative z-10 space-y-8">
-<h2 class="text-3xl sm:text-4xl font-black text-white leading-tight">
-                            Boost Your Learning with <br class="hidden sm:block"/> AI-Powered Study Tools
-                        </h2>
-<p class="text-blue-100 text-lg max-w-2xl mx-auto">
-                            Start improving your study routine with the help of AI-powered tools. Study Hub AI allows students to generate notes, answers, and study plans instantly, making learning faster and more efficient.
-                        </p>
-<div class="flex justify-center">
-<a href="tools.html" class="inline-flex bg-white text-primary px-10 py-4 rounded-xl text-lg font-bold hover:bg-slate-50 transition-all hover:scale-105 shadow-lg items-center justify-center">
-                                Start Using Tools
-                            </a>
-</div>
-</div>
-</div>
-</div>
-</section>
-</main>
-<!-- Footer -->
-<footer class="bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-12">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-<div class="col-span-1 md:col-span-1 space-y-4">
-<div class="flex items-center gap-2">
-<div class="bg-primary p-1 rounded-lg text-white">
-<span class="material-symbols-outlined !text-base">auto_awesome</span>
-</div>
-<span class="text-lg font-bold text-slate-900 dark:text-white">Study Hub AI</span>
-</div>
-<p class="text-sm text-slate-600 dark:text-slate-400">
-                        Empowering students globally with advanced AI technology to make learning efficient, fun, and accessible.
-                    </p>
-</div>
-<div>
-<h4 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-6">Tools</h4>
-<ul class="space-y-4 text-sm text-slate-600 dark:text-slate-400">
-<li><a class="hover:text-primary transition-colors" href="#">Notes Generator</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Exam Answer Bot</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Study Planner</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">AI Summary Tool</a></li>
-</ul>
-</div>
-<div>
-<h4 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-6">Company</h4>
-<ul class="space-y-4 text-sm text-slate-600 dark:text-slate-400">
-<li><a class="hover:text-primary transition-colors" href="#">About Us</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Blog</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Careers</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Support</a></li>
-</ul>
-</div>
-<div>
-<h4 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-6">Legal</h4>
-<ul class="space-y-4 text-sm text-slate-600 dark:text-slate-400">
-<li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Terms of Service</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Cookie Settings</a></li>
-</ul>
-</div>
-</div>
-<div class="pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4">
-<p class="text-sm text-slate-500 dark:text-slate-500">
-                    © 2024 Study Hub AI Inc. All rights reserved.
-                </p>
-<div class="flex gap-6">
-<a class="text-slate-400 hover:text-primary transition-colors" href="#">
-<svg class="size-5" fill="currentColor" viewbox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path></svg>
-</a>
-<a class="text-slate-400 hover:text-primary transition-colors" href="#">
-<svg class="size-5" fill="currentColor" viewbox="0 0 24 24"><path d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16.36a4.36 4.36 0 110-8.72 4.36 4.36 0 010 8.72zM17.038 5.611a1.296 1.296 0 110 2.592 1.296 1.296 0 010-2.592z"></path></svg>
-</a>
-</div>
-</div>
-</div>
-</footer>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is Study Hub AI?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Study Hub AI is a platform that provides AI-powered study tools to help students generate notes, answers, and study plans quickly."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Are the tools free to use?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, most tools on Study Hub AI are free for students to use."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What tools are available on Study Hub AI?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Study Hub AI provides tools such as a notes generator, bullet points converter, exam answer generator, and study planner."
-      }
+    /* ==================== RESET & BASE ==================== */
+    *, *::before, *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
-  ]
-}
+
+    :root {
+        --primary: #135bec;
+        --primary-hover: #0f4ed0;
+        --primary-light: rgba(19, 91, 236, 0.08);
+        --primary-glow: rgba(19, 91, 236, 0.25);
+        --bg: #f6f6f8;
+        --white: #ffffff;
+        --slate-50: #f8fafc;
+        --slate-100: #f1f5f9;
+        --slate-200: #e2e8f0;
+        --slate-300: #cbd5e1;
+        --slate-400: #94a3b8;
+        --slate-500: #64748b;
+        --slate-600: #475569;
+        --slate-700: #334155;
+        --slate-800: #1e293b;
+        --slate-900: #0f172a;
+        --red-500: #ef4444;
+        --green-500: #22c55e;
+        --radius-md: 0.5rem;
+        --radius-lg: 0.75rem;
+        --radius-xl: 1rem;
+        --radius-2xl: 1.25rem;
+        --shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.05);
+        --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
+        --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.07), 0 4px 6px -4px rgba(0,0,0,0.05);
+        --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.07), 0 8px 10px -6px rgba(0,0,0,0.05);
+    }
+
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        background-color: var(--bg);
+        color: var(--slate-900);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    /* ==================== NAVBAR ==================== */
+    .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        width: 100%;
+        background: rgba(246, 246, 248, 0.8);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(19, 91, 236, 0.1);
+    }
+
+    .navbar-inner {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 64px;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .logo-icon {
+        background: var(--primary);
+        color: #fff;
+        padding: 6px;
+        border-radius: var(--radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .logo-icon .material-symbols-outlined {
+        font-size: 20px;
+    }
+
+    .logo-text {
+        font-size: 1.25rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--slate-900);
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        list-style: none;
+    }
+
+    .nav-links a {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--slate-600);
+        transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+        color: var(--primary);
+    }
+
+    .nav-cta {
+        background: var(--primary);
+        color: #fff;
+        padding: 0.5rem 1.25rem;
+        border-radius: var(--radius-md);
+        font-size: 0.875rem;
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+        transition: background 0.2s, transform 0.2s;
+        box-shadow: 0 4px 12px var(--primary-glow);
+    }
+
+    .nav-cta:hover {
+        background: var(--primary-hover);
+        transform: translateY(-1px);
+    }
+
+    .mobile-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--slate-600);
+        cursor: pointer;
+        padding: 0.5rem;
+    }
+
+    /* ==================== HERO ==================== */
+    .hero {
+        padding: 4rem 1.5rem 2rem;
+        text-align: center;
+        background: linear-gradient(135deg, rgba(19,91,236,0.04) 0%, transparent 50%, rgba(19,91,236,0.04) 100%);
+    }
+
+    .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.3rem 0.85rem;
+        border-radius: 9999px;
+        background: var(--primary-light);
+        color: var(--primary);
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 1.25rem;
+    }
+
+    .hero-badge .material-symbols-outlined {
+        font-size: 14px;
+    }
+
+    .hero h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 900;
+        color: var(--slate-900);
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+        margin-bottom: 0.75rem;
+    }
+
+    .hero h1 span {
+        color: var(--primary);
+    }
+
+    .hero-subtitle {
+        font-size: 1.125rem;
+        color: var(--slate-600);
+        max-width: 560px;
+        margin: 0 auto 0.5rem;
+    }
+
+    .hero-desc {
+        font-size: 0.95rem;
+        color: var(--slate-400);
+        max-width: 480px;
+        margin: 0 auto;
+    }
+
+    /* ==================== TOOL SECTION ==================== */
+    .tool-section {
+        padding: 2rem 1.5rem 4rem;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .tool-card {
+        background: var(--white);
+        border: 1px solid var(--slate-200);
+        border-radius: var(--radius-2xl);
+        padding: 2rem;
+        box-shadow: var(--shadow-lg);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .tool-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary), #6366f1);
+    }
+
+    .input-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .input-label {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--slate-700);
+        margin-bottom: 0.5rem;
+    }
+
+    .input-label .material-symbols-outlined {
+        font-size: 18px;
+        color: var(--primary);
+    }
+
+    .tool-textarea {
+        width: 100%;
+        min-height: 180px;
+        padding: 1rem 1.25rem;
+        border: 2px solid var(--slate-200);
+        border-radius: var(--radius-xl);
+        font-family: 'Inter', sans-serif;
+        font-size: 0.95rem;
+        color: var(--slate-800);
+        background: var(--slate-50);
+        resize: vertical;
+        transition: border-color 0.2s, box-shadow 0.2s;
+        line-height: 1.7;
+    }
+
+    .tool-textarea::placeholder {
+        color: var(--slate-400);
+    }
+
+    .tool-textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 4px var(--primary-light);
+        background: var(--white);
+    }
+
+    .char-count {
+        text-align: right;
+        font-size: 0.75rem;
+        color: var(--slate-400);
+        margin-top: 0.4rem;
+    }
+
+    .error-msg {
+        display: none;
+        align-items: center;
+        gap: 0.35rem;
+        font-size: 0.8rem;
+        color: var(--red-500);
+        margin-top: 0.5rem;
+        font-weight: 500;
+    }
+
+    .error-msg .material-symbols-outlined {
+        font-size: 16px;
+    }
+
+    .error-msg.show {
+        display: flex;
+    }
+
+    .btn-row {
+        display: flex;
+        gap: 0.75rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .btn-generate {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--primary);
+        color: #fff;
+        padding: 0.85rem 2rem;
+        border: none;
+        border-radius: var(--radius-xl);
+        font-family: 'Inter', sans-serif;
+        font-size: 0.95rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+        box-shadow: 0 4px 16px var(--primary-glow);
+    }
+
+    .btn-generate:hover {
+        background: var(--primary-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px var(--primary-glow);
+    }
+
+    .btn-generate:active {
+        transform: translateY(0);
+    }
+
+    .btn-generate .material-symbols-outlined {
+        font-size: 20px;
+    }
+
+    .btn-clear {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--white);
+        color: var(--slate-600);
+        padding: 0.85rem 1.5rem;
+        border: 2px solid var(--slate-200);
+        border-radius: var(--radius-xl);
+        font-family: 'Inter', sans-serif;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s, border-color 0.2s;
+    }
+
+    .btn-clear:hover {
+        background: var(--slate-50);
+        border-color: var(--slate-300);
+    }
+
+    .btn-clear .material-symbols-outlined {
+        font-size: 18px;
+    }
+
+    /* Output */
+    .output-area {
+        display: none;
+        animation: fadeSlideUp 0.4s ease;
+    }
+
+    .output-area.show {
+        display: block;
+    }
+
+    .output-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .output-title {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--slate-700);
+    }
+
+    .output-title .material-symbols-outlined {
+        font-size: 18px;
+        color: var(--green-500);
+    }
+
+    .btn-copy {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        background: var(--primary-light);
+        color: var(--primary);
+        padding: 0.4rem 0.85rem;
+        border: none;
+        border-radius: var(--radius-md);
+        font-family: 'Inter', sans-serif;
+        font-size: 0.78rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+
+    .btn-copy:hover {
+        background: rgba(19, 91, 236, 0.15);
+    }
+
+    .btn-copy .material-symbols-outlined {
+        font-size: 16px;
+    }
+
+    .output-card {
+        background: linear-gradient(135deg, var(--slate-50) 0%, rgba(19,91,236,0.03) 100%);
+        border: 1px solid var(--slate-200);
+        border-radius: var(--radius-xl);
+        padding: 1.5rem 1.75rem;
+    }
+
+    .output-card ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .output-card ul li {
+        position: relative;
+        padding: 0.55rem 0 0.55rem 1.5rem;
+        font-size: 0.95rem;
+        color: var(--slate-700);
+        line-height: 1.6;
+        border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .output-card ul li:last-child {
+        border-bottom: none;
+    }
+
+    .output-card ul li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 7px;
+        height: 7px;
+        background: var(--primary);
+        border-radius: 50%;
+    }
+
+    @keyframes fadeSlideUp {
+        from {
+            opacity: 0;
+            transform: translateY(16px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* ==================== CTA SECTION ==================== */
+    .cta-section {
+        padding: 4rem 1.5rem;
+    }
+
+    .cta-card {
+        max-width: 900px;
+        margin: 0 auto;
+        background: var(--primary);
+        border-radius: 1.5rem;
+        padding: 3.5rem 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 20px 40px var(--primary-glow);
+    }
+
+    .cta-card::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 300px;
+        height: 300px;
+        background: rgba(255,255,255,0.08);
+        border-radius: 50%;
+        filter: blur(60px);
+    }
+
+    .cta-card::after {
+        content: '';
+        position: absolute;
+        bottom: -50%;
+        left: -20%;
+        width: 300px;
+        height: 300px;
+        background: rgba(255,255,255,0.08);
+        border-radius: 50%;
+        filter: blur(60px);
+    }
+
+    .cta-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .cta-content p {
+        color: rgba(191, 219, 254, 1);
+        font-size: 1.1rem;
+        max-width: 560px;
+        margin: 0 auto 2rem;
+        line-height: 1.7;
+    }
+
+    .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: #fff;
+        color: var(--primary);
+        padding: 0.9rem 2.5rem;
+        border: none;
+        border-radius: var(--radius-xl);
+        font-family: 'Inter', sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background 0.2s, transform 0.15s;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+
+    .cta-btn:hover {
+        background: var(--slate-50);
+        transform: scale(1.04);
+    }
+
+    /* ==================== FOOTER ==================== */
+    .footer {
+        background: var(--slate-50);
+        border-top: 1px solid var(--slate-200);
+        padding: 3rem 1.5rem;
+    }
+
+    .footer-inner {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+
+    .footer-brand {
+        max-width: 280px;
+    }
+
+    .footer-brand .logo {
+        margin-bottom: 0.75rem;
+    }
+
+    .footer-brand p {
+        font-size: 0.85rem;
+        color: var(--slate-500);
+        line-height: 1.6;
+    }
+
+    .footer-links {
+        display: flex;
+        gap: 3rem;
+    }
+
+    .footer-col h4 {
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--slate-900);
+        margin-bottom: 1rem;
+    }
+
+    .footer-col ul {
+        list-style: none;
+    }
+
+    .footer-col ul li {
+        margin-bottom: 0.65rem;
+    }
+
+    .footer-col ul li a {
+        font-size: 0.85rem;
+        color: var(--slate-500);
+        transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover {
+        color: var(--primary);
+    }
+
+    .footer-bottom {
+        max-width: 1280px;
+        margin: 2rem auto 0;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--slate-200);
+        text-align: center;
+        font-size: 0.8rem;
+        color: var(--slate-400);
+    }
+
+    /* ==================== RESPONSIVE ==================== */
+    @media (max-width: 768px) {
+        .nav-links {
+            display: none;
+        }
+
+        .nav-cta {
+            display: none;
+        }
+
+        .mobile-toggle {
+            display: block;
+        }
+
+        .hero {
+            padding: 3rem 1.25rem 1.5rem;
+        }
+
+        .tool-card {
+            padding: 1.5rem;
+        }
+
+        .btn-row {
+            flex-direction: column;
+        }
+
+        .btn-generate,
+        .btn-clear {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .cta-card {
+            padding: 2.5rem 1.5rem;
+        }
+
+        .footer-inner {
+            flex-direction: column;
+        }
+
+        .footer-links {
+            gap: 2rem;
+        }
+    }
+</style>
+</head>
+<body>
+
+<!-- ==================== NAVBAR ==================== -->
+<header class="navbar">
+    <div class="navbar-inner">
+        <a href="../index.html" class="logo">
+            <div class="logo-icon">
+                <span class="material-symbols-outlined">auto_awesome</span>
+            </div>
+            <span class="logo-text">Study Hub AI</span>
+        </a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../tools.html">Tools</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+        <a href="../index.html" class="nav-cta">Get Started</a>
+        <button class="mobile-toggle" aria-label="Open menu">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+    </div>
+</header>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+    <div class="hero-badge">
+        <span class="material-symbols-outlined">edit_note</span>
+        Study Tool
+    </div>
+    <h1>AI Notes <span>Generator</span></h1>
+    <p class="hero-subtitle">Convert paragraphs into clear, structured study notes instantly.</p>
+    <p class="hero-desc">Paste your text below and generate quick revision notes in seconds.</p>
+</section>
+
+<!-- ==================== TOOL SECTION ==================== -->
+<section class="tool-section">
+    <div class="tool-card">
+        <!-- Input -->
+        <div class="input-group">
+            <label class="input-label" for="inputText">
+                <span class="material-symbols-outlined">description</span>
+                Your Text
+            </label>
+            <textarea
+                id="inputText"
+                class="tool-textarea"
+                placeholder="Paste your paragraph or study content here..."
+                rows="7"
+            ></textarea>
+            <div class="char-count"><span id="charCount">0</span> characters</div>
+            <div class="error-msg" id="errorMsg">
+                <span class="material-symbols-outlined">error</span>
+                Please enter some text before generating notes.
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="btn-row">
+            <button class="btn-generate" id="generateBtn">
+                <span class="material-symbols-outlined">auto_awesome</span>
+                Generate Notes
+            </button>
+            <button class="btn-clear" id="clearBtn">
+                <span class="material-symbols-outlined">delete_sweep</span>
+                Clear
+            </button>
+        </div>
+
+        <!-- Output -->
+        <div class="output-area" id="outputArea">
+            <div class="output-header">
+                <div class="output-title">
+                    <span class="material-symbols-outlined">check_circle</span>
+                    Generated Notes
+                </div>
+                <button class="btn-copy" id="copyBtn">
+                    <span class="material-symbols-outlined">content_copy</span>
+                    Copy
+                </button>
+            </div>
+            <div class="output-card">
+                <ul id="notesList"></ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== CTA SECTION ==================== -->
+<section class="cta-section">
+    <div class="cta-card">
+        <div class="cta-content">
+            <p>Explore more AI-powered study tools on Study Hub AI to improve your learning and exam preparation.</p>
+            <a href="../index.html" class="cta-btn">
+                <span class="material-symbols-outlined">apps</span>
+                View All Tools
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <a href="../index.html" class="logo">
+                <div class="logo-icon">
+                    <span class="material-symbols-outlined" style="font-size:16px">auto_awesome</span>
+                </div>
+                <span class="logo-text" style="font-size:1.1rem">Study Hub AI</span>
+            </a>
+            <p>Empowering students globally with advanced AI technology to make learning efficient, fun, and accessible.</p>
+        </div>
+        <div class="footer-links">
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="notes-generator.html">Notes Generator</a></li>
+                    <li><a href="#">Exam Answer Bot</a></li>
+                    <li><a href="#">Study Planner</a></li>
+                    <li><a href="#">AI Summary Tool</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Cookie Settings</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2024 Study Hub AI Inc. All rights reserved.
+    </div>
+</footer>
+
+<!-- ==================== JAVASCRIPT ==================== -->
+<script>
+    const inputText = document.getElementById('inputText');
+    const generateBtn = document.getElementById('generateBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    const copyBtn = document.getElementById('copyBtn');
+    const outputArea = document.getElementById('outputArea');
+    const notesList = document.getElementById('notesList');
+    const errorMsg = document.getElementById('errorMsg');
+    const charCount = document.getElementById('charCount');
+
+    // Character count
+    inputText.addEventListener('input', () => {
+        charCount.textContent = inputText.value.length;
+        if (inputText.value.trim().length > 0) {
+            errorMsg.classList.remove('show');
+        }
+    });
+
+    // Generate notes
+    generateBtn.addEventListener('click', () => {
+        const text = inputText.value.trim();
+
+        // Validation
+        if (!text) {
+            errorMsg.classList.add('show');
+            outputArea.classList.remove('show');
+            return;
+        }
+
+        errorMsg.classList.remove('show');
+
+        // Split text into sentences
+        // Handles: periods, exclamation marks, question marks
+        const sentences = text
+            .split(/(?<=[.!?])\s+/)
+            .map(s => s.trim())
+            .filter(s => s.length > 0);
+
+        // Clean up each sentence (remove trailing period for cleaner bullets)
+        const notes = sentences.map(s => {
+            return s.replace(/[.]+$/, '').trim();
+        }).filter(s => s.length > 2);
+
+        if (notes.length === 0) {
+            errorMsg.classList.add('show');
+            return;
+        }
+
+        // Render notes
+        notesList.innerHTML = '';
+        notes.forEach(note => {
+            const li = document.createElement('li');
+            li.textContent = note;
+            notesList.appendChild(li);
+        });
+
+        // Show output with animation
+        outputArea.classList.remove('show');
+        // Force reflow for re-animation
+        void outputArea.offsetWidth;
+        outputArea.classList.add('show');
+    });
+
+    // Clear
+    clearBtn.addEventListener('click', () => {
+        inputText.value = '';
+        charCount.textContent = '0';
+        errorMsg.classList.remove('show');
+        outputArea.classList.remove('show');
+        notesList.innerHTML = '';
+        inputText.focus();
+    });
+
+    // Copy notes
+    copyBtn.addEventListener('click', () => {
+        const items = notesList.querySelectorAll('li');
+        const text = Array.from(items).map(li => '• ' + li.textContent).join('\n');
+
+        navigator.clipboard.writeText(text).then(() => {
+            const icon = copyBtn.querySelector('.material-symbols-outlined');
+            icon.textContent = 'check';
+            copyBtn.lastChild.textContent = ' Copied!';
+            setTimeout(() => {
+                icon.textContent = 'content_copy';
+                copyBtn.lastChild.textContent = ' Copy';
+            }, 2000);
+        }).catch(() => {
+            // Fallback for older browsers
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+        });
+    });
 </script>
-</body></html>
+
+</body>
+</html>
