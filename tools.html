@@ -1,30 +1,564 @@
-<h1>AI Study Tools</h1>
-<p>Choose a tool to start improving your study workflow.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Study Tools | Study Hub AI</title>
 
-<div class="tools-grid">
+    <!-- Basic SEO -->
+    <meta name="description" content="Explore free AI study tools for students. Generate notes, convert paragraphs to bullet points, create exam answers, and build study plans instantly.">
+    <meta name="keywords" content="AI study tools, free study tools online, AI tools for exam preparation, notes generator, study planner, student AI tools">
+    <meta name="author" content="Study Hub AI">
+    <meta name="robots" content="index, follow">
 
-  <div class="tool-card">
-    <h3>Notes Generator</h3>
-    <p>Create quick study notes from paragraphs.</p>
-    <a href="tools/notes-generator.html">Open Tool</a>
-  </div>
+    <!-- Open Graph -->
+    <meta property="og:title" content="AI Study Tools | Study Hub AI">
+    <meta property="og:description" content="Explore free AI study tools for students. Generate notes, bullet points, exam answers, and study plans instantly.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://studyhubai.com/tools.html">
+    <link rel="canonical" href="https://razabbossyt.github.io/Study-Hub-AI/tools.html">
 
-  <div class="tool-card">
-    <h3>Bullet Points Converter</h3>
-    <p>Convert long text into quick bullet points.</p>
-    <a href="tools/bullet-converter.html">Open Tool</a>
-  </div>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 
-  <div class="tool-card">
-    <h3>Exam Answer Generator</h3>
-    <p>Generate exam-style answers instantly.</p>
-    <a href="tools/exam-answer.html">Open Tool</a>
-  </div>
+<style>
+    *, *::before, *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-  <div class="tool-card">
-    <h3>Study Planner</h3>
-    <p>Create a daily study timetable.</p>
-    <a href="tools/study-planner.html">Open Tool</a>
-  </div>
+    :root {
+        --primary: #135bec;
+        --primary-hover: #0f4ed0;
+        --primary-light: rgba(19, 91, 236, 0.08);
+        --primary-glow: rgba(19, 91, 236, 0.25);
+        --bg: #f6f6f8;
+        --white: #ffffff;
+        --slate-50: #f8fafc;
+        --slate-100: #f1f5f9;
+        --slate-200: #e2e8f0;
+        --slate-300: #cbd5e1;
+        --slate-400: #94a3b8;
+        --slate-500: #64748b;
+        --slate-600: #475569;
+        --slate-700: #334155;
+        --slate-800: #1e293b;
+        --slate-900: #0f172a;
+        --radius-md: 0.5rem;
+        --radius-lg: 0.75rem;
+        --radius-xl: 1rem;
+        --radius-2xl: 1.25rem;
+    }
 
-</div>
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        background-color: var(--bg);
+        color: var(--slate-900);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    /* ==================== NAVBAR ==================== */
+    .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        width: 100%;
+        background: rgba(246, 246, 248, 0.8);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(19, 91, 236, 0.1);
+    }
+
+    .navbar-inner {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 64px;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .logo-icon {
+        background: var(--primary);
+        color: #fff;
+        padding: 6px;
+        border-radius: var(--radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .logo-icon .material-symbols-outlined {
+        font-size: 20px;
+    }
+
+    .logo-text {
+        font-size: 1.25rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--slate-900);
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        list-style: none;
+    }
+
+    .nav-links a {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--slate-600);
+        transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+        color: var(--primary);
+    }
+
+    .nav-cta {
+        background: var(--primary);
+        color: #fff;
+        padding: 0.5rem 1.25rem;
+        border-radius: var(--radius-md);
+        font-size: 0.875rem;
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+        transition: background 0.2s, transform 0.2s;
+        box-shadow: 0 4px 12px var(--primary-glow);
+    }
+
+    .nav-cta:hover {
+        background: var(--primary-hover);
+        transform: translateY(-1px);
+    }
+
+    .mobile-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--slate-600);
+        cursor: pointer;
+        padding: 0.5rem;
+    }
+
+    /* ==================== HERO ==================== */
+    .hero {
+        padding: 4rem 1.5rem 2.5rem;
+        text-align: center;
+        background: linear-gradient(135deg, rgba(19,91,236,0.04) 0%, transparent 50%, rgba(19,91,236,0.04) 100%);
+    }
+
+    .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.3rem 0.85rem;
+        border-radius: 9999px;
+        background: var(--primary-light);
+        color: var(--primary);
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 1.25rem;
+    }
+
+    .hero-badge .material-symbols-outlined {
+        font-size: 14px;
+    }
+
+    .hero h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 900;
+        color: var(--slate-900);
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+        margin-bottom: 0.75rem;
+    }
+
+    .hero h1 span {
+        color: var(--primary);
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+        color: var(--slate-600);
+        max-width: 560px;
+        margin: 0 auto;
+    }
+
+    /* ==================== TOOLS GRID ==================== */
+    .tools-section {
+        padding: 3rem 1.5rem 4rem;
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+
+    .tools-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .tool-card {
+        background: var(--white);
+        border: 1px solid var(--slate-200);
+        border-radius: var(--radius-2xl);
+        padding: 2rem;
+        transition: border-color 0.2s, box-shadow 0.3s, transform 0.2s;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .tool-card:hover {
+        border-color: rgba(19, 91, 236, 0.3);
+        box-shadow: 0 12px 32px rgba(19, 91, 236, 0.08);
+        transform: translateY(-4px);
+    }
+
+    .tool-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: var(--radius-xl);
+        background: var(--primary-light);
+        color: var(--primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.25rem;
+        transition: transform 0.2s;
+    }
+
+    .tool-card:hover .tool-icon {
+        transform: scale(1.1);
+    }
+
+    .tool-card h3 {
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: var(--slate-900);
+        margin-bottom: 0.5rem;
+    }
+
+    .tool-card p {
+        font-size: 0.875rem;
+        color: var(--slate-500);
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        flex-grow: 1;
+    }
+
+    .tool-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: var(--primary);
+        transition: gap 0.2s;
+    }
+
+    .tool-link:hover {
+        gap: 0.7rem;
+    }
+
+    .tool-link .material-symbols-outlined {
+        font-size: 16px;
+    }
+
+    /* ==================== SEO SECTION ==================== */
+    .seo-section {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+        text-align: center;
+    }
+
+    .seo-section h2 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--slate-900);
+        margin-bottom: 1rem;
+    }
+
+    .seo-section p {
+        font-size: 1rem;
+        color: var(--slate-600);
+        line-height: 1.8;
+    }
+
+    /* ==================== FOOTER ==================== */
+    .footer {
+        background: var(--slate-50);
+        border-top: 1px solid var(--slate-200);
+        padding: 3rem 1.5rem;
+    }
+
+    .footer-inner {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+
+    .footer-brand {
+        max-width: 280px;
+    }
+
+    .footer-brand .logo {
+        margin-bottom: 0.75rem;
+    }
+
+    .footer-brand p {
+        font-size: 0.85rem;
+        color: var(--slate-500);
+        line-height: 1.6;
+    }
+
+    .footer-links {
+        display: flex;
+        gap: 3rem;
+    }
+
+    .footer-col h4 {
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--slate-900);
+        margin-bottom: 1rem;
+    }
+
+    .footer-col ul {
+        list-style: none;
+    }
+
+    .footer-col ul li {
+        margin-bottom: 0.65rem;
+    }
+
+    .footer-col ul li a {
+        font-size: 0.85rem;
+        color: var(--slate-500);
+        transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover {
+        color: var(--primary);
+    }
+
+    .footer-bottom {
+        max-width: 1280px;
+        margin: 2rem auto 0;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--slate-200);
+        text-align: center;
+        font-size: 0.8rem;
+        color: var(--slate-400);
+    }
+
+    /* ==================== RESPONSIVE ==================== */
+    @media (max-width: 768px) {
+        .nav-links {
+            display: none;
+        }
+
+        .nav-cta {
+            display: none;
+        }
+
+        .mobile-toggle {
+            display: block;
+        }
+
+        .hero {
+            padding: 3rem 1.25rem 2rem;
+        }
+
+        .tools-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .footer-inner {
+            flex-direction: column;
+        }
+
+        .footer-links {
+            gap: 2rem;
+        }
+    }
+</style>
+</head>
+<body>
+
+<!-- ==================== NAVBAR ==================== -->
+<header class="navbar">
+    <div class="navbar-inner">
+        <a href="index.html" class="logo">
+            <div class="logo-icon">
+                <span class="material-symbols-outlined">auto_awesome</span>
+            </div>
+            <span class="logo-text">Study Hub AI</span>
+        </a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="tools.html" class="active">Tools</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+        <a href="index.html" class="nav-cta">Get Started</a>
+        <button class="mobile-toggle" aria-label="Open menu">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+    </div>
+</header>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+    <div class="hero-badge">
+        <span class="material-symbols-outlined">build</span>
+        Free for Students
+    </div>
+    <h1>AI Study <span>Tools</span></h1>
+    <p>Boost your learning with powerful AI tools designed to help students study smarter, revise faster, and prepare better for exams.</p>
+</section>
+
+<!-- ==================== TOOLS GRID ==================== -->
+<section class="tools-section">
+    <div class="tools-grid">
+
+        <!-- Notes Generator -->
+        <div class="tool-card">
+            <div class="tool-icon">
+                <span class="material-symbols-outlined">edit_note</span>
+            </div>
+            <h3>Notes Generator</h3>
+            <p>Transform messy lecture recordings or slides into structured, comprehensive study notes instantly.</p>
+            <a href="tools/notes-generator.html" class="tool-link">
+                Open Tool <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+        </div>
+
+        <!-- Bullet Points Converter -->
+        <div class="tool-card">
+            <div class="tool-icon">
+                <span class="material-symbols-outlined">format_list_bulleted</span>
+            </div>
+            <h3>Bullet Points Converter</h3>
+            <p>Turn long, dense paragraphs into concise, easy-to-read bullet points for quick revision sessions.</p>
+            <a href="tools/bullet-converter.html" class="tool-link">
+                Open Tool <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+        </div>
+
+        <!-- Exam Answer Generator -->
+        <div class="tool-card">
+            <div class="tool-icon">
+                <span class="material-symbols-outlined">quiz</span>
+            </div>
+            <h3>Exam Answer Generator</h3>
+            <p>Get detailed, step-by-step explanations for complex problems across math, science, and humanities.</p>
+            <a href="tools/exam-answer.html" class="tool-link">
+                Open Tool <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+        </div>
+
+        <!-- Study Planner -->
+        <div class="tool-card">
+            <div class="tool-icon">
+                <span class="material-symbols-outlined">calendar_today</span>
+            </div>
+            <h3>Study Planner</h3>
+            <p>Create personalized study schedules based on your exam dates, difficulty, and your personal goals.</p>
+            <a href="tools/study-planner.html" class="tool-link">
+                Open Tool <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<!-- ==================== SEO SECTION ==================== -->
+<section class="seo-section">
+    <h2>AI Study Tools for Students</h2>
+    <p>
+        Study Hub AI provides free AI-powered study tools to help students learn faster.
+        Our tools allow you to generate notes, convert paragraphs into bullet points,
+        create exam answers, and build study schedules instantly. These tools are designed
+        to make studying easier, improve revision speed, and help students prepare better
+        for exams.
+    </p>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <span class="material-symbols-outlined" style="font-size:16px">auto_awesome</span>
+                </div>
+                <span class="logo-text" style="font-size:1.1rem">Study Hub AI</span>
+            </a>
+            <p>Empowering students globally with advanced AI technology to make learning efficient, fun, and accessible.</p>
+        </div>
+        <div class="footer-links">
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="tools/notes-generator.html">Notes Generator</a></li>
+                    <li><a href="#">Exam Answer Bot</a></li>
+                    <li><a href="#">Study Planner</a></li>
+                    <li><a href="#">AI Summary Tool</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Cookie Settings</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2024 Study Hub AI Inc. All rights reserved.
+    </div>
+</footer>
+
+</body>
+</html>
