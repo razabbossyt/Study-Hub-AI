@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Paragraph Summarizer | Study Hub AI</title>
+    
+    <!-- SEO Optimization -->
+    <meta name="description" content="Generate clear, concise summaries from long texts, PDFs, Word docs, images, and videos with our AI Summarizer for students.">
+    <meta name="keywords" content="paragraph summarizer, AI summarizer, study tools, student summary generator, Study Hub AI">
+    <meta name="author" content="Study Hub AI">
+    
+    <!-- Fonts and Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Color Palette */
+            --primary: #3b82f6; /* Blue */
+            --primary-hover: #2563eb;
+            --primary-light: #dbeafe;
+            --secondary: #8b5cf6; /* Purple accent */
+            --bg-color: #f8fafc;
+            --surface-color: #ffffff;
+            
+            /* Text Colors */
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --text-light: #94a3b8;
+            
+            /* Borders and Shadows */
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-glow: 0 0 15px rgba(59, 130, 246, 0.3);
+            
+            /* Sizing */
+            --radius-md: 0.5rem;
+            --radius-lg: 1rem;
+            --radius-full: 9999px;
+            --transition: all 0.2s ease-in-out;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navbar */
+        header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .nav-brand .icon-box {
+            background: var(--primary);
+            color: white;
+            padding: 0.25rem 0.35rem;
+            border-radius: 0.375rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Main Layout */
+        main {
+            flex-grow: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+            width: 100%;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.025em;
+        }
+        
+        .page-title span {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+
+        .tool-tip {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--surface-color);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        
+        .card:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Input Section */
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .input-label {
+            font-weight: 600;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .word-counter {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            background: var(--bg-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--border-color);
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 1.25rem;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            line-height: 1.6;
+            resize: vertical;
+            transition: var(--transition);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background-color: var(--surface-color);
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+
+        /* File Upload Options */
+        .upload-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .upload-btn {
+            flex: 1;
+            min-width: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1.25rem;
+            border: 2px dashed var(--border-color);
+            border-radius: var(--radius-md);
+            background: var(--bg-color);
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .upload-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .upload-btn input[type="file"] {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .file-preview {
+            display: none;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding: 0.75rem;
+            background: var(--primary-light);
+            border-radius: var(--radius-md);
+            color: var(--primary-hover);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        .file-preview .remove-file {
+            margin-left: auto;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+
+        /* Checkbox Options */
+        .summary-options {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .options-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-main);
+        }
+        
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .checkbox-container input[type="checkbox"] {
+            accent-color: var(--primary);
+            width: 1.1rem;
+            height: 1.1rem;
+            cursor: pointer;
+        }
+        
+        .checkbox-label {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /* Error Message */
+        .error-msg {
+            color: #ef4444; /* Red */
+            background: #fef2f2;
+            padding: 0.75rem;
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+            margin-top: 1rem;
+            display: none;
+            align-items: center;
+            gap: 0.5rem;
+            border: 1px solid #fecaca;
+        }
+
+        /* Action Buttons */
+        .action-container {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            justify-content: flex-end;
+            margin-top: 1.5rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.75rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+        }
+
+        /* Loading Animation */
+        .loader-container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 0;
+            gap: 1rem;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--primary-light);
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        .loader-text {
+            color: var(--text-muted);
+            font-weight: 500;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Output Section */
+        #output-section {
+            display: none;
+        }
+
+        .output-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .output-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .output-title .material-symbols-outlined {
+            color: var(--primary);
+        }
+
+        .output-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+        }
+
+        /* Summary Formatting */
+        .summary-content {
+            font-size: 1.05rem;
+            color: var(--text-main);
+            line-height: 1.8;
+            padding: 1.5rem;
+            background: var(--bg-color);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+        }
+        
+        .summary-content h3 {
+            color: var(--primary-hover);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.15rem;
+        }
+        
+        .summary-content h3:first-child {
+            margin-top: 0;
+        }
+
+        .summary-content p {
+            margin-bottom: 1rem;
+        }
+
+        .summary-content ul {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
+        
+        .summary-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-content strong {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: auto;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .nav-links {
+                display: none;
+            }
+            .upload-section {
+                flex-direction: column;
+            }
+            .action-container {
+                flex-direction: column-reverse;
+                width: 100%;
+            }
+            .btn {
+                width: 100%;
+            }
+            .output-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .output-actions {
+                width: 100%;
+                flex-wrap: wrap;
+            }
+            .output-actions .btn {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header>
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">
+                <div class="icon-box">
+                    <span class="material-symbols-outlined" style="font-size: 1.25rem;">auto_awesome</span>
+                </div>
+                Study Hub AI
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../tools.html">Tools</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Header Section -->
+        <div class="page-header">
+            <h1 class="page-title">AI Paragraph <span>Summarizer</span></h1>
+            <p class="tool-tip">Quickly understand long texts, documents, or lecture transcripts directly. Perfect for students who want to save time.</p>
+        </div>
+
+        <!-- Input Section -->
+        <div class="card">
+            
+            <!-- Direct Text Input -->
+            <div class="input-group">
+                <div class="input-header">
+                    <label for="text-input" class="input-label">
+                        <span class="material-symbols-outlined">text_snippet</span>
+                        Source Text
+                    </label>
+                    <div class="word-counter">
+                        <span id="word-count">0</span> words
+                    </div>
+                </div>
+                <textarea 
+                    id="text-input" 
+                    placeholder="Paste your long text, article, or document here to be summarized..."
+                ></textarea>
+            </div>
+
+            <!-- Upload Methods from User Reqs -->
+            <div class="upload-section">
+                <!-- Document Upload -->
+                <div class="upload-btn">
+                    <span class="material-symbols-outlined" style="font-size: 2rem;">description</span>
+                    <span style="font-weight: 600;">Document</span>
+                    <span style="font-size: 0.75rem;">PDF, Word, TXT</span>
+                    <input type="file" accept=".pdf,.doc,.docx,.txt" id="upload-doc">
+                </div>
+                
+                <!-- Image OCR Upload -->
+                <div class="upload-btn">
+                    <span class="material-symbols-outlined" style="font-size: 2rem;">document_scanner</span>
+                    <span style="font-weight: 600;">Scan Image</span>
+                    <span style="font-size: 0.75rem;">JPG, PNG, WEBP</span>
+                    <input type="file" accept="image/*" id="upload-image">
+                </div>
+
+                <!-- Video Transcript Upload -->
+                <div class="upload-btn">
+                    <span class="material-symbols-outlined" style="font-size: 2rem;">ondemand_video</span>
+                    <span style="font-weight: 600;">Video Transcript</span>
+                    <span style="font-size: 0.75rem;">MP4, SRT</span>
+                    <input type="file" accept="video/*,.srt" id="upload-video">
+                </div>
+            </div>
+            
+            <!-- File Preview Area -->
+            <div id="file-preview" class="file-preview">
+                <span class="material-symbols-outlined">attach_file</span>
+                <span id="file-name">filename.ext</span>
+                <button class="remove-file" id="remove-file" title="Remove file">
+                    <span class="material-symbols-outlined" style="font-size: 1.25rem;">close</span>
+                </button>
+            </div>
+
+            <!-- Additional Options -->
+            <div class="summary-options">
+                <div class="options-title">Summary Preferences</div>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="pref-bullet" checked>
+                    <label for="pref-bullet" class="checkbox-label">Include bullet points for key details</label>
+                </div>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="pref-highlight">
+                    <label for="pref-highlight" class="checkbox-label">Bold important keywords automatically</label>
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <div id="error-msg" class="error-msg">
+                <span class="material-symbols-outlined">error</span>
+                Please paste some text or upload a file to summarize.
+            </div>
+
+            <div class="action-container">
+                <button id="clear-btn" class="btn btn-outline">
+                    <span class="material-symbols-outlined">delete</span>
+                    Clear
+                </button>
+                <button id="generate-btn" class="btn btn-primary">
+                    <span class="material-symbols-outlined">auto_awesome</span>
+                    Generate Summary
+                </button>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loader" class="loader-container">
+            <div class="spinner"></div>
+            <div class="loader-text">Analyzing content and distilling key points...</div>
+        </div>
+
+        <!-- Output Section -->
+        <div id="output-section" class="card">
+            <div class="output-header">
+                <div class="output-title">
+                    <span class="material-symbols-outlined">assignment_turned_in</span>
+                    Final Summary
+                </div>
+                <div class="output-actions">
+                    <button id="copy-btn" class="btn btn-outline btn-sm">
+                        <span class="material-symbols-outlined" style="font-size: 1.1em;">content_copy</span>
+                        Copy
+                    </button>
+                    <button id="download-btn" class="btn btn-outline btn-sm">
+                        <span class="material-symbols-outlined" style="font-size: 1.1em;">download</span>
+                        Download
+                    </button>
+                </div>
+            </div>
+            
+            <div id="summary-result" class="summary-content">
+                <!-- Summary blocks inserted here -->
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Study Hub AI. Empowering students globally.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // DOM Elements
+            const textInput = document.getElementById('text-input');
+            const wordCountDisplay = document.getElementById('word-count');
+            const generateBtn = document.getElementById('generate-btn');
+            const clearBtn = document.getElementById('clear-btn');
+            const errorMsg = document.getElementById('error-msg');
+            const outputSection = document.getElementById('output-section');
+            const summaryResult = document.getElementById('summary-result');
+            const copyBtn = document.getElementById('copy-btn');
+            const downloadBtn = document.getElementById('download-btn');
+            const loader = document.getElementById('loader');
+            
+            // Preferences
+            const prefBullet = document.getElementById('pref-bullet');
+            const prefHighlight = document.getElementById('pref-highlight');
+            
+            // File Upload Elements
+            const fileInputs = document.querySelectorAll('input[type="file"]');
+            const filePreview = document.getElementById('file-preview');
+            const fileNameDisplay = document.getElementById('file-name');
+            const removeFileBtn = document.getElementById('remove-file');
+            
+            let uploadedFile = null;
+
+            // Live Word Counter
+            textInput.addEventListener('input', () => {
+                const text = textInput.value.trim();
+                const words = text.length > 0 ? text.split(/\s+/).filter(word => word.length > 0).length : 0;
+                wordCountDisplay.textContent = words;
+                
+                if (text.length > 0) {
+                    errorMsg.style.display = 'none';
+                }
+            });
+
+            // File Upload Logic
+            fileInputs.forEach(input => {
+                input.addEventListener('change', (e) => {
+                    if (e.target.files.length > 0) {
+                        uploadedFile = e.target.files[0];
+                        fileNameDisplay.textContent = uploadedFile.name;
+                        filePreview.style.display = 'flex';
+                        errorMsg.style.display = 'none';
+                        
+                        // Icon switch
+                        const iconSpan = filePreview.querySelector('span:first-child');
+                        if (uploadedFile.type.startsWith('image/')) {
+                            iconSpan.textContent = 'image';
+                        } else if (uploadedFile.type.startsWith('video/') || uploadedFile.name.endsWith('.srt')) {
+                            iconSpan.textContent = 'movie';
+                        } else {
+                            iconSpan.textContent = 'description';
+                        }
+                    }
+                });
+            });
+
+            removeFileBtn.addEventListener('click', () => {
+                uploadedFile = null;
+                filePreview.style.display = 'none';
+                fileInputs.forEach(input => input.value = '');
+            });
+
+            // Generate Summary Logic
+            generateBtn.addEventListener('click', () => {
+                const text = textInput.value.trim();
+                
+                if (text === '' && !uploadedFile) {
+                    errorMsg.style.display = 'flex';
+                    return;
+                }
+                
+                // Hide errors, hide previous output, show loader
+                errorMsg.style.display = 'none';
+                outputSection.style.display = 'none';
+                loader.style.display = 'flex';
+                
+                // Read preferences
+                const useBullets = prefBullet.checked;
+                const useHighlight = prefHighlight.checked;
+
+                // Simulate AI Generation 
+                setTimeout(() => {
+                    const wordCount = text.length > 0 ? text.split(/\s+/).filter(w => w.length > 0).length : (uploadedFile ? 800 : 0);
+                    
+                    summaryResult.innerHTML = mockSummarizer(query=text, wordCount, useBullets, useHighlight, uploadedFile);
+                    
+                    loader.style.display = 'none';
+                    outputSection.style.display = 'block';
+                    outputSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 2200);
+            });
+
+            // Clear Feature
+            clearBtn.addEventListener('click', () => {
+                textInput.value = '';
+                wordCountDisplay.textContent = '0';
+                removeFileBtn.click(); // Clears files
+                errorMsg.style.display = 'none';
+                outputSection.style.display = 'none';
+                loader.style.display = 'none';
+                textInput.focus();
+            });
+
+            // Copy Feature
+            copyBtn.addEventListener('click', () => {
+                let textToCopy = summaryResult.innerText;
+                
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    const originalHTML = copyBtn.innerHTML;
+                    copyBtn.innerHTML = '<span class="material-symbols-outlined" style="font-size: 1.1em;">check</span> Copied!';
+                    copyBtn.style.color = 'var(--primary)';
+                    copyBtn.style.borderColor = 'var(--primary)';
+                    
+                    setTimeout(() => {
+                        copyBtn.innerHTML = originalHTML;
+                        copyBtn.style.color = '';
+                        copyBtn.style.borderColor = '';
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
+            });
+
+            // Download Feature
+            downloadBtn.addEventListener('click', () => {
+                let textToDownload = summaryResult.innerText;
+                
+                const blob = new Blob([textToDownload], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'Summary_Notes.txt';
+                document.body.appendChild(a);
+                a.click();
+                
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+
+            // Mock Data function for demo
+            function mockSummarizer(query, words, useBullets, useHighlight, fileObj) {
+                // If the user's input is massive (like scanning a document), break it into multiple sections
+                const isLong = words > 150 || (fileObj !== null);
+                
+                // Helper to bold based on preference
+                const bold = (txt) => useHighlight ? `<strong>${txt}</strong>` : txt;
+
+                let html = '';
+                
+                const sourceContext = fileObj ? `Extracted from uploaded file: ${fileObj.name}` : `Extracted from text input`;
+
+                if (isLong) {
+                    html += `
+                        <h3>Section 1: Main Concept</h3>
+                        <p>This document primarily centers on understanding foundational principles. Rather than exploring every single avenue, the core directive focuses on identifying ${bold('systematic approaches')} instead of randomized variables. This saves significant time and energy while increasing overall accuracy in tests.</p>
+                        
+                        <h3>Section 2: Key Mechanics</h3>
+                        <p>Environmental and psychological factors dynamically interact. When setting establishing protocols, ${bold('consistency outpaces intensity')}. This demonstrates that spreading out workflows allows for superior data integration and long-term memory solidification.</p>
+                    `;
+                } else {
+                    html += `
+                        <h3>Overview</h3>
+                        <p>The core message emphasizes the importance of utilizing structured, heavily verified mechanics to solve problems efficiently. ${bold('Consistency and long-term planning')} are prioritized over short-term intense scrambles.</p>
+                    `;
+                }
+
+                if (useBullets) {
+                    html += `
+                        <h3>Core Highlights</h3>
+                        <ul>
+                            <li>${bold('Core Mechanism')} dictates that small daily actions yield massive returns.</li>
+                            <li>The author specifically warns against abandoning the framework midway through the cycle.</li>
+                            <li>Statistical evidence demonstrates an ${bold('85% increase')} in retention when these specific guidelines are met.</li>
+                        </ul>
+                    `;
+                }
+
+                html += `
+                    <div style="margin-top:2rem; padding-top:1rem; border-top:1px dashed var(--border-color); font-size: 0.85em; color: var(--text-muted);">
+                        ${sourceContext}
+                    </div>
+                `;
+
+                return html;
+            }
+        });
+    </script>
+</body>
+</html>
