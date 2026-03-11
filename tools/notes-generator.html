@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Notes Generator | Study Hub AI</title>
+    <title>Notes Generator | Study Hub AI</title>
     
     <!-- SEO Optimization -->
-    <meta name="description" content="Turn long paragraphs, lecture notes, or documents into quick revision notes instantly with our AI notes generator.">
-    <meta name="keywords" content="AI notes generator, study notes generator, student AI tools, text summarizer, Study Hub AI">
+    <meta name="description" content="Free AI study tools for students. Generate notes, summaries, bullet points, exam answers, and study plans instantly with Study Hub AI.">
+    <meta name="keywords" content="study tools, notes generator, word counter, summarizer, study planner, exam answer generator">
     <meta name="author" content="Study Hub AI">
     
     <!-- Fonts and Icons -->
@@ -59,7 +59,7 @@
             flex-direction: column;
         }
 
-        /* Navbar (Simple fallback) */
+        /* Navbar */
         header {
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
@@ -70,30 +70,50 @@
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
             padding: 1rem 1.5rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            justify-content: space-between;
         }
 
-        .nav-container a {
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
             text-decoration: none;
             color: var(--text-main);
             font-weight: 700;
             font-size: 1.25rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
 
-        .nav-container .icon-box {
+        .nav-brand .icon-box {
             background: var(--primary);
             color: white;
-            padding: 0.25rem;
+            padding: 0.25rem 0.35rem;
             border-radius: 0.375rem;
             display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
         }
         
         /* Main Layout */
@@ -425,6 +445,9 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
             .upload-section {
                 flex-direction: column;
             }
@@ -444,22 +467,28 @@
 </head>
 <body>
 
-    <!-- Simple Navbar to keep within single file constraint but match app flow -->
+    <!-- Navbar -->
     <header>
         <div class="nav-container">
-            <a href="../index.html">
+            <a href="../index.html" class="nav-brand">
                 <div class="icon-box">
                     <span class="material-symbols-outlined" style="font-size: 1.25rem;">auto_awesome</span>
                 </div>
                 Study Hub AI
             </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../tools.html">Tools</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
     <main>
         <!-- Header Section -->
         <div class="page-header">
-            <h1 class="page-title">AI <span>Notes Generator</span></h1>
+            <h1>Notes <span>Generator</span></h1>
             <p class="tool-tip">Turn long paragraphs, lecture notes, or documents into quick revision notes instantly.</p>
         </div>
 
