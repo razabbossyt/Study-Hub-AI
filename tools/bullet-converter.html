@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+<title>Bullet Points Converter – Free AI Study Tool | Study Hub AI</title>
+<meta name="description" content="Convert any paragraph or chapter text into clean, scannable bullet points instantly. Free AI-powered bullet point converter for students. No signup required."/>
+<meta name="keywords" content="bullet points converter,paragraph to bullets,text to bullet points,study notes,free AI study tool"/>
+<meta name="author" content="Study Hub AI"/>
+<meta name="robots" content="index, follow"/>
+<meta name="theme-color" content="#2563eb"/>
+<meta property="og:title" content="Bullet Points Converter – Study Hub AI"/>
+<meta property="og:description" content="Convert any paragraph into clean, scannable bullet points instantly. Free and no signup required."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://studyhubai.com/tools/bullet-points.html"/>
+<meta property="og:image" content="https://studyhubai.com/preview.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Familjen+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════════════════════════════════
+   DESIGN TOKENS — identical to all Study Hub AI pages
+═══════════════════════════════════════════════════ */
+:root{
+  --b50:#eff6ff;--b100:#dbeafe;--b200:#bfdbfe;--b300:#93c5fd;--b400:#60a5fa;
+  --b500:#3b82f6;--b600:#2563eb;--b700:#1d4ed8;--b800:#1e40af;--b900:#1e3a8a;
+  --g0:#fff;--g50:#f8fafc;--g100:#f1f5f9;--g200:#e2e8f0;--g300:#cbd5e1;
+  --g400:#94a3b8;--g500:#64748b;--g600:#475569;--g700:#334155;
+  --g800:#1e293b;--g900:#0f172a;--g950:#020617;
+  --ink:var(--g900);--ink2:var(--g700);--mu:var(--g500);--mu2:var(--g400);
+  --sf:var(--g50);--sf2:var(--g100);--bd:var(--g200);--bd2:var(--g300);
+  --ac:var(--b600);--acH:var(--b700);--acL:var(--b50);--acM:var(--b100);
+  --s0:0 1px 2px rgba(15,23,42,.06);
+  --s1:0 2px 8px rgba(15,23,42,.07),0 1px 3px rgba(15,23,42,.04);
+  --s2:0 4px 16px rgba(15,23,42,.09),0 2px 6px rgba(15,23,42,.05);
+  --s3:0 12px 36px rgba(15,23,42,.11),0 4px 12px rgba(15,23,42,.06);
+  --s4:0 24px 64px rgba(15,23,42,.13),0 8px 24px rgba(15,23,42,.07);
+  --sb:0 8px 32px rgba(37,99,235,.22),0 2px 8px rgba(37,99,235,.12);
+  --sbL:0 20px 60px rgba(37,99,235,.28),0 6px 20px rgba(37,99,235,.15);
+  --r1:6px;--r2:10px;--r3:14px;--r4:20px;--r5:28px;--rF:9999px;
+  --fd:'Familjen Grotesk',sans-serif;--fb:'Plus Jakarta Sans',sans-serif;
+  --ez:cubic-bezier(.22,1,.36,1);--esp:cubic-bezier(.34,1.46,.64,1);
+  --tf:.14s var(--ez);--tb:.22s var(--ez);--ts:.36s var(--ez);--tsp:.38s var(--esp);
+}
+
+/* ── RESET ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;overflow-y:scroll;}
+body{font-family:var(--fb);background:var(--g50);color:var(--ink);line-height:1.6;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;}
+img,svg{display:block;max-width:100%;}
+a{text-decoration:none;color:inherit;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;padding:0;}
+ul{list-style:none;}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
+
+/* ── LAYOUT ── */
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,32px);}
+.wrap-md{width:100%;max-width:960px;margin:0 auto;padding:0 clamp(16px,4vw,32px);}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font-family:var(--fd);font-weight:700;font-size:.9rem;border-radius:var(--r3);
+  border:1.5px solid transparent;padding:11px 22px;cursor:pointer;white-space:nowrap;
+  position:relative;overflow:hidden;will-change:transform;
+  transition:transform var(--tsp),box-shadow var(--tb),background var(--tb),
+    border-color var(--tb),color var(--tb);
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+.btn::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,0);
+  transition:background var(--tf);pointer-events:none;}
+.btn:hover::after{background:rgba(255,255,255,.09);}
+.btn:active{transform:scale(.96)!important;}
+.btn-p{background:var(--ac);color:#fff;border-color:var(--ac);box-shadow:var(--sb);}
+.btn-p:hover{background:var(--acH);border-color:var(--acH);transform:translateY(-2px);box-shadow:var(--sbL);}
+.btn-p:disabled{background:var(--g400);border-color:var(--g400);box-shadow:none;cursor:not-allowed;transform:none!important;opacity:.65;}
+.btn-g{background:transparent;color:var(--ink2);border-color:var(--bd2);}
+.btn-g:hover{border-color:var(--ac);color:var(--ac);background:var(--acL);transform:translateY(-2px);}
+.btn-g:disabled{opacity:.4;cursor:not-allowed;transform:none!important;pointer-events:none;}
+.btn-red{background:transparent;color:#dc2626;border-color:#fecaca;}
+.btn-red:hover{background:#fff1f2;border-color:#dc2626;transform:translateY(-2px);}
+.btn-sm{padding:8px 16px;font-size:.82rem;}
+.btn-lg{padding:14px 30px;font-size:.97rem;border-radius:var(--r4);}
+
+/* ═══════════════ NAVBAR ═══════════════ */
+.nav{position:sticky;top:0;z-index:200;will-change:background-color,box-shadow;
+  transition:background var(--tb),box-shadow var(--tb);}
+.nav.stuck{background:rgba(255,255,255,.92);backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--bd);
+  box-shadow:0 1px 24px rgba(15,23,42,.07);}
+.nav-row{display:flex;align-items:center;justify-content:space-between;height:68px;}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--fd);font-weight:700;
+  font-size:1.18rem;color:var(--ink);transition:opacity var(--tf);-webkit-tap-highlight-color:transparent;}
+.nav-logo:hover{opacity:.8;}
+.nlm{width:36px;height:36px;background:linear-gradient(135deg,var(--b600),var(--b400));
+  border-radius:10px;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 14px rgba(37,99,235,.3);flex-shrink:0;}
+.nlm svg{width:18px;height:18px;}
+.nav-links{display:flex;align-items:center;gap:2px;}
+.nav-links a{font-size:.88rem;font-weight:600;color:var(--g600);padding:8px 14px;
+  border-radius:var(--r2);transition:color var(--tf),background var(--tf);}
+.nav-links a:hover,.nav-links a.cur{color:var(--ac);}
+.nav-links a:hover{background:var(--acL);}
+.nav-acts{display:flex;align-items:center;gap:10px;}
+.burger{display:none;width:40px;height:40px;border-radius:var(--r2);background:var(--sf2);
+  align-items:center;justify-content:center;border:1px solid var(--bd);cursor:pointer;
+  transition:background var(--tf);-webkit-tap-highlight-color:transparent;}
+.burger:hover{background:var(--acM);}
+.bw{display:flex;flex-direction:column;gap:4px;}
+.bb{display:block;width:18px;height:2px;border-radius:1px;background:var(--ink);
+  transition:transform var(--tb),opacity var(--tf);transform-origin:center;}
+.burger.on .bb:nth-child(1){transform:translateY(6px) rotate(45deg);}
+.burger.on .bb:nth-child(2){opacity:0;transform:scaleX(0);}
+.burger.on .bb:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+
+/* DRAWER */
+.drw{position:fixed;inset:0;z-index:199;pointer-events:none;visibility:hidden;transition:visibility 0s var(--ts);}
+.drw.on{pointer-events:auto;visibility:visible;transition:visibility 0s 0s;}
+.db{position:absolute;inset:0;background:rgba(15,23,42,.48);opacity:0;backdrop-filter:blur(4px);transition:opacity var(--ts);will-change:opacity;}
+.drw.on .db{opacity:1;}
+.dp{position:absolute;top:0;right:0;bottom:0;width:min(320px,86vw);background:#fff;
+  box-shadow:-6px 0 40px rgba(15,23,42,.16);transform:translateX(100%);
+  transition:transform var(--ts);will-change:transform;display:flex;flex-direction:column;padding:24px;}
+.drw.on .dp{transform:translateX(0);}
+.dh{display:flex;align-items:center;justify-content:space-between;padding-bottom:20px;border-bottom:1px solid var(--bd);margin-bottom:16px;}
+.dx{width:36px;height:36px;border-radius:var(--r2);background:var(--sf2);border:1px solid var(--bd);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background var(--tf);}
+.dx:hover{background:#fecdd3;}
+.dx svg{width:18px;height:18px;stroke:var(--ink);}
+.dnav{display:flex;flex-direction:column;gap:2px;flex:1;}
+.dnav a{font-family:var(--fd);font-weight:600;font-size:1rem;padding:13px 16px;
+  border-radius:var(--r3);color:var(--ink2);display:flex;align-items:center;gap:12px;
+  transition:background var(--tf),color var(--tf);}
+.dnav a:hover{background:var(--acL);color:var(--ac);}
+.dnav a svg{width:18px;height:18px;stroke:currentColor;opacity:.55;flex-shrink:0;}
+.df{padding-top:20px;border-top:1px solid var(--bd);}
+.df .btn{width:100%;}
+.drw.on .dnav a{animation:drwIn .3s var(--ez) both;}
+.drw.on .dnav a:nth-child(1){animation-delay:.08s;}
+.drw.on .dnav a:nth-child(2){animation-delay:.13s;}
+.drw.on .dnav a:nth-child(3){animation-delay:.18s;}
+.drw.on .dnav a:nth-child(4){animation-delay:.23s;}
+@keyframes drwIn{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:translateX(0)}}
+
+/* ═══════════════ PAGE HEADER ═══════════════ */
+.page-header{background:#fff;border-bottom:1px solid var(--bd);padding:clamp(28px,5vw,48px) 0 clamp(24px,4vw,40px);}
+.ph-inner{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.ph-breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--mu);margin-bottom:14px;font-family:var(--fd);font-weight:600;}
+.ph-breadcrumb a{color:var(--mu);transition:color var(--tf);}
+.ph-breadcrumb a:hover{color:var(--ac);}
+.ph-breadcrumb svg{width:12px;height:12px;stroke:var(--mu2);flex-shrink:0;}
+.ph-title{display:flex;align-items:center;gap:14px;margin-bottom:10px;}
+.ph-icon{width:48px;height:48px;background:linear-gradient(135deg,var(--b50),var(--b100));border-radius:var(--r3);display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid var(--b200);}
+.ph-icon svg{width:24px;height:24px;stroke:var(--ac);}
+.ph-h1{font-family:var(--fd);font-weight:700;font-size:clamp(1.5rem,3vw,2rem);letter-spacing:-.022em;color:var(--ink);}
+.ph-desc{font-size:.95rem;color:var(--mu);line-height:1.65;max-width:520px;}
+.ph-badge{display:inline-flex;align-items:center;gap:6px;margin-top:12px;background:var(--acL);border:1px solid var(--b200);border-radius:var(--rF);padding:4px 12px;font-size:.72rem;font-weight:700;font-family:var(--fd);letter-spacing:.05em;text-transform:uppercase;color:var(--ac);}
+.ph-badge-dot{width:5px;height:5px;background:#22c55e;border-radius:50%;animation:blink 1.8s infinite;}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.65)}}
+.ph-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px;flex-shrink:0;}
+.ph-tools-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;}
+.tnchip{display:inline-flex;align-items:center;gap:6px;font-family:var(--fd);font-size:.78rem;font-weight:600;padding:6px 12px;border-radius:var(--rF);border:1.5px solid var(--bd);background:#fff;color:var(--ink2);transition:all var(--tb);-webkit-tap-highlight-color:transparent;}
+.tnchip:hover{border-color:var(--ac);color:var(--ac);background:var(--acL);}
+.tnchip svg{width:13px;height:13px;stroke:currentColor;opacity:.7;}
+
+/* ═══════════════ TOOL WORKSPACE ═══════════════ */
+.tool-main{padding:clamp(28px,4vw,48px) 0 clamp(48px,7vw,80px);}
+.tool-layout{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start;}
+
+/* ── CARDS ── */
+.card{background:#fff;border:1px solid var(--bd);border-radius:var(--r4);box-shadow:var(--s1);overflow:hidden;position:relative;}
+.card-hdr{display:flex;align-items:center;justify-content:space-between;padding:15px 20px;border-bottom:1px solid var(--bd);background:var(--g50);}
+.card-title{display:flex;align-items:center;gap:8px;font-family:var(--fd);font-weight:700;font-size:.93rem;color:var(--ink);}
+.card-title svg{width:16px;height:16px;stroke:var(--ac);flex-shrink:0;}
+.card-acts{display:flex;align-items:center;gap:6px;}
+
+/* ── TEXTAREA ── */
+.tool-ta{width:100%;min-height:300px;max-height:520px;background:var(--g50);
+  border:1.5px solid var(--bd);border-radius:var(--r3);padding:16px;
+  font-family:var(--fb);font-size:.9rem;color:var(--ink);line-height:1.72;
+  resize:vertical;outline:none;
+  transition:border-color var(--tb),box-shadow var(--tb),background var(--tb);}
+.tool-ta::placeholder{color:var(--mu2);}
+.tool-ta:focus{border-color:var(--ac);box-shadow:0 0 0 3px rgba(37,99,235,.1);background:#fff;}
+
+/* ── STATS BAR ── */
+.stats-row{display:flex;margin-top:12px;background:var(--g50);border:1px solid var(--bd);border-radius:var(--r2);overflow:hidden;}
+.st{flex:1;padding:10px 8px;text-align:center;border-right:1px solid var(--bd);}
+.st:last-child{border-right:none;}
+.st-n{font-family:var(--fd);font-weight:700;font-size:.95rem;color:var(--ink);transition:color var(--tb),transform var(--tsp);}
+.st-n.pop{color:var(--ac);transform:scale(1.12);}
+.st-l{font-size:.65rem;color:var(--mu);text-transform:uppercase;letter-spacing:.07em;font-family:var(--fd);font-weight:600;margin-top:1px;}
+
+/* ── SETTINGS ROW ── */
+.settings-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:14px;}
+.sg{display:flex;align-items:center;gap:7px;}
+.sg label{font-size:.79rem;font-weight:700;font-family:var(--fd);color:var(--ink2);white-space:nowrap;}
+.sg select{font-family:var(--fb);font-size:.82rem;color:var(--ink);background:#fff;
+  border:1.5px solid var(--bd);border-radius:var(--r2);padding:7px 28px 7px 10px;outline:none;cursor:pointer;
+  transition:border-color var(--tb);
+  appearance:none;-webkit-appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 8px center;}
+.sg select:focus{border-color:var(--ac);}
+
+/* duplicate-toggle */
+.toggle-wrap{display:flex;align-items:center;gap:8px;margin-left:auto;}
+.toggle-lbl{font-size:.79rem;font-weight:700;font-family:var(--fd);color:var(--ink2);}
+.toggle{position:relative;display:inline-block;width:34px;height:20px;cursor:pointer;}
+.toggle input{opacity:0;width:0;height:0;position:absolute;}
+.toggle-track{position:absolute;inset:0;border-radius:var(--rF);background:var(--g300);
+  transition:background var(--tb);}
+.toggle input:checked+.toggle-track{background:var(--ac);}
+.toggle-thumb{position:absolute;top:3px;left:3px;width:14px;height:14px;
+  border-radius:50%;background:#fff;box-shadow:var(--s0);
+  transition:transform var(--tb);}
+.toggle input:checked~.toggle-thumb{transform:translateX(14px);}
+
+/* ── PROGRESS BAR ── */
+.prog-wrap{margin-top:14px;display:none;}
+.prog-wrap.show{display:block;}
+.prog-bg{background:var(--bd);border-radius:var(--rF);height:5px;overflow:hidden;}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--b600),var(--b400));
+  border-radius:var(--rF);width:0%;transition:width .4s var(--ez);will-change:width;}
+.prog-lbl{font-size:.73rem;color:var(--mu);margin-top:5px;font-family:var(--fd);font-weight:600;}
+
+/* ── ACTION BUTTONS ── */
+.act-row{display:flex;align-items:center;gap:10px;margin-top:16px;flex-wrap:wrap;}
+
+/* ── OUTPUT PLACEHOLDER ── */
+.out-ph{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  min-height:330px;text-align:center;padding:36px;color:var(--mu2);}
+.out-ph-ico{width:52px;height:52px;stroke:var(--bd2);margin-bottom:16px;opacity:.7;}
+.out-ph h3{font-family:var(--fd);font-weight:700;font-size:1rem;color:var(--mu);margin-bottom:7px;}
+.out-ph p{font-size:.83rem;line-height:1.6;color:var(--mu2);max-width:220px;}
+.out-ph kbd{background:var(--sf2);border:1px solid var(--bd);border-radius:var(--r1);
+  padding:2px 7px;font-family:var(--fd);font-size:.78rem;font-weight:700;color:var(--ink2);}
+
+/* ── BULLET LIST OUTPUT ── */
+.bullet-list{padding:14px 20px;display:flex;flex-direction:column;gap:6px;}
+.bullet-item{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:10px 14px;
+  background:var(--g50);border:1px solid var(--bd);
+  border-left:3px solid var(--b400);
+  border-radius:0 var(--r2) var(--r2) 0;
+  font-size:.88rem;color:var(--ink2);line-height:1.6;
+  opacity:0;animation:bulletIn .32s var(--ez) both;
+  transition:background var(--tf),border-left-color var(--tf);
+  cursor:default;
+}
+.bullet-item:hover{background:var(--acL);border-left-color:var(--ac);}
+@keyframes bulletIn{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:translateX(0)}}
+
+/* bullet marker variants */
+.bm{width:8px;height:8px;border-radius:50%;background:var(--b400);flex-shrink:0;margin-top:5px;transition:background var(--tf);}
+.bullet-item:hover .bm{background:var(--ac);}
+.bm-sq{width:8px;height:8px;border-radius:2px;background:var(--b400);flex-shrink:0;margin-top:5px;transition:background var(--tf);}
+.bullet-item:hover .bm-sq{background:var(--ac);}
+.bm-arrow{font-size:.85rem;color:var(--b400);flex-shrink:0;margin-top:1px;line-height:1;transition:color var(--tf);}
+.bullet-item:hover .bm-arrow{color:var(--ac);}
+.bm-num{min-width:22px;font-family:var(--fd);font-weight:700;font-size:.78rem;color:var(--ac);flex-shrink:0;margin-top:1px;}
+
+/* ── OUTPUT FOOTER ── */
+.out-foot{display:flex;align-items:center;justify-content:space-between;
+  padding:12px 20px;border-top:1px solid var(--bd);background:var(--g50);flex-wrap:wrap;gap:8px;}
+.out-meta{font-size:.78rem;color:var(--mu);font-family:var(--fd);font-weight:600;
+  display:flex;align-items:center;gap:8px;}
+.out-meta-badge{display:inline-flex;align-items:center;gap:4px;background:#dcfce7;
+  border:1px solid #bbf7d0;border-radius:var(--rF);padding:2px 8px;
+  font-size:.7rem;font-weight:700;font-family:var(--fd);color:#15803d;}
+.out-meta-badge svg{width:10px;height:10px;stroke:#15803d;}
+.out-acts{display:flex;gap:8px;flex-wrap:wrap;}
+
+/* ── LOADING OVERLAY ── */
+.loader{position:absolute;inset:0;background:rgba(255,255,255,.88);backdrop-filter:blur(3px);
+  z-index:10;display:none;flex-direction:column;align-items:center;justify-content:center;
+  gap:12px;border-radius:var(--r4);}
+.loader.show{display:flex;}
+.spinner{width:36px;height:36px;border-radius:50%;
+  border:3px solid var(--b200);border-top-color:var(--ac);
+  animation:spin .65s linear infinite;will-change:transform;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loader-txt{font-family:var(--fd);font-weight:700;font-size:.85rem;color:var(--ink2);}
+.dots::after{content:'';animation:dots 1.4s steps(4,end) infinite;}
+@keyframes dots{0%{content:''}25%{content:'.'}50%{content:'..'}75%{content:'...'}100%{content:''}}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:28px;right:28px;z-index:9999;background:var(--g900);color:#fff;
+  border-radius:var(--r3);padding:12px 18px;font-family:var(--fd);font-weight:600;
+  font-size:.85rem;display:flex;align-items:center;gap:9px;box-shadow:var(--s4);
+  transform:translateY(80px);opacity:0;
+  transition:transform var(--tsp),opacity var(--tb);pointer-events:none;max-width:300px;}
+.toast.show{transform:translateY(0);opacity:1;}
+.toast svg{width:16px;height:16px;flex-shrink:0;}
+.t-ok svg{stroke:#4ade80;}
+.t-err svg{stroke:#fca5a5;}
+.t-inf svg{stroke:#93c5fd;}
+
+/* ═══════════════ HOW IT WORKS ═══════════════ */
+.how-sec{background:#fff;border-top:1px solid var(--bd);padding:clamp(36px,5vw,60px) 0;}
+.how-hd{text-align:center;margin-bottom:32px;}
+.chip-sm{display:inline-flex;align-items:center;gap:6px;font-family:var(--fd);font-size:.71rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ac);background:var(--acL);border:1px solid var(--b200);padding:5px 13px;border-radius:var(--rF);margin-bottom:12px;}
+.chip-sm-dot{width:5px;height:5px;background:var(--ac);border-radius:50%;animation:blink 2.2s ease-in-out infinite;}
+.how-hd h2{font-family:var(--fd);font-weight:700;font-size:clamp(1.35rem,2.5vw,1.85rem);letter-spacing:-.022em;color:var(--ink);margin-bottom:6px;}
+.how-hd p{font-size:.9rem;color:var(--mu);max-width:440px;margin:0 auto;}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.step-card{background:var(--g50);border:1px solid var(--bd);border-radius:var(--r4);
+  padding:clamp(20px,2.5vw,28px);text-align:center;
+  transition:transform var(--tsp),box-shadow var(--tb);will-change:transform;}
+.step-card:hover{transform:translateY(-4px);box-shadow:var(--s3);}
+.step-n{width:40px;height:40px;border-radius:50%;
+  background:linear-gradient(135deg,var(--b600),var(--b500));color:#fff;
+  font-family:var(--fd);font-weight:700;font-size:1rem;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 14px;box-shadow:0 4px 14px rgba(37,99,235,.26);}
+.step-t{font-family:var(--fd);font-weight:700;font-size:.92rem;color:var(--ink);margin-bottom:7px;}
+.step-d{font-size:.82rem;color:var(--mu);line-height:1.58;}
+
+/* ═══════════════ TIPS ═══════════════ */
+.tips-sec{background:var(--g50);border-top:1px solid var(--bd);padding:clamp(32px,4vw,52px) 0;}
+.tips-hd{margin-bottom:clamp(20px,3vw,28px);}
+.tips-hd h2{font-family:var(--fd);font-weight:700;font-size:clamp(1.2rem,2vw,1.55rem);letter-spacing:-.02em;color:var(--ink);margin-bottom:5px;}
+.tips-hd p{font-size:.88rem;color:var(--mu);}
+.tips-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.tip-card{background:#fff;border:1px solid var(--bd);border-radius:var(--r3);
+  padding:16px 18px;display:flex;gap:12px;align-items:flex-start;
+  transition:border-color var(--tb),transform var(--tsp);will-change:transform;}
+.tip-card:hover{border-color:var(--b200);transform:translateX(4px);}
+.tip-ico{width:36px;height:36px;border-radius:var(--r2);background:var(--acL);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  transition:background var(--tb),transform var(--tsp);}
+.tip-ico svg{width:17px;height:17px;stroke:var(--ac);}
+.tip-card:hover .tip-ico{background:var(--acM);transform:scale(1.08) rotate(-4deg);}
+.tip-t{font-family:var(--fd);font-weight:700;font-size:.87rem;color:var(--ink);margin-bottom:3px;}
+.tip-d{font-size:.8rem;color:var(--mu);line-height:1.55;}
+
+/* ═══════════════ MORE TOOLS ═══════════════ */
+.more-sec{background:#fff;border-top:1px solid var(--bd);padding:clamp(32px,4vw,52px) 0;}
+.more-hd{margin-bottom:clamp(18px,2.5vw,26px);}
+.more-hd h2{font-family:var(--fd);font-weight:700;font-size:clamp(1.2rem,2vw,1.55rem);letter-spacing:-.02em;color:var(--ink);margin-bottom:5px;}
+.more-hd p{font-size:.88rem;color:var(--mu);}
+.more-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(178px,1fr));gap:12px;}
+.more-card{background:var(--g50);border:1px solid var(--bd);border-radius:var(--r3);
+  padding:14px 16px;display:flex;align-items:center;gap:11px;
+  transition:border-color var(--tb),transform var(--tsp),box-shadow var(--tb);
+  will-change:transform;-webkit-tap-highlight-color:transparent;}
+.more-card:hover{border-color:var(--b200);transform:translateY(-3px);box-shadow:var(--s2);}
+.more-ico{width:34px;height:34px;background:var(--acL);border-radius:var(--r2);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  transition:background var(--tb),transform var(--tsp);}
+.more-ico svg{width:16px;height:16px;stroke:var(--ac);}
+.more-card:hover .more-ico{background:var(--acM);transform:scale(1.1) rotate(-4deg);}
+.more-name{font-family:var(--fd);font-weight:700;font-size:.81rem;color:var(--ink);}
+.more-sub{font-size:.69rem;color:var(--mu);}
+
+/* ═══════════════ FOOTER ═══════════════ */
+footer{background:var(--g950);padding:clamp(36px,5vw,52px) 0 28px;}
+.foot-row{display:flex;align-items:center;justify-content:space-between;gap:20px;
+  flex-wrap:wrap;padding-bottom:20px;margin-bottom:20px;
+  border-bottom:1px solid rgba(255,255,255,.08);}
+.f-logo{display:flex;align-items:center;gap:10px;font-family:var(--fd);font-weight:700;font-size:1.05rem;color:#fff;}
+.flm{width:32px;height:32px;background:linear-gradient(135deg,var(--b600),var(--b400));
+  border-radius:9px;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 12px rgba(37,99,235,.28);}
+.flm svg{width:16px;height:16px;}
+.f-nav{display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.f-nav a{font-size:.84rem;color:rgba(255,255,255,.42);transition:color var(--tf);}
+.f-nav a:hover{color:#fff;}
+.f-bot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.f-copy{font-size:.8rem;color:rgba(255,255,255,.26);}
+.f-tag{font-size:.8rem;color:rgba(255,255,255,.26);}
+.f-tag span{color:rgba(255,255,255,.46);}
+
+/* ═══════════════ SCROLL REVEAL ═══════════════ */
+.reveal{opacity:0;transform:translateY(22px);will-change:opacity,transform;
+  transition:opacity .6s var(--ez),transform .6s var(--ez);}
+.reveal.in{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}
+.d4{transition-delay:.28s}.d5{transition-delay:.35s}.d6{transition-delay:.42s}
+
+/* ═══════════════ RESPONSIVE ═══════════════ */
+@media(max-width:900px){
+  .tool-layout{grid-template-columns:1fr;}
+  .ph-right{display:none;}
+}
+@media(max-width:820px){
+  .nav-links,.nav-acts .btn-g{display:none;}
+  .burger{display:flex;}
+  .steps-grid{grid-template-columns:1fr;}
+  .tips-grid{grid-template-columns:1fr;}
+}
+@media(max-width:600px){
+  .act-row{flex-direction:column;align-items:stretch;}
+  .act-row .btn{justify-content:center;}
+  .settings-row{flex-direction:column;align-items:flex-start;}
+  .toggle-wrap{margin-left:0;}
+  .more-grid{grid-template-columns:repeat(2,1fr);}
+  .foot-row{flex-direction:column;align-items:flex-start;}
+  .f-bot{flex-direction:column;align-items:flex-start;gap:6px;}
+  .out-foot{flex-direction:column;align-items:flex-start;}
+}
+@media(max-width:380px){.more-grid{grid-template-columns:1fr;}}
+@supports(padding:max(0px)){
+  .nav-row{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right);}
+  footer{padding-bottom:max(28px,env(safe-area-inset-bottom));}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════  NAVBAR  ══════ -->
+<nav class="nav" id="navbar">
+  <div class="wrap">
+    <div class="nav-row">
+
+      <a href="../index.html" class="nav-logo" aria-label="Study Hub AI home">
+        <div class="nlm">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        Study Hub AI
+      </a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../tools.html" class="cur">Tools</a></li>
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="../about.html">About</a></li>
+      </ul>
+
+      <div class="nav-acts">
+        <a href="../tools.html" class="btn btn-g btn-sm" style="display:inline-flex;">All Tools</a>
+        <a href="../tools.html" class="btn btn-p btn-sm">Start Studying</a>
+        <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+          <div class="bw"><span class="bb"></span><span class="bb"></span><span class="bb"></span></div>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+<!-- DRAWER -->
+<div class="drw" id="drw" role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="db" id="drw-back"></div>
+  <div class="dp">
+    <div class="dh">
+      <div class="nav-logo" style="font-size:1rem;">
+        <div class="nlm" style="width:30px;height:30px;border-radius:8px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        Study Hub AI
+      </div>
+      <button class="dx" id="drw-x" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <nav class="dnav">
+      <a href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home</a>
+      <a href="../tools.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>All Tools</a>
+      <a href="../blog.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Blog</a>
+      <a href="../about.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>About</a>
+    </nav>
+    <div class="df"><a href="../tools.html" class="btn btn-p btn-lg">Browse All Tools</a></div>
+  </div>
+</div>
+
+
+<!-- ══════  PAGE HEADER  ══════ -->
+<div class="page-header">
+  <div class="wrap">
+    <div class="ph-inner">
+      <div>
+        <nav class="ph-breadcrumb" aria-label="Breadcrumb">
+          <a href="../index.html">Home</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          <a href="../tools.html">Tools</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          <span style="color:var(--ink2);font-weight:600;">Bullet Points Converter</span>
+        </nav>
+        <div class="ph-title">
+          <div class="ph-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="9" y1="6" x2="20" y2="6"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="18" x2="20" y2="18"/>
+              <circle cx="4" cy="6" r="1.6" fill="currentColor" stroke="none"/>
+              <circle cx="4" cy="12" r="1.6" fill="currentColor" stroke="none"/>
+              <circle cx="4" cy="18" r="1.6" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+          <h1 class="ph-h1">Bullet Points Converter</h1>
+        </div>
+        <p class="ph-desc">Paste any paragraph, essay, or long text and instantly convert every sentence into clean, scannable bullet points — perfect for fast revision.</p>
+        <div class="ph-badge"><span class="ph-badge-dot"></span>Free · No signup · Instant results</div>
+      </div>
+      <div class="ph-right">
+        <span style="font-size:.78rem;font-weight:600;font-family:var(--fd);color:var(--mu);">Try other tools:</span>
+        <div class="ph-tools-row">
+          <a href="notes-generator.html" class="tnchip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Notes Gen</a>
+          <a href="paragraph-summarizer.html" class="tnchip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="21" y1="10" x2="7" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/></svg>Summarizer</a>
+          <a href="flashcard-generator.html" class="tnchip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>Flashcards</a>
+          <a href="essay-rewriter.html" class="tnchip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>Rewriter</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════  MAIN WORKSPACE  ══════ -->
+<main class="tool-main">
+  <div class="wrap-md">
+    <div class="tool-layout">
+
+      <!-- ── INPUT PANEL ── -->
+      <div class="card" id="input-card">
+        <div class="loader" id="loader">
+          <div class="spinner"></div>
+          <div class="loader-txt">Converting<span class="dots"></span></div>
+        </div>
+
+        <div class="card-hdr">
+          <div class="card-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+            Paste Your Text
+          </div>
+          <div class="card-acts">
+            <button class="btn btn-g btn-sm" id="example-btn" title="Load example text">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
+              </svg>
+              Example
+            </button>
+            <button class="btn btn-red btn-sm" id="clear-in-btn">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+              Clear
+            </button>
+          </div>
+        </div>
+
+        <div style="padding:18px 20px 0;">
+          <textarea
+            id="input-ta"
+            class="tool-ta"
+            placeholder="Paste your paragraph, essay, or chapter here…
+
+Example:
+The water cycle, also known as the hydrological cycle, is the continuous movement of water through the Earth's systems. Water evaporates from the oceans and lakes when heated by the sun. This water vapour rises into the atmosphere, where it cools and condenses to form clouds. When clouds accumulate enough moisture, precipitation occurs in the form of rain, snow, sleet, or hail. The water then flows into rivers and streams, eventually returning to the ocean."
+            aria-label="Text to convert into bullet points"
+            spellcheck="false"
+            maxlength="15000"
+          ></textarea>
+
+          <!-- Live stats -->
+          <div class="stats-row" role="status" aria-live="polite" aria-label="Text statistics">
+            <div class="st">
+              <div class="st-n" id="word-count">0</div>
+              <div class="st-l">Words</div>
+            </div>
+            <div class="st">
+              <div class="st-n" id="char-count">0</div>
+              <div class="st-l">Chars</div>
+            </div>
+            <div class="st">
+              <div class="st-n" id="sent-count">0</div>
+              <div class="st-l">Sentences</div>
+            </div>
+            <div class="st">
+              <div class="st-n" id="para-count">0</div>
+              <div class="st-l">Paragraphs</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Settings -->
+        <div style="padding:0 20px;">
+          <div class="settings-row">
+            <div class="sg">
+              <label for="bullet-style">Style:</label>
+              <select id="bullet-style" aria-label="Bullet point style">
+                <option value="dot">● Round Dots</option>
+                <option value="square">■ Squares</option>
+                <option value="arrow">→ Arrows</option>
+                <option value="numbered">1. Numbered</option>
+              </select>
+            </div>
+            <div class="sg">
+              <label for="split-mode">Split by:</label>
+              <select id="split-mode" aria-label="How to split the text">
+                <option value="sentence">Sentence</option>
+                <option value="line">Line break</option>
+                <option value="paragraph">Paragraph</option>
+              </select>
+            </div>
+            <div class="toggle-wrap">
+              <span class="toggle-lbl">Remove duplicates</span>
+              <label class="toggle" title="Remove duplicate or near-duplicate sentences">
+                <input type="checkbox" id="dedup-toggle" checked/>
+                <div class="toggle-track"></div>
+                <div class="toggle-thumb"></div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress bar -->
+        <div class="prog-wrap" id="prog-wrap" style="padding:0 20px;">
+          <div class="prog-bg"><div class="prog-fill" id="prog-fill"></div></div>
+          <div class="prog-lbl" id="prog-lbl">Processing…</div>
+        </div>
+
+        <!-- Action buttons -->
+        <div style="padding:16px 20px 20px;">
+          <div class="act-row">
+            <button class="btn btn-p" id="convert-btn" disabled>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="9" y1="6" x2="20" y2="6"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="18" x2="20" y2="18"/>
+                <circle cx="4" cy="6" r="1.5" fill="currentColor" stroke="none"/>
+                <circle cx="4" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+                <circle cx="4" cy="18" r="1.5" fill="currentColor" stroke="none"/>
+              </svg>
+              Convert to Bullet Points
+            </button>
+            <span style="font-size:.74rem;color:var(--mu2);font-family:var(--fd);">
+              or <kbd style="background:var(--sf2);border:1px solid var(--bd);border-radius:4px;padding:1px 6px;font-size:.73rem;font-weight:700;color:var(--ink2);">Ctrl</kbd> + <kbd style="background:var(--sf2);border:1px solid var(--bd);border-radius:4px;padding:1px 6px;font-size:.73rem;font-weight:700;color:var(--ink2);">↵</kbd>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── OUTPUT PANEL ── -->
+      <div class="card" id="output-card">
+        <div class="card-hdr">
+          <div class="card-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 11 12 14 22 4"/>
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+            </svg>
+            Bullet Points
+          </div>
+          <div class="card-acts">
+            <div id="ready-badge" style="display:none;">
+              <span style="display:inline-flex;align-items:center;gap:4px;background:#dcfce7;border:1px solid #bbf7d0;border-radius:var(--rF);padding:3px 9px;font-family:var(--fd);font-size:.7rem;font-weight:700;color:#15803d;">
+                <span style="width:5px;height:5px;background:#22c55e;border-radius:50%;animation:blink 1.6s infinite;"></span>
+                Ready
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Placeholder -->
+        <div class="out-ph" id="out-ph">
+          <svg class="out-ph-ico" viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="9" y1="6" x2="20" y2="6"/><line x1="9" y1="12" x2="20" y2="12"/>
+            <line x1="9" y1="18" x2="20" y2="18"/>
+            <circle cx="4" cy="6" r="1.5"/><circle cx="4" cy="12" r="1.5"/><circle cx="4" cy="18" r="1.5"/>
+          </svg>
+          <h3>No bullets yet</h3>
+          <p>Paste your text, then click<br/><strong>Convert to Bullet Points</strong><br/>to get started.</p>
+        </div>
+
+        <!-- Bullet list -->
+        <div class="bullet-list" id="bullet-list" style="display:none;" role="list" aria-label="Generated bullet points"></div>
+
+        <!-- Output footer -->
+        <div class="out-foot" id="out-foot" style="display:none;">
+          <div class="out-meta">
+            <span id="bullet-count">0 bullets</span>
+            <span class="out-meta-badge" id="dedup-badge" style="display:none;">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Duplicates removed
+            </span>
+          </div>
+          <div class="out-acts">
+            <button class="btn btn-g btn-sm" id="copy-btn" disabled>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+              </svg>
+              Copy
+            </button>
+            <button class="btn btn-g btn-sm" id="download-btn" disabled>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Download
+            </button>
+            <button class="btn btn-red btn-sm" id="clear-out-btn" disabled>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3 6 5 6 21 6"/>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+              </svg>
+              Clear
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- .tool-layout -->
+  </div>
+</main>
+
+
+<!-- ══════  HOW IT WORKS  ══════ -->
+<section class="how-sec">
+  <div class="wrap-md">
+    <div class="how-hd reveal">
+      <div class="chip-sm"><span class="chip-sm-dot"></span>How to Use</div>
+      <h2>Three Steps to Clean Bullet Points</h2>
+      <p>No account needed — paste, convert, and copy in seconds.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card reveal d1">
+        <div class="step-n">1</div>
+        <div class="step-t">Paste Your Text</div>
+        <div class="step-d">Copy any paragraph, essay, article, or chapter text and paste it into the input box on the left.</div>
+      </div>
+      <div class="step-card reveal d2">
+        <div class="step-n">2</div>
+        <div class="step-t">Choose Your Style</div>
+        <div class="step-d">Pick a bullet style (dots, squares, arrows, or numbered), choose how to split the text, and toggle duplicate removal.</div>
+      </div>
+      <div class="step-card reveal d3">
+        <div class="step-n">3</div>
+        <div class="step-t">Copy or Download</div>
+        <div class="step-d">Click Convert, then copy the bullets to your clipboard or download them as a <code style="font-size:.78em;background:var(--g50);padding:1px 5px;border-radius:3px;">.txt</code> file for any app.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════  TIPS  ══════ -->
+<section class="tips-sec">
+  <div class="wrap-md">
+    <div class="tips-hd reveal">
+      <h2>Tips for the Best Bullet Points</h2>
+      <p>Get cleaner, more useful results with these quick techniques.</p>
+    </div>
+    <div class="tips-grid">
+      <div class="tip-card reveal d1">
+        <div class="tip-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <div>
+          <div class="tip-t">Use full, complete paragraphs</div>
+          <div class="tip-d">The converter works sentence by sentence — pasting complete paragraphs with proper punctuation gives you the cleanest and most accurate bullet points.</div>
+        </div>
+      </div>
+      <div class="tip-card reveal d2">
+        <div class="tip-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div>
+          <div class="tip-t">Match split mode to your content</div>
+          <div class="tip-d">Use <strong>Sentence</strong> for essays, <strong>Line break</strong> for lists or bullet notes, and <strong>Paragraph</strong> for long multi-section texts with distinct topics.</div>
+        </div>
+      </div>
+      <div class="tip-card reveal d3">
+        <div class="tip-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div>
+          <div class="tip-t">Keep duplicate removal on</div>
+          <div class="tip-d">Academic texts often repeat the same idea in slightly different ways. The duplicate removal toggle filters near-identical sentences so your bullets stay concise.</div>
+        </div>
+      </div>
+      <div class="tip-card reveal d4">
+        <div class="tip-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div>
+          <div class="tip-t">Use numbered style for sequences</div>
+          <div class="tip-d">If your text describes steps, a process, or a timeline, switch to the Numbered style — it makes the order clearer and easier to follow when revising.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════  MORE TOOLS  ══════ -->
+<section class="more-sec">
+  <div class="wrap-md">
+    <div class="more-hd reveal">
+      <h2>Try More Free Study Tools</h2>
+      <p>Every tool is free — no signup, no limits.</p>
+    </div>
+    <div class="more-grid">
+      <a href="notes-generator.html" class="more-card reveal d1">
+        <div class="more-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div><div class="more-name">Notes Generator</div><div class="more-sub">Text → Study Notes</div></div>
+      </a>
+      <a href="flashcard-generator.html" class="more-card reveal d2">
+        <div class="more-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
+        <div><div class="more-name">Flashcard Generator</div><div class="more-sub">Notes → Flash Cards</div></div>
+      </a>
+      <a href="paragraph-summarizer.html" class="more-card reveal d3">
+        <div class="more-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="21" y1="10" x2="7" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="21" y1="18" x2="7" y2="18"/></svg></div>
+        <div><div class="more-name">Paragraph Summarizer</div><div class="more-sub">Long → Short</div></div>
+      </a>
+      <a href="exam-answer-generator.html" class="more-card reveal d4">
+        <div class="more-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <div><div class="more-name">Exam Answers</div><div class="more-sub">Question → Answer</div></div>
+      </a>
+      <a href="essay-rewriter.html" class="more-card reveal d5">
+        <div class="more-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+        <div><div class="more-name">Essay Rewriter</div><div class="more-sub">Improve Clarity</div></div>
+      </a>
+      <a href="study-planner.html" class="more-card reveal d6">
+        <div class="more-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <div><div class="more-name">Study Planner</div><div class="more-sub">Build a Schedule</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════  FOOTER  ══════ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <div class="f-logo">
+        <div class="flm">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        Study Hub AI
+      </div>
+      <nav class="f-nav" aria-label="Footer navigation">
+        <a href="../index.html">Home</a>
+        <a href="../tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../privacy.html">Privacy</a>
+      </nav>
+    </div>
+    <div class="f-bot">
+      <p class="f-copy">© 2026 Study Hub AI. All rights reserved.</p>
+      <p class="f-tag">Free tools for <span>smarter studying</span>.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <svg id="toast-svg" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></svg>
+  <span id="toast-msg"></span>
+</div>
+
+<!-- Schema -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Bullet Points Converter – Study Hub AI","url":"https://studyhubai.com/tools/bullet-points.html","description":"Free tool that converts any paragraph or text into clean bullet points instantly.","applicationCategory":"EducationApplication","isAccessibleForFree":true,"operatingSystem":"Any"}
+</script>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   STUDY HUB AI — BULLET POINTS CONVERTER
+   Pure Vanilla JS — no dependencies
+═══════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+
+  /* ── rAF throttle ── */
+  function raf(fn){let id;return()=>{cancelAnimationFrame(id);id=requestAnimationFrame(fn);};}
+
+  /* ── DOM refs ── */
+  const navbar      = document.getElementById('navbar');
+  const burger      = document.getElementById('burger');
+  const drw         = document.getElementById('drw');
+  const drwBack     = document.getElementById('drw-back');
+  const drwX        = document.getElementById('drw-x');
+  const inputTa     = document.getElementById('input-ta');
+  const wordCnt     = document.getElementById('word-count');
+  const charCnt     = document.getElementById('char-count');
+  const sentCnt     = document.getElementById('sent-count');
+  const paraCnt     = document.getElementById('para-count');
+  const bulletStyle = document.getElementById('bullet-style');
+  const splitMode   = document.getElementById('split-mode');
+  const dedupToggle = document.getElementById('dedup-toggle');
+  const progWrap    = document.getElementById('prog-wrap');
+  const progFill    = document.getElementById('prog-fill');
+  const progLbl     = document.getElementById('prog-lbl');
+  const convertBtn  = document.getElementById('convert-btn');
+  const clearInBtn  = document.getElementById('clear-in-btn');
+  const exampleBtn  = document.getElementById('example-btn');
+  const outPh       = document.getElementById('out-ph');
+  const bulletList  = document.getElementById('bullet-list');
+  const outFoot     = document.getElementById('out-foot');
+  const bulletCount = document.getElementById('bullet-count');
+  const dedupBadge  = document.getElementById('dedup-badge');
+  const readyBadge  = document.getElementById('ready-badge');
+  const copyBtn     = document.getElementById('copy-btn');
+  const downloadBtn = document.getElementById('download-btn');
+  const clearOutBtn = document.getElementById('clear-out-btn');
+  const loader      = document.getElementById('loader');
+  const toast       = document.getElementById('toast');
+  const toastMsg    = document.getElementById('toast-msg');
+  const toastSvg    = document.getElementById('toast-svg');
+
+  let currentBullets  = [];
+  let dedupRemovedCnt = 0;
+  let toastTimer      = null;
+  let drawerOpen      = false;
+
+  /* ═══════  NAVBAR SCROLL  ═══════ */
+  let lastY = -1;
+  const onScroll = raf(function(){
+    const y = window.scrollY;
+    if(y === lastY) return;
+    lastY = y;
+    navbar.classList.toggle('stuck', y > 14);
+  });
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* ═══════  DRAWER  ═══════ */
+  function openD(){
+    if(drawerOpen) return;
+    drawerOpen = true;
+    drw.classList.add('on');
+    burger.classList.add('on');
+    burger.setAttribute('aria-expanded','true');
+    document.body.style.overflow = 'hidden';
+    drwX.focus();
+  }
+  function closeD(){
+    if(!drawerOpen) return;
+    drawerOpen = false;
+    drw.classList.remove('on');
+    burger.classList.remove('on');
+    burger.setAttribute('aria-expanded','false');
+    document.body.style.overflow = '';
+    burger.focus();
+  }
+  burger.addEventListener('click', openD);
+  drwX.addEventListener('click', closeD);
+  drwBack.addEventListener('click', closeD);
+  drw.querySelectorAll('.dnav a,.df .btn').forEach(a => a.addEventListener('click', closeD));
+  document.addEventListener('keydown', e => {
+    if(!drawerOpen) return;
+    if(e.key === 'Escape'){ closeD(); return; }
+    if(e.key === 'Tab'){
+      const focusable = [...drw.querySelectorAll('a,button,[tabindex]:not([tabindex="-1"])')];
+      const fi = focusable[0], la = focusable[focusable.length - 1];
+      if(e.shiftKey){ if(document.activeElement === fi){ e.preventDefault(); la.focus(); } }
+      else { if(document.activeElement === la){ e.preventDefault(); fi.focus(); } }
+    }
+  });
+  let tsx = 0;
+  drw.addEventListener('touchstart', e => { tsx = e.touches[0].clientX; }, {passive:true});
+  drw.addEventListener('touchend',   e => { if(e.changedTouches[0].clientX - tsx > 60) closeD(); }, {passive:true});
+
+  /* ═══════  SCROLL REVEAL  ═══════ */
+  const revEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    const ro = new IntersectionObserver(entries => {
+      entries.forEach(en => { if(en.isIntersecting){ en.target.classList.add('in'); ro.unobserve(en.target); } });
+    }, {threshold:0.08, rootMargin:'0px 0px -24px 0px'});
+    revEls.forEach(el => ro.observe(el));
+  } else {
+    revEls.forEach(el => el.classList.add('in'));
+  }
+
+  /* ═══════  LIVE STATS  ═══════ */
+  function updateStats(){
+    const raw  = inputTa.value;
+    const text = raw.trim();
+    const words = text ? text.split(/\s+/).filter(Boolean).length : 0;
+    const chars = raw.length;
+    // Count sentences by terminal punctuation
+    const sents = text ? (text.match(/[^.!?]*[.!?]+/g) || []).filter(s => s.trim().length > 2).length : 0;
+    // Count paragraphs (double newline or single newline)
+    const paras = text ? text.split(/\n+/).filter(p => p.trim().length > 0).length : 0;
+
+    function setVal(el, val){
+      const prev = el.textContent;
+      el.textContent = val.toLocaleString();
+      if(String(val) !== String(prev) && val > 0){
+        el.classList.remove('pop');
+        void el.offsetWidth;
+        el.classList.add('pop');
+        setTimeout(() => el.classList.remove('pop'), 400);
+      }
+    }
+    setVal(wordCnt, words);
+    setVal(charCnt, chars);
+    setVal(sentCnt, sents);
+    setVal(paraCnt, paras);
+    convertBtn.disabled = text.length < 10;
+  }
+  inputTa.addEventListener('input', raf(updateStats));
+  updateStats();
+
+  /* ═══════  EXAMPLE TEXT  ═══════ */
+  const EXAMPLE = `The water cycle, also known as the hydrological cycle, is the continuous movement of water on, above, and below the surface of the Earth. Water evaporates from the oceans, lakes, and rivers when heated by the sun. This water vapour rises into the atmosphere, cools, and condenses to form clouds through a process called condensation. When clouds accumulate enough moisture, precipitation occurs in the form of rain, snow, sleet, or hail. The water that falls as rain flows over the land surface as runoff, collecting in rivers, streams, and eventually returning to the ocean. Some water seeps into the ground and replenishes underground aquifers through a process called infiltration. The cycle is powered entirely by solar energy and gravity, making it one of the most fundamental processes on Earth.`;
+
+  exampleBtn.addEventListener('click', function(){
+    inputTa.value = EXAMPLE;
+    updateStats();
+    showToast('Example text loaded!', 'info');
+    inputTa.focus();
+  });
+
+  /* ═══════  CLEAR INPUT  ═══════ */
+  clearInBtn.addEventListener('click', function(){
+    inputTa.value = '';
+    updateStats();
+    resetOutput();
+    inputTa.focus();
+    showToast('Input cleared.', 'info');
+  });
+
+  /* ═══════  CLEAR OUTPUT  ═══════ */
+  clearOutBtn.addEventListener('click', resetOutput);
+
+  function resetOutput(){
+    currentBullets  = [];
+    dedupRemovedCnt = 0;
+    bulletList.innerHTML   = '';
+    bulletList.style.display = 'none';
+    outFoot.style.display  = 'none';
+    outPh.style.display    = '';
+    readyBadge.style.display = 'none';
+    copyBtn.disabled       = true;
+    downloadBtn.disabled   = true;
+    clearOutBtn.disabled   = true;
+  }
+
+  /* ═══════  CONVERSION ENGINE  ═══════ */
+
+  /**
+   * Split text into raw items based on the chosen mode.
+   */
+  function splitText(text, mode){
+    if(mode === 'line'){
+      return text.split(/\n+/).map(l => l.trim()).filter(l => l.length > 3);
+    }
+    if(mode === 'paragraph'){
+      return text.split(/\n{2,}/).map(p => p.replace(/\n/g,' ').trim()).filter(p => p.length > 5);
+    }
+    // sentence mode (default)
+    const sentenceRegex = /[^.!?]*(?:[.!?](?!['"]?\s|$)[^.!?]*)*[.!?]+['"]?/g;
+    const found = text.match(sentenceRegex) || [];
+    if(found.length === 0){
+      // fallback: split by newline
+      return text.split(/\n+/).map(l => l.trim()).filter(l => l.length > 3);
+    }
+    return found.map(s => s.trim()).filter(s => s.length > 5);
+  }
+
+  /**
+   * Normalise a sentence for dedup comparison.
+   * Strip punctuation, lowercase, collapse spaces.
+   */
+  function normalise(s){
+    return s.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ').trim();
+  }
+
+  /**
+   * Levenshtein similarity (0–1).
+   */
+  function similarity(a, b){
+    if(a === b) return 1;
+    const la = a.length, lb = b.length;
+    if(!la || !lb) return 0;
+    // Use word-level Jaccard for speed
+    const sa = new Set(a.split(' '));
+    const sb = new Set(b.split(' '));
+    const inter = [...sa].filter(w => sb.has(w)).length;
+    const union = new Set([...sa, ...sb]).size;
+    return inter / union;
+  }
+
+  /**
+   * Remove near-duplicate sentences.
+   */
+  function removeDuplicates(items){
+    const seen = [];
+    let removed = 0;
+    const result = [];
+    for(const item of items){
+      const norm = normalise(item);
+      const isDup = seen.some(s => similarity(s, norm) > 0.72);
+      if(!isDup){
+        seen.push(norm);
+        result.push(item);
+      } else {
+        removed++;
+      }
+    }
+    return {result, removed};
+  }
+
+  /**
+   * Clean up a single sentence for display as a bullet.
+   */
+  function cleanBullet(s){
+    // Trim whitespace
+    let out = s.trim();
+    // Remove leading bullet characters if already present
+    out = out.replace(/^[\-–—•●○■□▪▸►→✓✗*]\s*/u, '');
+    // Remove leading numbers like "1." or "(1)"
+    out = out.replace(/^\(?\d+[.)]\s*/, '');
+    // Capitalise first letter
+    if(out.length > 0) out = out[0].toUpperCase() + out.slice(1);
+    // Ensure ends with punctuation
+    if(out && !/[.!?:;]$/.test(out)) out += '.';
+    return out;
+  }
+
+  /* ═══════  RENDER BULLETS  ═══════ */
+  function renderBullets(bullets, style, dedupCount){
+    currentBullets  = bullets;
+    dedupRemovedCnt = dedupCount;
+
+    bulletList.innerHTML = '';
+    bullets.forEach((text, i) => {
+      const div = document.createElement('div');
+      div.className = 'bullet-item';
+      div.setAttribute('role','listitem');
+      div.style.animationDelay = Math.min(i * 45, 600) + 'ms';
+
+      let markerEl = '';
+      if(style === 'dot'){
+        markerEl = '<div class="bm" aria-hidden="true"></div>';
+      } else if(style === 'square'){
+        markerEl = '<div class="bm-sq" aria-hidden="true"></div>';
+      } else if(style === 'arrow'){
+        markerEl = '<span class="bm-arrow" aria-hidden="true">→</span>';
+      } else if(style === 'numbered'){
+        markerEl = `<span class="bm-num" aria-hidden="true">${i+1}.</span>`;
+      }
+
+      div.innerHTML = `${markerEl}<span>${escapeHtml(text)}</span>`;
+      bulletList.appendChild(div);
+    });
+
+    // Show output
+    outPh.style.display      = 'none';
+    bulletList.style.display = 'flex';
+    outFoot.style.display    = 'flex';
+    readyBadge.style.display = 'block';
+    copyBtn.disabled         = false;
+    downloadBtn.disabled     = false;
+    clearOutBtn.disabled     = false;
+    bulletCount.textContent  = bullets.length + ' bullet' + (bullets.length !== 1 ? 's' : '');
+    dedupBadge.style.display = dedupCount > 0 ? '' : 'none';
+  }
+
+  function escapeHtml(str){
+    return str
+      .replace(/&/g,'&amp;')
+      .replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;');
+  }
+
+  /* ═══════  SIMULATE PROGRESS BAR  ═══════ */
+  function animateProgress(duration, onDone){
+    progWrap.classList.add('show');
+    progFill.style.width = '0%';
+    const steps = [{pct:25,lbl:'Splitting text…'},{pct:55,lbl:'Cleaning sentences…'},
+                   {pct:80,lbl:'Removing duplicates…'},{pct:95,lbl:'Formatting bullets…'}];
+    let si = 0;
+    function step(){
+      if(si >= steps.length){ setTimeout(onDone, 160); return; }
+      const {pct,lbl} = steps[si++];
+      progFill.style.width = pct + '%';
+      progLbl.textContent  = lbl;
+      setTimeout(step, duration / steps.length);
+    }
+    step();
+  }
+
+  /* ═══════  CONVERT BUTTON  ═══════ */
+  convertBtn.addEventListener('click', function(){
+    const text = inputTa.value.trim();
+    if(text.length < 10){ showToast('Please paste some text first.', 'err'); inputTa.focus(); return; }
+
+    // Lock UI
+    convertBtn.disabled = true;
+    loader.classList.add('show');
+
+    // Artificial delay for UX (feels like processing)
+    const delay = Math.min(600 + text.length * 0.025, 1800);
+
+    animateProgress(delay, function(){
+      try{
+        const mode  = splitMode.value;
+        const style = bulletStyle.value;
+        const dedup = dedupToggle.checked;
+
+        let items = splitText(text, mode);
+        items = items.map(cleanBullet).filter(s => s.length > 4);
+
+        let dedupCount = 0;
+        if(dedup){
+          const res = removeDuplicates(items);
+          items      = res.result;
+          dedupCount = res.removed;
+        }
+
+        if(items.length === 0){
+          showToast('No bullets could be extracted. Try pasting more text.', 'err');
+        } else {
+          renderBullets(items, style, dedupCount);
+          const msg = dedupCount > 0
+            ? `✓ ${items.length} bullets · ${dedupCount} duplicate${dedupCount>1?'s':''} removed`
+            : `✓ ${items.length} bullet${items.length!==1?'s':''} generated`;
+          showToast(msg, 'ok');
+        }
+      } catch(err){
+        showToast('Something went wrong. Please try again.', 'err');
+      } finally {
+        loader.classList.remove('show');
+        progWrap.classList.remove('show');
+        progFill.style.width = '0%';
+        convertBtn.disabled  = (inputTa.value.trim().length < 10);
+      }
+    });
+  });
+
+  /* ═══════  COPY  ═══════ */
+  copyBtn.addEventListener('click', function(){
+    if(!currentBullets.length) return;
+    const style = bulletStyle.value;
+    const plain = currentBullets.map((b, i) => {
+      if(style === 'dot')      return '• '  + b;
+      if(style === 'square')   return '■ '  + b;
+      if(style === 'arrow')    return '→ '  + b;
+      if(style === 'numbered') return (i+1) + '. ' + b;
+      return '• ' + b;
+    }).join('\n');
+
+    if(navigator.clipboard?.writeText){
+      navigator.clipboard.writeText(plain)
+        .then(()  => showToast('Copied to clipboard!', 'ok'))
+        .catch(()  => fallbackCopy(plain));
+    } else {
+      fallbackCopy(plain);
+    }
+  });
+
+  function fallbackCopy(text){
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.cssText = 'position:fixed;left:-9999px;top:-9999px;opacity:0;';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); showToast('Copied!', 'ok'); }
+    catch{ showToast('Copy failed — select and copy manually.', 'err'); }
+    document.body.removeChild(ta);
+  }
+
+  /* ═══════  DOWNLOAD  ═══════ */
+  downloadBtn.addEventListener('click', function(){
+    if(!currentBullets.length) return;
+    const style   = bulletStyle.value;
+    const dateStr = new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+    const styleNames = {dot:'Bullet Points (•)', square:'Square Bullets (■)', arrow:'Arrow List (→)', numbered:'Numbered List'};
+
+    const header = [
+      '========================================',
+      '  BULLET POINTS — Study Hub AI',
+      '  Date   : ' + dateStr,
+      '  Style  : ' + (styleNames[style] || style),
+      '  Count  : ' + currentBullets.length + ' bullets',
+      '========================================',
+      ''
+    ].join('\n');
+
+    const body = currentBullets.map((b, i) => {
+      if(style === 'dot')      return '• '  + b;
+      if(style === 'square')   return '■ '  + b;
+      if(style === 'arrow')    return '→ '  + b;
+      if(style === 'numbered') return (i+1) + '. ' + b;
+      return '• ' + b;
+    }).join('\n');
+
+    const footer = [
+      '',
+      '========================================',
+      '  Generated with Study Hub AI',
+      '  https://studyhubai.com',
+      '  Free AI study tools for every student.',
+      '========================================'
+    ].join('\n');
+
+    const blob = new Blob([header + body + footer], {type:'text/plain;charset=utf-8'});
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href     = url;
+    a.download = 'bullet-points-' + new Date().toISOString().slice(0,10) + '.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showToast('Bullet points downloaded!', 'ok');
+  });
+
+  /* ═══════  KEYBOARD SHORTCUT Ctrl/Cmd+Enter  ═══════ */
+  document.addEventListener('keydown', function(e){
+    if((e.ctrlKey || e.metaKey) && e.key === 'Enter' && !convertBtn.disabled){
+      convertBtn.click();
+    }
+  });
+
+  /* ═══════  TOAST  ═══════ */
+  const ICONS = {
+    ok:  '<polyline points="20 6 9 17 4 12"/>',
+    err: '<circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>',
+    info:'<circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>'
+  };
+  const COLORS = {ok:'#4ade80', err:'#fca5a5', info:'#93c5fd'};
+
+  function showToast(msg, type='ok'){
+    if(toastTimer) clearTimeout(toastTimer);
+    toastMsg.textContent = msg;
+    toastSvg.innerHTML   = ICONS[type] || ICONS.info;
+    toastSvg.style.stroke = COLORS[type] || COLORS.info;
+    toast.className      = 'toast t-' + type;
+    toast.classList.add('show');
+    toastTimer = setTimeout(()=> toast.classList.remove('show'), 3400);
+  }
+
+  /* ═══════  SMOOTH SCROLL  ═══════ */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if(!t) return;
+      e.preventDefault();
+      t.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+
+})();
+</script>
+</body>
+</html>
