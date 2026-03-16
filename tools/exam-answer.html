@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+<title>Exam Answer Generator – Free AI Study Tool | Study Hub AI</title>
+<meta name="description" content="Enter any exam question and instantly get a structured, mark-worthy answer with Introduction, Explanation, and Conclusion. Free AI tool for students."/>
+<meta name="keywords" content="exam answer generator,structured exam answers,how to answer exam questions,study tool,free AI exam tool"/>
+<meta name="author" content="Study Hub AI"/>
+<meta name="robots" content="index, follow"/>
+<meta name="theme-color" content="#2563eb"/>
+<meta property="og:title" content="Exam Answer Generator – Study Hub AI"/>
+<meta property="og:description" content="Enter any exam question and get a structured, mark-worthy answer instantly. Free, no signup required."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://studyhubai.com/tools/exam-answer.html"/>
+<meta property="og:image" content="https://studyhubai.com/preview.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Familjen+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════════════════════════════════
+   DESIGN TOKENS — identical to all Study Hub AI pages
+═══════════════════════════════════════════════════ */
+:root{
+  --b50:#eff6ff;--b100:#dbeafe;--b200:#bfdbfe;--b300:#93c5fd;--b400:#60a5fa;
+  --b500:#3b82f6;--b600:#2563eb;--b700:#1d4ed8;--b800:#1e40af;--b900:#1e3a8a;
+  --g0:#fff;--g50:#f8fafc;--g100:#f1f5f9;--g200:#e2e8f0;--g300:#cbd5e1;
+  --g400:#94a3b8;--g500:#64748b;--g600:#475569;--g700:#334155;
+  --g800:#1e293b;--g900:#0f172a;--g950:#020617;
+  --ink:var(--g900);--ink2:var(--g700);--mu:var(--g500);--mu2:var(--g400);
+  --sf:var(--g50);--sf2:var(--g100);--bd:var(--g200);--bd2:var(--g300);
+  --ac:var(--b600);--acH:var(--b700);--acL:var(--b50);--acM:var(--b100);
+  --s0:0 1px 2px rgba(15,23,42,.06);
+  --s1:0 2px 8px rgba(15,23,42,.07),0 1px 3px rgba(15,23,42,.04);
+  --s2:0 4px 16px rgba(15,23,42,.09),0 2px 6px rgba(15,23,42,.05);
+  --s3:0 12px 36px rgba(15,23,42,.11),0 4px 12px rgba(15,23,42,.06);
+  --s4:0 24px 64px rgba(15,23,42,.13),0 8px 24px rgba(15,23,42,.07);
+  --sb:0 8px 32px rgba(37,99,235,.22),0 2px 8px rgba(37,99,235,.12);
+  --sbL:0 20px 60px rgba(37,99,235,.28),0 6px 20px rgba(37,99,235,.15);
+  --r1:6px;--r2:10px;--r3:14px;--r4:20px;--r5:28px;--rF:9999px;
+  --fd:'Familjen Grotesk',sans-serif;--fb:'Plus Jakarta Sans',sans-serif;
+  --ez:cubic-bezier(.22,1,.36,1);--esp:cubic-bezier(.34,1.46,.64,1);
+  --tf:.14s var(--ez);--tb:.22s var(--ez);--ts:.36s var(--ez);--tsp:.38s var(--esp);
+}
+
+/* ── RESET ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;overflow-y:scroll;}
+body{font-family:var(--fb);background:var(--g50);color:var(--ink);line-height:1.6;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;}
+img,svg{display:block;max-width:100%;}
+a{text-decoration:none;color:inherit;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;padding:0;}
+ul{list-style:none;}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
+
+/* ── LAYOUT ── */
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,32px);}
+.wrap-md{width:100%;max-width:980px;margin:0 auto;padding:0 clamp(16px,4vw,32px);}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font-family:var(--fd);font-weight:700;font-size:.9rem;border-radius:var(--r3);
+  border:1.5px solid transparent;padding:11px 22px;cursor:pointer;white-space:nowrap;
+  position:relative;overflow:hidden;will-change:transform;
+  transition:transform var(--tsp),box-shadow var(--tb),background var(--tb),
+    border-color var(--tb),color var(--tb);
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+.btn::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,0);
+  transition:background var(--tf);pointer-events:none;}
+.btn:hover::after{background:rgba(255,255,255,.09);}
+.btn:active{transform:scale(.96)!important;}
+.btn-p{background:var(--ac);color:#fff;border-color:var(--ac);box-shadow:var(--sb);}
+.btn-p:hover{background:var(--acH);border-color:var(--acH);transform:translateY(-2px);box-shadow:var(--sbL);}
+.btn-p:disabled{background:var(--g400);border-color:var(--g400);box-shadow:none;cursor:not-allowed;transform:none!important;opacity:.65;}
+.btn-g{background:transparent;color:var(--ink2);border-color:var(--bd2);}
+.btn-g:hover{border-color:var(--ac);color:var(--ac);background:var(--acL);transform:translateY(-2px);}
+.btn-g:disabled{opacity:.4;cursor:not-allowed;transform:none!important;pointer-events:none;}
+.btn-red{background:transparent;color:#dc2626;border-color:#fecaca;}
+.btn-red:hover{background:#fff1f2;border-color:#dc2626;transform:translateY(-2px);}
+.btn-sm{padding:8px 16px;font-size:.82rem;}
+.btn-lg{padding:14px 30px;font-size:.97rem;border-radius:var(--r4);}
+
+/* ═══════════════ NAVBAR ═══════════════ */
+.nav{position:sticky;top:0;z-index:200;will-change:background-color,box-shadow;
+  transition:background var(--tb),box-shadow var(--tb);}
+.nav.stuck{background:rgba(255,255,255,.92);backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--bd);
+  box-shadow:0 1px 24px rgba(15,23,42,.07);}
+.nav-row{display:flex;align-items:center;justify-content:space-between;height:68px;}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--fd);font-weight:700;
+  font-size:1.18rem;color:var(--ink);transition:opacity var(--tf);-webkit-tap-highlight-color:transparent;}
+.nav-logo:hover{opacity:.8;}
+.nlm{width:36px;height:36px;background:linear-gradient(135deg,var(--b600),var(--b400));
+  border-radius:10px;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 14px rgba(37,99,235,.3);flex-shrink:0;}
+.nlm svg{width:18px;height:18px;}
+.nav-links{display:flex;align-items:center;gap:2px;}
+.nav-links a{font-size:.88rem;font-weight:600;color:var(--g600);padding:8px 14px;
+  border-radius:var(--r2);transition:color var(--tf),background var(--tf);}
+.nav-links a:hover,.nav-links a.cur{color:var(--ac);}
+.nav-links a:hover{background:var(--acL);}
+.nav-acts{display:flex;align-items:center;gap:10px;}
+.burger{display:none;width:40px;height:40px;border-radius:var(--r2);background:var(--sf2);
+  align-items:center;justify-content:center;border:1px solid var(--bd);cursor:pointer;
+  transition:background var(--tf);-webkit-tap-highlight-color:transparent;}
+.burger:hover{background:var(--acM);}
+.bw{display:flex;flex-direction:column;gap:4px;}
+.bb{display:block;width:18px;height:2px;border-radius:1px;background:var(--ink);
+  transition:transform var(--tb),opacity var(--tf);transform-origin:center;}
+.burger.on .bb:nth-child(1){transform:translateY(6px) rotate(45deg);}
+.burger.on .bb:nth-child(2){opacity:0;transform:scaleX(0);}
+.burger.on .bb:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+
+/* DRAWER */
+.drw{position:fixed;inset:0;z-index:199;pointer-events:none;visibility:hidden;transition:visibility 0s var(--ts);}
+.drw.on{pointer-events:auto;visibility:visible;transition:visibility 0s 0s;}
+.db{position:absolute;inset:0;background:rgba(15,23,42,.48);opacity:0;backdrop-filter:blur(4px);transition:opacity var(--ts);will-change:opacity;}
+.drw.on .db{opacity:1;}
+.dp{position:absolute;top:0;right:0;bottom:0;width:min(320px,86vw);background:#fff;
+  box-shadow:-6px 0 40px rgba(15,23,42,.16);transform:translateX(100%);
+  transition:transform var(--ts);will-change:transform;display:flex;flex-direction:column;padding:24px;}
+.drw.on .dp{transform:translateX(0);}
+.dh{display:flex;align-items:center;justify-content:space-between;padding-bottom:20px;border-bottom:1px solid var(--bd);margin-bottom:16px;}
+.dx{width:36px;height:36px;border-radius:var(--r2);background:var(--sf2);border:1px solid var(--bd);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background var(--tf);}
+.dx:hover{background:#fecdd3;}
+.dx svg{width:18px;height:18px;stroke:var(--ink);}
+.dnav{display:flex;flex-direction:column;gap:2px;flex:1;}
+.dnav a{font-family:var(--fd);font-weight:600;font-size:1rem;padding:13px 16px;
+  border-radius:var(--r3);color:var(--ink2);display:flex;align-items:center;gap:12px;
+  transition:background var(--tf),color var(--tf);}
+.dnav a:hover{background:var(--acL);color:var(--ac);}
+.dnav a svg{width:18px;height:18px;stroke:currentColor;opacity:.55;flex-shrink:0;}
+.df{padding-top:20px;border-top:1px solid var(--bd);}
+.df .btn{width:100%;}
+.drw.on .dnav a{animation:drwIn .3s var(--ez) both;}
+.drw.on .dnav a:nth-child(1){animation-delay:.08s;}
+.drw.on .dnav a:nth-child(2){animation-delay:.13s;}
+.drw.on .dnav a:nth-child(3){animation-delay:.18s;}
+.drw.on .dnav a:nth-child(4){animation-delay:.23s;}
+@keyframes drwIn{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:translateX(0)}}
+
+/* ═══════════════ PAGE HEADER ═══════════════ */
+.page-header{background:#fff;border-bottom:1px solid var(--bd);padding:clamp(28px,5vw,48px) 0 clamp(24px,4vw,40px);}
+.ph-inner{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.ph-breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--mu);margin-bottom:14px;font-family:var(--fd);font-weight:600;}
+.ph-breadcrumb a{color:var(--mu);transition:color var(--tf);}
+.ph-breadcrumb a:hover{color:var(--ac);}
+.ph-breadcrumb svg{width:12px;height:12px;stroke:var(--mu2);flex-shrink:0;}
+.ph-title{display:flex;align-items:center;gap:14px;margin-bottom:10px;}
+.ph-icon{width:48px;height:48px;background:linear-gradient(135deg,var(--b50),var(--b100));border-radius:var(--r3);display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid var(--b200);}
+.ph-icon svg{width:24px;height:24px;stroke:var(--ac);}
+.ph-h1{font-family:var(--fd);font-weight:700;font-size:clamp(1.5rem,3vw,2rem);letter-spacing:-.022em;color:var(--ink);}
+.ph-desc{font-size:.95rem;color:var(--mu);line-height:1.65;max-width:520px;}
+.ph-badge{display:inline-flex;align-items:center;gap:6px;margin-top:12px;background:var(--acL);border:1px solid var(--b200);border-radius:var(--rF);padding:4px 12px;font-size:.72rem;font-weight:700;font-family:var(--fd);letter-spacing:.05em;text-transform:uppercase;color:var(--ac);}
+.ph-badge-dot{width:5px;height:5px;background:#22c55e;border-radius:50%;animation:blink 1.8s infinite;}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.65)}}
+.ph-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px;flex-shrink:0;}
+.ph-tools-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;}
+.tnchip{display:inline-flex;align-items:center;gap:6px;font-family:var(--fd);font-size:.78rem;font-weight:600;padding:6px 12px;border-radius:var(--rF);border:1.5px solid var(--bd);background:#fff;color:var(--ink2);transition:all var(--tb);-webkit-tap-highlight-color:transparent;}
+.tnchip:hover{border-color:var(--ac);color:var(--ac);background:var(--acL);}
+.tnchip svg{width:13px;height:13px;stroke:currentColor;opacity:.7;}
+
+/* ═══════════════ TOOL WORKSPACE ═══════════════ */
+.tool-main{padding:clamp(28px,4vw,48px) 0 clamp(48px,7vw,80px);}
+
+/* single-column layout for this tool (question above, answer below) */
+.tool-col{display:flex;flex-direction:column;gap:22px;}
+
+/* ── CARDS ── */
+.card{background:#fff;border:1px solid var(--bd);border-radius:var(--r4);box-shadow:var(--s1);overflow:hidden;position:relative;}
+.card-hdr{display:flex;align-items:center;justify-content:space-between;padding:15px 20px;border-bottom:1px solid var(--bd);background:var(--g50);}
+.card-title{display:flex;align-items:center;gap:8px;font-family:var(--fd);font-weight:700;font-size:.93rem;color:var(--ink);}
+.card-title svg{width:16px;height:16px;stroke:var(--ac);flex-shrink:0;}
+.card-acts{display:flex;align-items:center;gap:6px;}
+.card-body{padding:20px;}
+
+/* ── QUESTION INPUT ── */
+.q-input{
+  width:100%;background:var(--g50);border:1.5px solid var(--bd);border-radius:var(--r3);
+  padding:16px;font-family:var(--fb);font-size:1rem;color:var(--ink);line-height:1.6;
+  resize:none;outline:none;min-height:80px;max-height:200px;
+  transition:border-color var(--tb),box-shadow var(--tb),background var(--tb);}
+.q-input::placeholder{color:var(--mu2);}
+.q-input:focus{border-color:var(--ac);box-shadow:0 0 0 3px rgba(37,99,235,.1);background:#fff;}
+
+/* ── STATS + SETTINGS ROW ── */
+.q-footer{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:12px;}
+.q-stats{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.qst{display:inline-flex;align-items:center;gap:5px;background:var(--g50);border:1px solid var(--bd);border-radius:var(--r2);padding:5px 10px;}
+.qst-n{font-family:var(--fd);font-weight:700;font-size:.82rem;color:var(--ink);}
+.qst-l{font-size:.73rem;color:var(--mu);font-family:var(--fd);}
+.q-settings{display:flex;align-items:center;gap:10px;margin-left:auto;flex-wrap:wrap;}
+.sg label{font-size:.79rem;font-weight:700;font-family:var(--fd);color:var(--ink2);white-space:nowrap;}
+.sg{display:flex;align-items:center;gap:7px;}
+.sg select{font-family:var(--fb);font-size:.82rem;color:var(--ink);background:#fff;
+  border:1.5px solid var(--bd);border-radius:var(--r2);padding:7px 28px 7px 10px;outline:none;cursor:pointer;
+  transition:border-color var(--tb);appearance:none;-webkit-appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 8px center;}
+.sg select:focus{border-color:var(--ac);}
+
+/* keyword tags for quick question selection */
+.example-qs{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:14px;}
+.eq-label{font-size:.74rem;font-weight:700;font-family:var(--fd);color:var(--mu);flex-shrink:0;}
+.eq-tag{display:inline-flex;font-family:var(--fd);font-size:.76rem;font-weight:600;
+  padding:5px 11px;border-radius:var(--rF);border:1.5px solid var(--bd);
+  background:#fff;color:var(--ink2);cursor:pointer;
+  transition:all var(--tb);-webkit-tap-highlight-color:transparent;}
+.eq-tag:hover{border-color:var(--ac);color:var(--ac);background:var(--acL);}
+.eq-tag:active{transform:scale(.96);}
+
+/* ── ACTION ROW ── */
+.act-row{display:flex;align-items:center;gap:10px;margin-top:16px;flex-wrap:wrap;}
+
+/* ── PROGRESS BAR ── */
+.prog-wrap{margin-top:12px;display:none;}
+.prog-wrap.show{display:block;}
+.prog-bg{background:var(--bd);border-radius:var(--rF);height:5px;overflow:hidden;}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--b600),var(--b400));
+  border-radius:var(--rF);width:0%;transition:width .35s var(--ez);will-change:width;}
+.prog-lbl{font-size:.73rem;color:var(--mu);margin-top:5px;font-family:var(--fd);font-weight:600;}
+
+/* ── OUTPUT PLACEHOLDER ── */
+.out-ph{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  min-height:280px;text-align:center;padding:36px 24px;color:var(--mu2);}
+.out-ph svg{width:52px;height:52px;stroke:var(--bd2);margin-bottom:16px;opacity:.65;}
+.out-ph h3{font-family:var(--fd);font-weight:700;font-size:1rem;color:var(--mu);margin-bottom:7px;}
+.out-ph p{font-size:.83rem;line-height:1.6;color:var(--mu2);max-width:260px;}
+
+/* ═══════════════ EXAM ANSWER OUTPUT ═══════════════ */
+.answer-wrap{padding:20px 24px;display:none;}
+.answer-wrap.show{display:block;}
+
+/* question echo */
+.answer-q{background:var(--g50);border:1.5px solid var(--bd);border-radius:var(--r3);
+  padding:14px 18px;margin-bottom:22px;
+  display:flex;align-items:flex-start;gap:12px;}
+.answer-q-ico{width:28px;height:28px;background:var(--acL);border-radius:var(--r1);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.answer-q-ico svg{width:14px;height:14px;stroke:var(--ac);}
+.answer-q-text{font-size:.9rem;color:var(--ink2);font-style:italic;line-height:1.58;}
+
+/* answer sections */
+.a-section{margin-bottom:20px;opacity:0;transform:translateY(10px);
+  animation:secIn .4s var(--ez) both;will-change:opacity,transform;}
+@keyframes secIn{to{opacity:1;transform:translateY(0)}}
+
+.a-sec-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.a-sec-icon{width:30px;height:30px;border-radius:var(--r1);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.a-sec-icon svg{width:15px;height:15px;}
+.a-sec-label{font-family:var(--fd);font-weight:700;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;}
+.a-sec-bar{flex:1;height:2px;border-radius:1px;}
+
+/* Introduction — blue */
+.a-intro .a-sec-icon{background:#dbeafe;}
+.a-intro .a-sec-icon svg{stroke:#2563eb;}
+.a-intro .a-sec-label{color:#2563eb;}
+.a-intro .a-sec-bar{background:linear-gradient(90deg,#2563eb,transparent);}
+.a-intro .a-text{border-left:3px solid #2563eb;}
+
+/* Explanation — emerald */
+.a-expl .a-sec-icon{background:#dcfce7;}
+.a-expl .a-sec-icon svg{stroke:#16a34a;}
+.a-expl .a-sec-label{color:#16a34a;}
+.a-expl .a-sec-bar{background:linear-gradient(90deg,#16a34a,transparent);}
+.a-expl .a-text{border-left:3px solid #16a34a;}
+
+/* Key Points */
+.a-pts .a-sec-icon{background:#fef3c7;}
+.a-pts .a-sec-icon svg{stroke:#d97706;}
+.a-pts .a-sec-label{color:#d97706;}
+.a-pts .a-sec-bar{background:linear-gradient(90deg,#d97706,transparent);}
+.a-pts .a-text{border-left:3px solid #d97706;}
+
+/* Conclusion — violet */
+.a-concl .a-sec-icon{background:#ede9fe;}
+.a-concl .a-sec-icon svg{stroke:#7c3aed;}
+.a-concl .a-sec-label{color:#7c3aed;}
+.a-concl .a-sec-bar{background:linear-gradient(90deg,#7c3aed,transparent);}
+.a-concl .a-text{border-left:3px solid #7c3aed;}
+
+/* text block */
+.a-text{background:var(--g50);border:1px solid var(--bd);
+  border-radius:0 var(--r3) var(--r3) 0;
+  padding:14px 18px;font-size:.9rem;color:var(--ink2);line-height:1.72;}
+
+/* key points list */
+.a-kp-list{list-style:none;display:flex;flex-direction:column;gap:7px;
+  background:var(--g50);border:1px solid var(--bd);
+  border-radius:0 var(--r3) var(--r3) 0;border-left:3px solid #d97706;
+  padding:12px 16px;}
+.a-kp-item{display:flex;align-items:flex-start;gap:9px;font-size:.88rem;color:var(--ink2);line-height:1.6;}
+.a-kp-dot{width:6px;height:6px;border-radius:50%;background:#d97706;flex-shrink:0;margin-top:6px;}
+
+/* answer stats bar */
+.a-stats{display:flex;align-items:center;gap:0;background:var(--g50);border:1px solid var(--bd);border-radius:var(--r2);overflow:hidden;margin-top:4px;}
+.ast{flex:1;padding:9px 10px;text-align:center;border-right:1px solid var(--bd);}
+.ast:last-child{border-right:none;}
+.ast-n{font-family:var(--fd);font-weight:700;font-size:.9rem;color:var(--ink);}
+.ast-l{font-size:.64rem;color:var(--mu);text-transform:uppercase;letter-spacing:.07em;font-family:var(--fd);font-weight:600;margin-top:1px;}
+
+/* quality badge */
+.a-quality{display:inline-flex;align-items:center;gap:6px;
+  background:linear-gradient(135deg,#dcfce7,#bbf7d0);
+  border:1px solid #86efac;border-radius:var(--rF);
+  padding:4px 12px;font-family:var(--fd);font-size:.72rem;font-weight:700;color:#15803d;}
+.a-quality svg{width:11px;height:11px;stroke:#15803d;}
+
+/* output footer */
+.out-foot{display:flex;align-items:center;justify-content:space-between;
+  padding:12px 20px;border-top:1px solid var(--bd);background:var(--g50);flex-wrap:wrap;gap:8px;}
+.of-left{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.of-right{display:flex;gap:8px;flex-wrap:wrap;}
+
+/* loading overlay */
+.loader{position:absolute;inset:0;background:rgba(255,255,255,.9);backdrop-filter:blur(4px);
+  z-index:10;display:none;flex-direction:column;align-items:center;justify-content:center;gap:12px;border-radius:var(--r4);}
+.loader.show{display:flex;}
+.spinner{width:36px;height:36px;border-radius:50%;
+  border:3px solid var(--b200);border-top-color:var(--ac);
+  animation:spin .65s linear infinite;will-change:transform;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loader-txt{font-family:var(--fd);font-weight:700;font-size:.85rem;color:var(--ink2);}
+.dots::after{content:'';animation:dots 1.4s steps(4,end) infinite;}
+@keyframes dots{0%{content:''}25%{content:'.'}50%{content:'..'}75%{content:'...'}100%{content:''}}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:28px;right:28px;z-index:9999;background:var(--g900);color:#fff;
+  border-radius:var(--r3);padding:12px 18px;font-family:var(--fd);font-weight:600;
+  font-size:.85rem;display:flex;align-items:center;gap:9px;box-shadow:var(--s4);
+  transform:translateY(80px);opacity:0;
+  transition:transform var(--tsp),opacity var(--tb);pointer-events:none;max-width:320px;}
+.toast.show{transform:translateY(0);opacity:1;}
+.toast svg{width:16px;height:16px;flex-shrink:0;}
+.t-ok svg{stroke:#4ade80;}
+.t-err svg{stroke:#fca5a5;}
+.t-inf svg{stroke:#93c5fd;}
+
+/* ═══════════════ HOW IT WORKS ═══════════════ */
+.how-sec{background:#fff;border-top:1px solid var(--bd);padding:clamp(36px,5vw,60px) 0;}
+.how-hd{text-align:center;margin-bottom:32px;}
+.chip-sm{display:inline-flex;align-items:center;gap:6px;font-family:var(--fd);font-size:.71rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ac);background:var(--acL);border:1px solid var(--b200);padding:5px 13px;border-radius:var(--rF);margin-bottom:12px;}
+.chip-sm-dot{width:5px;height:5px;background:var(--ac);border-radius:50%;animation:blink 2.2s ease-in-out infinite;}
+.how-hd h2{font-family:var(--fd);font-weight:700;font-size:clamp(1.35rem,2.5vw,1.85rem);letter-spacing:-.022em;color:var(--ink);margin-bottom:6px;}
+.how-hd p{font-size:.9rem;color:var(--mu);max-width:440px;margin:0 auto;}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.step-card{background:var(--g50);border:1px solid var(--bd);border-radius:var(--r4);
+  padding:clamp(20px,2.5vw,28px);text-align:center;
+  transition:transform var(--tsp),box-shadow var(--tb);will-change:transform;}
+.step-card:hover{transform:translateY(-4px);box-shadow:var(--s3);}
+.step-n{width:40px;height:40px;border-radius:50%;
+  background:linear-gradient(135deg,var(--b600),var(--b500));color:#fff;
+  font-family:var(--fd);font-weight:700;font-size:1rem;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 14px;box-shadow:0 4px 14px rgba(37,99,235,.26);}
+.step-t{font-family:var(--fd);font-weight:700;font-size:.92rem;color:var(--ink);margin-bottom:7px;}
+.step-d{font-size:.82rem;color:var(--mu);line-height:1.58;}
+
+/* ═══════════════ TIPS ═══════════════ */
+.tips-sec{background:var(--g50);border-top:1px solid var(--bd);padding:clamp(32px,4vw,52px) 0;}
+.tips-hd{margin-bottom:clamp(20px,3vw,28px);}
+.tips-hd h2{font-family:var(--fd);font-weight:700;font-size:clamp(1.2rem,2vw,1.55rem);letter-spacing:-.02em;color:var(--ink);margin-bottom:5px;}
+.tips-hd p{font-size:.88rem;color:var(--mu);}
+.tips-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.tip-card{background:#fff;border:1px solid var(--bd);border-radius:var(--r3);
+  padding:16px 18px;display:flex;gap:12px;align-items:flex-start;
+  transition:border-color var(--tb),transform var(--tsp);will-change:transform;}
+.tip-card:hover{border-color:var(--b200);transform:translateX(4px);}
+.tip-ico{width:36px;height:36px;border-radius:var(--r2);background:var(--acL);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  transition:background var(--tb),transform var(--tsp);}
+.tip-ico svg{width:17px;height:17px;stroke:var(--ac);}
+.tip-card:hover .tip-ico{background:var(--acM);transform:scale(1.08) rotate(-4deg);}
+.tip-t{font-family:var(--fd);font-weight:700;font-size:.87rem;color:var(--ink);margin-bottom:3px;}
+.tip-d{font-size:.8rem;color:var(--mu);line-height:1.55;}
+
+/* ═══════════════ MORE TOOLS ═══════════════ */
+.more-sec{background:#fff;border-top:1px solid var(--bd);padding:clamp(32px,4vw,52px) 0;}
+.more-hd{margin-bottom:clamp(18px,2.5vw,26px);}
+.more-hd h2{font-family:var(--fd);font-weight:700;font-size:clamp(1.2rem,2vw,1.55rem);letter-spacing:-.02em;color:var(--ink);margin-bottom:5px;}
+.more-hd p{font-size:.88rem;color:var(--mu);}
+.more-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(178px,1fr));gap:12px;}
+.more-card{background:var(--g50);border:1px solid var(--bd);border-radius:var(--r3);
+  padding:14px 16px;display:flex;align-items:center;gap:11px;
+  transition:border-color var(--tb),transform var(--tsp),box-shadow var(--tb);
+  will-change:transform;-webkit-tap-highlight-color:transparent;}
+.more-card:hover{border-color:var(--b200);transform:translateY(-3px);box-shadow:var(--s2);}
+.more-ico{width:34px;height:34px;background:var(--acL);border-radius:var(--r2);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  transition:background var(--tb),transform var(--tsp);}
+.more-ico svg{width:16px;height:16px;stroke:var(--ac);}
+.more-card:hover .more-ico{background:var(--acM);transform:scale(1.1) rotate(-4deg);}
+.more-name{font-family:var(--fd);font-weight:700;font-size:.81rem;color:var(--ink);}
+.more-sub{font-size:.69rem;color:var(--mu);}
+
+/* ═══════════════ FOOTER ═══════════════ */
+footer{background:var(--g950);padding:clamp(36px,5vw,52px) 0 28px;}
+.foot-row{display:flex;align-items:center;justify-content:space-between;gap:20px;
+  flex-wrap:wrap;padding-bottom:20px;margin-bottom:20px;
+  border-bottom:1px solid rgba(255,255,255,.08);}
+.f-logo{display:flex;align-items:center;gap:10px;font-family:var(--fd);font-weight:700;font-size:1.05rem;color:#fff;}
+.flm{width:32px;height:32px;background:linear-gradient(135deg,var(--b600),var(--b400));
+  border-radius:9px;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 12px rgba(37,99,235,.28);}
+.flm svg{width:16px;height:16px;}
+.f-nav{display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.f-nav a{font-size:.84rem;color:rgba(255,255,255,.42);transition:color var(--tf);}
+.f-nav a:hover{color:#fff;}
+.f-bot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.f-copy{font-size:.8rem;color:rgba(255,255,255,.26);}
+.f-tag{font-size:.8rem;color:rgba(255,255,255,.26);}
+.f-tag span{color:rgba(255,255,255,.46);}
+
+/* ═══════════════ SCROLL REVEAL ═══════════════ */
+.reveal{opacity:0;transform:translateY(22px);will-change:opacity,transform;
+  transition:opacity .6s var(--ez),transform .6s var(--ez);}
+.reveal.in{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}
+.d4{transition-delay:.28s}.d5{transition-delay:.35s}.d6{transition-delay:.42s}
+
+/* ═══════════════ RESPONSIVE ═══════════════ */
+@media(max-width:820px){
+  .nav-links,.nav-acts .btn-g{display:none;}
+  .burger{display:flex;}
+  .steps-grid{grid-template-columns:1fr;}
+  .tips-grid{grid-template-columns:1fr;}
+  .ph-right{display:none;}
+}
+@media(max-width:600px){
+  .act-row{flex-direction:column;align-items:stretch;}
+  .act-row .btn{justify-content:center;}
+  .q-footer{flex-direction:column;align-items:flex-start;}
+  .q-settings{margin-left:0;width:100%;}
+  .more-grid{grid-template-columns:repeat(2,1fr);}
+  .foot-row{flex-direction:column;align-items:flex-start;}
+  .f-bot{flex-direction:column;align-items:flex-start;gap:6px;}
+  .out-foot{flex-direction:column;align-items:flex-start;}
+  .of-right{flex-wrap:wrap;}
+}
+@media(max-width:380px){.more-grid{grid-template-columns:1fr;}}
+@supports(padding:max(0px)){
+  .nav-row{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right);}
+  footer{padding-bottom:max(28px,env(safe-area-inset-bottom));}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════  NAVBAR  ══════ -->
+<nav class="nav" id="navbar">
+  <div class="wrap">
+    <div class="nav-row">
+
+      <a href="../index.html" class="nav-logo" aria-label="Study Hub AI home">
+        <div class="nlm">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        Study Hub AI
+      </a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../tools.html" class="cur">Tools</a></li>
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="../about.html">About</a></li>
+      </ul>
+
+      <div class="nav-acts">
+        <a href="../tools.html" class="btn btn-g btn-sm" style="display:inline-flex;">All Tools</a>
+        <a href="../tools.html" class="btn btn-p btn-sm">Start Studying</a>
+        <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+          <div class="bw"><span class="bb"></span><span class="bb"></span><span class="bb"></span></div>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+<!-- DRAWER -->
+<div class="drw" id="drw" role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="db" id="drw-back"></div>
+  <div class="dp">
+    <div class="dh">
+      <div class="nav-logo" style="font-size:1rem;">
+        <div class="nlm" style="width:30px;height:30px;border-radius:8px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        Study Hub AI
+      </div>
+      <button class="dx" id="drw-x" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <nav class="dnav">
+      <a href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home</a>
+      <a href="../tools.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>All Tools</a>
+      <a href="../blog.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Blog</a>
+      <a href="../about.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>About</a>
+    </nav>
+    <div class="df"><a href="../tools.html" class="btn btn-p btn-lg">Browse All Tools</a></div>
+  </div>
+</div>
+
+
+<!-- ══════  PAGE HEADER  ══════ -->
+<div class="page-header">
+  <div class="wrap">
+    <div class="ph-inner">
+      <div>
+        <nav class="ph-breadcrumb" aria-label="Breadcrumb">
+          <a href="../index.html">Home</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          <a href="../tools.html">Tools</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          <span style="color:var(--ink2);font-weight:600;">Exam Answer Generator</span>
+        </nav>
+        <div class="ph-title">
+          <div class="ph-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+            </svg>
+          </div>
+          <h1 class="ph-h1">Exam Answer Generator</h1>
+        </div>
+        <p class="ph-desc">Enter any exam question and get a structured, mark-worthy answer with a clear Introduction, Explanation, Key Points, and Conclusion — ready to learn from instantly.</p>
+        <div class="ph-badge"><span class="ph-badge-dot"></span>Free · No signup · Instant answers</div>
+      </div>
+      <div class="ph-right">
+        <span style="font-size:.78rem;font-weight:600;font-family:var(--fd);color:var(--mu);">Try other tools:</span>
+        <div class="ph-tools-row">
+          <a href="notes-generator.html" class="tnchip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Notes Gen</a>
+          <a href="flashcard-generator.html" class="tnchip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>Flashcards</a>
+          <a href="bullet-points.html" class="tnchip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="6" x2="20" y2="6"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="18" x2="20" y2="18"/></svg>Bullets</a>
+          <a href="paragraph-summarizer.html" class="tnchip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="21" y1="10" x2="7" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/></svg>Summarizer</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════  WORKSPACE  ══════ -->
+<main class="tool-main">
+  <div class="wrap-md">
+    <div class="tool-col">
+
+      <!-- ── INPUT CARD ── -->
+      <div class="card">
+        <div class="card-hdr">
+          <div class="card-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+            Your Exam Question
+          </div>
+          <div class="card-acts">
+            <button class="btn btn-red btn-sm" id="clear-btn">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+              Clear
+            </button>
+          </div>
+        </div>
+        <div class="card-body">
+
+          <textarea
+            id="q-input"
+            class="q-input"
+            placeholder="Type or paste your exam question here…
+
+Examples:
+• Explain the causes of the French Revolution.
+• What is photosynthesis and why is it important?
+• Describe the impact of the Industrial Revolution on society.
+• What were the main factors that led to World War One?"
+            aria-label="Enter your exam question"
+            rows="4"
+            maxlength="500"
+          ></textarea>
+
+          <!-- stats + settings -->
+          <div class="q-footer">
+            <div class="q-stats" role="status" aria-live="polite">
+              <div class="qst"><span class="qst-n" id="wc">0</span><span class="qst-l">words</span></div>
+              <div class="qst"><span class="qst-n" id="cc">0</span><span class="qst-l">chars</span></div>
+              <div class="qst" id="rt-wrap" style="display:none;"><span class="qst-n" id="rt">—</span><span class="qst-l">read time</span></div>
+            </div>
+            <div class="q-settings">
+              <div class="sg">
+                <label for="detail-level">Detail:</label>
+                <select id="detail-level" aria-label="Answer detail level">
+                  <option value="concise">Concise (short)</option>
+                  <option value="standard" selected>Standard</option>
+                  <option value="detailed">Detailed (long)</option>
+                </select>
+              </div>
+              <div class="sg">
+                <label for="subject-hint">Subject:</label>
+                <select id="subject-hint" aria-label="Subject area hint">
+                  <option value="general">General</option>
+                  <option value="science">Science</option>
+                  <option value="history">History</option>
+                  <option value="geography">Geography</option>
+                  <option value="english">English / Literature</option>
+                  <option value="economics">Economics</option>
+                  <option value="biology">Biology</option>
+                  <option value="chemistry">Chemistry</option>
+                  <option value="physics">Physics</option>
+                  <option value="psychology">Psychology</option>
+                  <option value="sociology">Sociology</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- example questions -->
+          <div class="example-qs">
+            <span class="eq-label">Try:</span>
+            <span class="eq-tag" data-q="Explain the causes of the French Revolution.">French Revolution</span>
+            <span class="eq-tag" data-q="What is photosynthesis and why is it important?">Photosynthesis</span>
+            <span class="eq-tag" data-q="Describe the impact of climate change on global ecosystems.">Climate Change</span>
+            <span class="eq-tag" data-q="What were the main causes of World War One?">World War One</span>
+            <span class="eq-tag" data-q="Explain the theory of supply and demand.">Supply &amp; Demand</span>
+            <span class="eq-tag" data-q="What is the role of DNA in genetic inheritance?">DNA &amp; Genetics</span>
+          </div>
+
+          <!-- progress -->
+          <div class="prog-wrap" id="prog-wrap">
+            <div class="prog-bg"><div class="prog-fill" id="prog-fill"></div></div>
+            <div class="prog-lbl" id="prog-lbl">Analysing question…</div>
+          </div>
+
+          <!-- generate button -->
+          <div class="act-row">
+            <button class="btn btn-p" id="gen-btn" disabled>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+              </svg>
+              Generate Answer
+            </button>
+            <span style="font-size:.74rem;color:var(--mu2);font-family:var(--fd);">
+              or press <kbd style="background:var(--sf2);border:1px solid var(--bd);border-radius:4px;padding:1px 6px;font-size:.73rem;font-weight:700;color:var(--ink2);">Ctrl</kbd>+<kbd style="background:var(--sf2);border:1px solid var(--bd);border-radius:4px;padding:1px 6px;font-size:.73rem;font-weight:700;color:var(--ink2);">↵</kbd>
+            </span>
+          </div>
+
+        </div><!-- .card-body -->
+      </div><!-- input card -->
+
+      <!-- ── OUTPUT CARD ── -->
+      <div class="card" id="out-card">
+        <div class="loader" id="loader">
+          <div class="spinner"></div>
+          <div class="loader-txt">Generating answer<span class="dots"></span></div>
+        </div>
+
+        <div class="card-hdr">
+          <div class="card-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+            </svg>
+            Structured Exam Answer
+          </div>
+          <div id="ready-badge" style="display:none;">
+            <span style="display:inline-flex;align-items:center;gap:4px;background:#dcfce7;border:1px solid #bbf7d0;border-radius:var(--rF);padding:3px 10px;font-family:var(--fd);font-size:.7rem;font-weight:700;color:#15803d;">
+              <span style="width:5px;height:5px;background:#22c55e;border-radius:50%;animation:blink 1.6s infinite;"></span>
+              Ready
+            </span>
+          </div>
+        </div>
+
+        <!-- empty state -->
+        <div class="out-ph" id="out-ph">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+          </svg>
+          <h3>No answer yet</h3>
+          <p>Enter your exam question above and click <strong>Generate Answer</strong> to get a structured response.</p>
+        </div>
+
+        <!-- answer output -->
+        <div class="answer-wrap" id="answer-wrap">
+
+          <!-- echoed question -->
+          <div class="answer-q" id="answer-q">
+            <div class="answer-q-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+            <div class="answer-q-text" id="answer-q-text"></div>
+          </div>
+
+          <!-- sections rendered by JS -->
+          <div id="sections-container"></div>
+
+          <!-- answer stats -->
+          <div class="a-stats" id="a-stats">
+            <div class="ast"><div class="ast-n" id="a-wc">0</div><div class="ast-l">Words</div></div>
+            <div class="ast"><div class="ast-n" id="a-cc">0</div><div class="ast-l">Chars</div></div>
+            <div class="ast"><div class="ast-n" id="a-rt">—</div><div class="ast-l">Read Time</div></div>
+            <div class="ast"><div class="ast-n" id="a-sec">4</div><div class="ast-l">Sections</div></div>
+          </div>
+
+        </div><!-- .answer-wrap -->
+
+        <!-- output footer -->
+        <div class="out-foot" id="out-foot" style="display:none;">
+          <div class="of-left">
+            <span class="a-quality" id="quality-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Exam-ready answer
+            </span>
+          </div>
+          <div class="of-right">
+            <button class="btn btn-g btn-sm" id="copy-btn" disabled>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+              </svg>
+              Copy Answer
+            </button>
+            <button class="btn btn-g btn-sm" id="download-btn" disabled>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Download .txt
+            </button>
+            <button class="btn btn-red btn-sm" id="clear-out-btn" disabled>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3 6 5 6 21 6"/>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+              </svg>
+              Clear
+            </button>
+          </div>
+        </div>
+
+      </div><!-- output card -->
+
+    </div><!-- .tool-col -->
+  </div>
+</main>
+
+
+<!-- ══════  HOW IT WORKS  ══════ -->
+<section class="how-sec">
+  <div class="wrap-md">
+    <div class="how-hd reveal">
+      <div class="chip-sm"><span class="chip-sm-dot"></span>How To Use</div>
+      <h2>Three Steps to a Structured Answer</h2>
+      <p>Get a mark-worthy exam answer in seconds — no signup needed.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card reveal d1">
+        <div class="step-n">1</div>
+        <div class="step-t">Type Your Question</div>
+        <div class="step-d">Enter your exam question, or click one of the example tags to auto-fill a sample question instantly.</div>
+      </div>
+      <div class="step-card reveal d2">
+        <div class="step-n">2</div>
+        <div class="step-t">Choose Detail Level</div>
+        <div class="step-d">Select your subject area and how detailed you want the answer — Concise for quick revision, Detailed for deep understanding.</div>
+      </div>
+      <div class="step-card reveal d3">
+        <div class="step-n">3</div>
+        <div class="step-t">Copy or Download</div>
+        <div class="step-d">Your structured answer is ready with Introduction, Explanation, Key Points, and Conclusion — copy it or save as a .txt file.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════  TIPS  ══════ -->
+<section class="tips-sec">
+  <div class="wrap-md">
+    <div class="tips-hd reveal">
+      <h2>Tips for Better Exam Answers</h2>
+      <p>Use these techniques alongside the generator to maximise your marks.</p>
+    </div>
+    <div class="tips-grid">
+      <div class="tip-card reveal d1">
+        <div class="tip-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <div><div class="tip-t">Always follow the Introduction–Explanation–Conclusion structure</div><div class="tip-d">This three-part structure is expected in almost every exam. Markers reward answers that are clearly organised — the structure shows you understand the question.</div></div>
+      </div>
+      <div class="tip-card reveal d2">
+        <div class="tip-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div><div class="tip-t">Use the key points as your revision checklist</div><div class="tip-d">The Key Points section is your evidence layer. In your real exam answer, each bullet should be expanded into a full sentence with supporting details or examples.</div></div>
+      </div>
+      <div class="tip-card reveal d3">
+        <div class="tip-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+        <div><div class="tip-t">Read the generated answer, don't just copy it</div><div class="tip-d">Use this tool as a learning scaffold — read the answer, understand why each part is there, then close it and write your own version. That's how you actually remember it.</div></div>
+      </div>
+      <div class="tip-card reveal d4">
+        <div class="tip-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div><div class="tip-t">Match the detail level to your question type</div><div class="tip-d">Short "State" or "Define" questions need Concise mode. "Explain", "Describe", or "Discuss" questions need Standard or Detailed — they're worth more marks and expect more depth.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════  MORE TOOLS  ══════ -->
+<section class="more-sec">
+  <div class="wrap-md">
+    <div class="more-hd reveal">
+      <h2>More Free Study Tools</h2>
+      <p>Every tool is free — no signup, no limits.</p>
+    </div>
+    <div class="more-grid">
+      <a href="notes-generator.html" class="more-card reveal d1">
+        <div class="more-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div><div class="more-name">Notes Generator</div><div class="more-sub">Text → Study Notes</div></div>
+      </a>
+      <a href="bullet-points.html" class="more-card reveal d2">
+        <div class="more-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="6" x2="20" y2="6"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="18" x2="20" y2="18"/><circle cx="4" cy="6" r="1.5" fill="currentColor" stroke="none"/><circle cx="4" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="4" cy="18" r="1.5" fill="currentColor" stroke="none"/></svg></div>
+        <div><div class="more-name">Bullet Converter</div><div class="more-sub">Para → Bullets</div></div>
+      </a>
+      <a href="flashcard-generator.html" class="more-card reveal d3">
+        <div class="more-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
+        <div><div class="more-name">Flashcard Generator</div><div class="more-sub">Notes → Cards</div></div>
+      </a>
+      <a href="paragraph-summarizer.html" class="more-card reveal d4">
+        <div class="more-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="21" y1="10" x2="7" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="21" y1="18" x2="7" y2="18"/></svg></div>
+        <div><div class="more-name">Summarizer</div><div class="more-sub">Long → Short</div></div>
+      </a>
+      <a href="study-planner.html" class="more-card reveal d5">
+        <div class="more-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <div><div class="more-name">Study Planner</div><div class="more-sub">Build a Schedule</div></div>
+      </a>
+      <a href="homework-helper.html" class="more-card reveal d6">
+        <div class="more-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <div><div class="more-name">Homework Helper</div><div class="more-sub">Instant Help</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════  FOOTER  ══════ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <div class="f-logo">
+        <div class="flm"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        Study Hub AI
+      </div>
+      <nav class="f-nav" aria-label="Footer navigation">
+        <a href="../index.html">Home</a>
+        <a href="../tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../privacy.html">Privacy</a>
+      </nav>
+    </div>
+    <div class="f-bot">
+      <p class="f-copy">© 2026 Study Hub AI. All rights reserved.</p>
+      <p class="f-tag">Free tools for <span>smarter studying</span>.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <svg id="toast-svg" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></svg>
+  <span id="toast-msg"></span>
+</div>
+
+<!-- Schema -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Exam Answer Generator – Study Hub AI","url":"https://studyhubai.com/tools/exam-answer.html","description":"Enter any exam question and get a structured, mark-worthy answer instantly.","applicationCategory":"EducationApplication","isAccessibleForFree":true,"operatingSystem":"Any"}
+</script>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════
+   STUDY HUB AI — EXAM ANSWER GENERATOR
+   Pure Vanilla JS. Template-based structured answer engine.
+═══════════════════════════════════════════════════════════════════ */
+(function(){
+  'use strict';
+
+  /* ── rAF throttle ── */
+  function raf(fn){let id;return()=>{cancelAnimationFrame(id);id=requestAnimationFrame(fn);};}
+
+  /* ── DOM ── */
+  const navbar    = document.getElementById('navbar');
+  const burger    = document.getElementById('burger');
+  const drw       = document.getElementById('drw');
+  const drwBack   = document.getElementById('drw-back');
+  const drwX      = document.getElementById('drw-x');
+  const qInput    = document.getElementById('q-input');
+  const wc        = document.getElementById('wc');
+  const cc        = document.getElementById('cc');
+  const rt        = document.getElementById('rt');
+  const rtWrap    = document.getElementById('rt-wrap');
+  const detailSel = document.getElementById('detail-level');
+  const subjSel   = document.getElementById('subject-hint');
+  const genBtn    = document.getElementById('gen-btn');
+  const clearBtn  = document.getElementById('clear-btn');
+  const progWrap  = document.getElementById('prog-wrap');
+  const progFill  = document.getElementById('prog-fill');
+  const progLbl   = document.getElementById('prog-lbl');
+  const loader    = document.getElementById('loader');
+  const outPh     = document.getElementById('out-ph');
+  const ansWrap   = document.getElementById('answer-wrap');
+  const ansQText  = document.getElementById('answer-q-text');
+  const secsCont  = document.getElementById('sections-container');
+  const aWc       = document.getElementById('a-wc');
+  const aCc       = document.getElementById('a-cc');
+  const aRt       = document.getElementById('a-rt');
+  const aSec      = document.getElementById('a-sec');
+  const outFoot   = document.getElementById('out-foot');
+  const readyBadge= document.getElementById('ready-badge');
+  const copyBtn   = document.getElementById('copy-btn');
+  const downloadBtn=document.getElementById('download-btn');
+  const clearOutBtn=document.getElementById('clear-out-btn');
+  const toast     = document.getElementById('toast');
+  const toastMsg  = document.getElementById('toast-msg');
+  const toastSvg  = document.getElementById('toast-svg');
+
+  let currentAnswer = null;
+  let toastTimer    = null;
+  let drawerOpen    = false;
+
+  /* ═══════  NAVBAR  ═══════ */
+  let lastY = -1;
+  const onScroll = raf(function(){
+    const y = window.scrollY;
+    if(y === lastY) return; lastY = y;
+    navbar.classList.toggle('stuck', y > 14);
+  });
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* ═══════  DRAWER  ═══════ */
+  function openD(){
+    if(drawerOpen) return;
+    drawerOpen = true; drw.classList.add('on'); burger.classList.add('on');
+    burger.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; drwX.focus();
+  }
+  function closeD(){
+    if(!drawerOpen) return;
+    drawerOpen = false; drw.classList.remove('on'); burger.classList.remove('on');
+    burger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; burger.focus();
+  }
+  burger.addEventListener('click', openD);
+  drwX.addEventListener('click', closeD);
+  drwBack.addEventListener('click', closeD);
+  drw.querySelectorAll('.dnav a,.df .btn').forEach(a => a.addEventListener('click', closeD));
+  document.addEventListener('keydown', e => {
+    if(!drawerOpen) return;
+    if(e.key === 'Escape'){ closeD(); return; }
+    if(e.key === 'Tab'){
+      const f = [...drw.querySelectorAll('a,button')], fi = f[0], la = f[f.length-1];
+      if(e.shiftKey){ if(document.activeElement===fi){ e.preventDefault(); la.focus(); } }
+      else { if(document.activeElement===la){ e.preventDefault(); fi.focus(); } }
+    }
+  });
+  let tsx = 0;
+  drw.addEventListener('touchstart', e=>{ tsx = e.touches[0].clientX; },{passive:true});
+  drw.addEventListener('touchend',   e=>{ if(e.changedTouches[0].clientX - tsx > 60) closeD(); },{passive:true});
+
+  /* ═══════  SCROLL REVEAL  ═══════ */
+  const revEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    const ro = new IntersectionObserver(entries => {
+      entries.forEach(en => { if(en.isIntersecting){ en.target.classList.add('in'); ro.unobserve(en.target); }});
+    }, {threshold:0.08, rootMargin:'0px 0px -24px 0px'});
+    revEls.forEach(el => ro.observe(el));
+  } else { revEls.forEach(el => el.classList.add('in')); }
+
+  /* ═══════  LIVE STATS  ═══════ */
+  const updateStats = raf(function(){
+    const raw  = qInput.value;
+    const text = raw.trim();
+    const words = text ? text.split(/\s+/).filter(Boolean).length : 0;
+    wc.textContent = words;
+    cc.textContent = raw.length;
+    if(words >= 3){
+      const mins = words / 238;
+      rt.textContent = mins < 1 ? Math.ceil(mins * 60) + 's' : Math.ceil(mins) + 'm';
+      rtWrap.style.display = '';
+    } else { rtWrap.style.display = 'none'; }
+    genBtn.disabled = text.length < 6;
+  });
+  qInput.addEventListener('input', updateStats);
+  updateStats();
+
+  /* ═══════  EXAMPLE QUESTION TAGS  ═══════ */
+  document.querySelectorAll('.eq-tag').forEach(tag => {
+    tag.addEventListener('click', function(){
+      qInput.value = this.getAttribute('data-q');
+      updateStats();
+      qInput.focus();
+      showToast('Example question loaded!', 'inf');
+    });
+  });
+
+  /* ═══════  CLEAR INPUT  ═══════ */
+  clearBtn.addEventListener('click', function(){
+    qInput.value = ''; updateStats(); resetOutput(); qInput.focus();
+    showToast('Input cleared.', 'inf');
+  });
+
+  /* ═══════  CLEAR OUTPUT  ═══════ */
+  clearOutBtn.addEventListener('click', resetOutput);
+  function resetOutput(){
+    currentAnswer = null;
+    outPh.style.display   = '';
+    ansWrap.classList.remove('show');
+    outFoot.style.display = 'none';
+    readyBadge.style.display = 'none';
+    secsCont.innerHTML    = '';
+    copyBtn.disabled      = true;
+    downloadBtn.disabled  = true;
+    clearOutBtn.disabled  = true;
+  }
+
+  /* ═══════════════════════════════════════════════
+     ANSWER GENERATION ENGINE
+     Template-driven, subject-aware, detail-scalable
+  ═══════════════════════════════════════════════ */
+
+  /* Detect question type */
+  function detectQType(q){
+    const l = q.toLowerCase();
+    if(/^(what is|what are|define|what do you mean)\b/.test(l)) return 'define';
+    if(/^(why|what caused|what led to|what were the causes|explain why)\b/.test(l)) return 'why';
+    if(/^(how does|how do|how is|how are|explain how)\b/.test(l)) return 'how';
+    if(/^(describe|what was|what were|outline)\b/.test(l)) return 'describe';
+    if(/^(discuss|analyse|analyze|evaluate|assess|to what extent)\b/.test(l)) return 'discuss';
+    if(/^(compare|contrast|what are the differences|what is the difference)\b/.test(l)) return 'compare';
+    if(/^(what is the impact|what are the effects|how did .* affect|what are the consequences)\b/.test(l)) return 'impact';
+    return 'explain'; // fallback
+  }
+
+  /* Extract topic from question */
+  function extractTopic(q){
+    return q.replace(/^(what is|what are|define|why is|why are|how does|how do|describe|explain|discuss|analyse|evaluate|compare|outline|assess)\s+/i,'')
+            .replace(/\?$/, '').trim();
+  }
+
+  /* ── SUBJECT-SPECIFIC KNOWLEDGE BANKS ── */
+  const KB = {
+
+    /* ── SCIENCE ── */
+    science:{
+      intros:{
+        define:   t => `${cap(t)} is a fundamental concept in science, referring to the systematic processes and principles that govern the natural world.`,
+        why:      t => `The scientific explanation for ${t} involves multiple interacting factors rooted in natural laws and empirical observation.`,
+        how:      t => `${cap(t)} follows a series of well-established scientific principles that can be observed, measured, and replicated under controlled conditions.`,
+        describe: t => `${cap(t)} is a scientific phenomenon characterised by specific measurable properties and governed by underlying physical or chemical laws.`,
+        discuss:  t => `Scientists have long studied ${t}, generating considerable evidence and debate about its mechanisms, implications, and broader significance.`,
+        explain:  t => `${cap(t)} is a key scientific concept that plays an important role in how we understand the natural world.`,
+        default:  t => `${cap(t)} is an important concept in the sciences that requires careful analysis using evidence and scientific reasoning.`,
+      },
+      points:{
+        define:   t => [`${cap(t)} can be precisely defined using measurable and observable properties.`, `Scientific terminology relating to ${t} is standardised to ensure clarity across disciplines.`, `Understanding ${t} requires knowledge of the underlying chemical, physical, or biological principles involved.`, `${cap(t)} is distinct from related concepts due to its specific properties and behaviours.`],
+        why:      t => [`The primary cause involves changes in physical or chemical conditions that directly affect ${t}.`, `Secondary factors such as environmental conditions, concentrations, and temperatures also play a role.`, `Scientific evidence from controlled experiments supports our understanding of why ${t} occurs.`, `These causes operate through specific mechanisms that can be described using scientific laws.`],
+        how:      t => [`${cap(t)} begins when specific initial conditions are met, triggering a sequence of events.`, `The process involves the conversion or transfer of energy or matter between components.`, `Key stages include initiation, progression, and completion — each governed by measurable changes.`, `The rate and efficiency of ${t} depend on variables such as temperature, pressure, and concentration.`],
+        describe: t => [`${cap(t)} involves a series of clearly identifiable and measurable stages or characteristics.`, `Scientific instruments are used to observe and quantify the properties associated with ${t}.`, `Research has identified both common patterns and variations in ${t} across different conditions.`, `Understanding the description of ${t} is essential for predicting related outcomes and applications.`],
+        discuss:  t => [`Evidence both supports and challenges various aspects of our understanding of ${t}.`, `Current scientific consensus is based on decades of peer-reviewed research and replication.`, `Emerging studies continue to refine our understanding of ${t} and its wider implications.`, `The practical applications of understanding ${t} span medicine, technology, and environmental science.`],
+        default:  t => [`${cap(t)} is supported by a substantial body of scientific evidence and research.`, `Understanding ${t} helps explain related phenomena in the natural and physical world.`, `Scientific models have been developed to predict and describe the behaviour of ${t}.`, `Ongoing research continues to deepen our understanding of ${t} and its applications.`],
+      },
+      concls:{
+        define:   t => `In summary, ${t} is a well-defined scientific concept with specific, measurable characteristics that form the basis of broader scientific understanding in this field.`,
+        why:      t => `In conclusion, the occurrence of ${t} can be attributed to a combination of interacting scientific factors, each supported by empirical evidence and theoretical frameworks.`,
+        how:      t => `In conclusion, ${t} is a multi-stage scientific process governed by natural laws, and understanding it is essential for applications in science and technology.`,
+        describe: t => `To summarise, ${t} is characterised by distinct, observable features that have been well-documented through scientific investigation.`,
+        discuss:  t => `In conclusion, the study of ${t} reveals complex interactions between scientific variables, and continued research will further enhance our understanding of its significance.`,
+        default:  t => `In summary, ${t} is an important scientific concept with wide-ranging implications for our understanding of the natural world.`,
+      },
+    },
+
+    /* ── HISTORY ── */
+    history:{
+      intros:{
+        define:   t => `${cap(t)} refers to a significant historical event, movement, or concept that shaped political, social, or economic development during its era.`,
+        why:      t => `The causes of ${t} are multi-faceted, rooted in long-term structural tensions as well as short-term triggers that together destabilised the existing order.`,
+        how:      t => `${cap(t)} unfolded through a combination of political decisions, popular movements, and structural changes that gradually transformed the historical landscape.`,
+        describe: t => `${cap(t)} was a pivotal period or event in history, characterised by significant political, social, and economic transformations that had lasting consequences.`,
+        discuss:  t => `Historians have long debated the significance of ${t}, examining its causes, course, and consequences from multiple historical perspectives.`,
+        impact:   t => `${cap(t)} had profound and far-reaching consequences that reshaped political structures, social conditions, and economic systems in ways still felt today.`,
+        default:  t => `${cap(t)} stands as one of the most significant events or developments in history, with consequences that reverberated across generations.`,
+      },
+      points:{
+        why:   t => [`Long-term causes included deep-rooted social inequalities, economic pressures, and political tensions that had been building for years before ${t}.`, `Ideological movements played a key role, as new ways of thinking challenged the established order and inspired popular action.`, `Short-term triggers such as specific events, crises, or decisions acted as a catalyst that transformed underlying tensions into open conflict or change.`, `The actions and failures of key individuals in power — through poor decisions, resistance to reform, or weakness — contributed significantly to the outbreak of ${t}.`],
+        impact:t => [`Politically, ${t} led to major changes in government, power structures, and the rights of citizens.`, `Socially, it transformed relationships between classes, genders, and communities — often accelerating movements for equality and justice.`, `Economically, ${t} disrupted existing trade patterns, production systems, and wealth distribution in significant ways.`, `Its legacy endured through laws, institutions, and cultural memories that continued to shape the societies affected by it.`],
+        default:t=>[`${cap(t)} emerged from a combination of long-term structural causes and immediate triggering events.`, `Key figures played decisive roles in shaping the direction and outcome of ${t}.`, `The event or period of ${t} was driven by competing interests — political, economic, and ideological.`, `Its consequences were felt both immediately and in the long term, reshaping the societies involved.`],
+      },
+      concls:{
+        why:    t => `In conclusion, ${t} was the result of a complex interaction between long-term grievances and immediate triggers, demonstrating how deeply embedded tensions can reach a breaking point when key conditions align.`,
+        impact: t => `In conclusion, the impact of ${t} was profound and multi-dimensional — reshaping politics, society, and economics in ways that left a lasting mark on history.`,
+        default:t => `In conclusion, ${t} was a defining moment in history whose causes, events, and consequences reflect the complex interplay of political, social, and economic forces at work in that era.`,
+      },
+    },
+
+    /* ── BIOLOGY ── */
+    biology:{
+      intros:{
+        define: t => `${cap(t)} is a fundamental biological concept that describes the processes, structures, and mechanisms by which living organisms function, interact, and maintain life.`,
+        how:    t => `${cap(t)} is a biological process that proceeds through a series of coordinated molecular, cellular, and organismic events governed by genetic and environmental factors.`,
+        why:    t => `${cap(t)} serves critical biological functions, and understanding why it occurs requires examining the evolutionary advantages it provides to organisms.`,
+        default:t => `${cap(t)} is an essential biological concept that underpins our understanding of how living systems operate at the cellular, organismal, and ecological level.`,
+      },
+      points:{
+        default:t=>[`At the cellular level, ${t} involves specific organelles, proteins, and biochemical reactions that are tightly regulated.`, `The process of ${t} is controlled by genes and can be influenced by environmental signals and stimuli.`, `${cap(t)} is conserved across many species, reflecting its fundamental importance to life.`, `Disruptions to ${t} can lead to disease states, highlighting its critical role in maintaining homeostasis.`],
+      },
+      concls:{
+        default:t=>`In conclusion, ${t} is a vital biological process whose mechanisms, regulation, and significance are central to our understanding of life sciences and have broad implications for medicine and biotechnology.`,
+      },
+    },
+
+    /* ── ECONOMICS ── */
+    economics:{
+      intros:{
+        define: t => `${cap(t)} is a fundamental economic concept that describes the behaviour of markets, agents, or systems within the broader framework of resource allocation and decision-making.`,
+        how:    t => `${cap(t)} operates through the rational decisions of economic agents — consumers, firms, and governments — each responding to incentives and constraints in the marketplace.`,
+        why:    t => `Understanding why ${t} occurs requires examining the incentives, constraints, and market structures that shape economic behaviour and outcomes.`,
+        discuss:t => `${cap(t)} is one of the most debated concepts in economics, with different schools of thought offering competing explanations and policy prescriptions.`,
+        default:t => `${cap(t)} is a key economic concept that helps us understand how scarce resources are allocated and how markets, governments, and individuals make decisions.`,
+      },
+      points:{
+        default:t=>[`${cap(t)} is driven by the rational behaviour of economic agents maximising their utility or profit subject to budget and resource constraints.`, `Market forces of supply and demand play a central role in determining outcomes related to ${t}.`, `Government intervention through policy — taxation, regulation, or subsidies — can significantly affect ${t} and its broader economic consequences.`, `External factors such as technological change, globalisation, and macroeconomic conditions influence the nature and scale of ${t}.`],
+      },
+      concls:{
+        default:t=>`In conclusion, ${t} illustrates the complex interplay between individual decision-making, market mechanisms, and broader institutional factors that shape economic outcomes. A thorough understanding of ${t} is essential for effective economic analysis and policy design.`,
+      },
+    },
+
+    /* ── GEOGRAPHY ── */
+    geography:{
+      intros:{
+        default:t=>`${cap(t)} is a significant geographical concept or process that involves the interaction between physical and human systems across space and place.`,
+        impact: t=>`The impact of ${t} on landscapes, ecosystems, and human populations reflects the complex interplay between natural processes and human activity.`,
+      },
+      points:{
+        default:t=>[`Physical factors such as climate, topography, and geology directly influence ${t} and its distribution across the Earth's surface.`, `Human activities, including urbanisation, agriculture, and industry, both shape and are shaped by ${t}.`, `The effects of ${t} are unevenly distributed, with some regions experiencing far greater impacts than others due to their geographical vulnerability.`, `Understanding ${t} is essential for sustainable development planning and environmental management.`],
+      },
+      concls:{
+        default:t=>`In conclusion, ${t} is the result of complex interactions between physical and human processes, with consequences that vary significantly across different regions and communities. Addressing the challenges associated with ${t} requires both local and global perspectives.`,
+      },
+    },
+
+    /* ── GENERAL FALLBACK ── */
+    general:{
+      intros:{
+        define:  t => `${cap(t)} is an important concept that can be defined as a framework, principle, or process with specific characteristics and real-world applications.`,
+        why:     t => `The reasons for ${t} are complex and multifaceted, drawing on a range of interconnected factors that together explain its existence and significance.`,
+        how:     t => `${cap(t)} operates through a structured process involving several key stages and mechanisms that work together to produce a specific outcome.`,
+        describe:t => `${cap(t)} can be described as a distinctive set of features, events, or characteristics that define its nature and distinguish it from related concepts.`,
+        discuss: t => `${cap(t)} is a complex topic that has been examined from multiple perspectives, with scholars and practitioners offering a range of interpretations and viewpoints.`,
+        impact:  t => `The impact of ${t} is wide-ranging and significant, affecting individuals, communities, and systems in both immediate and long-term ways.`,
+        compare: t => `Understanding ${t} requires a careful comparison of its key components, identifying both similarities and differences to develop a complete picture.`,
+        explain: t => `${cap(t)} is a concept that requires detailed explanation, as its underlying principles connect to broader ideas that are essential for a full understanding.`,
+        default: t => `${cap(t)} is an important concept that requires careful examination from multiple angles in order to be fully understood and applied.`,
+      },
+      explanations:{
+        define:  t => `In more detail, ${t} encompasses several core components. First, it has a clear definition that distinguishes it from related concepts. Second, it operates within a specific context and has identifiable boundaries. Third, its characteristics can be observed, described, and analysed through systematic study.`,
+        why:     t => `Examining the reasons for ${t} more closely reveals several layers of causation. At the most fundamental level, underlying structural conditions create the environment in which ${t} becomes possible or necessary. These are reinforced by more immediate factors that act as catalysts, converting potential into actuality. Together, these forces explain not just the existence of ${t} but also its timing, scale, and direction.`,
+        how:     t => `Looking more closely at how ${t} works, it is possible to identify a series of distinct stages. The process begins with initial conditions being met, which triggers the first stage of activity. This then progresses through intermediate steps involving the transfer, conversion, or organisation of key elements. The process concludes when a specific outcome or equilibrium is reached, at which point ${t} can be said to be complete.`,
+        describe:t => `A closer examination of ${t} reveals several defining characteristics. It can be analysed from different perspectives — structural, functional, and contextual — each revealing different aspects of its nature. These dimensions combine to create a comprehensive picture of what ${t} is, how it appears, and what role it plays in its wider context.`,
+        discuss: t => `A deeper analysis of ${t} requires consideration of multiple perspectives. Proponents argue that it has significant benefits and serves important functions. Critics, however, highlight potential weaknesses, limitations, or unintended consequences. A balanced evaluation recognises both the strengths and limitations of ${t}, weighing evidence from multiple sources.`,
+        impact:  t => `Analysing the impact of ${t} in greater depth reveals effects at multiple levels. At the individual level, it changes the circumstances, opportunities, and challenges faced by people directly affected. At the collective level, it alters the structures, norms, and dynamics of communities or institutions. In the long term, its legacy can be traced through lasting changes in behaviour, policy, or environment.`,
+        default: t => `Exploring ${t} in greater depth, it becomes clear that it involves several interconnected components. Each component contributes to the overall nature of ${t} in a specific way, and understanding how they interact is key to developing a thorough grasp of the concept as a whole.`,
+      },
+      points:{
+        define:  t => [`${cap(t)} can be specifically defined as having distinct, identifiable features that set it apart from similar concepts.`, `It operates within a defined scope and context, with clear parameters that determine what falls within or outside its boundaries.`, `Multiple disciplines may study ${t} from different angles, each contributing to a fuller understanding.`, `Practical examples of ${t} can be found in real-world contexts, making it easier to understand through application.`],
+        why:     t => [`Long-term underlying factors created the conditions necessary for ${t} to develop or occur.`, `Short-term triggering events or decisions acted as catalysts, bringing the issue to a head at a specific moment.`, `The interplay between different causal factors is complex — no single cause is sufficient on its own to explain ${t}.`, `Understanding why ${t} occurs is essential for developing effective responses, solutions, or policies.`],
+        how:     t => [`The initial stage involves specific conditions or inputs that set the process of ${t} in motion.`, `Intermediate stages involve the transformation or progression of key elements through structured mechanisms.`, `The final stage produces a specific outcome, product, or state that characterises the completion of ${t}.`, `The efficiency and success of ${t} depend on a range of variables that can enhance or impede the process.`],
+        describe:t => [`${cap(t)} has several characteristic features that can be observed and documented.`, `These features vary across different contexts but share common underlying patterns.`, `Describing ${t} accurately requires attention to both its surface-level appearance and its underlying structure.`, `Examples from different settings help illustrate the range of ways in which ${t} can manifest.`],
+        discuss: t => [`Arguments in favour of ${t} highlight its benefits, efficiencies, and positive contributions.`, `Counter-arguments raise concerns about its limitations, risks, or negative consequences.`, `The evidence available for and against different positions varies in quality and scope.`, `A balanced discussion of ${t} acknowledges complexity and avoids oversimplification.`],
+        impact:  t => [`${cap(t)} has had immediate effects that were felt in the short term by those directly involved.`, `In the medium term, its influence spread to wider groups and systems not initially affected.`, `Its long-term legacy can be seen in lasting changes to structures, policies, or behaviours.`, `The significance of ${t} is widely recognised, even if its full consequences are still debated.`],
+        compare: t => [`Both sides of the comparison share certain fundamental characteristics that define their common ground.`, `Key differences exist in terms of their scope, scale, mechanisms, and consequences.`, `These differences reflect distinct contexts, purposes, or underlying principles.`, `Understanding the comparison helps clarify the unique contribution of each element to the broader topic.`],
+        default: t => [`${cap(t)} has several key components, each of which contributes to its overall nature and function.`, `Evidence from multiple sources supports the main conclusions about ${t}.`, `There are important connections between ${t} and related concepts that help to contextualise its significance.`, `Understanding ${t} fully requires examining it from more than one perspective.`],
+      },
+      concls:{
+        define:  t => `In summary, ${t} is a well-defined concept with specific characteristics, a clear scope, and real-world relevance. A thorough understanding of its definition provides a foundation for deeper exploration of the subject.`,
+        why:     t => `In conclusion, ${t} can be attributed to a combination of long-term underlying conditions and shorter-term catalysts. Recognising both types of causes is essential for a complete understanding of how and why it occurred or occurs.`,
+        how:     t => `In conclusion, ${t} is a structured process that proceeds through identifiable stages, each governed by specific mechanisms. Understanding how it works enables us to predict, manage, or replicate its outcomes in relevant contexts.`,
+        describe:t => `To conclude, ${t} is characterised by a distinctive set of features that distinguish it from related concepts and phenomena. A thorough description of these features provides a strong foundation for further analysis.`,
+        discuss: t => `In conclusion, ${t} is a nuanced topic that requires consideration of multiple perspectives and sources of evidence. A balanced analysis reveals both its strengths and its limitations, contributing to a more complete understanding of the subject.`,
+        impact:  t => `In conclusion, the impact of ${t} has been significant and multifaceted, with consequences operating at individual, collective, and systemic levels. Its legacy continues to shape conditions and debates in relevant fields today.`,
+        compare: t => `In conclusion, comparing the key elements of ${t} reveals important similarities and differences that together contribute to a deeper understanding of both sides. This comparative analysis highlights the unique characteristics and contributions of each element.`,
+        default: t => `In conclusion, ${t} is a significant concept that merits careful study. By examining its definition, causes, processes, and consequences, we gain a comprehensive understanding that can be applied in academic, professional, and everyday contexts.`,
+      },
+    },
+  };
+
+  function cap(s){ return s ? s[0].toUpperCase() + s.slice(1) : s; }
+
+  function getBank(subject){
+    const map = {science:'science',biology:'biology',chemistry:'science',physics:'science',
+                 history:'history',economics:'economics',geography:'geography',
+                 general:'general',english:'general',psychology:'general',sociology:'general'};
+    return KB[map[subject] || 'general'] || KB.general;
+  }
+
+  function getTemplate(bank, section, qtype, topic){
+    const tpl = bank[section];
+    if(!tpl) return null;
+    return (tpl[qtype] || tpl.default || null);
+  }
+
+  function callTemplate(fn, topic){
+    if(!fn) return null;
+    if(typeof fn === 'function') return fn(topic);
+    return fn;
+  }
+
+  /* Detail-level multipliers */
+  const DETAIL = {
+    concise:{sentences:1, points:2},
+    standard:{sentences:2, points:4},
+    detailed:{sentences:3, points:4},
+  };
+
+  function generateAnswer(question, subject, detail){
+    const qtype = detectQType(question);
+    const topic = extractTopic(question);
+    const bank  = getBank(subject);
+    const cfg   = DETAIL[detail] || DETAIL.standard;
+
+    /* INTRODUCTION */
+    const introFn = getTemplate(bank, 'intros', qtype, topic)
+                 || getTemplate(KB.general, 'intros', qtype, topic);
+    let intro = callTemplate(introFn, topic) || `${cap(topic)} is an important concept that requires careful analysis from multiple perspectives.`;
+
+    /* EXPLANATION */
+    let expl;
+    if(bank.explanations){
+      const explFn = getTemplate(bank, 'explanations', qtype, topic)
+                  || getTemplate(KB.general, 'explanations', qtype, topic);
+      expl = callTemplate(explFn, topic);
+    } else {
+      expl = callTemplate(getTemplate(KB.general, 'explanations', qtype, topic), topic);
+    }
+    if(!expl) expl = `A detailed examination of ${topic} reveals multiple layers of complexity. Each dimension contributes to our overall understanding and must be considered in context.`;
+
+    // For concise mode, trim explanation
+    if(detail === 'concise'){
+      expl = expl.split('. ').slice(0, 2).join('. ') + '.';
+    }
+    if(detail === 'detailed'){
+      expl += ` Furthermore, it is worth noting that ${topic} does not exist in isolation — it is deeply interconnected with related concepts and broader contexts that collectively shape its significance and application.`;
+    }
+
+    /* KEY POINTS */
+    const ptsFnBank = bank.points ? getTemplate(bank, 'points', qtype, topic) : null;
+    const ptsFn     = ptsFnBank || getTemplate(KB.general, 'points', qtype, topic);
+    let allPoints   = callTemplate(ptsFn, topic) || [];
+    if(!Array.isArray(allPoints)) allPoints = [];
+    const points    = allPoints.slice(0, cfg.points);
+
+    /* CONCLUSION */
+    const conclFnBank = bank.concls ? getTemplate(bank, 'concls', qtype, topic) : null;
+    const conclFn     = conclFnBank || getTemplate(KB.general, 'concls', qtype, topic);
+    let concl = callTemplate(conclFn, topic) || `In conclusion, ${topic} is a significant concept whose study reveals important insights applicable in both academic and practical contexts.`;
+
+    return { question, qtype, topic, subject, detail, intro, expl, points, concl };
+  }
+
+  /* ═══════  RENDER ANSWER  ═══════ */
+  const SEC_CONFIGS = [
+    {
+      key:'intro', label:'Introduction', cls:'a-intro', delay:0,
+      icon:'<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>',
+      desc:'Sets the context and defines the key concept.'
+    },
+    {
+      key:'expl', label:'Main Explanation', cls:'a-expl', delay:1,
+      icon:'<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>',
+      desc:'Detailed explanation of the core ideas.'
+    },
+    {
+      key:'points', label:'Key Points', cls:'a-pts', delay:2,
+      icon:'<polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>',
+      desc:'Evidence and supporting arguments.'
+    },
+    {
+      key:'concl', label:'Conclusion', cls:'a-concl', delay:3,
+      icon:'<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h4"/>',
+      desc:'Summarises the answer and reinforces the main argument.'
+    },
+  ];
+
+  function renderAnswer(ans){
+    currentAnswer = ans;
+    ansQText.textContent = ans.question;
+    secsCont.innerHTML = '';
+
+    SEC_CONFIGS.forEach(cfg => {
+      const div = document.createElement('div');
+      div.className = 'a-section ' + cfg.cls;
+      div.style.animationDelay = (cfg.delay * 120) + 'ms';
+
+      // Build content
+      let content = '';
+      if(cfg.key === 'points'){
+        if(ans.points && ans.points.length > 0){
+          const items = ans.points.map(p =>
+            `<li class="a-kp-item"><span class="a-kp-dot"></span><span>${esc(p)}</span></li>`
+          ).join('');
+          content = `<ul class="a-kp-list">${items}</ul>`;
+        } else {
+          content = `<div class="a-text">Supporting evidence and key details for this topic would be drawn from relevant sources and applied to the specific context of the question.</div>`;
+        }
+      } else {
+        const text = ans[cfg.key] || '';
+        content = `<div class="a-text">${esc(text)}</div>`;
+      }
+
+      div.innerHTML = `
+        <div class="a-sec-header">
+          <div class="a-sec-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${cfg.icon}</svg>
+          </div>
+          <span class="a-sec-label">${cfg.label}</span>
+          <div class="a-sec-bar"></div>
+        </div>
+        ${content}`;
+      secsCont.appendChild(div);
+    });
+
+    // Stats
+    const fullText = [ans.intro, ans.expl, ...(ans.points||[]), ans.concl].join(' ');
+    const words    = fullText.split(/\s+/).filter(Boolean).length;
+    const mins     = words / 238;
+    aWc.textContent = words;
+    aCc.textContent = fullText.length;
+    aRt.textContent = mins < 1 ? Math.ceil(mins * 60) + 's' : Math.ceil(mins) + ' min';
+    aSec.textContent = '4';
+
+    // Show
+    outPh.style.display      = 'none';
+    ansWrap.classList.add('show');
+    outFoot.style.display    = 'flex';
+    readyBadge.style.display = 'block';
+    copyBtn.disabled         = false;
+    downloadBtn.disabled     = false;
+    clearOutBtn.disabled     = false;
+  }
+
+  function esc(s){
+    return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  /* ═══════  PROGRESS ANIMATION  ═══════ */
+  function animateProgress(duration, done){
+    progWrap.classList.add('show');
+    progFill.style.width = '0%';
+    const stages = [
+      {pct:25, lbl:'Analysing question…'},
+      {pct:52, lbl:'Identifying key concepts…'},
+      {pct:78, lbl:'Building structured answer…'},
+      {pct:94, lbl:'Formatting output…'},
+    ];
+    let i = 0;
+    function next(){
+      if(i >= stages.length){ setTimeout(done, 180); return; }
+      const s = stages[i++];
+      progFill.style.width = s.pct + '%';
+      progLbl.textContent  = s.lbl;
+      setTimeout(next, duration / stages.length);
+    }
+    next();
+  }
+
+  /* ═══════  GENERATE BUTTON  ═══════ */
+  genBtn.addEventListener('click', function(){
+    const q = qInput.value.trim();
+    if(q.length < 6){ showToast('Please enter an exam question first.','err'); qInput.focus(); return; }
+
+    genBtn.disabled = true;
+    loader.classList.add('show');
+    const delay = Math.min(700 + q.length * 12, 2000);
+
+    animateProgress(delay, function(){
+      try{
+        const ans = generateAnswer(q, subjSel.value, detailSel.value);
+        renderAnswer(ans);
+        showToast('✓ Structured answer generated!', 'ok');
+      } catch(e){
+        showToast('Something went wrong. Please try again.', 'err');
+      } finally {
+        loader.classList.remove('show');
+        progWrap.classList.remove('show');
+        progFill.style.width = '0%';
+        genBtn.disabled = qInput.value.trim().length < 6;
+      }
+    });
+  });
+
+  /* ═══════  COPY  ═══════ */
+  copyBtn.addEventListener('click', function(){
+    if(!currentAnswer) return;
+    const ans = currentAnswer;
+    const pts = (ans.points||[]).map((p,i) => `  ${i+1}. ${p}`).join('\n');
+    const text = [
+      `EXAM QUESTION: ${ans.question}`,
+      '',
+      '━━ INTRODUCTION ━━',
+      ans.intro,
+      '',
+      '━━ MAIN EXPLANATION ━━',
+      ans.expl,
+      '',
+      '━━ KEY POINTS ━━',
+      pts || '  (No specific key points generated)',
+      '',
+      '━━ CONCLUSION ━━',
+      ans.concl,
+    ].join('\n');
+
+    if(navigator.clipboard?.writeText){
+      navigator.clipboard.writeText(text)
+        .then(() => showToast('Answer copied to clipboard!', 'ok'))
+        .catch(() => fbCopy(text));
+    } else { fbCopy(text); }
+  });
+
+  function fbCopy(text){
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.cssText = 'position:fixed;left:-9999px;top:-9999px;opacity:0;';
+    document.body.appendChild(ta); ta.select();
+    try{ document.execCommand('copy'); showToast('Copied!', 'ok'); }
+    catch{ showToast('Copy failed — select manually.', 'err'); }
+    document.body.removeChild(ta);
+  }
+
+  /* ═══════  DOWNLOAD  ═══════ */
+  downloadBtn.addEventListener('click', function(){
+    if(!currentAnswer) return;
+    const ans     = currentAnswer;
+    const dateStr = new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+    const pts     = (ans.points||[]).map((p,i) => `  ${i+1}. ${p}`).join('\n');
+    const words   = [ans.intro, ans.expl, ...(ans.points||[]), ans.concl].join(' ').split(/\s+/).filter(Boolean).length;
+
+    const text = [
+      '════════════════════════════════════════════',
+      '  EXAM ANSWER — Study Hub AI',
+      `  Date    : ${dateStr}`,
+      `  Subject : ${ans.subject.charAt(0).toUpperCase()+ans.subject.slice(1)}`,
+      `  Detail  : ${ans.detail.charAt(0).toUpperCase()+ans.detail.slice(1)}`,
+      `  Words   : ${words}`,
+      '════════════════════════════════════════════',
+      '',
+      `QUESTION: ${ans.question}`,
+      '',
+      '━━━━ INTRODUCTION ━━━━',
+      ans.intro,
+      '',
+      '━━━━ MAIN EXPLANATION ━━━━',
+      ans.expl,
+      '',
+      '━━━━ KEY POINTS ━━━━',
+      pts || '  No specific key points generated.',
+      '',
+      '━━━━ CONCLUSION ━━━━',
+      ans.concl,
+      '',
+      '════════════════════════════════════════════',
+      '  Generated with Study Hub AI',
+      '  https://studyhubai.com',
+      '  Free AI study tools for every student.',
+      '════════════════════════════════════════════',
+    ].join('\n');
+
+    const blob = new Blob([text],{type:'text/plain;charset=utf-8'});
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href = url; a.download = 'exam-answer-' + new Date().toISOString().slice(0,10) + '.txt';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showToast('Answer downloaded!', 'ok');
+  });
+
+  /* ═══════  KEYBOARD SHORTCUT  ═══════ */
+  document.addEventListener('keydown', e => {
+    if((e.ctrlKey || e.metaKey) && e.key === 'Enter' && !genBtn.disabled){
+      e.preventDefault(); genBtn.click();
+    }
+  });
+
+  /* ═══════  TOAST  ═══════ */
+  const ICONS = {
+    ok: '<polyline points="20 6 9 17 4 12"/>',
+    err:'<circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>',
+    inf:'<circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>'
+  };
+  const COLORS = {ok:'#4ade80', err:'#fca5a5', inf:'#93c5fd'};
+  function showToast(msg, type='ok'){
+    if(toastTimer) clearTimeout(toastTimer);
+    toastMsg.textContent = msg;
+    toastSvg.innerHTML   = ICONS[type]||ICONS.inf;
+    toastSvg.style.stroke = COLORS[type]||COLORS.inf;
+    toast.className = 'toast t-' + type;
+    toast.classList.add('show');
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 3400);
+  }
+
+  /* ═══════  SMOOTH SCROLL  ═══════ */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if(!t) return; e.preventDefault();
+      t.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+
+})();
+</script>
+</body>
+</html>

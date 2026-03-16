@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+<title>Paragraph Summarizer – Free AI Text Summarizer | Study Hub AI</title>
+<meta name="description" content="Paste any long paragraph, chapter, or article and get an instant short summary plus bullet points. Free AI summarizer for students. No signup required."/>
+<meta name="keywords" content="paragraph summarizer,text summarizer,AI summarizer,summarize paragraph,shorten text,study notes summarizer"/>
+<meta name="author" content="Study Hub AI"/>
+<meta name="robots" content="index, follow"/>
+<meta name="theme-color" content="#2563eb"/>
+<meta property="og:title" content="Paragraph Summarizer – Free AI Text Summarizer | Study Hub AI"/>
+<meta property="og:description" content="Paste any long text and get an instant short summary and bullet points. Free, no signup."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://studyhubai.com/tools/paragraph-summarizer.html"/>
+<meta property="og:image" content="https://studyhubai.com/preview.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Familjen+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════════════════════════════════
+   DESIGN TOKENS — identical to all Study Hub AI pages
+═══════════════════════════════════════════════════ */
+:root{
+  --b50:#eff6ff;--b100:#dbeafe;--b200:#bfdbfe;--b300:#93c5fd;--b400:#60a5fa;
+  --b500:#3b82f6;--b600:#2563eb;--b700:#1d4ed8;--b800:#1e40af;--b900:#1e3a8a;
+  --g0:#fff;--g50:#f8fafc;--g100:#f1f5f9;--g200:#e2e8f0;--g300:#cbd5e1;
+  --g400:#94a3b8;--g500:#64748b;--g600:#475569;--g700:#334155;
+  --g800:#1e293b;--g900:#0f172a;--g950:#020617;
+  --ink:var(--g900);--ink2:var(--g700);--mu:var(--g500);--mu2:var(--g400);
+  --sf:var(--g50);--sf2:var(--g100);--bd:var(--g200);--bd2:var(--g300);
+  --ac:var(--b600);--acH:var(--b700);--acL:var(--b50);--acM:var(--b100);
+  --s0:0 1px 2px rgba(15,23,42,.06);
+  --s1:0 2px 8px rgba(15,23,42,.07),0 1px 3px rgba(15,23,42,.04);
+  --s2:0 4px 16px rgba(15,23,42,.09),0 2px 6px rgba(15,23,42,.05);
+  --s3:0 12px 36px rgba(15,23,42,.11),0 4px 12px rgba(15,23,42,.06);
+  --s4:0 24px 64px rgba(15,23,42,.13),0 8px 24px rgba(15,23,42,.07);
+  --sb:0 8px 32px rgba(37,99,235,.22),0 2px 8px rgba(37,99,235,.12);
+  --sbL:0 20px 60px rgba(37,99,235,.28),0 6px 20px rgba(37,99,235,.15);
+  --r1:6px;--r2:10px;--r3:14px;--r4:20px;--r5:28px;--rF:9999px;
+  --fd:'Familjen Grotesk',sans-serif;--fb:'Plus Jakarta Sans',sans-serif;
+  --ez:cubic-bezier(.22,1,.36,1);--esp:cubic-bezier(.34,1.46,.64,1);
+  --tf:.14s var(--ez);--tb:.22s var(--ez);--ts:.36s var(--ez);--tsp:.38s var(--esp);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;overflow-y:scroll;}
+body{font-family:var(--fb);background:var(--g50);color:var(--ink);line-height:1.6;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;}
+img,svg{display:block;max-width:100%;}
+a{text-decoration:none;color:inherit;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;padding:0;}
+ul{list-style:none;}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
+
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,32px);}
+.wrap-md{width:100%;max-width:980px;margin:0 auto;padding:0 clamp(16px,4vw,32px);}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font-family:var(--fd);font-weight:700;font-size:.9rem;border-radius:var(--r3);
+  border:1.5px solid transparent;padding:11px 22px;cursor:pointer;white-space:nowrap;
+  position:relative;overflow:hidden;will-change:transform;
+  transition:transform var(--tsp),box-shadow var(--tb),background var(--tb),border-color var(--tb),color var(--tb);
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+.btn::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,0);transition:background var(--tf);pointer-events:none;}
+.btn:hover::after{background:rgba(255,255,255,.09);}
+.btn:active{transform:scale(.96)!important;}
+.btn-p{background:var(--ac);color:#fff;border-color:var(--ac);box-shadow:var(--sb);}
+.btn-p:hover{background:var(--acH);border-color:var(--acH);transform:translateY(-2px);box-shadow:var(--sbL);}
+.btn-p:disabled{background:var(--g400);border-color:var(--g400);box-shadow:none;cursor:not-allowed;transform:none!important;opacity:.65;}
+.btn-g{background:transparent;color:var(--ink2);border-color:var(--bd2);}
+.btn-g:hover{border-color:var(--ac);color:var(--ac);background:var(--acL);transform:translateY(-2px);}
+.btn-g:disabled{opacity:.4;cursor:not-allowed;transform:none!important;pointer-events:none;}
+.btn-red{background:transparent;color:#dc2626;border-color:#fecaca;}
+.btn-red:hover{background:#fff1f2;border-color:#dc2626;transform:translateY(-2px);}
+.btn-sm{padding:8px 16px;font-size:.82rem;}
+.btn-lg{padding:14px 30px;font-size:.97rem;border-radius:var(--r4);}
+
+/* ═══════ NAVBAR ═══════ */
+.nav{position:sticky;top:0;z-index:200;will-change:background-color,box-shadow;transition:background var(--tb),box-shadow var(--tb);}
+.nav.stuck{background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--bd);box-shadow:0 1px 24px rgba(15,23,42,.07);}
+.nav-row{display:flex;align-items:center;justify-content:space-between;height:68px;}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--fd);font-weight:700;font-size:1.18rem;color:var(--ink);transition:opacity var(--tf);-webkit-tap-highlight-color:transparent;}
+.nav-logo:hover{opacity:.8;}
+.nlm{width:36px;height:36px;background:linear-gradient(135deg,var(--b600),var(--b400));border-radius:10px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(37,99,235,.3);flex-shrink:0;}
+.nlm svg{width:18px;height:18px;}
+.nav-links{display:flex;align-items:center;gap:2px;}
+.nav-links a{font-size:.88rem;font-weight:600;color:var(--g600);padding:8px 14px;border-radius:var(--r2);transition:color var(--tf),background var(--tf);}
+.nav-links a:hover,.nav-links a.cur{color:var(--ac);}
+.nav-links a:hover{background:var(--acL);}
+.nav-acts{display:flex;align-items:center;gap:10px;}
+.burger{display:none;width:40px;height:40px;border-radius:var(--r2);background:var(--sf2);align-items:center;justify-content:center;border:1px solid var(--bd);cursor:pointer;transition:background var(--tf);-webkit-tap-highlight-color:transparent;}
+.burger:hover{background:var(--acM);}
+.bw{display:flex;flex-direction:column;gap:4px;}
+.bb{display:block;width:18px;height:2px;border-radius:1px;background:var(--ink);transition:transform var(--tb),opacity var(--tf);transform-origin:center;}
+.burger.on .bb:nth-child(1){transform:translateY(6px) rotate(45deg);}
+.burger.on .bb:nth-child(2){opacity:0;transform:scaleX(0);}
+.burger.on .bb:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+.drw{position:fixed;inset:0;z-index:199;pointer-events:none;visibility:hidden;transition:visibility 0s var(--ts);}
+.drw.on{pointer-events:auto;visibility:visible;transition:visibility 0s 0s;}
+.db{position:absolute;inset:0;background:rgba(15,23,42,.48);opacity:0;backdrop-filter:blur(4px);transition:opacity var(--ts);will-change:opacity;}
+.drw.on .db{opacity:1;}
+.dp{position:absolute;top:0;right:0;bottom:0;width:min(320px,86vw);background:#fff;box-shadow:-6px 0 40px rgba(15,23,42,.16);transform:translateX(100%);transition:transform var(--ts);will-change:transform;display:flex;flex-direction:column;padding:24px;}
+.drw.on .dp{transform:translateX(0);}
+.dh{display:flex;align-items:center;justify-content:space-between;padding-bottom:20px;border-bottom:1px solid var(--bd);margin-bottom:16px;}
+.dx{width:36px;height:36px;border-radius:var(--r2);background:var(--sf2);border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background var(--tf);}
+.dx:hover{background:#fecdd3;}
+.dx svg{width:18px;height:18px;stroke:var(--ink);}
+.dnav{display:flex;flex-direction:column;gap:2px;flex:1;}
+.dnav a{font-family:var(--fd);font-weight:600;font-size:1rem;padding:13px 16px;border-radius:var(--r3);color:var(--ink2);display:flex;align-items:center;gap:12px;transition:background var(--tf),color var(--tf);}
+.dnav a:hover{background:var(--acL);color:var(--ac);}
+.dnav a svg{width:18px;height:18px;stroke:currentColor;opacity:.55;flex-shrink:0;}
+.df{padding-top:20px;border-top:1px solid var(--bd);}
+.df .btn{width:100%;}
+.drw.on .dnav a{animation:drwIn .3s var(--ez) both;}
+.drw.on .dnav a:nth-child(1){animation-delay:.08s;}
+.drw.on .dnav a:nth-child(2){animation-delay:.13s;}
+.drw.on .dnav a:nth-child(3){animation-delay:.18s;}
+.drw.on .dnav a:nth-child(4){animation-delay:.23s;}
+@keyframes drwIn{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:translateX(0)}}
+
+/* ═══════ PAGE HEADER ═══════ */
+.page-header{background:#fff;border-bottom:1px solid var(--bd);padding:clamp(28px,5vw,48px) 0 clamp(24px,4vw,40px);}
+.ph-inner{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.ph-breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--mu);margin-bottom:14px;font-family:var(--fd);font-weight:600;}
+.ph-breadcrumb a{color:var(--mu);transition:color var(--tf);}
+.ph-breadcrumb a:hover{color:var(--ac);}
+.ph-breadcrumb svg{width:12px;height:12px;stroke:var(--mu2);flex-shrink:0;}
+.ph-title{display:flex;align-items:center;gap:14px;margin-bottom:10px;}
+.ph-icon{width:48px;height:48px;background:linear-gradient(135deg,var(--b50),var(--b100));border-radius:var(--r3);display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid var(--b200);}
+.ph-icon svg{width:24px;height:24px;stroke:var(--ac);}
+.ph-h1{font-family:var(--fd);font-weight:700;font-size:clamp(1.5rem,3vw,2rem);letter-spacing:-.022em;color:var(--ink);}
+.ph-desc{font-size:.95rem;color:var(--mu);line-height:1.65;max-width:520px;}
+.ph-badge{display:inline-flex;align-items:center;gap:6px;margin-top:12px;background:var(--acL);border:1px solid var(--b200);border-radius:var(--rF);padding:4px 12px;font-size:.72rem;font-weight:700;font-family:var(--fd);letter-spacing:.05em;text-transform:uppercase;color:var(--ac);}
+.ph-badge-dot{width:5px;height:5px;background:#22c55e;border-radius:50%;animation:blink 1.8s infinite;}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.65)}}
+.ph-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px;flex-shrink:0;}
+.ph-tools-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;}
+.tnchip{display:inline-flex;align-items:center;gap:6px;font-family:var(--fd);font-size:.78rem;font-weight:600;padding:6px 12px;border-radius:var(--rF);border:1.5px solid var(--bd);background:#fff;color:var(--ink2);transition:all var(--tb);-webkit-tap-highlight-color:transparent;}
+.tnchip:hover{border-color:var(--ac);color:var(--ac);background:var(--acL);}
+.tnchip svg{width:13px;height:13px;stroke:currentColor;opacity:.7;}
+
+/* ═══════ TOOL WORKSPACE ═══════ */
+.tool-main{padding:clamp(28px,4vw,48px) 0 clamp(52px,8vw,88px);}
+.tool-layout{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start;}
+
+/* ── CARDS ── */
+.card{background:#fff;border:1px solid var(--bd);border-radius:var(--r4);box-shadow:var(--s1);overflow:hidden;position:relative;}
+.card-hdr{display:flex;align-items:center;justify-content:space-between;padding:15px 20px;border-bottom:1px solid var(--bd);background:var(--g50);}
+.card-title{display:flex;align-items:center;gap:8px;font-family:var(--fd);font-weight:700;font-size:.93rem;color:var(--ink);}
+.card-title svg{width:16px;height:16px;stroke:var(--ac);flex-shrink:0;}
+.card-acts{display:flex;align-items:center;gap:6px;}
+
+/* ── TEXTAREA ── */
+.tool-ta{width:100%;min-height:280px;max-height:520px;resize:vertical;background:var(--g50);border:1.5px solid var(--bd);border-radius:var(--r3);padding:16px;font-family:var(--fb);font-size:.9rem;color:var(--ink);line-height:1.72;outline:none;transition:border-color var(--tb),box-shadow var(--tb),background var(--tb);}
+.tool-ta::placeholder{color:var(--mu2);}
+.tool-ta:focus{border-color:var(--ac);box-shadow:0 0 0 3px rgba(37,99,235,.1);background:#fff;}
+
+/* ── STATS BAR ── */
+.stats-row{display:flex;margin-top:12px;background:var(--g50);border:1px solid var(--bd);border-radius:var(--r2);overflow:hidden;}
+.st{flex:1;padding:10px 8px;text-align:center;border-right:1px solid var(--bd);}
+.st:last-child{border-right:none;}
+.st-n{font-family:var(--fd);font-weight:700;font-size:.95rem;color:var(--ink);transition:color var(--tb),transform var(--tsp);}
+.st-n.pop{color:var(--ac);animation:statpop .32s var(--esp);}
+@keyframes statpop{0%{transform:scale(1.18)}60%{transform:scale(.95)}100%{transform:scale(1)}}
+.st-l{font-size:.65rem;color:var(--mu);text-transform:uppercase;letter-spacing:.07em;font-family:var(--fd);font-weight:600;margin-top:1px;}
+
+/* ── SETTINGS ── */
+.settings-row{display:flex;align-items:center;gap:12px;margin-top:14px;flex-wrap:wrap;}
+.sg label{font-size:.79rem;font-weight:700;font-family:var(--fd);color:var(--ink2);white-space:nowrap;}
+.sg{display:flex;align-items:center;gap:7px;}
+.sg select{font-family:var(--fb);font-size:.82rem;color:var(--ink);background:#fff;border:1.5px solid var(--bd);border-radius:var(--r2);padding:7px 28px 7px 10px;outline:none;cursor:pointer;transition:border-color var(--tb);appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;}
+.sg select:focus{border-color:var(--ac);}
+
+/* ── PROGRESS BAR ── */
+.prog-wrap{margin-top:14px;display:none;}
+.prog-wrap.show{display:block;}
+.prog-bg{background:var(--bd);border-radius:var(--rF);height:5px;overflow:hidden;}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--b600),var(--b400));border-radius:var(--rF);width:0%;transition:width .38s var(--ez);will-change:width;}
+.prog-lbl{font-size:.73rem;color:var(--mu);margin-top:5px;font-family:var(--fd);font-weight:600;}
+
+/* ── ACTION ROW ── */
+.act-row{display:flex;align-items:center;gap:10px;margin-top:16px;flex-wrap:wrap;}
+
+/* ── OUTPUT EMPTY STATE ── */
+.out-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:360px;padding:36px;text-align:center;}
+.out-empty svg{width:52px;height:52px;stroke:var(--bd2);margin-bottom:16px;opacity:.65;}
+.out-empty h3{font-family:var(--fd);font-weight:700;font-size:1rem;color:var(--mu);margin-bottom:7px;}
+.out-empty p{font-size:.83rem;color:var(--mu2);line-height:1.6;max-width:220px;}
+
+/* ── COMPRESSION METER ── */
+.compress-bar-wrap{
+  padding:14px 20px 0;display:none;
+}
+.compress-bar-wrap.show{display:block;}
+.cb-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;}
+.cb-label{font-family:var(--fd);font-size:.75rem;font-weight:700;color:var(--mu);}
+.cb-pct{font-family:var(--fd);font-size:.75rem;font-weight:700;}
+.cb-bg{height:6px;background:var(--g100);border-radius:var(--rF);overflow:hidden;}
+.cb-fill{height:100%;border-radius:var(--rF);transition:width .6s var(--ez),background .4s;will-change:width;}
+
+/* ── OUTPUT TABS ── */
+.out-tabs{display:flex;gap:0;border-bottom:1px solid var(--bd);background:var(--g50);}
+.out-tab{font-family:var(--fd);font-weight:700;font-size:.82rem;padding:11px 18px;color:var(--mu);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color var(--tb),border-color var(--tb),background var(--tb);-webkit-tap-highlight-color:transparent;}
+.out-tab:hover{color:var(--ink2);background:var(--g100);}
+.out-tab.active{color:var(--ac);border-bottom-color:var(--ac);}
+.out-tab-icon{margin-right:5px;}
+
+/* ── SUMMARY OUTPUT ── */
+.summ-wrap{padding:18px 20px;display:none;}
+.summ-wrap.show{display:block;}
+.summ-para{
+  font-size:.92rem;color:var(--ink2);line-height:1.78;
+  background:var(--g50);border:1px solid var(--bd);border-radius:var(--r3);
+  padding:16px 18px;
+  animation:fadeIn .4s var(--ez) both;
+}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── BULLETS OUTPUT ── */
+.bullets-wrap{padding:14px 20px;display:none;}
+.bullets-wrap.show{display:block;}
+.b-item{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:10px 14px;background:var(--g50);border:1px solid var(--bd);
+  border-left:3px solid var(--b400);border-radius:0 var(--r2) var(--r2) 0;
+  font-size:.88rem;color:var(--ink2);line-height:1.6;margin-bottom:7px;
+  opacity:0;animation:bulletIn .32s var(--ez) both;
+  transition:background var(--tf),border-left-color var(--tf);
+  cursor:default;
+}
+.b-item:last-child{margin-bottom:0;}
+.b-item:hover{background:var(--acL);border-left-color:var(--ac);}
+@keyframes bulletIn{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:translateX(0)}}
+.b-dot{width:7px;height:7px;border-radius:50%;background:var(--b400);flex-shrink:0;margin-top:5px;transition:background var(--tf);}
+.b-item:hover .b-dot{background:var(--ac);}
+
+/* ── OUTPUT COMPARISON STRIP ── */
+.compare-strip{
+  display:none;align-items:center;gap:0;
+  background:var(--g50);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);
+  overflow:hidden;
+}
+.compare-strip.show{display:flex;}
+.cs-item{flex:1;padding:10px 8px;text-align:center;border-right:1px solid var(--bd);}
+.cs-item:last-child{border-right:none;}
+.cs-n{font-family:var(--fd);font-weight:700;font-size:.92rem;}
+.cs-l{font-size:.64rem;color:var(--mu);text-transform:uppercase;letter-spacing:.07em;font-family:var(--fd);font-weight:600;margin-top:1px;}
+.cs-original .cs-n{color:var(--g500);}
+.cs-summary .cs-n{color:var(--ac);}
+.cs-saved .cs-n{color:#16a34a;}
+
+/* ── OUTPUT FOOTER ── */
+.out-foot{display:none;align-items:center;justify-content:space-between;padding:12px 20px;border-top:1px solid var(--bd);background:var(--g50);flex-wrap:wrap;gap:8px;}
+.out-foot.show{display:flex;}
+.of-left{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.of-right{display:flex;gap:8px;flex-wrap:wrap;}
+.out-badge{display:inline-flex;align-items:center;gap:4px;background:#dcfce7;border:1px solid #bbf7d0;border-radius:var(--rF);padding:2px 8px;font-family:var(--fd);font-size:.7rem;font-weight:700;color:#15803d;}
+.out-badge svg{width:10px;height:10px;stroke:#15803d;}
+
+/* ── LOADER ── */
+.loader{position:absolute;inset:0;background:rgba(255,255,255,.9);backdrop-filter:blur(3px);z-index:10;display:none;flex-direction:column;align-items:center;justify-content:center;gap:12px;border-radius:var(--r4);}
+.loader.show{display:flex;}
+.spinner{width:36px;height:36px;border-radius:50%;border:3px solid var(--b200);border-top-color:var(--ac);animation:spin .65s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loader-txt{font-family:var(--fd);font-weight:700;font-size:.85rem;color:var(--ink2);}
+.dots::after{content:'';animation:dots 1.4s steps(4,end) infinite;}
+@keyframes dots{0%{content:''}25%{content:'.'}50%{content:'..'}75%{content:'...'}100%{content:''}}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:28px;right:28px;z-index:9999;background:var(--g900);color:#fff;border-radius:var(--r3);padding:12px 18px;font-family:var(--fd);font-weight:600;font-size:.85rem;display:flex;align-items:center;gap:9px;box-shadow:var(--s4);transform:translateY(80px);opacity:0;transition:transform var(--tsp),opacity var(--tb);pointer-events:none;max-width:320px;}
+.toast.show{transform:translateY(0);opacity:1;}
+.toast svg{width:16px;height:16px;flex-shrink:0;}
+.t-ok svg{stroke:#4ade80;}
+.t-err svg{stroke:#fca5a5;}
+.t-inf svg{stroke:#93c5fd;}
+
+/* ═══════ HOW IT WORKS ═══════ */
+.how-sec{background:#fff;border-top:1px solid var(--bd);padding:clamp(36px,5vw,60px) 0;}
+.how-hd{text-align:center;margin-bottom:32px;}
+.chip-sm{display:inline-flex;align-items:center;gap:6px;font-family:var(--fd);font-size:.71rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ac);background:var(--acL);border:1px solid var(--b200);padding:5px 13px;border-radius:var(--rF);margin-bottom:12px;}
+.chip-sm-dot{width:5px;height:5px;background:var(--ac);border-radius:50%;animation:blink 2.2s ease-in-out infinite;}
+.how-hd h2{font-family:var(--fd);font-weight:700;font-size:clamp(1.35rem,2.5vw,1.85rem);letter-spacing:-.022em;color:var(--ink);margin-bottom:6px;}
+.how-hd p{font-size:.9rem;color:var(--mu);max-width:440px;margin:0 auto;}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.step-card{background:var(--g50);border:1px solid var(--bd);border-radius:var(--r4);padding:clamp(20px,2.5vw,28px);text-align:center;transition:transform var(--tsp),box-shadow var(--tb);}
+.step-card:hover{transform:translateY(-4px);box-shadow:var(--s3);}
+.step-n{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--b600),var(--b500));color:#fff;font-family:var(--fd);font-weight:700;font-size:1rem;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;box-shadow:0 4px 14px rgba(37,99,235,.26);}
+.step-t{font-family:var(--fd);font-weight:700;font-size:.92rem;color:var(--ink);margin-bottom:7px;}
+.step-d{font-size:.82rem;color:var(--mu);line-height:1.58;}
+
+/* ═══════ TIPS ═══════ */
+.tips-sec{background:var(--g50);border-top:1px solid var(--bd);padding:clamp(32px,4vw,52px) 0;}
+.tips-hd{margin-bottom:clamp(20px,3vw,28px);}
+.tips-hd h2{font-family:var(--fd);font-weight:700;font-size:clamp(1.2rem,2vw,1.55rem);letter-spacing:-.02em;color:var(--ink);margin-bottom:5px;}
+.tips-hd p{font-size:.88rem;color:var(--mu);}
+.tips-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.tip-card{background:#fff;border:1px solid var(--bd);border-radius:var(--r3);padding:16px 18px;display:flex;gap:12px;align-items:flex-start;transition:border-color var(--tb),transform var(--tsp);}
+.tip-card:hover{border-color:var(--b200);transform:translateX(4px);}
+.tip-ico{width:36px;height:36px;border-radius:var(--r2);background:var(--acL);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background var(--tb),transform var(--tsp);}
+.tip-ico svg{width:17px;height:17px;stroke:var(--ac);}
+.tip-card:hover .tip-ico{background:var(--acM);transform:scale(1.08) rotate(-4deg);}
+.tip-t{font-family:var(--fd);font-weight:700;font-size:.87rem;color:var(--ink);margin-bottom:3px;}
+.tip-d{font-size:.8rem;color:var(--mu);line-height:1.55;}
+
+/* ═══════ MORE TOOLS ═══════ */
+.more-sec{background:#fff;border-top:1px solid var(--bd);padding:clamp(32px,4vw,52px) 0;}
+.more-hd{margin-bottom:clamp(18px,2.5vw,26px);}
+.more-hd h2{font-family:var(--fd);font-weight:700;font-size:clamp(1.2rem,2vw,1.55rem);letter-spacing:-.02em;color:var(--ink);margin-bottom:5px;}
+.more-hd p{font-size:.88rem;color:var(--mu);}
+.more-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:12px;}
+.more-card{background:var(--g50);border:1px solid var(--bd);border-radius:var(--r3);padding:14px 16px;display:flex;align-items:center;gap:11px;transition:border-color var(--tb),transform var(--tsp),box-shadow var(--tb);}
+.more-card:hover{border-color:var(--b200);transform:translateY(-3px);box-shadow:var(--s2);}
+.more-ico{width:34px;height:34px;background:var(--acL);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background var(--tb),transform var(--tsp);}
+.more-ico svg{width:16px;height:16px;stroke:var(--ac);}
+.more-card:hover .more-ico{background:var(--acM);transform:scale(1.1) rotate(-4deg);}
+.more-name{font-family:var(--fd);font-weight:700;font-size:.81rem;color:var(--ink);}
+.more-sub{font-size:.69rem;color:var(--mu);}
+
+/* ═══════ FOOTER ═══════ */
+footer{background:var(--g950);padding:clamp(36px,5vw,52px) 0 28px;}
+.foot-row{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-bottom:20px;margin-bottom:20px;border-bottom:1px solid rgba(255,255,255,.08);}
+.f-logo{display:flex;align-items:center;gap:10px;font-family:var(--fd);font-weight:700;font-size:1.05rem;color:#fff;}
+.flm{width:32px;height:32px;background:linear-gradient(135deg,var(--b600),var(--b400));border-radius:9px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(37,99,235,.28);}
+.flm svg{width:16px;height:16px;}
+.f-nav{display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.f-nav a{font-size:.84rem;color:rgba(255,255,255,.42);transition:color var(--tf);}
+.f-nav a:hover{color:#fff;}
+.f-bot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.f-copy{font-size:.8rem;color:rgba(255,255,255,.26);}
+.f-tag{font-size:.8rem;color:rgba(255,255,255,.26);}
+.f-tag span{color:rgba(255,255,255,.46);}
+
+/* ═══════ SCROLL REVEAL ═══════ */
+.reveal{opacity:0;transform:translateY(22px);will-change:opacity,transform;transition:opacity .6s var(--ez),transform .6s var(--ez);}
+.reveal.in{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}
+.d4{transition-delay:.28s}.d5{transition-delay:.35s}.d6{transition-delay:.42s}
+
+/* ═══════ RESPONSIVE ═══════ */
+@media(max-width:960px){
+  .tool-layout{grid-template-columns:1fr;}
+  .ph-right{display:none;}
+}
+@media(max-width:820px){
+  .nav-links,.nav-acts .btn-g{display:none;}
+  .burger{display:flex;}
+  .steps-grid{grid-template-columns:1fr;}
+  .tips-grid{grid-template-columns:1fr;}
+}
+@media(max-width:600px){
+  .act-row{flex-direction:column;align-items:stretch;}
+  .act-row .btn{justify-content:center;}
+  .settings-row{flex-direction:column;align-items:flex-start;}
+  .more-grid{grid-template-columns:repeat(2,1fr);}
+  .foot-row{flex-direction:column;align-items:flex-start;}
+  .f-bot{flex-direction:column;align-items:flex-start;gap:6px;}
+  .of-right{flex-wrap:wrap;}
+}
+@media(max-width:380px){.more-grid{grid-template-columns:1fr;}}
+@supports(padding:max(0px)){
+  .nav-row{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right);}
+  footer{padding-bottom:max(28px,env(safe-area-inset-bottom));}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════ NAVBAR ══════ -->
+<nav class="nav" id="navbar">
+  <div class="wrap">
+    <div class="nav-row">
+      <a href="../index.html" class="nav-logo" aria-label="Study Hub AI home">
+        <div class="nlm"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        Study Hub AI
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../tools.html" class="cur">Tools</a></li>
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="../about.html">About</a></li>
+      </ul>
+      <div class="nav-acts">
+        <a href="../tools.html" class="btn btn-g btn-sm" style="display:inline-flex;">All Tools</a>
+        <a href="../tools.html" class="btn btn-p btn-sm">Start Studying</a>
+        <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+          <div class="bw"><span class="bb"></span><span class="bb"></span><span class="bb"></span></div>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- DRAWER -->
+<div class="drw" id="drw" role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="db" id="drw-back"></div>
+  <div class="dp">
+    <div class="dh">
+      <div class="nav-logo" style="font-size:1rem;">
+        <div class="nlm" style="width:30px;height:30px;border-radius:8px;"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        Study Hub AI
+      </div>
+      <button class="dx" id="drw-x" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <nav class="dnav">
+      <a href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home</a>
+      <a href="../tools.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>All Tools</a>
+      <a href="../blog.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Blog</a>
+      <a href="../about.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>About</a>
+    </nav>
+    <div class="df"><a href="../tools.html" class="btn btn-p btn-lg">Browse All Tools</a></div>
+  </div>
+</div>
+
+
+<!-- ══════ PAGE HEADER ══════ -->
+<div class="page-header">
+  <div class="wrap">
+    <div class="ph-inner">
+      <div>
+        <nav class="ph-breadcrumb" aria-label="Breadcrumb">
+          <a href="../index.html">Home</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          <a href="../tools.html">Tools</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          <span style="color:var(--ink2);font-weight:600;">Paragraph Summarizer</span>
+        </nav>
+        <div class="ph-title">
+          <div class="ph-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="21" y1="10" x2="7" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/>
+              <line x1="21" y1="14" x2="3" y2="14"/><line x1="21" y1="18" x2="7" y2="18"/>
+            </svg>
+          </div>
+          <h1 class="ph-h1">Paragraph Summarizer</h1>
+        </div>
+        <p class="ph-desc">Paste any long paragraph, textbook chapter, or article and get an instant concise summary plus structured bullet points — ready for revision.</p>
+        <div class="ph-badge"><span class="ph-badge-dot"></span>Free · Two output formats · No signup</div>
+      </div>
+      <div class="ph-right">
+        <span style="font-size:.78rem;font-weight:600;font-family:var(--fd);color:var(--mu);">Try other tools:</span>
+        <div class="ph-tools-row">
+          <a href="notes-generator.html" class="tnchip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Notes</a>
+          <a href="bullet-points.html" class="tnchip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="6" x2="20" y2="6"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="18" x2="20" y2="18"/></svg>Bullets</a>
+          <a href="flashcard-generator.html" class="tnchip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>Flashcards</a>
+          <a href="exam-answer.html" class="tnchip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/></svg>Exam Answers</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════ WORKSPACE ══════ -->
+<main class="tool-main">
+  <div class="wrap-md">
+    <div class="tool-layout">
+
+      <!-- ── INPUT CARD ── -->
+      <div class="card" id="input-card">
+        <div class="loader" id="loader">
+          <div class="spinner"></div>
+          <div class="loader-txt">Summarising<span class="dots"></span></div>
+        </div>
+
+        <div class="card-hdr">
+          <div class="card-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            Paste Your Text
+          </div>
+          <div class="card-acts">
+            <button class="btn btn-g btn-sm" id="example-btn">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Example
+            </button>
+            <button class="btn btn-red btn-sm" id="clear-btn">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              Clear
+            </button>
+          </div>
+        </div>
+
+        <div style="padding:18px 20px 0;">
+          <textarea
+            id="input-ta"
+            class="tool-ta"
+            placeholder="Paste your paragraph, article, or chapter here…
+
+Example: The Industrial Revolution, which began in Britain in the late 18th century, fundamentally transformed the way goods were produced and how people lived and worked. Prior to industrialisation, most production took place in small workshops or homes using hand tools. The introduction of steam-powered machinery, iron and steel production, and new transportation networks dramatically accelerated the pace of manufacturing…"
+            aria-label="Text to summarise"
+            maxlength="20000"
+          ></textarea>
+
+          <!-- Live stats -->
+          <div class="stats-row" role="status" aria-live="polite">
+            <div class="st"><div class="st-n" id="wc">0</div><div class="st-l">Words</div></div>
+            <div class="st"><div class="st-n" id="cc">0</div><div class="st-l">Chars</div></div>
+            <div class="st"><div class="st-n" id="sc">0</div><div class="st-l">Sentences</div></div>
+            <div class="st"><div class="st-n" id="rt">—</div><div class="st-l">Read time</div></div>
+          </div>
+        </div>
+
+        <!-- Settings -->
+        <div style="padding:0 20px;">
+          <div class="settings-row">
+            <div class="sg">
+              <label for="length-sel">Summary length:</label>
+              <select id="length-sel" aria-label="Summary length">
+                <option value="brief">Brief (1–2 sentences)</option>
+                <option value="short" selected>Short (3–4 sentences)</option>
+                <option value="medium">Medium (5–6 sentences)</option>
+                <option value="detailed">Detailed (7–8 sentences)</option>
+              </select>
+            </div>
+            <div class="sg">
+              <label for="focus-sel">Focus:</label>
+              <select id="focus-sel" aria-label="Summarisation focus">
+                <option value="main">Main ideas</option>
+                <option value="facts">Key facts & data</option>
+                <option value="cause">Causes & effects</option>
+                <option value="terms">Key terms</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress -->
+        <div class="prog-wrap" id="prog-wrap" style="padding:0 20px;">
+          <div class="prog-bg"><div class="prog-fill" id="prog-fill"></div></div>
+          <div class="prog-lbl" id="prog-lbl">Extracting key sentences…</div>
+        </div>
+
+        <!-- Actions -->
+        <div style="padding:16px 20px 20px;">
+          <div class="act-row">
+            <button class="btn btn-p" id="gen-btn" disabled>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="21" y1="10" x2="7" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="21" y1="18" x2="7" y2="18"/>
+              </svg>
+              Generate Summary
+            </button>
+            <span style="font-size:.74rem;color:var(--mu2);font-family:var(--fd);">
+              <kbd style="background:var(--sf2);border:1px solid var(--bd);border-radius:4px;padding:1px 6px;font-size:.73rem;font-weight:700;color:var(--ink2);">Ctrl</kbd>+<kbd style="background:var(--sf2);border:1px solid var(--bd);border-radius:4px;padding:1px 6px;font-size:.73rem;font-weight:700;color:var(--ink2);">↵</kbd>
+            </span>
+          </div>
+        </div>
+      </div><!-- /input card -->
+
+      <!-- ── OUTPUT CARD ── -->
+      <div class="card" id="output-card">
+        <div class="card-hdr">
+          <div class="card-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 11 12 14 22 4"/>
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+            </svg>
+            Summary
+          </div>
+          <div id="ready-badge" style="display:none;">
+            <span style="display:inline-flex;align-items:center;gap:4px;background:#dcfce7;border:1px solid #bbf7d0;border-radius:var(--rF);padding:3px 10px;font-family:var(--fd);font-size:.7rem;font-weight:700;color:#15803d;">
+              <span style="width:5px;height:5px;background:#22c55e;border-radius:50%;animation:blink 1.6s infinite;"></span>
+              Ready
+            </span>
+          </div>
+        </div>
+
+        <!-- Empty state -->
+        <div class="out-empty" id="out-empty">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="21" y1="10" x2="7" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/>
+            <line x1="21" y1="14" x2="3" y2="14"/><line x1="21" y1="18" x2="7" y2="18"/>
+          </svg>
+          <h3>No summary yet</h3>
+          <p>Paste your text on the left and click <strong>Generate Summary</strong> to get started.</p>
+        </div>
+
+        <!-- Compression meter -->
+        <div class="compress-bar-wrap" id="compress-bar-wrap">
+          <div class="cb-hdr">
+            <span class="cb-label">Compression</span>
+            <span class="cb-pct" id="cb-pct" style="color:var(--ac);">0%</span>
+          </div>
+          <div class="cb-bg"><div class="cb-fill" id="cb-fill" style="width:0%;background:var(--ac);"></div></div>
+        </div>
+
+        <!-- Comparison strip -->
+        <div class="compare-strip" id="compare-strip">
+          <div class="cs-item cs-original">
+            <div class="cs-n" id="orig-words">—</div><div class="cs-l">Original</div>
+          </div>
+          <div class="cs-item cs-summary">
+            <div class="cs-n" id="summ-words">—</div><div class="cs-l">Summary</div>
+          </div>
+          <div class="cs-item cs-saved">
+            <div class="cs-n" id="saved-words">—</div><div class="cs-l">Words saved</div>
+          </div>
+        </div>
+
+        <!-- Output tabs -->
+        <div class="out-tabs" id="out-tabs" style="display:none;">
+          <button class="out-tab active" data-tab="paragraph" id="tab-para">
+            <span class="out-tab-icon">¶</span> Paragraph
+          </button>
+          <button class="out-tab" data-tab="bullets" id="tab-bullets">
+            <span class="out-tab-icon">•</span> Bullet Points
+          </button>
+        </div>
+
+        <!-- Paragraph summary -->
+        <div class="summ-wrap" id="summ-wrap">
+          <div class="summ-para" id="summ-para"></div>
+        </div>
+
+        <!-- Bullet summary -->
+        <div class="bullets-wrap" id="bullets-wrap">
+          <div id="bullets-list"></div>
+        </div>
+
+        <!-- Output footer -->
+        <div class="out-foot" id="out-foot">
+          <div class="of-left">
+            <span class="out-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span id="out-badge-lbl">Summary ready</span>
+            </span>
+          </div>
+          <div class="of-right">
+            <button class="btn btn-g btn-sm" id="copy-btn" disabled>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy
+            </button>
+            <button class="btn btn-g btn-sm" id="download-btn" disabled>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download
+            </button>
+            <button class="btn btn-red btn-sm" id="clear-out-btn" disabled>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+              Clear
+            </button>
+          </div>
+        </div>
+
+      </div><!-- /output card -->
+    </div><!-- /tool-layout -->
+  </div>
+</main>
+
+
+<!-- ══════ HOW IT WORKS ══════ -->
+<section class="how-sec">
+  <div class="wrap-md">
+    <div class="how-hd reveal">
+      <div class="chip-sm"><span class="chip-sm-dot"></span>How To Use</div>
+      <h2>Summarise any text in three steps</h2>
+      <p>No account needed — paste, summarise, and copy in seconds.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card reveal d1">
+        <div class="step-n">1</div>
+        <div class="step-t">Paste Your Text</div>
+        <div class="step-d">Copy any paragraph, textbook section, article, or lecture notes and paste it into the input area.</div>
+      </div>
+      <div class="step-card reveal d2">
+        <div class="step-n">2</div>
+        <div class="step-t">Choose Your Settings</div>
+        <div class="step-d">Select how long you want the summary to be and what to focus on — main ideas, key facts, causes and effects, or key terms.</div>
+      </div>
+      <div class="step-card reveal d3">
+        <div class="step-n">3</div>
+        <div class="step-t">Copy or Download</div>
+        <div class="step-d">Switch between Paragraph and Bullet Point views, then copy to clipboard or download as a .txt file for offline revision.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════ TIPS ══════ -->
+<section class="tips-sec">
+  <div class="wrap-md">
+    <div class="tips-hd reveal">
+      <h2>Tips for Better Summaries</h2>
+      <p>Get more useful results from the summariser with these quick techniques.</p>
+    </div>
+    <div class="tips-grid">
+      <div class="tip-card reveal d1">
+        <div class="tip-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div><div class="tip-t">Paste complete paragraphs, not fragments</div><div class="tip-d">The summariser works best with complete, well-formed paragraphs. Avoid pasting bullet points or heavily formatted text — plain prose gives the cleanest summaries.</div></div>
+      </div>
+      <div class="tip-card reveal d2">
+        <div class="tip-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div><div class="tip-t">Use "Key facts & data" for science subjects</div><div class="tip-d">For biology, chemistry, or physics texts, the Key Facts focus extracts numbers, definitions, and measurable facts — exactly what you need for exam revision.</div></div>
+      </div>
+      <div class="tip-card reveal d3">
+        <div class="tip-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg></div>
+        <div><div class="tip-t">Use Bullets for flashcard creation</div><div class="tip-d">After generating bullet points, copy them and paste into the Flashcard Generator to instantly create Q&A study cards from your summary.</div></div>
+      </div>
+      <div class="tip-card reveal d4">
+        <div class="tip-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <div><div class="tip-t">Check the compression percentage</div><div class="tip-d">The compression bar shows how much shorter your summary is vs the original. Aim for 70–85% compression for revision notes — enough detail to remember the topic.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════ MORE TOOLS ══════ -->
+<section class="more-sec">
+  <div class="wrap-md">
+    <div class="more-hd reveal">
+      <h2>More Free Study Tools</h2>
+      <p>Every tool is free — no signup, no limits.</p>
+    </div>
+    <div class="more-grid">
+      <a href="notes-generator.html" class="more-card reveal d1">
+        <div class="more-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div><div class="more-name">Notes Generator</div><div class="more-sub">Text → Study Notes</div></div>
+      </a>
+      <a href="bullet-points.html" class="more-card reveal d2">
+        <div class="more-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="6" x2="20" y2="6"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="18" x2="20" y2="18"/><circle cx="4" cy="6" r="1.5" fill="currentColor" stroke="none"/><circle cx="4" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="4" cy="18" r="1.5" fill="currentColor" stroke="none"/></svg></div>
+        <div><div class="more-name">Bullet Converter</div><div class="more-sub">Para → Bullets</div></div>
+      </a>
+      <a href="flashcard-generator.html" class="more-card reveal d3">
+        <div class="more-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
+        <div><div class="more-name">Flashcard Generator</div><div class="more-sub">Notes → Cards</div></div>
+      </a>
+      <a href="exam-answer.html" class="more-card reveal d4">
+        <div class="more-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <div><div class="more-name">Exam Answers</div><div class="more-sub">Question → Answer</div></div>
+      </a>
+      <a href="word-counter.html" class="more-card reveal d5">
+        <div class="more-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div><div class="more-name">Word Counter</div><div class="more-sub">Live Stats</div></div>
+      </a>
+      <a href="study-planner.html" class="more-card reveal d6">
+        <div class="more-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <div><div class="more-name">Study Planner</div><div class="more-sub">Build a Schedule</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════ FOOTER ══════ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <div class="f-logo">
+        <div class="flm"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        Study Hub AI
+      </div>
+      <nav class="f-nav" aria-label="Footer navigation">
+        <a href="../index.html">Home</a>
+        <a href="../tools.html">All Tools</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../about.html">About</a>
+        <a href="../privacy.html">Privacy</a>
+      </nav>
+    </div>
+    <div class="f-bot">
+      <p class="f-copy">© 2026 Study Hub AI. All rights reserved.</p>
+      <p class="f-tag">Free tools for <span>smarter studying</span>.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <svg id="toast-svg" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></svg>
+  <span id="toast-msg"></span>
+</div>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Paragraph Summarizer – Study Hub AI","url":"https://studyhubai.com/tools/paragraph-summarizer.html","description":"Paste any text and get an instant short summary plus bullet points. Free AI summarizer for students.","applicationCategory":"EducationApplication","isAccessibleForFree":true,"operatingSystem":"Any"}
+</script>
+
+<script>
+/* ════════════════════════════════════════════════════
+   STUDY HUB AI — PARAGRAPH SUMMARIZER
+   Pure Vanilla JS, zero dependencies
+════════════════════════════════════════════════════ */
+(function(){
+'use strict';
+
+/* ── rAF throttle ── */
+function raf(fn){let id;return()=>{cancelAnimationFrame(id);id=requestAnimationFrame(fn);};}
+
+/* ── DOM ── */
+const navbar     = document.getElementById('navbar');
+const burger     = document.getElementById('burger');
+const drw        = document.getElementById('drw');
+const drwBack    = document.getElementById('drw-back');
+const drwX       = document.getElementById('drw-x');
+const inputTa    = document.getElementById('input-ta');
+const wcEl       = document.getElementById('wc');
+const ccEl       = document.getElementById('cc');
+const scEl       = document.getElementById('sc');
+const rtEl       = document.getElementById('rt');
+const lengthSel  = document.getElementById('length-sel');
+const focusSel   = document.getElementById('focus-sel');
+const progWrap   = document.getElementById('prog-wrap');
+const progFill   = document.getElementById('prog-fill');
+const progLbl    = document.getElementById('prog-lbl');
+const genBtn     = document.getElementById('gen-btn');
+const clearBtn   = document.getElementById('clear-btn');
+const exBtn      = document.getElementById('example-btn');
+const loader     = document.getElementById('loader');
+const outEmpty   = document.getElementById('out-empty');
+const compressWrap=document.getElementById('compress-bar-wrap');
+const cbFill     = document.getElementById('cb-fill');
+const cbPct      = document.getElementById('cb-pct');
+const cmpStrip   = document.getElementById('compare-strip');
+const origWords  = document.getElementById('orig-words');
+const summWords  = document.getElementById('summ-words');
+const savedWords = document.getElementById('saved-words');
+const outTabs    = document.getElementById('out-tabs');
+const tabPara    = document.getElementById('tab-para');
+const tabBullets = document.getElementById('tab-bullets');
+const summWrap   = document.getElementById('summ-wrap');
+const summPara   = document.getElementById('summ-para');
+const bulletsWrap= document.getElementById('bullets-wrap');
+const bulletsList= document.getElementById('bullets-list');
+const outFoot    = document.getElementById('out-foot');
+const readyBadge = document.getElementById('ready-badge');
+const outBadgeLbl= document.getElementById('out-badge-lbl');
+const copyBtn    = document.getElementById('copy-btn');
+const downloadBtn= document.getElementById('download-btn');
+const clearOutBtn= document.getElementById('clear-out-btn');
+const toast      = document.getElementById('toast');
+const toastMsg   = document.getElementById('toast-msg');
+const toastSvg   = document.getElementById('toast-svg');
+
+let currentResult = null;
+let activeTab     = 'paragraph';
+let toastTimer    = null;
+let drawerOpen    = false;
+
+/* ═════════ NAVBAR ═════════ */
+let lastY=-1;
+window.addEventListener('scroll',raf(()=>{const y=window.scrollY;if(y===lastY)return;lastY=y;navbar.classList.toggle('stuck',y>14);}),{passive:true});
+
+/* ═════════ DRAWER ═════════ */
+function openD(){if(drawerOpen)return;drawerOpen=true;drw.classList.add('on');burger.classList.add('on');burger.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';drwX.focus();}
+function closeD(){if(!drawerOpen)return;drawerOpen=false;drw.classList.remove('on');burger.classList.remove('on');burger.setAttribute('aria-expanded','false');document.body.style.overflow='';burger.focus();}
+burger.addEventListener('click',openD);drwX.addEventListener('click',closeD);drwBack.addEventListener('click',closeD);
+drw.querySelectorAll('.dnav a,.df .btn').forEach(a=>a.addEventListener('click',closeD));
+document.addEventListener('keydown',e=>{
+  if(!drawerOpen){if((e.ctrlKey||e.metaKey)&&e.key==='Enter'&&!genBtn.disabled){e.preventDefault();genBtn.click();return;}}
+  if(!drawerOpen)return;
+  if(e.key==='Escape'){closeD();return;}
+  if(e.key==='Tab'){const f=[...drw.querySelectorAll('a,button')],fi=f[0],la=f[f.length-1];if(e.shiftKey){if(document.activeElement===fi){e.preventDefault();la.focus();}}else{if(document.activeElement===la){e.preventDefault();fi.focus();}}}
+});
+let tsx=0;drw.addEventListener('touchstart',e=>{tsx=e.touches[0].clientX;},{passive:true});drw.addEventListener('touchend',e=>{if(e.changedTouches[0].clientX-tsx>60)closeD();},{passive:true});
+
+/* ═════════ SCROLL REVEAL ═════════ */
+const revEls=document.querySelectorAll('.reveal');
+if('IntersectionObserver' in window){const ro=new IntersectionObserver(entries=>{entries.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');ro.unobserve(en.target);}});},{threshold:0.08,rootMargin:'0px 0px -24px 0px'});revEls.forEach(el=>ro.observe(el));}
+else{revEls.forEach(el=>el.classList.add('in'));}
+
+/* ═════════ LIVE STATS ═════════ */
+const updateStats = raf(function(){
+  const raw=inputTa.value, text=raw.trim();
+  const words=text?text.split(/\s+/).filter(Boolean).length:0;
+  const chars=raw.length;
+  const sents=text?(text.match(/[^.!?]*[.!?]+/g)||[]).filter(s=>s.trim().length>2).length:0;
+  const wpm=238, mins=words/wpm;
+
+  function setN(el,val){
+    const prev=el.textContent;
+    el.textContent=String(val)!==prev?val:val;
+    if(String(val)!==prev&&Number(val)>0){el.classList.remove('pop');void el.offsetWidth;el.classList.add('pop');}
+  }
+  setN(wcEl,words.toLocaleString());
+  setN(ccEl,chars.toLocaleString());
+  setN(scEl,sents);
+  rtEl.textContent=words===0?'—':mins<1?Math.ceil(mins*60)+'s':Math.ceil(mins)+'m';
+  genBtn.disabled=text.length<30;
+});
+inputTa.addEventListener('input',updateStats);
+updateStats();
+
+/* ═════════ EXAMPLE TEXT ═════════ */
+const EXAMPLE=`The Industrial Revolution, which began in Britain in the late 18th century, fundamentally transformed the way goods were produced and how people lived and worked. Prior to industrialisation, most production took place in small workshops or homes using hand tools. The introduction of steam-powered machinery, iron and steel production, and new transportation networks dramatically accelerated the pace of manufacturing. Factories replaced cottage industries, and large numbers of people migrated from rural areas to rapidly growing industrial cities such as Manchester, Birmingham, and Leeds.
+
+The social consequences of industrialisation were profound. Workers, including many women and children, laboured long hours in difficult and often dangerous conditions for low wages. The factory system created new forms of discipline and time-management that were quite different from the rhythms of agricultural life. However, industrialisation also gradually raised living standards over the long term, created a growing middle class, and eventually led to improvements in infrastructure, education, and public health as governments responded to the social challenges created by rapid urbanisation.
+
+The Industrial Revolution also had far-reaching environmental consequences. The burning of coal to power steam engines produced significant air pollution in industrial cities, and rivers were contaminated by industrial waste. These environmental changes, while largely unrecognised at the time, laid the groundwork for the environmental challenges that continue to affect industrialised societies today.`;
+
+exBtn.addEventListener('click',()=>{inputTa.value=EXAMPLE;updateStats();showToast('Example text loaded!','inf');inputTa.focus();});
+clearBtn.addEventListener('click',()=>{inputTa.value='';updateStats();resetOutput();inputTa.focus();showToast('Input cleared.','inf');});
+clearOutBtn.addEventListener('click',resetOutput);
+
+function resetOutput(){
+  currentResult=null;
+  outEmpty.style.display='';
+  compressWrap.classList.remove('show');
+  cmpStrip.classList.remove('show');
+  outTabs.style.display='none';
+  summWrap.classList.remove('show');
+  bulletsWrap.classList.remove('show');
+  outFoot.classList.remove('show');
+  readyBadge.style.display='none';
+  copyBtn.disabled=true;downloadBtn.disabled=true;clearOutBtn.disabled=true;
+}
+
+/* ═════════════════════════════════════════════
+   SUMMARISATION ENGINE
+═════════════════════════════════════════════ */
+
+/* Common / filler phrases to deprioritise */
+const FILLER_PATTERNS = [
+  /\b(it (should|must|is worth noting|is important) (be noted|that|to))\b/gi,
+  /\b(as (mentioned|noted|discussed|stated|we have seen|we can see) (above|previously|before|earlier|below))\b/gi,
+  /\b(in (conclusion|summary|other words|short|brief|essence|general|particular|addition))[,\s]/gi,
+  /\b(furthermore|moreover|additionally|consequently|therefore|however|nevertheless|nonetheless|meanwhile|subsequently|thus)\b/gi,
+  /\b(basically|essentially|actually|obviously|clearly|certainly|definitely|simply|really|quite|very|indeed)\b/gi,
+  /\b(this (essay|text|passage|paragraph|chapter|section) (will|aims to|seeks to|discusses|explains|examines|explores|looks at))\b/gi,
+  /\b(to (summarise|summarize|conclude|recap))\b/gi,
+];
+
+/* Score a sentence for information density */
+function scoreSentence(s, focusMode){
+  let score=0;
+  const sl=s.toLowerCase();
+
+  // Universal importance signals
+  if(/\b(is|are|was|were|means|refers to|defined as|known as)\b/.test(sl)) score+=2;
+  if(/\d+(%|percent|°|km|kg|lb|m\b|cm|mm|years?|centuries|decades|million|billion|thousand)/.test(sl)) score+=3;
+  if(/\b(key|main|primary|major|central|fundamental|significant|critical|crucial|essential|important|most)\b/.test(sl)) score+=3;
+  if(/\b(first|second|third|finally|ultimately|particularly|notably|especially)\b/.test(sl)) score+=1;
+
+  // Focus-mode-specific boosts
+  if(focusMode==='facts'){
+    if(/\b(discovered|invented|created|founded|established|developed|introduced|produced)\b/.test(sl)) score+=3;
+    if(/\d/.test(sl)) score+=2;
+    if(/\b(percent|ratio|rate|proportion|majority|minority|average|total|number)\b/.test(sl)) score+=2;
+  }
+  if(focusMode==='cause'){
+    if(/\b(because|caused|resulted in|led to|due to|responsible for|as a result|consequently|therefore|since)\b/.test(sl)) score+=4;
+    if(/\b(effect|impact|consequence|outcome|result|influence|affect)\b/.test(sl)) score+=3;
+  }
+  if(focusMode==='terms'){
+    if(/\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\b/.test(s)) score+=2; // capitalised terms
+    if(/["']/.test(s)) score+=1;
+    if(/\b(called|known as|termed|refers to|is defined as|is a)\b/.test(sl)) score+=3;
+  }
+
+  // Penalise filler
+  FILLER_PATTERNS.forEach(p=>{ if(p.test(sl)) score-=2; });
+
+  // Prefer medium-length sentences
+  const wc=s.split(/\s+/).length;
+  if(wc>=8 && wc<=35) score+=1;
+  if(wc<5 || wc>50) score-=1;
+
+  return score;
+}
+
+/* Jaccard similarity for dedup */
+function jaccard(a,b){
+  const sa=new Set(a.toLowerCase().split(/\s+/));
+  const sb=new Set(b.toLowerCase().split(/\s+/));
+  const inter=[...sa].filter(w=>sb.has(w)).length;
+  const union=new Set([...sa,...sb]).size;
+  return union===0?0:inter/union;
+}
+
+/* Determine number of sentences to keep based on length setting */
+const LENGTH_RATIOS={brief:.15,short:.28,medium:.42,detailed:.58};
+
+/* Main summarisation function */
+function summarise(text, lengthMode, focusMode){
+  const cleanText=text.trim().replace(/\n+/g,' ');
+
+  // Split into sentences
+  const rawSents=(cleanText.match(/[^.!?]*(?:[.!?](?![a-z])[^.!?]*)*/g)||[])
+    .map(s=>s.trim())
+    .filter(s=>s.length>20&&s.split(/\s+/).length>=4);
+
+  if(rawSents.length===0) return null;
+
+  // Score sentences
+  const scored=rawSents.map((s,i)=>({s,score:scoreSentence(s,focusMode),idx:i}));
+
+  // Determine keep count
+  const ratio=LENGTH_RATIOS[lengthMode]||.28;
+  const keepCount=Math.max(2,Math.round(rawSents.length*ratio));
+
+  // Sort by score, keep top, restore original order
+  const topScored=[...scored].sort((a,b)=>b.score-a.score).slice(0,keepCount*2);
+  const restored=scored.filter(s=>topScored.some(t=>t.idx===s.idx));
+
+  // Dedup: remove near-duplicate sentences
+  const seen=[];
+  let deduped=[];
+  for(const item of restored){
+    const isDup=seen.some(x=>jaccard(x,item.s)>0.62);
+    if(!isDup){seen.push(item.s);deduped.push(item);}
+  }
+
+  // Take final keepCount
+  deduped=deduped.slice(0,keepCount);
+
+  // Build paragraph summary
+  const paragraphText=deduped.map(d=>d.s).join(' ');
+
+  // Build bullet points — each key sentence becomes a bullet
+  // For bullets, also do light cleaning: strip transition words at start
+  const bullets=deduped.map(d=>{
+    let b=d.s.trim();
+    b=b.replace(/^(However|Furthermore|Moreover|Additionally|Consequently|Therefore|Thus|Meanwhile|Subsequently|Nevertheless|Nonetheless)[,\s]+/i,'');
+    b=b[0].toUpperCase()+b.slice(1);
+    if(!/[.!?]$/.test(b)) b+='.';
+    return b;
+  });
+
+  return {paragraphText, bullets, originalWordCount:rawSents.join(' ').split(/\s+/).length, summaryWordCount:paragraphText.split(/\s+/).length};
+}
+
+/* ═════════ PROGRESS ANIMATION ═════════ */
+function animateProgress(duration, done){
+  progWrap.classList.add('show');
+  progFill.style.width='0%';
+  const stages=[
+    {pct:22,lbl:'Splitting sentences…'},
+    {pct:48,lbl:'Scoring importance…'},
+    {pct:72,lbl:'Removing duplicates…'},
+    {pct:92,lbl:'Building summary…'},
+  ];
+  let i=0;
+  function next(){if(i>=stages.length){setTimeout(done,150);return;}const s=stages[i++];progFill.style.width=s.pct+'%';progLbl.textContent=s.lbl;setTimeout(next,duration/stages.length);}
+  next();
+}
+
+/* ═════════ RENDER RESULT ═════════ */
+function renderResult(result){
+  currentResult=result;
+  const {paragraphText,bullets,originalWordCount,summaryWordCount}=result;
+
+  // Compression
+  const compression=originalWordCount>0?Math.round((1-summaryWordCount/originalWordCount)*100):0;
+  const fillColor=compression>=70?'#16a34a':compression>=50?'var(--ac)':'#d97706';
+  cbFill.style.width=Math.min(100,compression)+'%';
+  cbFill.style.background=fillColor;
+  cbPct.style.color=fillColor;
+  cbPct.textContent=compression+'% shorter';
+  compressWrap.classList.add('show');
+
+  // Comparison
+  const saved=originalWordCount-summaryWordCount;
+  origWords.textContent=originalWordCount.toLocaleString()+'w';
+  summWords.textContent=summaryWordCount.toLocaleString()+'w';
+  savedWords.textContent=saved.toLocaleString()+'w';
+  cmpStrip.classList.add('show');
+
+  // Paragraph output
+  summPara.textContent=paragraphText;
+
+  // Bullets output
+  bulletsList.innerHTML='';
+  bullets.forEach((b,i)=>{
+    const div=document.createElement('div');
+    div.className='b-item';
+    div.style.animationDelay=Math.min(i*55,600)+'ms';
+    div.innerHTML=`<div class="b-dot"></div><span>${esc(b)}</span>`;
+    bulletsList.appendChild(div);
+  });
+
+  // Show everything
+  outEmpty.style.display='none';
+  outTabs.style.display='flex';
+  outFoot.classList.add('show');
+  readyBadge.style.display='block';
+  copyBtn.disabled=false;downloadBtn.disabled=false;clearOutBtn.disabled=false;
+  outBadgeLbl.textContent=bullets.length+' key points · '+compression+'% shorter';
+
+  // Default to paragraph tab
+  switchTab('paragraph');
+}
+
+function switchTab(tab){
+  activeTab=tab;
+  tabPara.classList.toggle('active',tab==='paragraph');
+  tabBullets.classList.toggle('active',tab==='bullets');
+  summWrap.classList.toggle('show',tab==='paragraph');
+  bulletsWrap.classList.toggle('show',tab==='bullets');
+  // Update copy button tooltip
+  copyBtn.title='Copy '+(tab==='paragraph'?'paragraph summary':'bullet points');
+}
+tabPara.addEventListener('click',()=>switchTab('paragraph'));
+tabBullets.addEventListener('click',()=>switchTab('bullets'));
+
+/* ═════════ GENERATE BUTTON ═════════ */
+genBtn.addEventListener('click',function(){
+  const text=inputTa.value.trim();
+  if(text.length<30){showToast('Please paste more text first.','err');inputTa.focus();return;}
+  genBtn.disabled=true;
+  loader.classList.add('show');
+  const delay=Math.min(700+text.length*0.018,1900);
+  animateProgress(delay,function(){
+    try{
+      const result=summarise(text,lengthSel.value,focusSel.value);
+      if(!result||result.summaryWordCount===0){showToast('Could not extract a summary. Try pasting more text.','err');}
+      else{renderResult(result);showToast('✓ Summary generated!','ok');}
+    }catch(e){showToast('Something went wrong. Please try again.','err');}
+    finally{loader.classList.remove('show');progWrap.classList.remove('show');progFill.style.width='0%';genBtn.disabled=inputTa.value.trim().length<30;}
+  });
+});
+
+/* ═════════ COPY ═════════ */
+copyBtn.addEventListener('click',()=>{
+  if(!currentResult) return;
+  let text='';
+  if(activeTab==='paragraph'){
+    text=currentResult.paragraphText;
+  } else {
+    text=currentResult.bullets.map((b,i)=>`${i+1}. ${b}`).join('\n');
+  }
+  if(navigator.clipboard?.writeText){
+    navigator.clipboard.writeText(text).then(()=>showToast('Copied to clipboard!','ok')).catch(()=>fbCopy(text));
+  } else fbCopy(text);
+});
+function fbCopy(text){const ta=document.createElement('textarea');ta.value=text;ta.style.cssText='position:fixed;left:-9999px;opacity:0;';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');showToast('Copied!','ok');}catch{showToast('Copy failed.','err');}document.body.removeChild(ta);}
+
+/* ═════════ DOWNLOAD ═════════ */
+downloadBtn.addEventListener('click',()=>{
+  if(!currentResult) return;
+  const r=currentResult;
+  const dateStr=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+  const lenName=lengthSel.options[lengthSel.selectedIndex].text;
+  const focName=focusSel.options[focusSel.selectedIndex].text;
+  const compression=r.originalWordCount>0?Math.round((1-r.summaryWordCount/r.originalWordCount)*100):0;
+
+  const lines=[
+    '════════════════════════════════════════════',
+    '  SUMMARY — Study Hub AI',
+    `  Date       : ${dateStr}`,
+    `  Length     : ${lenName}`,
+    `  Focus      : ${focName}`,
+    `  Original   : ${r.originalWordCount.toLocaleString()} words`,
+    `  Summary    : ${r.summaryWordCount.toLocaleString()} words (${compression}% shorter)`,
+    '════════════════════════════════════════════',
+    '',
+    '── PARAGRAPH SUMMARY ──',
+    '',
+    r.paragraphText,
+    '',
+    '── BULLET POINTS ──',
+    '',
+    ...r.bullets.map((b,i)=>`${i+1}. ${b}`),
+    '',
+    '════════════════════════════════════════════',
+    '  Generated with Study Hub AI',
+    '  https://studyhubai.com',
+    '  Free AI study tools for every student.',
+    '════════════════════════════════════════════',
+  ];
+  const blob=new Blob([lines.join('\n')],{type:'text/plain;charset=utf-8'});
+  const url=URL.createObjectURL(blob),a=document.createElement('a');
+  a.href=url;a.download='summary-'+new Date().toISOString().slice(0,10)+'.txt';
+  document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
+  showToast('Summary downloaded!','ok');
+});
+
+/* ═════════ TOAST ═════════ */
+const ICONS={ok:'<polyline points="20 6 9 17 4 12"/>',err:'<circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>',inf:'<circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>'};
+const COLORS={ok:'#4ade80',err:'#fca5a5',inf:'#93c5fd'};
+function showToast(msg,type='ok'){if(toastTimer)clearTimeout(toastTimer);toastMsg.textContent=msg;toastSvg.innerHTML=ICONS[type]||ICONS.inf;toastSvg.style.stroke=COLORS[type]||COLORS.inf;toast.className='toast t-'+type;toast.classList.add('show');toastTimer=setTimeout(()=>toast.classList.remove('show'),3400);}
+
+function esc(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+/* smooth scroll */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(!t)return;e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});});});
+
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+<title>Notes Generator – Study Hub AI | Free AI Study Tool</title>
+<meta name="description" content="Free AI Notes Generator for students. Paste any text and instantly convert it into clear, structured bullet-point study notes. No signup required."/>
+<meta name="keywords" content="notes generator,AI study notes,convert text to notes,bullet point notes,study tool,free AI tool"/>
+<meta name="author" content="Study Hub AI"/>
+<meta name="robots" content="index, follow"/>
+<meta name="theme-color" content="#2563eb"/>
+<meta property="og:title" content="Notes Generator – Study Hub AI"/>
+<meta property="og:description" content="Paste any paragraph or chapter text and convert it instantly into clear bullet-point study notes."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://studyhubai.com/tools/notes-generator.html"/>
+<meta property="og:image" content="https://studyhubai.com/preview.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Familjen+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --b50:#eff6ff;--b100:#dbeafe;--b200:#bfdbfe;--b300:#93c5fd;--b400:#60a5fa;
+  --b500:#3b82f6;--b600:#2563eb;--b700:#1d4ed8;--b800:#1e40af;--b900:#1e3a8a;
+  --g0:#fff;--g50:#f8fafc;--g100:#f1f5f9;--g200:#e2e8f0;--g300:#cbd5e1;
+  --g400:#94a3b8;--g500:#64748b;--g600:#475569;--g700:#334155;
+  --g800:#1e293b;--g900:#0f172a;--g950:#020617;
+  --ink:var(--g900);--ink2:var(--g700);--mu:var(--g500);--mu2:var(--g400);
+  --sf:var(--g50);--sf2:var(--g100);--bd:var(--g200);--bd2:var(--g300);
+  --ac:var(--b600);--acH:var(--b700);--acL:var(--b50);--acM:var(--b100);
+  --s0:0 1px 2px rgba(15,23,42,.06);
+  --s1:0 2px 8px rgba(15,23,42,.07),0 1px 3px rgba(15,23,42,.04);
+  --s2:0 4px 16px rgba(15,23,42,.09),0 2px 6px rgba(15,23,42,.05);
+  --s3:0 12px 36px rgba(15,23,42,.11),0 4px 12px rgba(15,23,42,.06);
+  --s4:0 24px 64px rgba(15,23,42,.13),0 8px 24px rgba(15,23,42,.07);
+  --sb:0 8px 32px rgba(37,99,235,.22),0 2px 8px rgba(37,99,235,.12);
+  --sbL:0 20px 60px rgba(37,99,235,.28),0 6px 20px rgba(37,99,235,.15);
+  --r1:6px;--r2:10px;--r3:14px;--r4:20px;--r5:28px;--rF:9999px;
+  --fd:'Familjen Grotesk',sans-serif;--fb:'Plus Jakarta Sans',sans-serif;
+  --ez:cubic-bezier(.22,1,.36,1);--esp:cubic-bezier(.34,1.46,.64,1);
+  --tf:.14s var(--ez);--tb:.22s var(--ez);--ts:.36s var(--ez);--tsp:.38s var(--esp);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;overflow-y:scroll;}
+body{font-family:var(--fb);background:var(--g50);color:var(--ink);line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;}
+img,svg{display:block;max-width:100%;}
+a{text-decoration:none;color:inherit;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;padding:0;}
+ul{list-style:none;}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
+
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,32px);}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font-family:var(--fd);font-weight:700;font-size:.9rem;border-radius:var(--r3);
+  border:1.5px solid transparent;padding:11px 22px;cursor:pointer;white-space:nowrap;
+  position:relative;overflow:hidden;will-change:transform;
+  transition:transform var(--tsp),box-shadow var(--tb),background var(--tb),border-color var(--tb),color var(--tb);
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+.btn::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,0);transition:background var(--tf);pointer-events:none;}
+.btn:hover::after{background:rgba(255,255,255,.08);}
+.btn:active{transform:scale(.96)!important;}
+.btn-p{background:var(--ac);color:#fff;border-color:var(--ac);box-shadow:var(--sb);}
+.btn-p:hover{background:var(--acH);border-color:var(--acH);transform:translateY(-2px);box-shadow:var(--sbL);}
+.btn-p:disabled{background:var(--g400);border-color:var(--g400);box-shadow:none;cursor:not-allowed;transform:none!important;opacity:.7;}
+.btn-g{background:transparent;color:var(--ink2);border-color:var(--bd2);}
+.btn-g:hover{border-color:var(--ac);color:var(--ac);background:var(--acL);transform:translateY(-2px);}
+.btn-g:disabled{opacity:.42;cursor:not-allowed;transform:none!important;}
+.btn-sm{padding:8px 16px;font-size:.82rem;}
+.btn-lg{padding:14px 30px;font-size:.97rem;border-radius:var(--r4);}
+
+/* NAVBAR */
+.nav{position:sticky;top:0;z-index:200;will-change:background-color,box-shadow;transition:background var(--tb),box-shadow var(--tb);}
+.nav.stuck{background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--bd);box-shadow:0 1px 24px rgba(15,23,42,.07);}
+.nav-row{display:flex;align-items:center;justify-content:space-between;height:68px;}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--fd);font-weight:700;font-size:1.18rem;color:var(--ink);transition:opacity var(--tf);-webkit-tap-highlight-color:transparent;}
+.nav-logo:hover{opacity:.8;}
+.nlm{width:36px;height:36px;background:linear-gradient(135deg,var(--b600),var(--b400));border-radius:10px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(37,99,235,.3);flex-shrink:0;}
+.nlm svg{width:18px;height:18px;}
+.nav-links{display:flex;align-items:center;gap:2px;}
+.nav-links a{font-size:.88rem;font-weight:600;color:var(--g600);padding:8px 14px;border-radius:var(--r2);transition:color var(--tf),background var(--tf);}
+.nav-links a:hover,.nav-links a.cur{color:var(--ac);}
+.nav-links a:hover{background:var(--acL);}
+.nav-acts{display:flex;align-items:center;gap:10px;}
+.burger{display:none;width:40px;height:40px;border-radius:var(--r2);background:var(--sf2);align-items:center;justify-content:center;border:1px solid var(--bd);cursor:pointer;transition:background var(--tf);-webkit-tap-highlight-color:transparent;}
+.burger:hover{background:var(--acM);}
+.bw{display:flex;flex-direction:column;gap:4px;}
+.bb{display:block;width:18px;height:2px;border-radius:1px;background:var(--ink);transition:transform var(--tb),opacity var(--tf);transform-origin:center;}
+.burger.on .bb:nth-child(1){transform:translateY(6px) rotate(45deg);}
+.burger.on .bb:nth-child(2){opacity:0;transform:scaleX(0);}
+.burger.on .bb:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+
+.drw{position:fixed;inset:0;z-index:199;pointer-events:none;visibility:hidden;transition:visibility 0s var(--ts);}
+.drw.on{pointer-events:auto;visibility:visible;transition:visibility 0s 0s;}
+.db{position:absolute;inset:0;background:rgba(15,23,42,.48);opacity:0;backdrop-filter:blur(4px);transition:opacity var(--ts);will-change:opacity;}
+.drw.on .db{opacity:1;}
+.dp{position:absolute;top:0;right:0;bottom:0;width:min(320px,86vw);background:#fff;box-shadow:-6px 0 40px rgba(15,23,42,.16);transform:translateX(100%);transition:transform var(--ts);will-change:transform;display:flex;flex-direction:column;padding:24px;}
+.drw.on .dp{transform:translateX(0);}
+.dh{display:flex;align-items:center;justify-content:space-between;padding-bottom:20px;border-bottom:1px solid var(--bd);margin-bottom:16px;}
+.dx{width:36px;height:36px;border-radius:var(--r2);background:var(--sf2);border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background var(--tf);}
+.dx:hover{background:#fecdd3;}
+.dx svg{width:18px;height:18px;stroke:var(--ink);}
+.dnav{display:flex;flex-direction:column;gap:2px;flex:1;}
+.dnav a{font-family:var(--fd);font-weight:600;font-size:1rem;padding:13px 16px;border-radius:var(--r3);color:var(--ink2);display:flex;align-items:center;gap:12px;transition:background var(--tf),color var(--tf);}
+.dnav a:hover{background:var(--acL);color:var(--ac);}
+.dnav a svg{width:18px;height:18px;stroke:currentColor;opacity:.55;flex-shrink:0;}
+.df{padding-top:20px;border-top:1px solid var(--bd);}
+.df .btn{width:100%;}
+.drw.on .dnav a{animation:drwIn .3s var(--ez) both;}
+.drw.on .dnav a:nth-child(1){animation-delay:.08s;}
+.drw.on .dnav a:nth-child(2){animation-delay:.13s;}
+.drw.on .dnav a:nth-child(3){animation-delay:.18s;}
+.drw.on .dnav a:nth-child(4){animation-delay:.23s;}
+@keyframes drwIn{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:translateX(0)}}
+
+/* PAGE HEADER */
+.page-header{background:#fff;border-bottom:1px solid var(--bd);padding:clamp(28px,5vw,48px) 0 clamp(24px,4vw,40px);}
+.ph-inner{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.ph-breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--mu);margin-bottom:14px;font-family:var(--fd);font-weight:600;}
+.ph-breadcrumb a{color:var(--mu);transition:color var(--tf);}
+.ph-breadcrumb a:hover{color:var(--ac);}
+.ph-breadcrumb svg{width:12px;height:12px;stroke:var(--mu2);flex-shrink:0;}
+.ph-title{display:flex;align-items:center;gap:14px;margin-bottom:10px;}
+.ph-icon{width:48px;height:48px;background:var(--acL);border-radius:var(--r3);display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid var(--b200);}
+.ph-icon svg{width:24px;height:24px;stroke:var(--ac);}
+.ph-h1{font-family:var(--fd);font-weight:700;font-size:clamp(1.5rem,3vw,2rem);letter-spacing:-.022em;color:var(--ink);}
+.ph-desc{font-size:.95rem;color:var(--mu);line-height:1.65;max-width:520px;}
+.ph-badge{display:inline-flex;align-items:center;gap:6px;margin-top:12px;background:var(--acL);border:1px solid var(--b200);border-radius:var(--rF);padding:4px 12px;font-size:.72rem;font-weight:700;font-family:var(--fd);letter-spacing:.05em;text-transform:uppercase;color:var(--ac);}
+.ph-badge-dot{width:5px;height:5px;background:#22c55e;border-radius:50%;animation:blink 1.8s infinite;}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.65)}}
+.ph-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px;flex-shrink:0;}
+.ph-tools-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;}
+.tnchip{display:inline-flex;align-items:center;gap:6px;font-family:var(--fd);font-size:.78rem;font-weight:600;padding:6px 12px;border-radius:var(--rF);border:1.5px solid var(--bd);background:#fff;color:var(--ink2);transition:all var(--tb);-webkit-tap-highlight-color:transparent;}
+.tnchip:hover{border-color:var(--ac);color:var(--ac);background:var(--acL);}
+.tnchip svg{width:13px;height:13px;stroke:currentColor;opacity:.7;}
+
+/* TOOL MAIN */
+.tool-main{padding:clamp(24px,4vw,44px) 0 clamp(44px,7vw,76px);}
+.tool-layout{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start;}
+
+/* CARDS */
+.card{background:#fff;border:1px solid var(--bd);border-radius:var(--r4);box-shadow:var(--s1);overflow:hidden;}
+.card-hdr{display:flex;align-items:center;justify-content:space-between;padding:15px 20px;border-bottom:1px solid var(--bd);background:var(--g50);}
+.card-title{display:flex;align-items:center;gap:8px;font-family:var(--fd);font-weight:700;font-size:.93rem;color:var(--ink);}
+.card-title svg{width:16px;height:16px;stroke:var(--ac);flex-shrink:0;}
+.card-acts{display:flex;align-items:center;gap:6px;}
+.card-body{padding:20px;}
+
+/* TEXTAREA */
+.tool-ta{width:100%;min-height:310px;max-height:500px;background:var(--g50);border:1.5px solid var(--bd);border-radius:var(--r3);padding:16px;font-family:var(--fb);font-size:.9rem;color:var(--ink);line-height:1.72;resize:vertical;outline:none;transition:border-color var(--tb),box-shadow var(--tb),background var(--tb);-webkit-tap-highlight-color:transparent;}
+.tool-ta::placeholder{color:var(--mu2);}
+.tool-ta:focus{border-color:var(--ac);box-shadow:0 0 0 3px rgba(37,99,235,.1);background:#fff;}
+
+/* STATS BAR */
+.stats-bar{display:flex;margin-top:12px;background:var(--g50);border:1px solid var(--bd);border-radius:var(--r2);overflow:hidden;}
+.st{flex:1;padding:10px 12px;text-align:center;border-right:1px solid var(--bd);}
+.st:last-child{border-right:none;}
+.st-n{font-family:var(--fd);font-weight:700;font-size:.97rem;color:var(--ink);transition:color var(--tb);}
+.st-n.hi{color:var(--ac);}
+.st-l{font-size:.66rem;color:var(--mu);text-transform:uppercase;letter-spacing:.07em;font-family:var(--fd);font-weight:600;margin-top:1px;}
+
+/* SETTINGS */
+.settings-row{display:flex;align-items:center;gap:12px;margin-top:14px;flex-wrap:wrap;}
+.sg{display:flex;align-items:center;gap:8px;}
+.sg label{font-size:.8rem;font-weight:600;font-family:var(--fd);color:var(--ink2);}
+.sg select{font-family:var(--fb);font-size:.82rem;color:var(--ink);background:#fff;border:1.5px solid var(--bd);border-radius:var(--r2);padding:7px 10px;outline:none;cursor:pointer;transition:border-color var(--tb);}
+.sg select:focus{border-color:var(--ac);}
+
+/* PROGRESS */
+.prog-wrap{margin-top:14px;display:none;}
+.prog-wrap.show{display:block;}
+.prog-bg{background:var(--bd);border-radius:var(--rF);height:4px;overflow:hidden;}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--b600),var(--b400));border-radius:var(--rF);width:0%;transition:width .4s var(--ez);}
+.prog-lbl{font-size:.74rem;color:var(--mu);margin-top:6px;font-family:var(--fd);font-weight:600;}
+
+/* ACTION ROW */
+.act-row{display:flex;align-items:center;gap:10px;margin-top:16px;flex-wrap:wrap;}
+
+/* OUTPUT PLACEHOLDER */
+.out-ph{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:330px;text-align:center;padding:32px;color:var(--mu2);}
+.out-ph svg{width:50px;height:50px;stroke:var(--bd2);margin-bottom:14px;}
+.out-ph h3{font-family:var(--fd);font-weight:700;font-size:1rem;color:var(--mu);margin-bottom:6px;}
+.out-ph p{font-size:.83rem;line-height:1.6;}
+
+/* NOTES LIST */
+.notes-list{padding:18px 20px;display:flex;flex-direction:column;gap:7px;}
+.note-item{display:flex;align-items:flex-start;gap:10px;padding:11px 14px;background:var(--g50);border:1px solid var(--bd);border-left:3px solid var(--b400);border-radius:0 var(--r2) var(--r2) 0;font-size:.88rem;color:var(--ink2);line-height:1.58;opacity:0;transform:translateX(-8px);animation:noteIn .35s var(--ez) both;}
+@keyframes noteIn{to{opacity:1;transform:translateX(0)}}
+.note-item:hover{background:var(--acL);border-left-color:var(--ac);}
+.nbullet{width:7px;height:7px;border-radius:50%;background:var(--b400);flex-shrink:0;margin-top:6px;transition:background var(--tf);}
+.note-item:hover .nbullet{background:var(--ac);}
+.nnumber{min-width:20px;font-family:var(--fd);font-weight:700;font-size:.8rem;color:var(--ac);flex-shrink:0;margin-top:1px;}
+
+/* OUTPUT FOOTER */
+.out-foot{display:flex;align-items:center;justify-content:space-between;padding:13px 20px;border-top:1px solid var(--bd);background:var(--g50);flex-wrap:wrap;gap:8px;}
+.out-meta{font-size:.78rem;color:var(--mu);font-family:var(--fd);font-weight:600;}
+.out-acts{display:flex;gap:8px;flex-wrap:wrap;}
+
+/* TOAST */
+.toast{position:fixed;bottom:28px;right:28px;z-index:999;background:var(--g900);color:#fff;border-radius:var(--r3);padding:12px 18px;font-family:var(--fd);font-weight:600;font-size:.85rem;display:flex;align-items:center;gap:9px;box-shadow:var(--s4);transform:translateY(80px);opacity:0;transition:transform var(--tsp),opacity var(--tb);pointer-events:none;}
+.toast.show{transform:translateY(0);opacity:1;}
+.toast svg{width:16px;height:16px;stroke:#4ade80;flex-shrink:0;}
+.toast.err svg{stroke:#fca5a5;}
+
+/* HOW TO USE */
+.how-sec{background:#fff;border-top:1px solid var(--bd);padding:clamp(36px,5vw,60px) 0;}
+.how-hd{text-align:center;margin-bottom:32px;}
+.chip-inline{display:inline-flex;align-items:center;gap:7px;font-family:var(--fd);font-size:.71rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ac);background:var(--acL);border:1px solid var(--b200);padding:5px 13px;border-radius:var(--rF);margin-bottom:14px;}
+.chip-dot{width:6px;height:6px;background:var(--ac);border-radius:50%;display:inline-block;}
+.how-ttl{font-family:var(--fd);font-weight:700;font-size:clamp(1.4rem,2.5vw,1.9rem);letter-spacing:-.022em;color:var(--ink);margin-bottom:8px;}
+.how-sub{font-size:.94rem;color:var(--mu);max-width:440px;margin:0 auto;}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.how-card{background:var(--g50);border:1px solid var(--bd);border-radius:var(--r4);padding:clamp(20px,3vw,28px);text-align:center;transition:transform var(--tsp),box-shadow var(--tb);will-change:transform;}
+.how-card:hover{transform:translateY(-4px);box-shadow:var(--s3);}
+.how-num{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--b600),var(--b500));display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-family:var(--fd);font-weight:700;font-size:1rem;color:#fff;box-shadow:0 4px 14px rgba(37,99,235,.28);}
+.how-title{font-family:var(--fd);font-weight:700;font-size:.93rem;color:var(--ink);margin-bottom:7px;}
+.how-desc{font-size:.82rem;color:var(--mu);line-height:1.58;}
+
+/* TIPS */
+.tips-sec{background:var(--g50);border-top:1px solid var(--bd);padding:clamp(28px,4vw,48px) 0;}
+.tips-hd{margin-bottom:20px;}
+.tips-hd h2{font-family:var(--fd);font-weight:700;font-size:clamp(1.15rem,1.8vw,1.45rem);letter-spacing:-.018em;color:var(--ink);margin-bottom:4px;}
+.tips-hd p{font-size:.88rem;color:var(--mu);}
+.tips-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.tip-card{background:#fff;border:1px solid var(--bd);border-radius:var(--r3);padding:16px 18px;display:flex;gap:13px;align-items:flex-start;transition:border-color var(--tb),transform var(--tsp);will-change:transform;}
+.tip-card:hover{border-color:var(--b200);transform:translateX(4px);}
+.tip-ico{width:36px;height:36px;background:var(--acL);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background var(--tb);}
+.tip-ico svg{width:17px;height:17px;stroke:var(--ac);}
+.tip-card:hover .tip-ico{background:var(--acM);}
+.tip-title{font-family:var(--fd);font-weight:700;font-size:.88rem;color:var(--ink);margin-bottom:4px;}
+.tip-desc{font-size:.8rem;color:var(--mu);line-height:1.55;}
+
+/* OTHER TOOLS */
+.ot-sec{background:#fff;border-top:1px solid var(--bd);padding:clamp(28px,4vw,44px) 0;}
+.ot-hd{margin-bottom:18px;}
+.ot-hd h2{font-family:var(--fd);font-weight:700;font-size:clamp(1.15rem,1.8vw,1.45rem);letter-spacing:-.018em;color:var(--ink);margin-bottom:4px;}
+.ot-hd p{font-size:.88rem;color:var(--mu);}
+.ot-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:11px;}
+.ot-card{background:var(--g50);border:1px solid var(--bd);border-radius:var(--r3);padding:15px 16px;display:flex;flex-direction:column;transition:transform var(--tsp),box-shadow var(--tb),border-color var(--tb);will-change:transform;-webkit-tap-highlight-color:transparent;}
+.ot-card:hover{transform:translateY(-3px);box-shadow:var(--s2);border-color:var(--b200);}
+.ot-ico{width:34px;height:34px;background:var(--acL);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;margin-bottom:9px;transition:background var(--tb),transform var(--tsp);}
+.ot-ico svg{width:16px;height:16px;stroke:var(--ac);}
+.ot-card:hover .ot-ico{background:var(--acM);transform:scale(1.08) rotate(-4deg);}
+.ot-name{font-family:var(--fd);font-weight:700;font-size:.83rem;color:var(--ink);}
+.ot-desc{font-size:.73rem;color:var(--mu);margin-top:3px;line-height:1.45;}
+
+/* FOOTER */
+footer{background:var(--g950);color:rgba(255,255,255,.48);padding:clamp(40px,6vw,64px) 0 28px;}
+.fg{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:clamp(24px,4vw,48px);margin-bottom:clamp(32px,5vw,48px);}
+.flogo{display:flex;align-items:center;gap:10px;font-family:var(--fd);font-weight:700;font-size:1.1rem;color:#fff;margin-bottom:12px;}
+.flm{width:34px;height:34px;background:linear-gradient(135deg,var(--b600),var(--b400));border-radius:9px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(37,99,235,.28);}
+.flm svg{width:17px;height:17px;}
+.fdesc{font-size:.84rem;color:rgba(255,255,255,.38);line-height:1.65;max-width:240px;margin-bottom:18px;}
+.fsocs{display:flex;gap:10px;}
+.fsoc{width:34px;height:34px;background:rgba(255,255,255,.07);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.08);transition:background var(--tb),transform var(--tsp);will-change:transform;}
+.fsoc:hover{background:var(--b600);transform:translateY(-2px);}
+.fsoc svg{width:14px;height:14px;stroke:rgba(255,255,255,.55);}
+.fsoc:hover svg{stroke:#fff;}
+.fcol h5{font-family:var(--fd);font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:15px;}
+.fcol ul{display:flex;flex-direction:column;gap:9px;}
+.fcol a{font-size:.84rem;color:rgba(255,255,255,.38);display:block;transition:color var(--tf),padding-left var(--tf);}
+.fcol a:hover{color:#fff;padding-left:3px;}
+.fbot{border-top:1px solid rgba(255,255,255,.08);padding-top:22px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.fcpy{font-size:.81rem;color:rgba(255,255,255,.3);}
+.fbls{display:flex;gap:18px;}
+.fbls a{font-size:.81rem;color:rgba(255,255,255,.32);transition:color var(--tf);}
+.fbls a:hover{color:rgba(255,255,255,.7);}
+
+/* SCROLL REVEAL */
+.rv{opacity:0;transform:translateY(20px);will-change:opacity,transform;transition:opacity .6s var(--ez),transform .6s var(--ez);}
+.rv.in{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}.d4{transition-delay:.28s}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .tool-layout{grid-template-columns:1fr;}
+  .how-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:820px){
+  .nav-links,.nav-acts .btn-g{display:none;}
+  .burger{display:flex;}
+  .tips-grid{grid-template-columns:1fr;}
+  .fg{grid-template-columns:1fr 1fr;gap:28px;}
+  .ph-right{display:none;}
+}
+@media(max-width:600px){
+  .how-grid{grid-template-columns:1fr;}
+  .fg{grid-template-columns:1fr;}
+  .fbot{flex-direction:column;align-items:flex-start;gap:10px;}
+  .act-row{flex-direction:column;align-items:stretch;}
+  .act-row .btn{justify-content:center;}
+  .settings-row{flex-direction:column;align-items:flex-start;}
+}
+@supports(padding:max(0px)){
+  .nav-row{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right);}
+  footer{padding-bottom:max(28px,env(safe-area-inset-bottom));}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="nav" id="navbar">
+  <div class="wrap">
+    <div class="nav-row">
+      <a href="../index.html" class="nav-logo" aria-label="Study Hub AI home">
+        <div class="nlm"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        Study Hub AI
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../tools.html" class="cur">Tools</a></li>
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="../about.html">About</a></li>
+      </ul>
+      <div class="nav-acts">
+        <a href="../tools.html" class="btn btn-g btn-sm" style="display:inline-flex;">All Tools</a>
+        <a href="../tools.html" class="btn btn-p btn-sm">Start Studying</a>
+        <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+          <div class="bw"><span class="bb"></span><span class="bb"></span><span class="bb"></span></div>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- DRAWER -->
+<div class="drw" id="drw" role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="db" id="drw-back"></div>
+  <div class="dp">
+    <div class="dh">
+      <div class="nav-logo" style="font-size:1rem;">
+        <div class="nlm" style="width:30px;height:30px;border-radius:8px;"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        Study Hub AI
+      </div>
+      <button class="dx" id="drw-x" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <nav class="dnav">
+      <a href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home</a>
+      <a href="../tools.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>All Tools</a>
+      <a href="../blog.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Blog</a>
+      <a href="../about.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>About</a>
+    </nav>
+    <div class="df"><a href="../tools.html" class="btn btn-p btn-lg">Browse All Tools</a></div>
+  </div>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="wrap">
+    <div class="ph-inner">
+      <div>
+        <div class="ph-breadcrumb">
+          <a href="../index.html">Home</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          <a href="../tools.html">Tools</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          <span>Notes Generator</span>
+        </div>
+        <div class="ph-title">
+          <div class="ph-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+          <h1 class="ph-h1">Notes Generator</h1>
+        </div>
+        <p class="ph-desc">Paste any paragraph, chapter, or lecture text and instantly get clear, structured bullet-point study notes.</p>
+        <div class="ph-badge"><span class="ph-badge-dot"></span>Free · No signup required</div>
+      </div>
+      <div class="ph-right">
+        <span style="font-size:.78rem;font-weight:600;font-family:var(--fd);color:var(--mu);">Try other tools:</span>
+        <div class="ph-tools-row">
+          <a href="flashcard-generator.html" class="tnchip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>Flashcards</a>
+          <a href="paragraph-summarizer.html" class="tnchip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="21" y1="10" x2="7" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/></svg>Summarizer</a>
+          <a href="bullet-converter.html" class="tnchip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="6" x2="20" y2="6"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="18" x2="20" y2="18"/></svg>Bullet Points</a>
+          <a href="study-planner.html" class="tnchip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Planner</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN TOOL -->
+<main class="tool-main">
+  <div class="wrap">
+    <div class="tool-layout">
+
+      <!-- INPUT PANEL -->
+      <div class="card" id="input-card">
+        <div class="card-hdr">
+          <div class="card-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            Paste Your Text
+          </div>
+          <div class="card-acts">
+            <button class="btn btn-g btn-sm" id="eg-btn" title="Load example text">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Example
+            </button>
+          </div>
+        </div>
+        <div class="card-body">
+          <textarea class="tool-ta" id="input-text"
+            placeholder="Paste your paragraph, chapter text, or lecture notes here…&#10;&#10;Tip: The more text you paste, the better the notes will be. Try at least 100 words for best results."
+            aria-label="Input text for notes generation" spellcheck="true"></textarea>
+
+          <div class="stats-bar" role="status" aria-live="polite" aria-label="Text statistics">
+            <div class="st"><div class="st-n" id="wc">0</div><div class="st-l">Words</div></div>
+            <div class="st"><div class="st-n" id="cc">0</div><div class="st-l">Chars</div></div>
+            <div class="st"><div class="st-n" id="sc">0</div><div class="st-l">Sentences</div></div>
+            <div class="st"><div class="st-n" id="rt">—</div><div class="st-l">Read time</div></div>
+          </div>
+
+          <div class="settings-row">
+            <div class="sg">
+              <label for="note-style">Note style:</label>
+              <select id="note-style" aria-label="Note style">
+                <option value="bullets">● Bullet Points</option>
+                <option value="numbered">1. Numbered List</option>
+                <option value="dashes">– Dashes</option>
+              </select>
+            </div>
+            <div class="sg">
+              <label for="detail-lvl">Detail:</label>
+              <select id="detail-lvl" aria-label="Detail level">
+                <option value="medium">Medium</option>
+                <option value="brief">Brief (fewer)</option>
+                <option value="detailed">Detailed (more)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="prog-wrap" id="prog-wrap">
+            <div class="prog-bg"><div class="prog-fill" id="prog-fill"></div></div>
+            <div class="prog-lbl" id="prog-lbl">Processing your text…</div>
+          </div>
+
+          <div class="act-row">
+            <button class="btn btn-p btn-lg" id="gen-btn" aria-label="Generate study notes">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              Generate Notes
+            </button>
+            <button class="btn btn-g" id="clear-btn" aria-label="Clear text and output">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+              Clear
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- OUTPUT PANEL -->
+      <div class="card" id="output-card">
+        <div class="card-hdr">
+          <div class="card-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            Study Notes
+          </div>
+          <div id="out-hdr-acts" style="display:none;">
+            <button class="btn btn-g btn-sm" id="copy-hdr-btn" title="Copy notes" aria-label="Copy notes">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy
+            </button>
+          </div>
+        </div>
+
+        <!-- Placeholder -->
+        <div class="out-ph" id="out-ph">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <h3>Your notes will appear here</h3>
+          <p>Paste your text on the left,<br/>then click <strong>Generate Notes</strong> to begin.</p>
+        </div>
+
+        <!-- Output -->
+        <div id="out-content" style="display:none;">
+          <div class="notes-list" id="notes-list" role="list" aria-label="Generated study notes"></div>
+          <div class="out-foot" id="out-foot">
+            <span class="out-meta" id="notes-lbl">0 notes generated</span>
+            <div class="out-acts">
+              <button class="btn btn-g btn-sm" id="copy-btn" aria-label="Copy all notes">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Copy Notes
+              </button>
+              <button class="btn btn-p btn-sm" id="dl-btn" aria-label="Download notes as .txt file">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download .txt
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- HOW TO USE -->
+<section class="how-sec">
+  <div class="wrap">
+    <div class="how-hd rv">
+      <div class="chip-inline"><span class="chip-dot"></span>How It Works</div>
+      <h2 class="how-ttl">Three Steps to Better Notes</h2>
+      <p class="how-sub">From raw text to structured study notes in seconds — no formatting, no effort.</p>
+    </div>
+    <div class="how-grid">
+      <div class="how-card rv d1">
+        <div class="how-num">1</div>
+        <div class="how-title">Paste Your Text</div>
+        <div class="how-desc">Copy any paragraph, textbook chapter, lecture notes, or article into the input box on the left.</div>
+      </div>
+      <div class="how-card rv d2">
+        <div class="how-num">2</div>
+        <div class="how-title">Click Generate Notes</div>
+        <div class="how-desc">Press Generate Notes. The tool extracts key ideas, removes filler, and formats everything into clear bullet points.</div>
+      </div>
+      <div class="how-card rv d3">
+        <div class="how-num">3</div>
+        <div class="how-title">Copy or Download</div>
+        <div class="how-desc">Copy your notes to the clipboard with one click, or download them as a .txt file ready for any notes app.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIPS -->
+<section class="tips-sec">
+  <div class="wrap">
+    <div class="tips-hd rv">
+      <h2>Tips for Better Notes</h2>
+      <p>Get the most out of the Notes Generator with these simple techniques.</p>
+    </div>
+    <div class="tips-grid">
+      <div class="tip-card rv d1">
+        <div class="tip-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+        <div><div class="tip-title">One topic at a time</div><div class="tip-desc">Paste text about a single topic for the clearest notes. Mixing topics can reduce the quality of the output.</div></div>
+      </div>
+      <div class="tip-card rv d2">
+        <div class="tip-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div><div class="tip-title">More text = better notes</div><div class="tip-desc">The tool works best with 100+ words. Very short inputs may not have enough content to produce useful notes.</div></div>
+      </div>
+      <div class="tip-card rv d3">
+        <div class="tip-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div><div class="tip-title">Try different detail levels</div><div class="tip-desc">Use Brief for a quick overview, Detailed for deep study sessions, or Medium for everyday revision.</div></div>
+      </div>
+      <div class="tip-card rv d4">
+        <div class="tip-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+        <div><div class="tip-title">Edit after generating</div><div class="tip-desc">Use the generated notes as your starting point. Copy to your notes app and add your own highlights and context.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OTHER TOOLS -->
+<section class="ot-sec">
+  <div class="wrap">
+    <div class="ot-hd rv">
+      <h2>More Study Tools</h2>
+      <p>Explore the full suite of free AI tools to supercharge your studying.</p>
+    </div>
+    <div class="ot-grid">
+      <a href="flashcard-generator.html" class="ot-card rv d1"><div class="ot-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div><div class="ot-name">Flashcard Generator</div><div class="ot-desc">Convert notes into Q&amp;A cards</div></a>
+      <a href="paragraph-summarizer.html" class="ot-card rv d2"><div class="ot-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="21" y1="10" x2="7" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="21" y1="18" x2="7" y2="18"/></svg></div><div class="ot-name">Paragraph Summarizer</div><div class="ot-desc">Condense long texts instantly</div></a>
+      <a href="bullet-converter.html" class="ot-card rv d3"><div class="ot-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="6" x2="20" y2="6"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="18" x2="20" y2="18"/><circle cx="4" cy="6" r="1.5" fill="currentColor" stroke="none"/></svg></div><div class="ot-name">Bullet Points Converter</div><div class="ot-desc">Turn paragraphs into bullet lists</div></a>
+      <a href="exam-answer-generator.html" class="ot-card rv d4"><div class="ot-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><div class="ot-name">Exam Answer Generator</div><div class="ot-desc">Get structured exam answers</div></a>
+      <a href="study-planner.html" class="ot-card rv d1"><div class="ot-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div class="ot-name">Study Planner</div><div class="ot-desc">Build your revision schedule</div></a>
+      <a href="pomodoro-timer.html" class="ot-card rv d2"><div class="ot-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="ot-name">Pomodoro Timer</div><div class="ot-desc">Stay focused with timed sessions</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="fg">
+      <div>
+        <div class="flogo"><div class="flm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>Study Hub AI</div>
+        <p class="fdesc">Free AI-powered study tools to help students learn faster and perform better in every exam.</p>
+        <div class="fsocs">
+          <a href="#" class="fsoc" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" class="fsoc" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+          <a href="#" class="fsoc" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        </div>
+      </div>
+      <div class="fcol"><h5>Tools</h5><ul><li><a href="notes-generator.html">Notes Generator</a></li><li><a href="flashcard-generator.html">Flashcard Generator</a></li><li><a href="paragraph-summarizer.html">Summarizer</a></li><li><a href="bullet-converter.html">Bullet Points</a></li><li><a href="exam-answer-generator.html">Exam Answers</a></li><li><a href="pomodoro-timer.html">Pomodoro Timer</a></li></ul></div>
+      <div class="fcol"><h5>Site</h5><ul><li><a href="../index.html">Home</a></li><li><a href="../tools.html">All Tools</a></li><li><a href="../blog.html">Blog</a></li><li><a href="../about.html">About</a></li></ul></div>
+      <div class="fcol"><h5>Legal</h5><ul><li><a href="../privacy.html">Privacy Policy</a></li><li><a href="../terms.html">Terms of Service</a></li><li><a href="../cookies.html">Cookies</a></li></ul></div>
+    </div>
+    <div class="fbot">
+      <p class="fcpy">© 2026 Study Hub AI. All rights reserved. Free tools for smarter studying.</p>
+      <div class="fbls"><a href="../privacy.html">Privacy</a><a href="../terms.html">Terms</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast" role="alert" aria-live="polite">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+  <span id="toast-msg">Done!</span>
+</div>
+
+<script>
+(function(){
+'use strict';
+
+/* util */
+function raf(fn){let id;return function(){cancelAnimationFrame(id);id=requestAnimationFrame(fn.bind(this,arguments));};}
+
+/* 1. Navbar */
+const navbar=document.getElementById('navbar');
+let ly=-1;
+function cs(){const y=window.scrollY;if(y===ly)return;ly=y;navbar.classList.toggle('stuck',y>14);}
+window.addEventListener('scroll',raf(cs),{passive:true});cs();
+
+/* 2. Drawer */
+const burger=document.getElementById('burger'),drw=document.getElementById('drw'),
+  drwB=document.getElementById('drw-back'),drwX=document.getElementById('drw-x');
+let dopen=false;
+function openD(){if(dopen)return;dopen=true;drw.classList.add('on');burger.classList.add('on');burger.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';drwX.focus();}
+function closeD(){if(!dopen)return;dopen=false;drw.classList.remove('on');burger.classList.remove('on');burger.setAttribute('aria-expanded','false');document.body.style.overflow='';burger.focus();}
+burger.addEventListener('click',openD);drwX.addEventListener('click',closeD);drwB.addEventListener('click',closeD);
+drw.querySelectorAll('.dnav a,.df .btn').forEach(a=>a.addEventListener('click',closeD));
+document.addEventListener('keydown',e=>{if(dopen&&e.key==='Escape')closeD();});
+let tsx=0;
+drw.addEventListener('touchstart',e=>{tsx=e.touches[0].clientX;},{passive:true});
+drw.addEventListener('touchend',e=>{if(e.changedTouches[0].clientX-tsx>60)closeD();},{passive:true});
+
+/* 3. Scroll reveal */
+const rvEls=document.querySelectorAll('.rv');
+if('IntersectionObserver' in window){
+  const ro=new IntersectionObserver(entries=>{entries.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');ro.unobserve(en.target);}});},{threshold:0.08,rootMargin:'0px 0px -28px 0px'});
+  rvEls.forEach(el=>ro.observe(el));
+}else{rvEls.forEach(el=>el.classList.add('in'));}
+
+/* 4. Toast */
+const toastEl=document.getElementById('toast'),toastMsg=document.getElementById('toast-msg');
+let toastT;
+function toast(msg,err){
+  clearTimeout(toastT);
+  toastMsg.textContent=msg;
+  toastEl.style.background=err?'#dc2626':'';
+  toastEl.classList.add('show');
+  toastT=setTimeout(()=>toastEl.classList.remove('show'),2600);
+}
+
+/* 5. Live text stats */
+const ta=document.getElementById('input-text');
+const wcEl=document.getElementById('wc'),ccEl=document.getElementById('cc'),
+  scEl=document.getElementById('sc'),rtEl=document.getElementById('rt');
+
+function updateStats(){
+  const txt=ta.value.trim();
+  const words=txt?txt.split(/\s+/).filter(Boolean).length:0;
+  const chars=ta.value.length;
+  const sents=txt?(txt.match(/[^.!?]*[.!?]+/g)||[]).length:0;
+  const secs=Math.ceil(words/(200/60));
+  wcEl.textContent=words.toLocaleString();
+  ccEl.textContent=chars.toLocaleString();
+  scEl.textContent=sents;
+  if(!words){rtEl.textContent='—';}
+  else if(secs<60){rtEl.textContent=secs+'s';}
+  else{const m=Math.floor(secs/60),s=secs%60;rtEl.textContent=s?m+'m '+s+'s':m+'m';}
+  [wcEl,ccEl,scEl,rtEl].forEach(el=>el.classList.toggle('hi',words>20));
+}
+ta.addEventListener('input',raf(updateStats));
+
+/* 6. Example text */
+const EXAMPLE=`Photosynthesis is the process by which green plants convert light energy into chemical energy stored as glucose. It takes place primarily in the leaves, inside structures called chloroplasts that contain a green pigment known as chlorophyll.
+
+Chlorophyll absorbs light energy, mainly from the red and blue parts of the visible spectrum. The overall equation for photosynthesis is: carbon dioxide + water + light energy → glucose + oxygen. Carbon dioxide enters the leaf through small pores called stomata, while water is taken up by the roots and transported through the plant.
+
+Photosynthesis has two main stages. The first is the light-dependent reactions, which take place in the thylakoid membranes and use light energy to produce ATP and split water molecules, releasing oxygen as a byproduct. The second stage is the Calvin cycle, which occurs in the stroma and uses the ATP produced to convert carbon dioxide into glucose.
+
+Photosynthesis is essential for almost all life on Earth. It produces the oxygen we breathe and forms the base of nearly every food chain. It also plays a critical role in the carbon cycle by removing carbon dioxide from the atmosphere.`;
+
+document.getElementById('eg-btn').addEventListener('click',function(){
+  ta.value=EXAMPLE;updateStats();ta.focus();toast('Example text loaded!');
+});
+
+/* 7. Clear */
+document.getElementById('clear-btn').addEventListener('click',function(){
+  ta.value='';updateStats();setOutput(false);ta.focus();
+});
+
+/* 8. Show/hide output */
+function setOutput(show){
+  document.getElementById('out-ph').style.display=show?'none':'flex';
+  document.getElementById('out-content').style.display=show?'block':'none';
+  document.getElementById('out-hdr-acts').style.display=show?'flex':'none';
+}
+
+/* 9. Notes engine */
+const SIGNALS=[
+  /\bis\b|\bare\b|\bwas\b|\bwere\b/i,
+  /\bcalled\b|\bknown as\b|\bdefined as\b|\breferred to as\b/i,
+  /\bconsists?\b|\bcomprises?\b|\bincludes?\b|\bcontains?\b/i,
+  /\bprocess\b|\bstage\b|\bstep\b|\bphase\b|\bcycle\b/i,
+  /\bkey\b|\bmain\b|\bprimary\b|\bessential\b|\bimportant\b|\bcritical\b|\bfundamental\b/i,
+  /\bfunction\b|\brole\b|\bpurpose\b|\bused (for|to)\b|\benables?\b/i,
+  /\bresult\b|\bcause\b|\beffect\b|\bleads? to\b|\bdue to\b|\bproduces?\b/i,
+  /\bfirst\b|\bsecond\b|\bthird\b|\bfinally\b|\bmainly\b|\bprimarily\b/i,
+];
+
+function score(sent){
+  let s=0;const lc=sent.toLowerCase();
+  SIGNALS.forEach(rx=>{if(rx.test(lc))s+=2;});
+  const wc=sent.trim().split(/\s+/).length;
+  if(wc<5)s-=3;
+  if(wc>=8&&wc<=35)s+=1;
+  if(/\d/.test(sent))s+=1;
+  return s;
+}
+
+function clean(sent){
+  let n=sent.trim()
+    .replace(/^(additionally|furthermore|moreover|however|therefore|also|finally|firstly|secondly|thirdly|lastly|in (addition|conclusion|summary|particular)|as a result|as mentioned|it (is|was|should be) noted that|note that),?\s*/i,'')
+    .replace(/\.+$/,'');
+  return n.charAt(0).toUpperCase()+n.slice(1);
+}
+
+function generate(text,detail){
+  const sents=text.replace(/\n+/g,' ')
+    .split(/(?<=[.!?])\s+/)
+    .map(s=>s.trim())
+    .filter(s=>s.length>18&&s.split(/\s+/).length>=5);
+
+  if(!sents.length)return[];
+
+  const scored=sents.map(s=>({t:s,s:score(s)}));
+  const total=scored.length;
+  let keep;
+  if(detail==='brief')   keep=Math.max(3,Math.ceil(total*.32));
+  else if(detail==='detailed') keep=Math.max(5,Math.ceil(total*.72));
+  else keep=Math.max(4,Math.ceil(total*.52));
+
+  const byScore=[...scored].sort((a,b)=>b.s-a.s);
+  const keepSet=new Set(byScore.slice(0,keep).map(s=>s.t));
+  const notes=scored.filter(s=>keepSet.has(s.t)).map(s=>clean(s.t)).filter(n=>n.length>8);
+
+  /* deduplicate */
+  const uniq=[];
+  notes.forEach(n=>{
+    const lo=n.toLowerCase();
+    if(!uniq.some(u=>{const ul=u.toLowerCase();return ul.includes(lo.slice(0,28))||lo.includes(ul.slice(0,28));}))
+      uniq.push(n);
+  });
+  return uniq;
+}
+
+/* 10. Render notes */
+let curNotes=[];
+function renderNotes(notes,style){
+  const list=document.getElementById('notes-list');
+  list.innerHTML='';
+  document.getElementById('notes-lbl').textContent=notes.length+' note'+(notes.length!==1?'s':'')+' generated';
+
+  notes.forEach((n,i)=>{
+    const item=document.createElement('div');
+    item.className='note-item';item.setAttribute('role','listitem');
+    item.style.animationDelay=(i*.065)+'s';
+    let prefix;
+    if(style==='numbered'){
+      prefix=`<span class="nnumber">${i+1}.</span>`;
+    } else if(style==='dashes'){
+      prefix=`<span class="nnumber" style="color:var(--mu2);">–</span>`;
+    } else {
+      prefix='<div class="nbullet"></div>';
+    }
+    item.innerHTML=prefix+'<span>'+n+'</span>';
+    list.appendChild(item);
+  });
+  setOutput(true);
+}
+
+/* 11. Animated progress */
+function animProg(done){
+  const pw=document.getElementById('prog-wrap'),pf=document.getElementById('prog-fill'),pl=document.getElementById('prog-lbl');
+  pw.classList.add('show');pf.style.width='0%';
+  const steps=[
+    {w:'22%',l:'Reading your text…',d:70},
+    {w:'50%',l:'Extracting key ideas…',d:310},
+    {w:'78%',l:'Formatting as notes…',d:560},
+    {w:'100%',l:'Done!',d:820},
+  ];
+  steps.forEach(s=>setTimeout(()=>{pf.style.width=s.w;pl.textContent=s.l;},s.d));
+  setTimeout(()=>{pw.classList.remove('show');pf.style.width='0%';done();},1080);
+}
+
+/* 12. Generate button */
+const genBtn=document.getElementById('gen-btn');
+/* inject spin keyframe */
+const ks=document.createElement('style');ks.textContent='@keyframes spin{to{transform:rotate(360deg)}}';document.head.appendChild(ks);
+
+genBtn.addEventListener('click',function(){
+  const text=ta.value.trim();
+  if(!text){toast('Please paste some text first!',true);ta.focus();return;}
+  if(text.split(/\s+/).filter(Boolean).length<10){toast('Please paste at least 10 words.',true);ta.focus();return;}
+
+  const style=document.getElementById('note-style').value;
+  const detail=document.getElementById('detail-lvl').value;
+
+  genBtn.disabled=true;
+  genBtn.innerHTML='<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="animation:spin .7s linear infinite;"><path d="M21 12a9 9 0 1 1-6.22-8.56"/></svg> Generating…';
+
+  animProg(()=>{
+    const notes=generate(text,detail);
+    if(!notes.length){
+      toast('Not enough content to generate notes. Try more text.',true);
+      setOutput(false);
+    } else {
+      curNotes=notes;
+      renderNotes(notes,style);
+      toast(notes.length+' notes generated!');
+      if(window.innerWidth<900){
+        setTimeout(()=>document.getElementById('output-card').scrollIntoView({behavior:'smooth',block:'start'}),180);
+      }
+    }
+    genBtn.disabled=false;
+    genBtn.innerHTML='<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg> Generate Notes';
+  });
+});
+
+/* 13. Re-render on style change */
+document.getElementById('note-style').addEventListener('change',function(){
+  if(curNotes.length)renderNotes(curNotes,this.value);
+});
+
+/* 14. Copy */
+  const style=document.getElementById('note-style').value;
+  const txt=curNotes.map((n,i)=>{
+    if(style==='numbered')return `${i+1}. ${n}`;
+    if(style==='dashes')return `– ${n}`;
+    return `• ${n}`;
+  }).join('\n');
+  navigator.clipboard.writeText(txt)
+    .then(()=>toast('Notes copied to clipboard!'))
+    .catch(()=>{
+      const tmp=document.createElement('textarea');
+      tmp.value=txt;tmp.style.cssText='position:fixed;top:-9999px;left:-9999px;opacity:0;';
+      document.body.appendChild(tmp);tmp.select();document.execCommand('copy');
+      document.body.removeChild(tmp);toast('Notes copied!');
+    });
+}
+function dooCopy(){
+  if(!curNotes.length){toast('Generate notes first!',true);return;}
+  const style=document.getElementById('note-style').value;
+  const txt=curNotes.map((n,i)=>{if(style==='numbered')return`${i+1}. ${n}`;if(style==='dashes')return`– ${n}`;return`• ${n}`;}).join('\n');
+  navigator.clipboard.writeText(txt).then(()=>toast('Notes copied to clipboard!')).catch(()=>{const tmp=document.createElement('textarea');tmp.value=txt;tmp.style.cssText='position:fixed;top:-9999px;left:-9999px;opacity:0;';document.body.appendChild(tmp);tmp.select();document.execCommand('copy');document.body.removeChild(tmp);toast('Notes copied!');});
+}
+document.getElementById('copy-btn').addEventListener('click',dooCopy);
+document.getElementById('copy-hdr-btn').addEventListener('click',dooCopy);
+
+/* 15. Download */
+document.getElementById('dl-btn').addEventListener('click',function(){
+  if(!curNotes.length){toast('Generate notes first!',true);return;}
+  const style=document.getElementById('note-style').value;
+  const content=curNotes.map((n,i)=>{if(style==='numbered')return`${i+1}. ${n}`;if(style==='dashes')return`– ${n}`;return`• ${n}`;}).join('\n');
+  const date=new Date().toISOString().slice(0,10);
+  const full=`STUDY NOTES — Generated by Study Hub AI\nDate: ${date}\nTotal notes: ${curNotes.length}\n${'─'.repeat(48)}\n\n${content}\n\n${'─'.repeat(48)}\nGenerated at studyhubai.com`;
+  const blob=new Blob([full],{type:'text/plain;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');a.href=url;a.download=`study-notes-${date}.txt`;
+  a.style.display='none';document.body.appendChild(a);a.click();document.body.removeChild(a);
+  URL.revokeObjectURL(url);toast('Notes downloaded!');
+});
+
+})();
+</script>
+</body>
+</html>
