@@ -1,0 +1,3422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script id="sh-theme-init">
+    (function () {
+      try {
+        var key = 'sh-theme';
+        var saved = localStorage.getItem(key);
+        var system = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        var theme = saved || system;
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.style.colorScheme = theme;
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'light');
+        document.documentElement.style.colorScheme = 'light';
+      }
+    })();
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover" />
+  <title>Study Planner – Free Daily Study Timetable Generator | Study Hub AI</title>
+  <meta name="description"
+    content="Build a personalised daily study timetable in seconds. Add your subjects, set your available hours and break time, and get a smart study schedule instantly." />
+  <meta name="keywords"
+    content="study planner,study timetable generator,daily study schedule,free study planner,student timetable" />
+  <meta name="author" content="Study Hub AI" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#2563eb" />
+  <meta property="og:title" content="Study Planner – Study Hub AI" />
+  <meta property="og:description"
+    content="Build a personalised daily study timetable instantly. Free, no signup required." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://studyhubai.com/tools/study-planner.html" />
+  <meta property="og:image" content="https://studyhubai.com/preview.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Familjen+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    /* ═══════════════════════════════════════
+   DESIGN TOKENS — identical to all pages
+═══════════════════════════════════════ */
+    :root {
+      --b50: #eff6ff;
+      --b100: #dbeafe;
+      --b200: #bfdbfe;
+      --b300: #93c5fd;
+      --b400: #60a5fa;
+      --b500: #3b82f6;
+      --b600: #2563eb;
+      --b700: #1d4ed8;
+      --b800: #1e40af;
+      --b900: #1e3a8a;
+      --g0: #fff;
+      --g50: #f8fafc;
+      --g100: #f1f5f9;
+      --g200: #e2e8f0;
+      --g300: #cbd5e1;
+      --g400: #94a3b8;
+      --g500: #64748b;
+      --g600: #475569;
+      --g700: #334155;
+      --g800: #1e293b;
+      --g900: #0f172a;
+      --g950: #020617;
+      --ink: var(--g900);
+      --ink2: var(--g700);
+      --mu: var(--g500);
+      --mu2: var(--g400);
+      --sf: var(--g50);
+      --sf2: var(--g100);
+      --bd: var(--g200);
+      --bd2: var(--g300);
+      --ac: var(--b600);
+      --acH: var(--b700);
+      --acL: var(--b50);
+      --acM: var(--b100);
+      --s0: 0 1px 2px rgba(15, 23, 42, .06);
+      --s1: 0 2px 8px rgba(15, 23, 42, .07), 0 1px 3px rgba(15, 23, 42, .04);
+      --s2: 0 4px 16px rgba(15, 23, 42, .09), 0 2px 6px rgba(15, 23, 42, .05);
+      --s3: 0 12px 36px rgba(15, 23, 42, .11), 0 4px 12px rgba(15, 23, 42, .06);
+      --s4: 0 24px 64px rgba(15, 23, 42, .13), 0 8px 24px rgba(15, 23, 42, .07);
+      --sb: 0 8px 32px rgba(37, 99, 235, .22), 0 2px 8px rgba(37, 99, 235, .12);
+      --sbL: 0 20px 60px rgba(37, 99, 235, .28), 0 6px 20px rgba(37, 99, 235, .15);
+      --r1: 6px;
+      --r2: 10px;
+      --r3: 14px;
+      --r4: 20px;
+      --r5: 28px;
+      --rF: 9999px;
+      --fd: 'Familjen Grotesk', sans-serif;
+      --fb: 'Plus Jakarta Sans', sans-serif;
+      --ez: cubic-bezier(.22, 1, .36, 1);
+      --esp: cubic-bezier(.34, 1.46, .64, 1);
+      --tf: .14s var(--ez);
+      --tb: .22s var(--ez);
+      --ts: .36s var(--ez);
+      --tsp: .38s var(--esp);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-y: scroll;
+    }
+
+    body {
+      font-family: var(--fb);
+      background: var(--g50);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    img,
+    svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
+
+    /* Dark Mode Transitions */
+    body {
+      transition: background .25s var(--ez), color .25s var(--ez);
+    }
+
+    [data-theme="dark"] {
+      --g0: #080c12; --g50: #0d1117; --g100: #161b22; --g200: #21262d; --g300: #30363d;
+      --g400: #484f58; --g500: #6e7681; --g600: #8b949e; --g700: #b1bac4; --g800: #c9d1d9; --g900: #f0f6fc; --g950: #ffffff;
+      --ink: var(--g900); --ink2: var(--g700); --mu: var(--g600); --mu2: var(--g500);
+      --sf: var(--g50); --sf2: var(--g100); --bd: var(--g200); --bd2: var(--g300);
+      --acL: rgba(37, 99, 235, .15); --acM: rgba(37, 99, 235, .25);
+    }
+
+    [data-theme="dark"] body { background: var(--g50); color: var(--ink); }
+    [data-theme="dark"] .nav, [data-theme="dark"] .nav.stuck { background: rgba(13, 17, 23, .88); border-bottom-color: var(--bd); }
+    [data-theme="dark"] .page-header, [data-theme="dark"] .how-sec, [data-theme="dark"] .more-sec, [data-theme="dark"] footer { background: var(--g0) !important; }
+    [data-theme="dark"] .card, [data-theme="dark"] .step-card, [data-theme="dark"] .tip-card, [data-theme="dark"] .more-card, [data-theme="dark"] .drw-panel, [data-theme="dark"] .item-card, [data-theme="dark"] .plan-sec { background: var(--g100) !important; border-color: var(--bd) !important; }
+    [data-theme="dark"] .tool-ta, [data-theme="dark"] .sg select, [data-theme="dark"] .qst, [data-theme="dark"] input, [data-theme="dark"] select { background: var(--g50) !important; border-color: var(--bd) !important; color: inherit; }
+    [data-theme="dark"] input:focus, [data-theme="dark"] select:focus { background: var(--g100) !important; }
+    [data-theme="dark"] .loader { background: rgba(8, 12, 18, .9); }
+    [data-theme="dark"] .btn-g { color: var(--ink2); border-color: var(--bd); }
+    [data-theme="dark"] .btn-g:hover { background: var(--acL); color: var(--ac); }
+    [data-theme="dark"] .ph-icon, [data-theme="dark"] .tip-ico, [data-theme="dark"] .more-ico { background: var(--g50); border-color: var(--bd); }
+    [data-theme="dark"] .tnchip { background: var(--g50); border-color: var(--bd); }
+    [data-theme="dark"] .plan-body { background: var(--g100); }
+    
+    .dm-btn {
+      width: 40px; height: 40px; border-radius: 12px; background: var(--g50); border: 1.5px solid var(--bd);
+      display: flex; align-items: center; justify-content: center; color: #fbbf24; cursor: pointer;
+      transition: all var(--tb); position: relative; overflow: hidden; flex-shrink: 0;
+    }
+    .dm-btn:hover { background: var(--g100); transform: translateY(-2px); border-color: var(--ac); }
+    .dm-btn svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2.2; }
+    .dm-btn .moon-ico { display: none; color: #94a3b8; }
+    [data-theme="dark"] .dm-btn .sun-ico { display: none; }
+    [data-theme="dark"] .dm-btn .moon-ico { display: block; }
+    [data-theme="dark"] .dm-btn { background: #1e293b; border-color: rgba(148, 163, 184, .2); }
+
+    .wrap {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 clamp(16px, 4vw, 32px);
+    }
+
+    .wrap-md {
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 clamp(16px, 4vw, 32px);
+    }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: .9rem;
+      border-radius: var(--r3);
+      border: 1.5px solid transparent;
+      padding: 11px 22px;
+      cursor: pointer;
+      white-space: nowrap;
+      position: relative;
+      overflow: hidden;
+      will-change: transform;
+      transition: transform var(--tsp), box-shadow var(--tb), background var(--tb), border-color var(--tb), color var(--tb);
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+
+    .btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0);
+      transition: background var(--tf);
+      pointer-events: none;
+    }
+
+    .btn:hover::after {
+      background: rgba(255, 255, 255, .09);
+    }
+
+    .btn:active {
+      transform: scale(.96) !important;
+    }
+
+    .btn-p {
+      background: var(--ac);
+      color: #fff;
+      border-color: var(--ac);
+      box-shadow: var(--sb);
+    }
+
+    .btn-p:hover {
+      background: var(--acH);
+      border-color: var(--acH);
+      transform: translateY(-2px);
+      box-shadow: var(--sbL);
+    }
+
+    .btn-p:disabled {
+      background: var(--g400);
+      border-color: var(--g400);
+      box-shadow: none;
+      cursor: not-allowed;
+      transform: none !important;
+      opacity: .65;
+    }
+
+    .btn-g {
+      background: transparent;
+      color: var(--ink2);
+      border-color: var(--bd2);
+    }
+
+    .btn-g:hover {
+      border-color: var(--ac);
+      color: var(--ac);
+      background: var(--acL);
+      transform: translateY(-2px);
+    }
+
+    .btn-g:disabled {
+      opacity: .4;
+      cursor: not-allowed;
+      transform: none !important;
+      pointer-events: none;
+    }
+
+    .btn-red {
+      background: transparent;
+      color: #dc2626;
+      border-color: #fecaca;
+    }
+
+    .btn-red:hover {
+      background: #fff1f2;
+      border-color: #dc2626;
+      transform: translateY(-2px);
+    }
+
+    .btn-sm {
+      padding: 8px 16px;
+      font-size: .82rem;
+    }
+
+    .btn-lg {
+      padding: 14px 30px;
+      font-size: .97rem;
+      border-radius: var(--r4);
+    }
+
+    .btn-icon {
+      width: 34px;
+      height: 34px;
+      padding: 0;
+      border-radius: var(--r2);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ═══════ NAVBAR ═══════ */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      transition: background var(--tb), box-shadow var(--tb);
+    }
+
+    .nav.stuck {
+      background: rgba(255, 255, 255, .92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--bd);
+      box-shadow: 0 1px 24px rgba(15, 23, 42, .07);
+    }
+
+    .nav-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: 1.18rem;
+      color: var(--ink);
+      transition: opacity var(--tf);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .nav-logo:hover {
+      opacity: .8;
+    }
+
+    .nlm {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--b600), var(--b400));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, .3);
+      flex-shrink: 0;
+    }
+
+    .nlm svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .nav-links a {
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--g600);
+      padding: 8px 14px;
+      border-radius: var(--r2);
+      transition: color var(--tf), background var(--tf);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.cur {
+      color: var(--ac);
+    }
+
+    .nav-links a:hover {
+      background: var(--acL);
+    }
+
+    .nav-acts {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .burger {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border-radius: var(--r2);
+      background: var(--sf2);
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--bd);
+      cursor: pointer;
+      transition: background var(--tf);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .burger:hover {
+      background: var(--acM);
+    }
+
+    .bw {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .bb {
+      display: block;
+      width: 18px;
+      height: 2px;
+      border-radius: 1px;
+      background: var(--ink);
+      transition: transform var(--tb), opacity var(--tf);
+      transform-origin: center;
+    }
+
+    .burger.on .bb:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .burger.on .bb:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    .burger.on .bb:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    .drw {
+      position: fixed;
+      inset: 0;
+      z-index: 199;
+      pointer-events: none;
+      visibility: hidden;
+      transition: visibility 0s var(--ts);
+    }
+
+    .drw.on {
+      pointer-events: auto;
+      visibility: visible;
+      transition: visibility 0s 0s;
+    }
+
+    .db {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 23, 42, .48);
+      opacity: 0;
+      backdrop-filter: blur(4px);
+      transition: opacity var(--ts);
+    }
+
+    .drw.on .db {
+      opacity: 1;
+    }
+
+    .dp {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: min(320px, 86vw);
+      background: #fff;
+      box-shadow: -6px 0 40px rgba(15, 23, 42, .16);
+      transform: translateX(100%);
+      transition: transform var(--ts);
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+    }
+
+    .drw.on .dp {
+      transform: translateX(0);
+    }
+
+    .dh {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--bd);
+      margin-bottom: 16px;
+    }
+
+    .dx {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--r2);
+      background: var(--sf2);
+      border: 1px solid var(--bd);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background var(--tf);
+    }
+
+    .dx:hover {
+      background: #fecdd3;
+    }
+
+    .dx svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--ink);
+    }
+
+    .dnav {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      flex: 1;
+    }
+
+    .dnav a {
+      font-family: var(--fd);
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 13px 16px;
+      border-radius: var(--r3);
+      color: var(--ink2);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: background var(--tf), color var(--tf);
+    }
+
+    .dnav a:hover {
+      background: var(--acL);
+      color: var(--ac);
+    }
+
+    .dnav a svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      opacity: .55;
+      flex-shrink: 0;
+    }
+
+    .df {
+      padding-top: 20px;
+      border-top: 1px solid var(--bd);
+    }
+
+    .df .btn {
+      width: 100%;
+    }
+
+    .drw.on .dnav a {
+      animation: drwIn .3s var(--ez) both;
+    }
+
+    .drw.on .dnav a:nth-child(1) {
+      animation-delay: .08s;
+    }
+
+    .drw.on .dnav a:nth-child(2) {
+      animation-delay: .13s;
+    }
+
+    .drw.on .dnav a:nth-child(3) {
+      animation-delay: .18s;
+    }
+
+    .drw.on .dnav a:nth-child(4) {
+      animation-delay: .23s;
+    }
+
+    @keyframes drwIn {
+      from {
+        opacity: 0;
+        transform: translateX(12px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0)
+      }
+    }
+
+    /* ═══════ PAGE HEADER ═══════ */
+    .page-header {
+      background: #fff;
+      border-bottom: 1px solid var(--bd);
+      padding: clamp(28px, 5vw, 48px) 0 clamp(24px, 4vw, 40px);
+    }
+
+    .ph-inner {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .ph-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .78rem;
+      color: var(--mu);
+      margin-bottom: 14px;
+      font-family: var(--fd);
+      font-weight: 600;
+    }
+
+    .ph-breadcrumb a {
+      color: var(--mu);
+      transition: color var(--tf);
+    }
+
+    .ph-breadcrumb a:hover {
+      color: var(--ac);
+    }
+
+    .ph-breadcrumb svg {
+      width: 12px;
+      height: 12px;
+      stroke: var(--mu2);
+      flex-shrink: 0;
+    }
+
+    .ph-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 10px;
+    }
+
+    .ph-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--b50), var(--b100));
+      border-radius: var(--r3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 1px solid var(--b200);
+    }
+
+    .ph-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--ac);
+    }
+
+    .ph-h1 {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      letter-spacing: -.022em;
+      color: var(--ink);
+    }
+
+    .ph-desc {
+      font-size: .95rem;
+      color: var(--mu);
+      line-height: 1.65;
+      max-width: 520px;
+    }
+
+    .ph-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+      background: var(--acL);
+      border: 1px solid var(--b200);
+      border-radius: var(--rF);
+      padding: 4px 12px;
+      font-size: .72rem;
+      font-weight: 700;
+      font-family: var(--fd);
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--ac);
+    }
+
+    .ph-badge-dot {
+      width: 5px;
+      height: 5px;
+      background: #22c55e;
+      border-radius: 50%;
+      animation: blink 1.8s infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1)
+      }
+
+      50% {
+        opacity: .4;
+        transform: scale(.65)
+      }
+    }
+
+    .ph-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .ph-tools-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .tnchip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--fd);
+      font-size: .78rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: var(--rF);
+      border: 1.5px solid var(--bd);
+      background: #fff;
+      color: var(--ink2);
+      transition: all var(--tb);
+    }
+
+    .tnchip:hover {
+      border-color: var(--ac);
+      color: var(--ac);
+      background: var(--acL);
+    }
+
+    .tnchip svg {
+      width: 13px;
+      height: 13px;
+      stroke: currentColor;
+      opacity: .7;
+    }
+
+    /* ═══════ TOOL WORKSPACE ═══════ */
+    .tool-main {
+      padding: clamp(28px, 4vw, 48px) 0 clamp(52px, 8vw, 88px);
+    }
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    /* ── CARDS ── */
+    .card {
+      background: #fff;
+      border: 1px solid var(--bd);
+      border-radius: var(--r4);
+      box-shadow: var(--s1);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card-hdr {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--bd);
+      background: var(--g50);
+    }
+
+    .card-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: .93rem;
+      color: var(--ink);
+    }
+
+    .card-title svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--ac);
+      flex-shrink: 0;
+    }
+
+    .card-acts {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    .card-sec {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--bd);
+    }
+
+    .card-sec:last-of-type {
+      border-bottom: none;
+    }
+
+    .sec-label {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: .78rem;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--mu);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .sec-label svg {
+      width: 13px;
+      height: 13px;
+      stroke: var(--mu);
+      flex-shrink: 0;
+    }
+
+    /* ── SUBJECT LIST ── */
+    .subj-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-height: 48px;
+    }
+
+    .subj-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--g50);
+      border: 1.5px solid var(--bd);
+      border-radius: var(--r3);
+      padding: 9px 12px;
+      transition: border-color var(--tb), box-shadow var(--tb);
+      animation: slideIn .25s var(--ez) both;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-6px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .subj-item:hover {
+      border-color: var(--b300);
+      box-shadow: var(--s0);
+    }
+
+    .subj-color {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: transform var(--tsp);
+    }
+
+    .subj-color:hover {
+      transform: scale(1.2);
+    }
+
+    .subj-name {
+      flex: 1;
+      font-family: var(--fb);
+      font-size: .88rem;
+      color: var(--ink);
+      background: transparent;
+      border: none;
+      outline: none;
+      min-width: 0;
+    }
+
+    .subj-name::placeholder {
+      color: var(--mu2);
+    }
+
+    .subj-dur {
+      width: 54px;
+      font-family: var(--fd);
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--ink);
+      background: transparent;
+      border: none;
+      outline: none;
+      text-align: right;
+      cursor: ns-resize;
+    }
+
+    .subj-dur-unit {
+      font-size: .72rem;
+      color: var(--mu);
+      font-family: var(--fd);
+      white-space: nowrap;
+    }
+
+    .subj-rm {
+      width: 26px;
+      height: 26px;
+      border-radius: var(--r1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity var(--tf), background var(--tf), transform var(--tsp);
+    }
+
+    .subj-item:hover .subj-rm {
+      opacity: 1;
+    }
+
+    .subj-rm:hover {
+      background: #fee2e2;
+      transform: scale(1.1);
+    }
+
+    .subj-rm svg {
+      width: 13px;
+      height: 13px;
+      stroke: #dc2626;
+    }
+
+    .add-subj-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .add-subj-input {
+      flex: 1;
+      font-family: var(--fb);
+      font-size: .88rem;
+      color: var(--ink);
+      background: var(--g50);
+      border: 1.5px solid var(--bd);
+      border-radius: var(--r3);
+      padding: 9px 12px;
+      outline: none;
+      transition: border-color var(--tb), box-shadow var(--tb);
+    }
+
+    .add-subj-input::placeholder {
+      color: var(--mu2);
+    }
+
+    .add-subj-input:focus {
+      border-color: var(--ac);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, .1);
+      background: #fff;
+    }
+
+    /* ── NUMBER INPUTS ── */
+    .num-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .num-field {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .num-field label {
+      font-size: .79rem;
+      font-weight: 700;
+      font-family: var(--fd);
+      color: var(--ink2);
+    }
+
+    .num-input-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .num-input {
+      width: 100%;
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--ink);
+      background: #fff;
+      border: 1.5px solid var(--bd);
+      border-radius: var(--r3);
+      padding: 10px 44px 10px 14px;
+      -moz-appearance: textfield;
+      appearance: textfield;
+    }
+
+    .num-input::-webkit-inner-spin-button,
+    .num-input::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+    }
+
+    .num-input:focus {
+      border-color: var(--ac);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, .1);
+    }
+
+    .num-unit {
+      position: absolute;
+      right: 12px;
+      font-size: .73rem;
+      color: var(--mu);
+      font-family: var(--fd);
+      font-weight: 600;
+      pointer-events: none;
+    }
+
+    .num-stepper {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 30px;
+      border-left: 1px solid var(--bd);
+      border-radius: 0 var(--r3) var(--r3) 0;
+      overflow: hidden;
+    }
+
+    .num-step {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--g50);
+      cursor: pointer;
+      font-size: .65rem;
+      color: var(--mu);
+      transition: background var(--tf), color var(--tf);
+    }
+
+    .num-step:hover {
+      background: var(--acM);
+      color: var(--ac);
+    }
+
+    .num-step:first-child {
+      border-bottom: 1px solid var(--bd);
+    }
+
+    /* ── OPTIONS ── */
+    .opt-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .opt-field {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .opt-field label {
+      font-size: .79rem;
+      font-weight: 700;
+      font-family: var(--fd);
+      color: var(--ink2);
+    }
+
+    .sel {
+      font-family: var(--fb);
+      font-size: .84rem;
+      color: var(--ink);
+      background: #fff;
+      border: 1.5px solid var(--bd);
+      border-radius: var(--r3);
+      padding: 9px 28px 9px 12px;
+      outline: none;
+      cursor: pointer;
+      transition: border-color var(--tb);
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 8px center;
+    }
+
+    .sel:focus {
+      border-color: var(--ac);
+    }
+
+    /* toggle */
+    .tog-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4px 0;
+    }
+
+    .tog-lbl {
+      font-size: .83rem;
+      font-weight: 600;
+      font-family: var(--fd);
+      color: var(--ink2);
+    }
+
+    .tog-sub {
+      font-size: .74rem;
+      color: var(--mu);
+    }
+
+    .toggle {
+      position: relative;
+      display: inline-block;
+      width: 36px;
+      height: 21px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+      position: absolute;
+    }
+
+    .tog-track {
+      position: absolute;
+      inset: 0;
+      border-radius: var(--rF);
+      background: var(--g300);
+      transition: background var(--tb);
+    }
+
+    .toggle input:checked+.tog-track {
+      background: var(--ac);
+    }
+
+    .tog-thumb {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: var(--s0);
+      transition: transform var(--tb);
+    }
+
+    .toggle input:checked~.tog-thumb {
+      transform: translateX(15px);
+    }
+
+    /* ── START TIME ── */
+    .start-time-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .time-input {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: .97rem;
+      color: var(--ink);
+      background: #fff;
+      border: 1.5px solid var(--bd);
+      border-radius: var(--r3);
+      padding: 9px 14px;
+      outline: none;
+      cursor: pointer;
+      transition: border-color var(--tb);
+      width: 120px;
+    }
+
+    .time-input:focus {
+      border-color: var(--ac);
+    }
+
+    /* ── PROGRESS BAR ── */
+    .prog-wrap {
+      padding: 0 20px 16px;
+      display: none;
+    }
+
+    .prog-wrap.show {
+      display: block;
+    }
+
+    .prog-bg {
+      background: var(--bd);
+      border-radius: var(--rF);
+      height: 5px;
+      overflow: hidden;
+    }
+
+    .prog-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--b600), var(--b400));
+      border-radius: var(--rF);
+      width: 0%;
+      transition: width .35s var(--ez);
+    }
+
+    .prog-lbl {
+      font-size: .73rem;
+      color: var(--mu);
+      margin-top: 5px;
+      font-family: var(--fd);
+      font-weight: 600;
+    }
+
+    /* ── ACTION ROW ── */
+    .act-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding: 16px 20px;
+      border-top: 1px solid var(--bd);
+      background: var(--g50);
+    }
+
+    /* ── OUTPUT PLACEHOLDER ── */
+    .out-ph {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 400px;
+      text-align: center;
+      padding: 40px 28px;
+      color: var(--mu2);
+    }
+
+    .out-ph svg {
+      width: 56px;
+      height: 56px;
+      stroke: var(--bd2);
+      margin-bottom: 18px;
+      opacity: .65;
+    }
+
+    .out-ph h3 {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--mu);
+      margin-bottom: 8px;
+    }
+
+    .out-ph p {
+      font-size: .84rem;
+      line-height: 1.62;
+      color: var(--mu2);
+      max-width: 240px;
+    }
+
+    /* ═══════ TIMETABLE OUTPUT ═══════ */
+    .tt-wrap {
+      padding: 20px;
+      display: none;
+    }
+
+    .tt-wrap.show {
+      display: block;
+    }
+
+    /* timetable header */
+    .tt-hd {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+
+
+    .tt-title {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--ink);
+      margin-bottom: 3px;
+    }
+
+    .tt-meta {
+      font-size: .78rem;
+      color: var(--mu);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .tt-meta-dot {
+      width: 4px;
+      height: 4px;
+      background: var(--bd2);
+      border-radius: 50%;
+    }
+
+    .tt-hd-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* summary strip */
+    .tt-summary {
+      display: flex;
+      gap: 0;
+      background: var(--g50);
+      border: 1px solid var(--bd);
+      border-radius: var(--r3);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    .tt-sum-item {
+      flex: 1;
+      padding: 10px 8px;
+      text-align: center;
+      border-right: 1px solid var(--bd);
+    }
+
+    .tt-sum-item:last-child {
+      border-right: none;
+    }
+
+    .tt-sum-n {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--ink);
+    }
+
+    .tt-sum-l {
+      font-size: .65rem;
+      color: var(--mu);
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      font-family: var(--fd);
+      font-weight: 600;
+      margin-top: 1px;
+    }
+
+    /* slot cards */
+    .tt-slots {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .tt-slot {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border-radius: var(--r3);
+      overflow: hidden;
+      border: 1px solid var(--bd);
+      opacity: 0;
+      animation: slotIn .3s var(--ez) both;
+      transition: transform var(--tsp), box-shadow var(--tb);
+      will-change: transform;
+    }
+
+    .tt-slot:hover {
+      transform: translateY(-2px) translateX(3px);
+      box-shadow: var(--s2);
+    }
+
+    @keyframes slotIn {
+      from {
+        opacity: 0;
+        transform: translateX(-10px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0)
+      }
+    }
+
+    /* time column */
+    .tt-time {
+      width: 92px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 10px;
+      background: var(--g50);
+      border-right: 1px solid var(--bd);
+    }
+
+    .tt-time-start {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: .88rem;
+      color: var(--ink);
+    }
+
+    .tt-time-end {
+      font-size: .72rem;
+      color: var(--mu);
+      margin-top: 1px;
+    }
+
+    .tt-time-arrow {
+      font-size: .65rem;
+      color: var(--mu2);
+      line-height: 1;
+    }
+
+    /* main content column */
+    .tt-content {
+      flex: 1;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .tt-ico {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--r2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.1rem;
+    }
+
+    .tt-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .tt-subj {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: .92rem;
+      color: var(--ink);
+    }
+
+    .tt-dur-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-family: var(--fd);
+      font-size: .71rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: var(--rF);
+      margin-top: 3px;
+    }
+
+    .tt-dur-tag svg {
+      width: 10px;
+      height: 10px;
+      flex-shrink: 0;
+    }
+
+    /* right badge */
+    .tt-badge {
+      margin-left: auto;
+      flex-shrink: 0;
+      padding: 0 14px;
+      text-align: right;
+    }
+
+    .tt-badge-type {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: .68rem;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--mu);
+      margin-bottom: 2px;
+    }
+
+    .tt-badge-mins {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--ink);
+    }
+
+    .tt-badge-unit {
+      font-size: .68rem;
+      color: var(--mu);
+      font-family: var(--fd);
+    }
+
+    /* slot type colour themes */
+    .slot-study .tt-time {
+      background: var(--b50);
+    }
+
+    .slot-break .tt-time {
+      background: #f0fdf4;
+    }
+
+    .slot-break .tt-content {
+      background: #f0fdf4 !important;
+    }
+
+    .slot-break .tt-subj {
+      color: #15803d;
+    }
+
+    .slot-break .tt-dur-tag {
+      color: #15803d;
+      background: #dcfce7;
+      border: 1px solid #bbf7d0;
+    }
+
+    .slot-review .tt-time {
+      background: #fef3c7;
+    }
+
+    .slot-review .tt-content {
+      background: #fef3c7 !important;
+    }
+
+    .slot-review .tt-subj {
+      color: #b45309;
+    }
+
+    .slot-review .tt-dur-tag {
+      color: #b45309;
+      background: #fef3c7;
+      border: 1px solid #fde68a;
+    }
+
+    /* subject colour left-border */
+    .tt-slot {
+      border-left: 4px solid var(--bd);
+    }
+
+    /* output footer */
+    .out-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      border-top: 1px solid var(--bd);
+      background: var(--g50);
+      flex-wrap: wrap;
+      gap: 8px;
+      display: none;
+    }
+
+    .of-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .of-right {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .quality-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border: 1px solid #86efac;
+      border-radius: var(--rF);
+      padding: 4px 11px;
+      font-family: var(--fd);
+      font-size: .72rem;
+      font-weight: 700;
+      color: #15803d;
+    }
+
+    .quality-badge svg {
+      width: 10px;
+      height: 10px;
+      stroke: #15803d;
+    }
+
+    /* loader */
+    .loader {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, .9);
+      backdrop-filter: blur(4px);
+      z-index: 10;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      border-radius: var(--r4);
+    }
+
+    .loader.show {
+      display: flex;
+    }
+
+    .spinner {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 3px solid var(--b200);
+      border-top-color: var(--ac);
+      animation: spin .65s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    .loader-txt {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: .85rem;
+      color: var(--ink2);
+    }
+
+    .dots::after {
+      content: '';
+      animation: dots 1.4s steps(4, end) infinite;
+    }
+
+    @keyframes dots {
+      0% {
+        content: ''
+      }
+
+      25% {
+        content: '.'
+      }
+
+      50% {
+        content: '..'
+      }
+
+      75% {
+        content: '...'
+      }
+
+      100% {
+        content: ''
+      }
+    }
+
+    /* toast */
+    .toast {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 9999;
+      background: var(--g900);
+      color: #fff;
+      border-radius: var(--r3);
+      padding: 12px 18px;
+      font-family: var(--fd);
+      font-weight: 600;
+      font-size: .85rem;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      box-shadow: var(--s4);
+      transform: translateY(80px);
+      opacity: 0;
+      transition: transform var(--tsp), opacity var(--tb);
+      pointer-events: none;
+      max-width: 320px;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .toast svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    .t-ok svg {
+      stroke: #4ade80;
+    }
+
+    .t-err svg {
+      stroke: #fca5a5;
+    }
+
+    .t-inf svg {
+      stroke: #93c5fd;
+    }
+
+    /* ═══════ HOW IT WORKS ═══════ */
+    .how-sec {
+      background: #fff;
+      border-top: 1px solid var(--bd);
+      padding: clamp(36px, 5vw, 60px) 0;
+    }
+
+    .how-hd {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .chip-sm {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--fd);
+      font-size: .71rem;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: var(--ac);
+      background: var(--acL);
+      border: 1px solid var(--b200);
+      padding: 5px 13px;
+      border-radius: var(--rF);
+      margin-bottom: 12px;
+    }
+
+    .chip-sm-dot {
+      width: 5px;
+      height: 5px;
+      background: var(--ac);
+      border-radius: 50%;
+      animation: blink 2.2s ease-in-out infinite;
+    }
+
+    .how-hd h2 {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+      letter-spacing: -.022em;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .how-hd p {
+      font-size: .9rem;
+      color: var(--mu);
+      max-width: 440px;
+      margin: 0 auto;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .step-card {
+      background: var(--g50);
+      border: 1px solid var(--bd);
+      border-radius: var(--r4);
+      padding: clamp(18px, 2.5vw, 26px);
+      text-align: center;
+      transition: transform var(--tsp), box-shadow var(--tb);
+    }
+
+    .step-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--s3);
+    }
+
+    .step-n {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--b600), var(--b500));
+      color: #fff;
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 14px;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, .26);
+    }
+
+    .step-t {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: .88rem;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .step-d {
+      font-size: .8rem;
+      color: var(--mu);
+      line-height: 1.55;
+    }
+
+    /* ═══════ TIPS ═══════ */
+    .tips-sec {
+      background: var(--g50);
+      border-top: 1px solid var(--bd);
+      padding: clamp(32px, 4vw, 52px) 0;
+    }
+
+    .tips-hd {
+      margin-bottom: clamp(20px, 3vw, 28px);
+    }
+
+    .tips-hd h2 {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: clamp(1.2rem, 2vw, 1.55rem);
+      letter-spacing: -.02em;
+      color: var(--ink);
+      margin-bottom: 5px;
+    }
+
+    .tips-hd p {
+      font-size: .88rem;
+      color: var(--mu);
+    }
+
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .tip-card {
+      background: #fff;
+      border: 1px solid var(--bd);
+      border-radius: var(--r3);
+      padding: 16px 18px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      transition: border-color var(--tb), transform var(--tsp);
+    }
+
+    .tip-card:hover {
+      border-color: var(--b200);
+      transform: translateX(4px);
+    }
+
+    .tip-ico {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--r2);
+      background: var(--acL);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background var(--tb), transform var(--tsp);
+    }
+
+    .tip-ico svg {
+      width: 17px;
+      height: 17px;
+      stroke: var(--ac);
+    }
+
+    .tip-card:hover .tip-ico {
+      background: var(--acM);
+      transform: scale(1.08) rotate(-4deg);
+    }
+
+    .tip-t {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: .87rem;
+      color: var(--ink);
+      margin-bottom: 3px;
+    }
+
+    .tip-d {
+      font-size: .8rem;
+      color: var(--mu);
+      line-height: 1.55;
+    }
+
+    /* ═══════ MORE TOOLS ═══════ */
+    .more-sec {
+      background: #fff;
+      border-top: 1px solid var(--bd);
+      padding: clamp(32px, 4vw, 52px) 0;
+    }
+
+    .more-hd {
+      margin-bottom: clamp(18px, 2.5vw, 26px);
+    }
+
+    .more-hd h2 {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: clamp(1.2rem, 2vw, 1.55rem);
+      letter-spacing: -.02em;
+      color: var(--ink);
+      margin-bottom: 5px;
+    }
+
+    .more-hd p {
+      font-size: .88rem;
+      color: var(--mu);
+    }
+
+    .more-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+      gap: 12px;
+    }
+
+    .more-card {
+      background: var(--g50);
+      border: 1px solid var(--bd);
+      border-radius: var(--r3);
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      transition: border-color var(--tb), transform var(--tsp), box-shadow var(--tb);
+    }
+
+    .more-card:hover {
+      border-color: var(--b200);
+      transform: translateY(-3px);
+      box-shadow: var(--s2);
+    }
+
+    .more-ico {
+      width: 34px;
+      height: 34px;
+      background: var(--acL);
+      border-radius: var(--r2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background var(--tb), transform var(--tsp);
+    }
+
+    .more-ico svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--ac);
+    }
+
+    .more-card:hover .more-ico {
+      background: var(--acM);
+      transform: scale(1.1) rotate(-4deg);
+    }
+
+    .more-name {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: .81rem;
+      color: var(--ink);
+    }
+
+    .more-sub {
+      font-size: .69rem;
+      color: var(--mu);
+    }
+
+    /* ═══════ FOOTER ═══════ */
+    footer {
+      background: var(--g950);
+      padding: clamp(36px, 5vw, 52px) 0 28px;
+    }
+
+    .foot-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, .08);
+    }
+
+    .f-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: #fff;
+    }
+
+    .flm {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--b600), var(--b400));
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, .28);
+    }
+
+    .flm svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .f-nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .f-nav a {
+      font-size: .84rem;
+      color: rgba(255, 255, 255, .42);
+      transition: color var(--tf);
+    }
+
+    .f-nav a:hover {
+      color: #fff;
+    }
+
+    .f-bot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .f-copy {
+      font-size: .8rem;
+      color: rgba(255, 255, 255, .26);
+    }
+
+    .f-tag {
+      font-size: .8rem;
+      color: rgba(255, 255, 255, .26);
+    }
+
+    .f-tag span {
+      color: rgba(255, 255, 255, .46);
+    }
+
+    /* ═══════ SCROLL REVEAL ═══════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      will-change: opacity, transform;
+      transition: opacity .6s var(--ez), transform .6s var(--ez);
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .d1 {
+      transition-delay: .07s
+    }
+
+    .d2 {
+      transition-delay: .14s
+    }
+
+    .d3 {
+      transition-delay: .21s
+    }
+
+    .d4 {
+      transition-delay: .28s
+    }
+
+    /* ═══════ RESPONSIVE ═══════ */
+    @media(max-width:1050px) {
+      .tool-grid {
+        grid-template-columns: 340px 1fr;
+      }
+    }
+
+    @media(max-width:900px) {
+      .tool-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .ph-right {
+        display: none;
+      }
+
+      .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media(max-width:820px) {
+
+      .nav-links,
+      .nav-acts .btn-g {
+        display: none;
+      }
+
+      .burger {
+        display: flex;
+      }
+      
+      .dm-btn {
+        display: none; /* Hide dark mode button on smaller screens when burger is active */
+      }
+    }
+
+    @media(max-width:600px) {
+      .act-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .act-row .btn {
+        justify-content: center;
+      }
+
+      .more-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .num-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .opt-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .foot-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .f-bot {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+
+      .tt-time {
+        width: 74px;
+      }
+
+      .tt-badge {
+        display: none;
+      }
+    }
+
+    @media(max-width:380px) {
+      .more-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @supports(padding:max(0px)) {
+      .nav-row {
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+      }
+
+      footer {
+        padding-bottom: max(28px, env(safe-area-inset-bottom));
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══════ NAVBAR ══════ -->
+  <nav class="nav" id="navbar">
+    <div class="wrap">
+      <div class="nav-row">
+        <a href="../index.html" class="nav-logo" aria-label="Study Hub AI home">
+          <div class="nlm"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" />
+              <path d="M2 17l10 5 10-5" />
+              <path d="M2 12l10 5 10-5" />
+            </svg></div>
+          Study Hub AI
+        </a>
+        <ul class="nav-links" role="list">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../tools.html" class="cur">Tools</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../about.html">About</a></li>
+        </ul>
+        <div class="nav-acts">
+          <button class="dm-btn" id="dm-btn" aria-label="Toggle dark mode">
+            <svg class="sun-ico" viewBox="0 0 24 24" stroke="currentColor" fill="none"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="moon-ico" viewBox="0 0 24 24" stroke="currentColor" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+          <a href="../tools.html" class="btn btn-g btn-sm" style="display:inline-flex;">All Tools</a>
+          <a href="../tools.html" class="btn btn-p btn-sm">Start Studying</a>
+          <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+            <div class="bw"><span class="bb"></span><span class="bb"></span><span class="bb"></span></div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- DRAWER -->
+  <div class="drw" id="drw" role="dialog" aria-modal="true" aria-label="Navigation">
+    <div class="db" id="drw-back"></div>
+    <div class="dp">
+      <div class="dh">
+        <div class="nav-logo" style="font-size:1rem;">
+          <div class="nlm" style="width:30px;height:30px;border-radius:8px;"><svg viewBox="0 0 24 24" fill="none"
+              stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+              style="width:15px;height:15px;">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" />
+              <path d="M2 17l10 5 10-5" />
+              <path d="M2 12l10 5 10-5" />
+            </svg></div>
+          Study Hub AI
+        </div>
+        <button class="dx" id="drw-x" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg></button>
+      </div>
+      <nav class="dnav">
+        <a href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+            <polyline points="9 22 9 12 15 12 15 22" />
+          </svg>Home</a>
+        <a href="../tools.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+            <polyline points="14 2 14 8 20 8" />
+          </svg>All Tools</a>
+        <a href="../blog.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+          </svg>Blog</a>
+        <a href="../about.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <line x1="12" y1="8" x2="12" y2="12" />
+            <line x1="12" y1="16" x2="12.01" y2="16" />
+          </svg>About</a>
+      </nav>
+      <div class="df"><a href="../tools.html" class="btn btn-p btn-lg">Browse All Tools</a></div>
+    </div>
+  </div>
+
+
+  <!-- ══════ PAGE HEADER ══════ -->
+  <div class="page-header">
+    <div class="wrap">
+      <div class="ph-inner">
+        <div>
+          <nav class="ph-breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+            <a href="../tools.html">Tools</a>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+            <span style="color:var(--ink2);font-weight:600;">Study Planner</span>
+          </nav>
+          <div class="ph-title">
+            <div class="ph-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
+            </div>
+            <h1 class="ph-h1">Study Planner</h1>
+          </div>
+          <p class="ph-desc">Add your subjects, set your available hours and break time, and get a smart personalised
+            daily timetable — ready in seconds.</p>
+          <div class="ph-badge"><span class="ph-badge-dot"></span>Free · No signup · Instant schedule</div>
+        </div>
+        <div class="ph-right">
+          <span style="font-size:.78rem;font-weight:600;font-family:var(--fd);color:var(--mu);">Try other tools:</span>
+          <div class="ph-tools-row">
+            <a href="notes-generator.html" class="tnchip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+              </svg>Notes Gen</a>
+            <a href="pomodoro-timer.html" class="tnchip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>Pomodoro</a>
+            <a href="flashcard-generator.html" class="tnchip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="5" width="20" height="14" rx="2" />
+                <line x1="2" y1="10" x2="22" y2="10" />
+              </svg>Flashcards</a>
+            <a href="exam-answer.html" class="tnchip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 11l3 3L22 4" />
+              </svg>Exam Answers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════ WORKSPACE ══════ -->
+  <main class="tool-main">
+    <div class="wrap-md">
+      <div class="tool-grid">
+
+        <!-- ── INPUT PANEL ── -->
+        <div class="card" id="input-card">
+
+          <!-- Subjects -->
+          <div class="card-sec">
+            <div class="sec-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+              </svg>
+              Subjects
+              <span id="subj-count"
+                style="margin-left:auto;background:var(--acL);color:var(--ac);font-family:var(--fd);font-size:.7rem;font-weight:700;padding:1px 7px;border-radius:var(--rF);border:1px solid var(--b200);">0</span>
+            </div>
+            <div class="subj-list" id="subj-list"></div>
+            <div class="add-subj-row">
+              <input class="add-subj-input" id="add-subj-input" type="text"
+                placeholder="Add a subject… e.g. Mathematics" maxlength="40" aria-label="Subject name" />
+              <button class="btn btn-p btn-sm" id="add-subj-btn" style="white-space:nowrap;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+                Add
+              </button>
+            </div>
+          </div>
+
+          <!-- Hours & Breaks -->
+          <div class="card-sec">
+            <div class="sec-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+              Time Settings
+            </div>
+            <div class="num-grid">
+              <div class="num-field">
+                <label for="total-hours">Total study hours</label>
+                <div class="num-input-wrap">
+                  <input class="num-input" id="total-hours" type="number" min="1" max="16" value="4"
+                    aria-label="Total study hours" />
+                  <span class="num-unit" style="right:36px;">hrs</span>
+                  <div class="num-stepper">
+                    <div class="num-step" data-target="total-hours" data-dir="up">▲</div>
+                    <div class="num-step" data-target="total-hours" data-dir="dn">▼</div>
+                  </div>
+                </div>
+              </div>
+              <div class="num-field">
+                <label for="break-dur">Break duration</label>
+                <div class="num-input-wrap">
+                  <input class="num-input" id="break-dur" type="number" min="5" max="60" step="5" value="10"
+                    aria-label="Break duration in minutes" />
+                  <span class="num-unit" style="right:36px;">min</span>
+                  <div class="num-stepper">
+                    <div class="num-step" data-target="break-dur" data-dir="up">▲</div>
+                    <div class="num-step" data-target="break-dur" data-dir="dn">▼</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Options -->
+          <div class="card-sec">
+            <div class="sec-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3" />
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14" />
+              </svg>
+              Options
+            </div>
+            <div class="opt-grid">
+              <div class="opt-field">
+                <label for="session-len">Session length</label>
+                <select class="sel" id="session-len" aria-label="Study session length">
+                  <option value="30">30 minutes</option>
+                  <option value="45" selected>45 minutes</option>
+                  <option value="60">60 minutes</option>
+                  <option value="90">90 minutes</option>
+                </select>
+              </div>
+              <div class="opt-field">
+                <label for="break-freq">Break after every</label>
+                <select class="sel" id="break-freq" aria-label="Break frequency">
+                  <option value="1">Every session</option>
+                  <option value="2" selected>Every 2 sessions</option>
+                  <option value="3">Every 3 sessions</option>
+                </select>
+              </div>
+            </div>
+            <div style="margin-top:12px;display:flex;flex-direction:column;gap:10px;">
+              <div class="tog-row">
+                <div>
+                  <div class="tog-lbl">Random rotation</div>
+                  <div class="tog-sub">Shuffle subject order each time</div>
+                </div>
+                <label class="toggle" title="Randomise subject order"><input type="checkbox" id="tog-shuffle" checked />
+                  <div class="tog-track"></div>
+                  <div class="tog-thumb"></div>
+                </label>
+              </div>
+              <div class="tog-row">
+                <div>
+                  <div class="tog-lbl">Include review session</div>
+                  <div class="tog-sub">Add a recap block at the end</div>
+                </div>
+                <label class="toggle" title="Add review session"><input type="checkbox" id="tog-review" checked />
+                  <div class="tog-track"></div>
+                  <div class="tog-thumb"></div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Start Time -->
+          <div class="card-sec">
+            <div class="sec-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
+              Start Time
+            </div>
+            <div class="start-time-row">
+              <input class="time-input" id="start-time" type="time" value="09:00" aria-label="Session start time" />
+              <span style="font-size:.83rem;color:var(--mu);">Your timetable begins here</span>
+            </div>
+          </div>
+
+          <!-- Progress -->
+          <div class="prog-wrap" id="prog-wrap">
+            <div class="prog-bg">
+              <div class="prog-fill" id="prog-fill"></div>
+            </div>
+            <div class="prog-lbl" id="prog-lbl">Building your timetable…</div>
+          </div>
+
+          <!-- Actions -->
+          <div class="act-row">
+            <button class="btn btn-p" id="gen-btn" disabled>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
+              Generate Plan
+            </button>
+            <button class="btn btn-g btn-sm" id="reset-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="1 4 1 10 7 10" />
+                <path d="M3.51 15a9 9 0 1 0 .49-3" />
+              </svg>
+              Reset
+            </button>
+          </div>
+        </div><!-- /input card -->
+
+        <!-- ── OUTPUT PANEL ── -->
+        <div class="card" id="output-card">
+          <div class="loader" id="loader">
+            <div class="spinner"></div>
+            <div class="loader-txt">Building your plan<span class="dots"></span></div>
+          </div>
+
+          <div class="card-hdr">
+            <div class="card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
+              Your Daily Study Plan
+            </div>
+            <div id="ready-badge" style="display:none;">
+              <span
+                style="display:inline-flex;align-items:center;gap:4px;background:#dcfce7;border:1px solid #bbf7d0;border-radius:var(--rF);padding:3px 10px;font-family:var(--fd);font-size:.7rem;font-weight:700;color:#15803d;">
+                <span
+                  style="width:5px;height:5px;background:#22c55e;border-radius:50%;animation:blink 1.6s infinite;"></span>
+                Ready
+              </span>
+            </div>
+          </div>
+
+          <!-- placeholder -->
+          <div class="out-ph" id="out-ph">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>
+            <h3>No plan yet</h3>
+            <p>Add your subjects on the left, set your hours and break time, then click <strong>Generate Plan</strong>.
+            </p>
+          </div>
+
+          <!-- timetable -->
+          <div class="tt-wrap" id="tt-wrap">
+            <div class="tt-hd">
+              <div class="tt-hd-left">
+                <div class="tt-title" id="tt-title">Daily Study Timetable</div>
+                <div class="tt-meta" id="tt-meta"></div>
+              </div>
+              <div class="tt-hd-right">
+                <button class="btn btn-g btn-sm" id="shuffle-btn" title="Regenerate with new order">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="16 3 21 3 21 8" />
+                    <line x1="4" y1="20" x2="21" y2="3" />
+                    <polyline points="21 16 21 21 16 21" />
+                    <line x1="15" y1="15" x2="21" y2="21" />
+                  </svg>
+                  Shuffle
+                </button>
+              </div>
+            </div>
+
+            <!-- summary stats -->
+            <div class="tt-summary" id="tt-summary">
+              <div class="tt-sum-item">
+                <div class="tt-sum-n" id="sum-sessions">—</div>
+                <div class="tt-sum-l">Sessions</div>
+              </div>
+              <div class="tt-sum-item">
+                <div class="tt-sum-n" id="sum-study">—</div>
+                <div class="tt-sum-l">Study Time</div>
+              </div>
+              <div class="tt-sum-item">
+                <div class="tt-sum-n" id="sum-breaks">—</div>
+                <div class="tt-sum-l">Breaks</div>
+              </div>
+              <div class="tt-sum-item">
+                <div class="tt-sum-n" id="sum-end">—</div>
+                <div class="tt-sum-l">Finish By</div>
+              </div>
+            </div>
+
+            <!-- slots -->
+            <div class="tt-slots" id="tt-slots" role="list" aria-label="Study timetable slots"></div>
+          </div>
+
+          <!-- output footer -->
+          <div class="out-foot" id="out-foot">
+            <div class="of-left">
+              <span class="quality-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Personalised plan
+              </span>
+            </div>
+            <div class="of-right">
+              <button class="btn btn-g btn-sm" id="copy-btn" disabled>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                </svg>
+                Copy Plan
+              </button>
+              <button class="btn btn-g btn-sm" id="download-btn" disabled>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                Download .txt
+              </button>
+              <button class="btn btn-red btn-sm" id="clear-out-btn" disabled>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="3 6 5 6 21 6" />
+                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                </svg>
+                Clear
+              </button>
+            </div>
+          </div>
+
+        </div><!-- /output card -->
+      </div><!-- .tool-grid -->
+    </div>
+  </main>
+
+
+  <!-- ══════ HOW IT WORKS ══════ -->
+  <section class="how-sec">
+    <div class="wrap-md">
+      <div class="how-hd reveal">
+        <div class="chip-sm"><span class="chip-sm-dot"></span>How To Use</div>
+        <h2>Your personalised plan in four steps</h2>
+        <p>No signup, no account — just fill in your details and generate.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card reveal d1">
+          <div class="step-n">1</div>
+          <div class="step-t">Add Your Subjects</div>
+          <div class="step-d">Type each subject and press Add. Set how long you want to study each one using the minute
+            counter.</div>
+        </div>
+        <div class="step-card reveal d2">
+          <div class="step-n">2</div>
+          <div class="step-t">Set Your Time</div>
+          <div class="step-d">Choose total study hours, break duration, session length, and the time you want to start
+            studying.</div>
+        </div>
+        <div class="step-card reveal d3">
+          <div class="step-n">3</div>
+          <div class="step-t">Generate Your Plan</div>
+          <div class="step-d">Hit Generate Plan and get a full colour-coded daily timetable with all sessions, breaks,
+            and a review block.</div>
+        </div>
+        <div class="step-card reveal d4">
+          <div class="step-n">4</div>
+          <div class="step-t">Copy or Download</div>
+          <div class="step-d">Save your timetable as a .txt file or copy it to your clipboard — then follow it to study
+            smarter today.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════ TIPS ══════ -->
+  <section class="tips-sec">
+    <div class="wrap-md">
+      <div class="tips-hd reveal">
+        <h2>Tips for an Effective Study Plan</h2>
+        <p>Make the most of your timetable with these evidence-based strategies.</p>
+      </div>
+      <div class="tips-grid">
+        <div class="tip-card reveal d1">
+          <div class="tip-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg></div>
+          <div>
+            <div class="tip-t">Keep sessions between 45–60 minutes</div>
+            <div class="tip-d">Research shows focus drops sharply after 60 minutes. Shorter sessions with breaks
+              outperform long, uninterrupted studying by a significant margin.</div>
+          </div>
+        </div>
+        <div class="tip-card reveal d2">
+          <div class="tip-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg></div>
+          <div>
+            <div class="tip-t">Vary your subjects each day</div>
+            <div class="tip-d">Interleaving different subjects during a study session improves long-term retention
+              compared to studying one subject in a single long block.</div>
+          </div>
+        </div>
+        <div class="tip-card reveal d3">
+          <div class="tip-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+            </svg></div>
+          <div>
+            <div class="tip-t">Use breaks properly — don't skip them</div>
+            <div class="tip-d">Breaks are not wasted time. Stand up, move around, and step away from screens during
+              every break. This resets your focus for the next session.</div>
+          </div>
+        </div>
+        <div class="tip-card reveal d4">
+          <div class="tip-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 11l3 3L22 4" />
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+            </svg></div>
+          <div>
+            <div class="tip-t">Always end with the review session</div>
+            <div class="tip-d">The review slot at the end of your timetable is the most important one. Spend it
+              revisiting the key points from every subject you studied that day.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════ MORE TOOLS ══════ -->
+  <section class="more-sec">
+    <div class="wrap-md">
+      <div class="more-hd reveal">
+        <h2>More Free Study Tools</h2>
+        <p>Every tool is free — no signup, no limits.</p>
+      </div>
+      <div class="more-grid">
+        <a href="notes-generator.html" class="more-card reveal d1">
+          <div class="more-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+            </svg></div>
+          <div>
+            <div class="more-name">Notes Generator</div>
+            <div class="more-sub">Text → Study Notes</div>
+          </div>
+        </a>
+        <a href="pomodoro-timer.html" class="more-card reveal d2">
+          <div class="more-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg></div>
+          <div>
+            <div class="more-name">Pomodoro Timer</div>
+            <div class="more-sub">Focus Sessions</div>
+          </div>
+        </a>
+        <a href="flashcard-generator.html" class="more-card reveal d3">
+          <div class="more-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="5" width="20" height="14" rx="2" />
+              <line x1="2" y1="10" x2="22" y2="10" />
+            </svg></div>
+          <div>
+            <div class="more-name">Flashcard Generator</div>
+            <div class="more-sub">Notes → Cards</div>
+          </div>
+        </a>
+        <a href="exam-answer.html" class="more-card reveal d4">
+          <div class="more-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 11l3 3L22 4" />
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+            </svg></div>
+          <div>
+            <div class="more-name">Exam Answers</div>
+            <div class="more-sub">Question → Answer</div>
+          </div>
+        </a>
+          <a href="bullet-converter.html" class="more-card reveal d2">
+          <div class="more-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="9" y1="6" x2="20" y2="6" />
+              <line x1="9" y1="12" x2="20" y2="12" />
+              <line x1="9" y1="18" x2="20" y2="18" />
+              <circle cx="4" cy="6" r="1.5" fill="currentColor" stroke="none" />
+              <circle cx="4" cy="12" r="1.5" fill="currentColor" stroke="none" />
+              <circle cx="4" cy="18" r="1.5" fill="currentColor" stroke="none" />
+            </svg></div>
+          <div>
+            <div class="more-name">Bullet Converter</div>
+            <div class="more-sub">Para → Bullets</div>
+          </div>
+        </a>
+        <a href="homework-helper.html" class="more-card reveal d3">
+          <div class="more-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+              <line x1="12" y1="17" x2="12.01" y2="17" />
+            </svg></div>
+          <div>
+            <div class="more-name">Homework Helper</div>
+            <div class="more-sub">Instant Help</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════ FOOTER ══════ -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-row">
+        <div class="f-logo">
+          <div class="flm"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" />
+              <path d="M2 17l10 5 10-5" />
+              <path d="M2 12l10 5 10-5" />
+            </svg></div>
+          Study Hub AI
+        </div>
+        <nav class="f-nav" aria-label="Footer navigation">
+          <a href="../index.html">Home</a>
+          <a href="../tools.html">All Tools</a>
+          <a href="../blog.html">Blog</a>
+          <a href="../about.html">About</a>
+          <a href="../privacy.html">Privacy</a>
+        </nav>
+      </div>
+      <div class="f-bot">
+        <p class="f-copy">© 2026 Study Hub AI. All rights reserved.</p>
+        <p class="f-tag">Free tools for <span>smarter studying</span>.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <svg id="toast-svg" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"
+      stroke-linejoin="round"></svg>
+    <span id="toast-msg"></span>
+  </div>
+
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Study Planner – Study Hub AI","url":"https://studyhubai.com/tools/study-planner.html","description":"Generate a personalised daily study timetable instantly. Free, no signup required.","applicationCategory":"EducationApplication","isAccessibleForFree":true,"operatingSystem":"Any"}
+</script>
+
+  <script>
+    /* ════════════════════════════════════════════════════
+       STUDY HUB AI — STUDY PLANNER
+       Pure Vanilla JS, zero dependencies
+    ════════════════════════════════════════════════════ */
+    (function () {
+      'use strict';
+
+      /* ── rAF throttle ── */
+      function raf(fn) { let id; return () => { cancelAnimationFrame(id); id = requestAnimationFrame(fn); }; }
+
+      /* ── Subject colour palette ── */
+      const PALETTE = [
+        { bg: '#eff6ff', border: '#2563eb', dot: '#2563eb', icon: '#dbeafe', text: '#1e40af' },  // blue
+        { bg: '#f0fdf4', border: '#16a34a', dot: '#16a34a', icon: '#dcfce7', text: '#15803d' },  // green
+        { bg: '#fef3c7', border: '#d97706', dot: '#d97706', icon: '#fef3c7', text: '#b45309' },  // amber
+        { bg: '#fdf4ff', border: '#9333ea', dot: '#9333ea', icon: '#f3e8ff', text: '#7e22ce' },  // purple
+        { bg: '#fff1f2', border: '#e11d48', dot: '#e11d48', icon: '#ffe4e6', text: '#be123c' },  // rose
+        { bg: '#ecfeff', border: '#0891b2', dot: '#0891b2', icon: '#cffafe', text: '#0e7490' },  // cyan
+        { bg: '#fff7ed', border: '#ea580c', dot: '#ea580c', icon: '#ffedd5', text: '#c2410c' },  // orange
+        { bg: '#f7fee7', border: '#65a30d', dot: '#65a30d', icon: '#ecfccb', text: '#4d7c0f' },  // lime
+      ];
+
+      const EMOJIS = ['📚', '🔬', '🏛️', '🌍', '🔢', '✏️', '🎨', '💻', '🧪', '📖', '🎵', '⚗️', '🧬', '📐', '🗺️'];
+
+      /* ── Subject emoji map ── */
+      function getEmoji(name) {
+        const n = name.toLowerCase();
+        if (/math|calc|algebra|stats|trigon|numeracy/i.test(n)) return '🔢';
+        if (/science|chem|physics|bio/i.test(n)) return '🔬';
+        if (/hist|politics|civics|gov/i.test(n)) return '🏛️';
+        if (/geo/i.test(n)) return '🌍';
+        if (/english|lit|lang|writing|essay/i.test(n)) return '✏️';
+        if (/art|design|creative|draw/i.test(n)) return '🎨';
+        if (/comp|prog|code|tech|it\b|digital/i.test(n)) return '💻';
+        if (/music|theory/i.test(n)) return '🎵';
+        if (/econ|business|commerce|account/i.test(n)) return '📈';
+        if (/spanish|french|german|language|mandarin|latin|japanese/i.test(n)) return '🗣️';
+        if (/psych|socio/i.test(n)) return '🧠';
+        if (/health|pe\b|sport|phys ed/i.test(n)) return '🏃';
+        if (/philosophy|ethics|moral/i.test(n)) return '🤔';
+        return EMOJIS[Math.floor(Math.random() * EMOJIS.length)];
+      }
+
+      /* ── Time helpers ── */
+      function parseTime(str) { const [h, m] = str.split(':').map(Number); return h * 60 + m; }
+      function formatTime(mins) {
+        const h = Math.floor(((mins % 1440) + 1440) % 1440 / 60);
+        const m = ((mins % 1440) + 1440) % 1440 % 60;
+        const period = h < 12 ? 'AM' : 'PM';
+        const hh = h === 0 ? 12 : h > 12 ? h - 12 : h;
+        return `${hh}:${String(m).padStart(2, '0')} ${period}`;
+      }
+      function formatDur(mins) {
+        if (mins < 60) return mins + ' min';
+        const h = Math.floor(mins / 60), m = mins % 60;
+        return m ? `${h}h ${m}m` : `${h}h`;
+      }
+
+      /* ── Fisher-Yates shuffle ── */
+      function shuffle(arr) {
+        const a = [...arr];
+        for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[a[i], a[j]] = [a[j], a[i]]; }
+        return a;
+      }
+
+      /* ══════════════════
+         STATE
+      ══════════════════ */
+      let subjects = [];  // {name, dur(mins), color, emoji}
+      let currentPlan = null;
+      let toastTimer = null;
+      let drawerOpen = false;
+
+      /* ── DOM ── */
+      const navbar = document.getElementById('navbar');
+      const burger = document.getElementById('burger');
+      const drw = document.getElementById('drw');
+      const drwBack = document.getElementById('drw-back');
+      const drwX = document.getElementById('drw-x');
+      const subjList = document.getElementById('subj-list');
+      const subjCount = document.getElementById('subj-count');
+      const addInput = document.getElementById('add-subj-input');
+      const addBtn = document.getElementById('add-subj-btn');
+      const totalHours = document.getElementById('total-hours');
+      const breakDur = document.getElementById('break-dur');
+      const sessionLen = document.getElementById('session-len');
+      const breakFreq = document.getElementById('break-freq');
+      const togShuffle = document.getElementById('tog-shuffle');
+      const togReview = document.getElementById('tog-review');
+      const startTime = document.getElementById('start-time');
+      const genBtn = document.getElementById('gen-btn');
+      const resetBtn = document.getElementById('reset-btn');
+      const shuffleBtn = document.getElementById('shuffle-btn');
+      const progWrap = document.getElementById('prog-wrap');
+      const progFill = document.getElementById('prog-fill');
+      const progLbl = document.getElementById('prog-lbl');
+      const loader = document.getElementById('loader');
+      const outPh = document.getElementById('out-ph');
+      const ttWrap = document.getElementById('tt-wrap');
+      const ttTitle = document.getElementById('tt-title');
+      const ttMeta = document.getElementById('tt-meta');
+      const ttSlots = document.getElementById('tt-slots');
+      const outFoot = document.getElementById('out-foot');
+      const readyBadge = document.getElementById('ready-badge');
+      const copyBtn = document.getElementById('copy-btn');
+      const downloadBtn = document.getElementById('download-btn');
+      const clearOutBtn = document.getElementById('clear-out-btn');
+      const sumSessions = document.getElementById('sum-sessions');
+      const sumStudy = document.getElementById('sum-study');
+      const sumBreaks = document.getElementById('sum-breaks');
+      const sumEnd = document.getElementById('sum-end');
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-msg');
+      const toastSvg = document.getElementById('toast-svg');
+
+      /* ══════════════════
+         NAVBAR
+      ══════════════════ */
+      let lastY = -1;
+      window.addEventListener('scroll', raf(() => { const y = window.scrollY; if (y === lastY) return; lastY = y; navbar.classList.toggle('stuck', y > 14); }), { passive: true });
+
+      /* ══════════════════
+         DRAWER
+      ══════════════════ */
+      function openD() { if (drawerOpen) return; drawerOpen = true; drw.classList.add('on'); burger.classList.add('on'); burger.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; drwX.focus(); }
+      function closeD() { if (!drawerOpen) return; drawerOpen = false; drw.classList.remove('on'); burger.classList.remove('on'); burger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; burger.focus(); }
+      burger.addEventListener('click', openD); drwX.addEventListener('click', closeD); drwBack.addEventListener('click', closeD);
+      drw.querySelectorAll('.dnav a,.df .btn').forEach(a => a.addEventListener('click', closeD));
+      document.addEventListener('keydown', e => { if (!drawerOpen) return; if (e.key === 'Escape') { closeD(); return; } if (e.key === 'Tab') { const f = [...drw.querySelectorAll('a,button')], fi = f[0], la = f[f.length - 1]; if (e.shiftKey) { if (document.activeElement === fi) { e.preventDefault(); la.focus(); } } else { if (document.activeElement === la) { e.preventDefault(); fi.focus(); } } } });
+      let tsx = 0; drw.addEventListener('touchstart', e => { tsx = e.touches[0].clientX; }, { passive: true }); drw.addEventListener('touchend', e => { if (e.changedTouches[0].clientX - tsx > 60) closeD(); }, { passive: true });
+
+      /* ══════════════════
+         SCROLL REVEAL
+      ══════════════════ */
+      const revEls = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) { const ro = new IntersectionObserver(entries => { entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); ro.unobserve(en.target); } }); }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' }); revEls.forEach(el => ro.observe(el)); }
+      else { revEls.forEach(el => el.classList.add('in')); }
+
+      /* ══════════════════
+         NUMBER STEPPERS
+      ══════════════════ */
+      document.querySelectorAll('.num-step').forEach(btn => {
+        btn.addEventListener('click', function () {
+          const inp = document.getElementById(this.dataset.target);
+          const step = parseInt(inp.step) || 1;
+          const min = parseFloat(inp.min); const max = parseFloat(inp.max);
+          let v = parseFloat(inp.value);
+          v = this.dataset.dir === 'up' ? Math.min(max, v + step) : Math.max(min, v - step);
+          inp.value = v; updateGenBtn();
+        });
+      });
+
+      /* ══════════════════
+         SUBJECTS
+      ══════════════════ */
+      function addSubject(name, dur) {
+        if (!name.trim()) return;
+        if (subjects.length >= 12) { showToast('Maximum 12 subjects allowed.', 'err'); return; }
+        const colorIdx = subjects.length % PALETTE.length;
+        subjects.push({
+          id: Date.now() + Math.random(),
+          name: name.trim(),
+          dur: dur || parseInt(sessionLen.value) || 45,
+          color: PALETTE[colorIdx],
+          emoji: getEmoji(name),
+        });
+        renderSubjectList();
+        updateGenBtn();
+      }
+
+      function removeSubject(id) {
+        subjects = subjects.filter(s => s.id !== id);
+        // Re-assign colours
+        subjects.forEach((s, i) => { s.color = PALETTE[i % PALETTE.length]; });
+        renderSubjectList(); updateGenBtn();
+      }
+
+      function renderSubjectList() {
+        subjList.innerHTML = '';
+        subjCount.textContent = subjects.length;
+
+        subjects.forEach((s, idx) => {
+          const div = document.createElement('div');
+          div.className = 'subj-item';
+          div.style.animationDelay = (idx * 40) + 'ms';
+          div.innerHTML = `
+      <span class="subj-color" style="background:${s.color.dot};" title="Colour" tabindex="0" role="button" aria-label="Change colour" data-id="${s.id}"></span>
+      <input class="subj-name" type="text" value="${esc(s.name)}" placeholder="Subject name" maxlength="40" aria-label="Subject name" />
+      <input class="subj-dur" type="number" value="${s.dur}" min="15" max="180" step="5" title="Duration in minutes" aria-label="Duration minutes" />
+      <span class="subj-dur-unit">min</span>
+      <button class="subj-rm" data-id="${s.id}" aria-label="Remove ${s.name}">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>`;
+          subjList.appendChild(div);
+
+          // Re-query the newly added inputs to attach event listeners
+          const nameInput = div.querySelector('.subj-name');
+          const durInput = div.querySelector('.subj-dur');
+          const colorSpan = div.querySelector('.subj-color');
+          const removeBtn = div.querySelector('.subj-rm');
+
+          nameInput.addEventListener('input', function () {
+            const subject = subjects.find(x => x.id == s.id);
+            if (subject) { subject.name = this.value; subject.emoji = getEmoji(this.value); }
+          });
+          durInput.addEventListener('input', function () {
+            const subject = subjects.find(x => x.id == s.id);
+            if (subject) { subject.dur = Math.max(15, Math.min(180, parseInt(this.value) || 45)); }
+          });
+          durInput.addEventListener('change', function () {
+            this.value = Math.max(15, Math.min(180, parseInt(this.value) || 45));
+          });
+          removeBtn.addEventListener('click', function () { removeSubject(s.id); });
+          colorSpan.addEventListener('click', function () {
+            const subject = subjects.find(x => x.id == s.id); if (!subject) return;
+            const ci = (PALETTE.indexOf(subject.color) + 1) % PALETTE.length;
+            subject.color = PALETTE[ci]; renderSubjectList();
+          });
+        });
+      }
+
+      function updateGenBtn() {
+        genBtn.disabled = subjects.length === 0;
+      }
+
+      /* ADD SUBJECT */
+      function doAdd() {
+        const v = addInput.value.trim();
+        if (!v) { addInput.focus(); return; }
+        addSubject(v);
+        addInput.value = '';
+        addInput.focus();
+      }
+      addBtn.addEventListener('click', doAdd);
+      addInput.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); doAdd(); } });
+
+      /* PRESET SUBJECTS */
+      const DEFAULT_SUBJECTS = ['Mathematics', 'English', 'Science', 'History', 'Geography'];
+      DEFAULT_SUBJECTS.forEach(s => addSubject(s));
+
+      /* ══════════════════
+         PLAN GENERATION
+      ══════════════════ */
+      function generatePlan(shuffle_ = false) {
+        const totalMins = Math.max(30, parseFloat(totalHours.value) * 60);
+        const bDur = Math.max(5, parseInt(breakDur.value));
+        const sessLen = parseInt(sessionLen.value);
+        const freq = parseInt(breakFreq.value);
+        const doShuffle = togShuffle.checked || shuffle_;
+        const doReview = togReview.checked;
+        const startMin = parseTime(startTime.value);
+
+        let subjs = doShuffle ? shuffle(subjects) : [...subjects];
+
+        const slots = [];
+        let remaining = totalMins;
+        let cursor = startMin;
+        let sessCount = 0;
+        let subjIdx = 0;
+
+        while (remaining > 0 && subjs.length > 0) {
+          const s = subjs[subjIdx % subjs.length];
+          const dur = Math.min(s.dur, sessLen, remaining);
+          if (dur < 10) break;  // too small
+
+          slots.push({ type: 'study', name: s.name, dur, start: cursor, color: s.color, emoji: s.emoji });
+          cursor += dur;
+          remaining -= dur;
+          sessCount++;
+          subjIdx++;
+
+          // break?
+          if (remaining > 0 && sessCount % freq === 0) {
+            const bd = Math.min(bDur, remaining);
+            if (bd >= 5) {
+              slots.push({ type: 'break', name: '🌿 Break', dur: bd, start: cursor, color: null, emoji: '🌿' });
+              cursor += bd;
+              remaining -= bd;
+            }
+          }
+        }
+
+        // review session
+        if (doReview && remaining >= 10) {
+          const rd = Math.min(30, remaining);
+          slots.push({ type: 'review', name: '📝 Review & Recap', dur: rd, start: cursor, color: null, emoji: '📝' });
+          cursor += rd;
+        }
+
+        // stats
+        const studySessions = slots.filter(s => s.type === 'study');
+        const breakSlots = slots.filter(s => s.type === 'break');
+        const totalStudy = studySessions.reduce((a, s) => a + s.dur, 0);
+
+        return { slots, totalStudy, breakCount: breakSlots.length, sessions: studySessions.length, endTime: cursor };
+      }
+
+      function animateProgress(dur, done) {
+        progWrap.classList.add('show');
+        progFill.style.width = '0%';
+        const stages = [{ pct: 30, lbl: 'Analysing subjects…' }, { pct: 60, lbl: 'Scheduling sessions…' }, { pct: 85, lbl: 'Adding breaks…' }, { pct: 96, lbl: 'Finalising plan…' }];
+        let i = 0;
+        function next() { if (i >= stages.length) { setTimeout(done, 180); return; } const s = stages[i++]; progFill.style.width = s.pct + '%'; progLbl.textContent = s.lbl; setTimeout(next, dur / stages.length); }
+        next();
+      }
+
+      function renderPlan(plan) {
+        currentPlan = plan;
+        const { slots, totalStudy, breakCount, sessions, endTime } = plan;
+
+        // summary
+        sumSessions.textContent = sessions;
+        sumStudy.textContent = formatDur(totalStudy);
+        sumBreaks.textContent = breakCount;
+        sumEnd.textContent = formatTime(endTime);
+
+        // meta
+        const today = new Date().toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
+        ttTitle.textContent = 'Daily Study Timetable';
+        ttMeta.innerHTML = `<span>${today}</span><span class="tt-meta-dot"></span><span>${slots.length} slots</span><span class="tt-meta-dot"></span><span>Ends ${formatTime(endTime)}</span>`;
+
+        // slots
+        ttSlots.innerHTML = '';
+        slots.forEach((slot, i) => {
+          const div = document.createElement('div');
+          div.setAttribute('role', 'listitem');
+
+          const isBreak = slot.type === 'break';
+          const isReview = slot.type === 'review';
+          const cls = isBreak ? 'slot-break' : isReview ? 'slot-review' : 'slot-study';
+          div.className = 'tt-slot ' + cls;
+          div.style.animationDelay = Math.min(i * 60, 900) + 'ms';
+
+          // left border colour
+          if (slot.color) div.style.borderLeftColor = slot.color.border;
+          else if (isBreak) div.style.borderLeftColor = '#22c55e';
+          else if (isReview) div.style.borderLeftColor = '#d97706';
+
+          const bgColor = slot.color ? slot.color.bg : (isBreak ? '#f0fdf4' : isReview ? '#fef9c3' : '#fff');
+          const tagBg = slot.color ? slot.color.icon : (isBreak ? '#dcfce7' : isReview ? '#fef3c7' : '#f1f5f9');
+          const tagTxt = slot.color ? slot.color.text : (isBreak ? '#15803d' : isReview ? '#b45309' : '#64748b');
+
+          const typeLbl = isBreak ? 'Break' : isReview ? 'Review' : 'Study';
+
+          div.innerHTML = `
+      <div class="tt-time">
+        <div class="tt-time-start">${formatTime(slot.start)}</div>
+        <div class="tt-time-arrow">↓</div>
+        <div class="tt-time-end">${formatTime(slot.start + slot.dur)}</div>
+      </div>
+      <div class="tt-content" style="background:${bgColor};">
+        <div class="tt-ico" style="background:${tagBg};">${slot.emoji}</div>
+        <div class="tt-info">
+          <div class="tt-subj">${esc(slot.name)}</div>
+          <span class="tt-dur-tag" style="background:${tagBg};color:${tagTxt};border:1px solid ${slot.color ? slot.color.border + (isBreak ? '' : '40') : tagTxt + '40'};">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            ${formatDur(slot.dur)}
+          </span>
+        </div>
+      </div>
+      <div class="tt-badge">
+        <div class="tt-badge-type">${typeLbl}</div>
+        <div class="tt-badge-mins">${slot.dur}<span class="tt-badge-unit"> min</span></div>
+      </div>`;
+          ttSlots.appendChild(div);
+        });
+
+        // show
+        outPh.style.display = 'none';
+        ttWrap.classList.add('show');
+        outFoot.style.display = 'flex';
+        readyBadge.style.display = 'block';
+        copyBtn.disabled = false;
+        downloadBtn.disabled = false;
+        clearOutBtn.disabled = false;
+      }
+
+      function resetOutput() {
+        currentPlan = null;
+        ttSlots.innerHTML = '';
+        ttWrap.classList.remove('show');
+        outFoot.style.display = 'none';
+        outPh.style.display = '';
+        readyBadge.style.display = 'none';
+        copyBtn.disabled = true;
+        downloadBtn.disabled = true;
+        clearOutBtn.disabled = true;
+      }
+
+      /* ── GENERATE ── */
+      genBtn.addEventListener('click', function () {
+        if (subjects.length === 0) { showToast('Please add at least one subject.', 'err'); return; }
+        genBtn.disabled = true;
+        loader.classList.add('show');
+        const delay = Math.min(600 + subjects.length * 80, 1600);
+        animateProgress(delay, function () {
+          try {
+            const plan = generatePlan(false);
+            if (plan.slots.length === 0) { showToast('Not enough time to schedule subjects. Add more hours.', 'err'); }
+            else { renderPlan(plan); showToast('✓ Study plan generated!', 'ok'); }
+          } catch (e) { showToast('Something went wrong. Please try again.', 'err'); }
+          finally { loader.classList.remove('show'); progWrap.classList.remove('show'); progFill.style.width = '0%'; genBtn.disabled = subjects.length === 0; }
+        });
+      });
+
+      /* ── SHUFFLE ── */
+      shuffleBtn.addEventListener('click', function () {
+        if (!currentPlan) return;
+        const plan = generatePlan(true);
+        renderPlan(plan);
+        showToast('Plan shuffled!', 'inf');
+      });
+
+      /* ── RESET ── */
+      resetBtn.addEventListener('click', function () {
+        subjects = [];
+        renderSubjectList();
+        updateGenBtn();
+        resetOutput();
+        showToast('Reset. Add subjects to start again.', 'inf');
+      });
+
+      /* ── CLEAR OUTPUT ── */
+      clearOutBtn.addEventListener('click', resetOutput);
+
+      /* ── COPY ── */
+      copyBtn.addEventListener('click', function () {
+        if (!currentPlan) return;
+        const lines = planToText(currentPlan);
+        if (navigator.clipboard?.writeText) { navigator.clipboard.writeText(lines).then(() => showToast('Plan copied!', 'ok')).catch(() => fbCopy(lines)); }
+        else fbCopy(lines);
+      });
+
+      function fbCopy(text) { const ta = document.createElement('textarea'); ta.value = text; ta.style.cssText = 'position:fixed;left:-9999px;top:-9999px;opacity:0;'; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); showToast('Copied!', 'ok'); } catch { showToast('Copy failed.', 'err'); } document.body.removeChild(ta); }
+
+      /* ── DOWNLOAD ── */
+      downloadBtn.addEventListener('click', function () {
+        if (!currentPlan) return;
+        const blob = new Blob([planToText(currentPlan, true)], { type: 'text/plain;charset=utf-8' });
+        const url = URL.createObjectURL(blob), a = document.createElement('a');
+        a.href = url; a.download = 'study-plan-' + new Date().toISOString().slice(0, 10) + '.txt';
+        document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+        showToast('Plan downloaded!', 'ok');
+      });
+
+      function planToText(plan, full = false) {
+        const { slots, totalStudy, breakCount, sessions, endTime } = plan;
+        const dateStr = new Date().toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+        const lines = [];
+        if (full) {
+          lines.push('════════════════════════════════════════════');
+          lines.push('  DAILY STUDY PLAN — Study Hub AI');
+          lines.push(`  Date     : ${dateStr}`);
+          lines.push(`  Sessions : ${sessions}  |  Study Time: ${formatDur(totalStudy)}`);
+          lines.push(`  Breaks   : ${breakCount}  |  Finish By: ${formatTime(endTime)}`);
+          lines.push('════════════════════════════════════════════');
+          lines.push('');
+        } else {
+          lines.push(`STUDY PLAN — ${dateStr}`);
+          lines.push('');
+        }
+        slots.forEach(s => {
+          const name = s.name.replace(/^[^\w\s]/, '').trim();
+          lines.push(`${formatTime(s.start).padEnd(10)} ${name.padEnd(28)} ${formatDur(s.dur)}`);
+        });
+        if (full) {
+          lines.push('');
+          lines.push('════════════════════════════════════════════');
+          lines.push('  Generated with Study Hub AI');
+          lines.push('  https://studyhubai.com');
+          lines.push('  Free AI study tools for every student.');
+          lines.push('════════════════════════════════════════════');
+        }
+        return lines.join('\n');
+      }
+
+      /* ── TOAST ── */
+      const ICONS = { ok: '<polyline points="20 6 9 17 4 12"/>', err: '<circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>', inf: '<circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>' };
+      const COLORS = { ok: '#4ade80', err: '#fca5a5', inf: '#93c5fd' };
+      function showToast(msg, type = 'ok') { if (toastTimer) clearTimeout(toastTimer); toastMsg.textContent = msg; toastSvg.innerHTML = ICONS[type] || ICONS.inf; toastSvg.style.stroke = COLORS[type] || COLORS.inf; toast.className = 'toast t-' + type; toast.classList.add('show'); toastTimer = setTimeout(() => toast.classList.remove('show'), 3400); }
+
+      function esc(s) { return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+
+      /* smooth scroll */
+      document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', e => { const t = document.querySelector(a.getAttribute('href')); if (!t) return; e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }); });
+
+    })();
+  </script>
+  <script>
+    (function () {
+      const dmBtn = document.getElementById('dm-btn');
+      const html = document.documentElement;
+      const key = 'sh-theme';
+      if (dmBtn) {
+        dmBtn.addEventListener('click', () => {
+          const isDark = html.getAttribute('data-theme') === 'dark';
+          const target = isDark ? 'light' : 'dark';
+          html.setAttribute('data-theme', target);
+          html.style.colorScheme = target;
+          localStorage.setItem(key, target);
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

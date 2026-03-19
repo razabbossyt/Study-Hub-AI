@@ -1,0 +1,3275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script id="sh-theme-init">
+    (function () {
+      try {
+        var key = 'sh-theme';
+        var saved = localStorage.getItem(key);
+        var system = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        var theme = saved || system;
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.style.colorScheme = theme;
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'light');
+        document.documentElement.style.colorScheme = 'light';
+      }
+    })();
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover" />
+  <title>Flashcard Generator – Free AI Study Flashcards | Study Hub AI</title>
+  <meta name="description"
+    content="Convert any notes or text into interactive Q&A flashcards instantly. Free AI flashcard generator for students. Flip, navigate, download — no signup needed." />
+  <meta name="keywords"
+    content="flashcard generator,AI flashcards,study cards,convert notes to flashcards,free flashcard maker" />
+  <meta name="author" content="Study Hub AI" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#2563eb" />
+  <meta property="og:title" content="Flashcard Generator – Free AI Study Flashcards | Study Hub AI" />
+  <meta property="og:description"
+    content="Convert any notes or text into interactive Q&A flashcards instantly. Free and no signup required." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://studyhubai.com/tools/flashcard-generator.html" />
+  <meta property="og:image" content="https://studyhubai.com/preview.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Familjen+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    /* ═══════════════════════════════════════════════════
+   DESIGN TOKENS — identical to all Study Hub AI pages
+═══════════════════════════════════════════════════ */
+    :root {
+      --b50: #eff6ff;
+      --b100: #dbeafe;
+      --b200: #bfdbfe;
+      --b300: #93c5fd;
+      --b400: #60a5fa;
+      --b500: #3b82f6;
+      --b600: #2563eb;
+      --b700: #1d4ed8;
+      --b800: #1e40af;
+      --b900: #1e3a8a;
+      --g0: #fff;
+      --g50: #f8fafc;
+      --g100: #f1f5f9;
+      --g200: #e2e8f0;
+      --g300: #cbd5e1;
+      --g400: #94a3b8;
+      --g500: #64748b;
+      --g600: #475569;
+      --g700: #334155;
+      --g800: #1e293b;
+      --g900: #0f172a;
+      --g950: #020617;
+      --ink: var(--g900);
+      --ink2: var(--g700);
+      --mu: var(--g500);
+      --mu2: var(--g400);
+      --sf: var(--g50);
+      --sf2: var(--g100);
+      --bd: var(--g200);
+      --bd2: var(--g300);
+      --ac: var(--b600);
+      --acH: var(--b700);
+      --acL: var(--b50);
+      --acM: var(--b100);
+      --s0: 0 1px 2px rgba(15, 23, 42, .06);
+      --s1: 0 2px 8px rgba(15, 23, 42, .07), 0 1px 3px rgba(15, 23, 42, .04);
+      --s2: 0 4px 16px rgba(15, 23, 42, .09), 0 2px 6px rgba(15, 23, 42, .05);
+      --s3: 0 12px 36px rgba(15, 23, 42, .11), 0 4px 12px rgba(15, 23, 42, .06);
+      --s4: 0 24px 64px rgba(15, 23, 42, .13), 0 8px 24px rgba(15, 23, 42, .07);
+      --sb: 0 8px 32px rgba(37, 99, 235, .22), 0 2px 8px rgba(37, 99, 235, .12);
+      --sbL: 0 20px 60px rgba(37, 99, 235, .28), 0 6px 20px rgba(37, 99, 235, .15);
+      --r1: 6px;
+      --r2: 10px;
+      --r3: 14px;
+      --r4: 20px;
+      --r5: 28px;
+      --rF: 9999px;
+      --fd: 'Familjen Grotesk', sans-serif;
+      --fb: 'Plus Jakarta Sans', sans-serif;
+      --ez: cubic-bezier(.22, 1, .36, 1);
+      --esp: cubic-bezier(.34, 1.46, .64, 1);
+      --tf: .14s var(--ez);
+      --tb: .22s var(--ez);
+      --ts: .36s var(--ez);
+      --tsp: .38s var(--esp);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-y: scroll;
+    }
+
+    body {
+      font-family: var(--fb);
+      background: var(--g50);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    img,
+    svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+
+      .fc-inner {
+        transition: none !important;
+      }
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 clamp(16px, 4vw, 32px);
+    }
+
+    .wrap-md {
+      width: 100%;
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 0 clamp(16px, 4vw, 32px);
+    }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: .9rem;
+      border-radius: var(--r3);
+      border: 1.5px solid transparent;
+      padding: 11px 22px;
+      cursor: pointer;
+      white-space: nowrap;
+      position: relative;
+      overflow: hidden;
+      will-change: transform;
+      transition: transform var(--tsp), box-shadow var(--tb), background var(--tb), border-color var(--tb), color var(--tb);
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+
+    .btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0);
+      transition: background var(--tf);
+      pointer-events: none;
+    }
+
+    .btn:hover::after {
+      background: rgba(255, 255, 255, .09);
+    }
+
+    .btn:active {
+      transform: scale(.96) !important;
+    }
+
+    .btn-p {
+      background: var(--ac);
+      color: #fff;
+      border-color: var(--ac);
+      box-shadow: var(--sb);
+    }
+
+    .btn-p:hover {
+      background: var(--acH);
+      border-color: var(--acH);
+      transform: translateY(-2px);
+      box-shadow: var(--sbL);
+    }
+
+    .btn-p:disabled {
+      background: var(--g400);
+      border-color: var(--g400);
+      box-shadow: none;
+      cursor: not-allowed;
+      transform: none !important;
+      opacity: .65;
+    }
+
+    .btn-g {
+      background: transparent;
+      color: var(--ink2);
+      border-color: var(--bd2);
+    }
+
+    .btn-g:hover {
+      border-color: var(--ac);
+      color: var(--ac);
+      background: var(--acL);
+      transform: translateY(-2px);
+    }
+
+    .btn-g:disabled {
+      opacity: .4;
+      cursor: not-allowed;
+      transform: none !important;
+      pointer-events: none;
+    }
+
+    .btn-red {
+      background: transparent;
+      color: #dc2626;
+      border-color: #fecaca;
+    }
+
+    .btn-red:hover {
+      background: #fff1f2;
+      border-color: #dc2626;
+      transform: translateY(-2px);
+    }
+
+    .btn-sm {
+      padding: 8px 16px;
+      font-size: .82rem;
+    }
+
+    .btn-lg {
+      padding: 14px 30px;
+      font-size: .97rem;
+      border-radius: var(--r4);
+    }
+
+    /* ═══════ NAVBAR ═══════ */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      transition: background var(--tb), box-shadow var(--tb);
+    }
+
+    .nav.stuck {
+      background: rgba(255, 255, 255, .92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--bd);
+      box-shadow: 0 1px 24px rgba(15, 23, 42, .07);
+    }
+
+    .nav-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: 1.18rem;
+      color: var(--ink);
+      transition: opacity var(--tf);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .nav-logo:hover {
+      opacity: .8;
+    }
+
+    .nlm {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--b600), var(--b400));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, .3);
+      flex-shrink: 0;
+    }
+
+    .nlm svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .nav-links a {
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--g600);
+      padding: 8px 14px;
+      border-radius: var(--r2);
+      transition: color var(--tf), background var(--tf);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.cur {
+      color: var(--ac);
+    }
+
+    .nav-links a:hover {
+      background: var(--acL);
+    }
+
+    .nav-acts {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .burger {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border-radius: var(--r2);
+      background: var(--sf2);
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--bd);
+      cursor: pointer;
+      transition: background var(--tf);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .burger:hover {
+      background: var(--acM);
+    }
+
+    .bw {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .bb {
+      display: block;
+      width: 18px;
+      height: 2px;
+      border-radius: 1px;
+      background: var(--ink);
+      transition: transform var(--tb), opacity var(--tf);
+      transform-origin: center;
+    }
+
+    .burger.on .bb:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .burger.on .bb:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    .burger.on .bb:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    .drw {
+      position: fixed;
+      inset: 0;
+      z-index: 199;
+      pointer-events: none;
+      visibility: hidden;
+      transition: visibility 0s var(--ts);
+    }
+
+    .drw.on {
+      pointer-events: auto;
+      visibility: visible;
+      transition: visibility 0s 0s;
+    }
+
+    .db {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 23, 42, .48);
+      opacity: 0;
+      backdrop-filter: blur(4px);
+      transition: opacity var(--ts);
+    }
+
+    .drw.on .db {
+      opacity: 1;
+    }
+
+    .dp {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: min(320px, 86vw);
+      background: #fff;
+      box-shadow: -6px 0 40px rgba(15, 23, 42, .16);
+      transform: translateX(100%);
+      transition: transform var(--ts);
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+    }
+
+    .drw.on .dp {
+      transform: translateX(0);
+    }
+
+    .dh {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--bd);
+      margin-bottom: 16px;
+    }
+
+    .dx {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--r2);
+      background: var(--sf2);
+      border: 1px solid var(--bd);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background var(--tf);
+    }
+
+    .dx:hover {
+      background: #fecdd3;
+    }
+
+    .dx svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--ink);
+    }
+
+    .dnav {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      flex: 1;
+    }
+
+    .dnav a {
+      font-family: var(--fd);
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 13px 16px;
+      border-radius: var(--r3);
+      color: var(--ink2);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: background var(--tf), color var(--tf);
+    }
+
+    .dnav a:hover {
+      background: var(--acL);
+      color: var(--ac);
+    }
+
+    .dnav a svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      opacity: .55;
+      flex-shrink: 0;
+    }
+
+    .df {
+      padding-top: 20px;
+      border-top: 1px solid var(--bd);
+    }
+
+    .df .btn {
+      width: 100%;
+    }
+
+    .drw.on .dnav a {
+      animation: drwIn .3s var(--ez) both;
+    }
+
+    .drw.on .dnav a:nth-child(1) {
+      animation-delay: .08s;
+    }
+
+    .drw.on .dnav a:nth-child(2) {
+      animation-delay: .13s;
+    }
+
+    .drw.on .dnav a:nth-child(3) {
+      animation-delay: .18s;
+    }
+
+    .drw.on .dnav a:nth-child(4) {
+      animation-delay: .23s;
+    }
+
+    @keyframes drwIn {
+      from {
+        opacity: 0;
+        transform: translateX(12px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0)
+      }
+    }
+
+    /* ═══════ PAGE HEADER ═══════ */
+    .page-header {
+      background: #fff;
+      border-bottom: 1px solid var(--bd);
+      padding: clamp(28px, 5vw, 48px) 0 clamp(24px, 4vw, 40px);
+    }
+
+    .ph-inner {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .ph-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .78rem;
+      color: var(--mu);
+      margin-bottom: 14px;
+      font-family: var(--fd);
+      font-weight: 600;
+    }
+
+    .ph-breadcrumb a {
+      color: var(--mu);
+      transition: color var(--tf);
+    }
+
+    .ph-breadcrumb a:hover {
+      color: var(--ac);
+    }
+
+    .ph-breadcrumb svg {
+      width: 12px;
+      height: 12px;
+      stroke: var(--mu2);
+      flex-shrink: 0;
+    }
+
+    .ph-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 10px;
+    }
+
+    .ph-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--b50), var(--b100));
+      border-radius: var(--r3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 1px solid var(--b200);
+    }
+
+    .ph-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--ac);
+    }
+
+    .ph-h1 {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      letter-spacing: -.022em;
+      color: var(--ink);
+    }
+
+    .ph-desc {
+      font-size: .95rem;
+      color: var(--mu);
+      line-height: 1.65;
+      max-width: 520px;
+    }
+
+    .ph-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+      background: var(--acL);
+      border: 1px solid var(--b200);
+      border-radius: var(--rF);
+      padding: 4px 12px;
+      font-size: .72rem;
+      font-weight: 700;
+      font-family: var(--fd);
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--ac);
+    }
+
+    .ph-badge-dot {
+      width: 5px;
+      height: 5px;
+      background: #22c55e;
+      border-radius: 50%;
+      animation: blink 1.8s infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1)
+      }
+
+      50% {
+        opacity: .4;
+        transform: scale(.65)
+      }
+    }
+
+    .ph-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .ph-tools-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .tnchip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--fd);
+      font-size: .78rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: var(--rF);
+      border: 1.5px solid var(--bd);
+      background: #fff;
+      color: var(--ink2);
+      transition: all var(--tb);
+    }
+
+    .tnchip:hover {
+      border-color: var(--ac);
+      color: var(--ac);
+      background: var(--acL);
+    }
+
+    .tnchip svg {
+      width: 13px;
+      height: 13px;
+      stroke: currentColor;
+      opacity: .7;
+    }
+
+    /* ═══════ TOOL WORKSPACE ═══════ */
+    .tool-main {
+      padding: clamp(28px, 4vw, 48px) 0 clamp(52px, 8vw, 88px);
+    }
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    /* ── INPUT CARD ── */
+    .card {
+      background: #fff;
+      border: 1px solid var(--bd);
+      border-radius: var(--r4);
+      box-shadow: var(--s1);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card-hdr {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--bd);
+      background: var(--g50);
+    }
+
+    .card-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: .93rem;
+      color: var(--ink);
+    }
+
+    .card-title svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--ac);
+      flex-shrink: 0;
+    }
+
+    .card-acts {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tool-ta {
+      width: 100%;
+      min-height: 280px;
+      max-height: 480px;
+      resize: vertical;
+      background: var(--g50);
+      border: none;
+      outline: none;
+      padding: 18px 20px;
+      font-family: var(--fb);
+      font-size: .9rem;
+      color: var(--ink);
+      line-height: 1.72;
+      transition: background var(--tf);
+    }
+
+    .tool-ta::placeholder {
+      color: var(--mu2);
+    }
+
+    .tool-ta:focus {
+      background: #fff;
+    }
+
+    /* settings in input card */
+    .input-settings {
+      padding: 14px 20px;
+      border-top: 1px solid var(--bd);
+      background: var(--g50);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .sg label {
+      font-size: .79rem;
+      font-weight: 700;
+      font-family: var(--fd);
+      color: var(--ink2);
+      white-space: nowrap;
+    }
+
+    .sg {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .sel {
+      font-family: var(--fb);
+      font-size: .82rem;
+      color: var(--ink);
+      background: #fff;
+      border: 1.5px solid var(--bd);
+      border-radius: var(--r2);
+      padding: 7px 28px 7px 10px;
+      outline: none;
+      cursor: pointer;
+      transition: border-color var(--tb);
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 8px center;
+    }
+
+    .sel:focus {
+      border-color: var(--ac);
+    }
+
+    /* progress */
+    .prog-wrap {
+      padding: 0 20px 14px;
+      display: none;
+    }
+
+    .prog-wrap.show {
+      display: block;
+    }
+
+    .prog-bg {
+      background: var(--bd);
+      border-radius: var(--rF);
+      height: 5px;
+      overflow: hidden;
+    }
+
+    .prog-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--b600), var(--b400));
+      border-radius: var(--rF);
+      width: 0%;
+      transition: width .35s var(--ez);
+    }
+
+    .prog-lbl {
+      font-size: .73rem;
+      color: var(--mu);
+      margin-top: 5px;
+      font-family: var(--fd);
+      font-weight: 600;
+    }
+
+    /* action buttons */
+    .act-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 20px;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--bd);
+      background: var(--g50);
+    }
+
+    /* loader */
+    .loader {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, .9);
+      backdrop-filter: blur(4px);
+      z-index: 10;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      border-radius: var(--r4);
+    }
+
+    .loader.show {
+      display: flex;
+    }
+
+    .spinner {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 3px solid var(--b200);
+      border-top-color: var(--ac);
+      animation: spin .65s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    .loader-txt {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: .85rem;
+      color: var(--ink2);
+    }
+
+    .dots::after {
+      content: '';
+      animation: dotanim 1.4s steps(4, end) infinite;
+    }
+
+    @keyframes dotanim {
+      0% {
+        content: ''
+      }
+
+      25% {
+        content: '.'
+      }
+
+      50% {
+        content: '..'
+      }
+
+      75% {
+        content: '...'
+      }
+
+      100% {
+        content: ''
+      }
+    }
+
+    /* ═══════════════════════════════════
+   FLASHCARD VIEWER PANEL
+═══════════════════════════════════ */
+    .fc-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* ── empty state ── */
+    .fc-empty {
+      background: #fff;
+      border: 1px solid var(--bd);
+      border-radius: var(--r4);
+      box-shadow: var(--s1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 28px;
+      text-align: center;
+      min-height: 380px;
+    }
+
+    .fc-empty svg {
+      width: 56px;
+      height: 56px;
+      stroke: var(--bd2);
+      margin-bottom: 18px;
+      opacity: .6;
+    }
+
+    .fc-empty h3 {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--mu);
+      margin-bottom: 8px;
+    }
+
+    .fc-empty p {
+      font-size: .84rem;
+      color: var(--mu2);
+      max-width: 240px;
+      line-height: 1.6;
+    }
+
+    /* ── progress bar + counter ── */
+    .fc-progress-wrap {
+      background: #fff;
+      border: 1px solid var(--bd);
+      border-radius: var(--r3);
+      padding: 12px 18px;
+      display: none;
+    }
+
+    .fc-progress-wrap.show {
+      display: block;
+    }
+
+    .fc-prog-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 7px;
+    }
+
+    .fc-prog-label {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: .82rem;
+      color: var(--ink);
+    }
+
+    .fc-prog-counter {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: .82rem;
+      color: var(--mu);
+    }
+
+    .fc-prog-bg {
+      background: var(--bd);
+      border-radius: var(--rF);
+      height: 6px;
+      overflow: hidden;
+    }
+
+    .fc-prog-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--b600), var(--b400));
+      border-radius: var(--rF);
+      transition: width .4s var(--ez);
+      will-change: width;
+    }
+
+    .fc-prog-stats {
+      display: flex;
+      gap: 16px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .fc-stat {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--fd);
+      font-size: .73rem;
+      font-weight: 700;
+    }
+
+    .fc-stat-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .fc-stat-lbl {
+      color: var(--mu);
+    }
+
+    /* ════════════════════════════════
+   3-D FLIP CARD  
+════════════════════════════════ */
+    .fc-scene {
+      perspective: 1200px;
+      width: 100%;
+      height: clamp(260px, 35vw, 340px);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      user-select: none;
+      display: none;
+    }
+
+    .fc-scene.show {
+      display: block;
+    }
+
+    .fc-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform .55s cubic-bezier(.34, 1.26, .64, 1);
+      will-change: transform;
+    }
+
+    .fc-inner.flipped {
+      transform: rotateY(180deg);
+    }
+
+    /* shared face styles */
+    .fc-face {
+      position: absolute;
+      inset: 0;
+      border-radius: var(--r4);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: clamp(24px, 4vw, 36px) clamp(20px, 3.5vw, 32px);
+      overflow: hidden;
+    }
+
+    /* FRONT — question */
+    .fc-front {
+      background: linear-gradient(145deg, #1e3a8a 0%, var(--b700) 55%, var(--b600) 100%);
+      box-shadow: 0 16px 48px rgba(30, 58, 138, .35), 0 4px 16px rgba(30, 58, 138, .2);
+      border: 1px solid rgba(255, 255, 255, .12);
+    }
+
+    /* decorative circles */
+    .fc-front::before {
+      content: '';
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .04);
+      top: -100px;
+      right: -80px;
+      pointer-events: none;
+    }
+
+    .fc-front::after {
+      content: '';
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .03);
+      bottom: -60px;
+      left: -40px;
+      pointer-events: none;
+    }
+
+    /* BACK — answer */
+    .fc-back {
+      background: #fff;
+      border: 2px solid var(--b200);
+      box-shadow: 0 16px 48px rgba(15, 23, 42, .12), 0 4px 16px rgba(15, 23, 42, .07);
+      transform: rotateY(180deg);
+    }
+
+    /* face labels */
+    .fc-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--fd);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      flex-shrink: 0;
+    }
+
+    .fc-front .fc-label {
+      color: rgba(255, 255, 255, .55);
+    }
+
+    .fc-back .fc-label {
+      color: var(--mu);
+    }
+
+    .fc-label-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+    }
+
+    .fc-front .fc-label-dot {
+      background: rgba(255, 255, 255, .55);
+    }
+
+    .fc-back .fc-label-dot {
+      background: var(--b400);
+    }
+
+    /* question / answer text */
+    .fc-text {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: clamp(1rem, 2.2vw, 1.3rem);
+      line-height: 1.38;
+      letter-spacing: -.012em;
+      overflow-y: auto;
+    }
+
+    .fc-front .fc-text {
+      color: #fff;
+    }
+
+    .fc-back .fc-text {
+      color: var(--ink);
+    }
+
+    /* flip hint */
+    .fc-hint {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .74rem;
+      font-family: var(--fd);
+      font-weight: 600;
+      margin-top: 10px;
+      flex-shrink: 0;
+      opacity: .6;
+    }
+
+    .fc-front .fc-hint {
+      color: rgba(255, 255, 255, .7);
+    }
+
+    .fc-back .fc-hint {
+      color: var(--mu);
+    }
+
+    .fc-hint svg {
+      width: 13px;
+      height: 13px;
+      stroke: currentColor;
+      flex-shrink: 0;
+    }
+
+    /* card number chip */
+    .fc-num {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      background: rgba(255, 255, 255, .12);
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: var(--rF);
+      padding: 2px 9px;
+      font-family: var(--fd);
+      font-size: .68rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, .7);
+      backdrop-filter: blur(4px);
+    }
+
+    .fc-back .fc-num {
+      background: var(--acL);
+      border-color: var(--b200);
+      color: var(--ac);
+    }
+
+    /* entry animation */
+    .fc-scene.entering .fc-inner {
+      animation: cardIn .4s var(--ez) both;
+    }
+
+    @keyframes cardIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px) scale(.97)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1)
+      }
+    }
+
+    .fc-scene.entering .fc-inner.flipped {
+      animation: cardIn .4s var(--ez) both;
+    }
+
+    /* ── NAVIGATION CONTROLS ── */
+    .fc-nav {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .fc-nav.show {
+      display: flex;
+    }
+
+    .fc-nav-btns {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .fc-nav-ctr {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .fc-dots {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+      max-width: 180px;
+      align-items: center;
+    }
+
+    .fc-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--bd2);
+      transition: background var(--tb), transform var(--tsp), width var(--tb);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .fc-dot.active {
+      background: var(--ac);
+      width: 18px;
+      border-radius: var(--rF);
+    }
+
+    .fc-dot.seen {
+      background: var(--b300);
+    }
+
+    /* ── MARK KNOWN/UNKNOWN ── */
+    .fc-mark-row {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .fc-mark-row.show {
+      display: flex;
+    }
+
+    .btn-know {
+      background: transparent;
+      color: #16a34a;
+      border: 1.5px solid #bbf7d0;
+      border-radius: var(--r3);
+      padding: 9px 20px;
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: .85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      cursor: pointer;
+      transition: all var(--tb);
+      will-change: transform;
+    }
+
+    .btn-know:hover {
+      background: #dcfce7;
+      transform: translateY(-2px);
+    }
+
+    .btn-dunno {
+      background: transparent;
+      color: #dc2626;
+      border: 1.5px solid #fecaca;
+      border-radius: var(--r3);
+      padding: 9px 20px;
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: .85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      cursor: pointer;
+      transition: all var(--tb);
+      will-change: transform;
+    }
+
+    .btn-dunno:hover {
+      background: #fff1f2;
+      transform: translateY(-2px);
+    }
+
+    .btn-know svg,
+    .btn-dunno svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      flex-shrink: 0;
+    }
+
+    /* ── DECK OVERVIEW (grid of all cards) ── */
+    .deck-wrap {
+      display: none;
+      margin-top: 16px;
+    }
+
+    .deck-wrap.show {
+      display: block;
+    }
+
+    .deck-hdr {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .deck-title {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: .88rem;
+      color: var(--ink);
+    }
+
+    .deck-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 8px;
+      max-height: 220px;
+      overflow-y: auto;
+      padding-right: 2px;
+    }
+
+    .deck-grid::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .deck-grid::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .deck-grid::-webkit-scrollbar-thumb {
+      background: var(--bd2);
+      border-radius: 2px;
+    }
+
+    .deck-item {
+      background: var(--g50);
+      border: 1.5px solid var(--bd);
+      border-radius: var(--r3);
+      padding: 10px 12px;
+      cursor: pointer;
+      transition: border-color var(--tb), background var(--tb), transform var(--tsp);
+      will-change: transform;
+    }
+
+    .deck-item:hover {
+      border-color: var(--ac);
+      background: var(--acL);
+      transform: translateY(-2px);
+    }
+
+    .deck-item.active {
+      border-color: var(--ac);
+      background: var(--acL);
+    }
+
+    .deck-item.known {
+      border-color: #bbf7d0;
+      background: #f0fdf4;
+    }
+
+    .deck-item.unknown {
+      border-color: #fecaca;
+      background: #fff1f2;
+    }
+
+    .di-n {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: .7rem;
+      color: var(--mu);
+      margin-bottom: 4px;
+    }
+
+    .di-q {
+      font-size: .75rem;
+      color: var(--ink2);
+      line-height: 1.45;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+
+    /* output footer */
+    .out-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      border-top: 1px solid var(--bd);
+      background: var(--g50);
+      flex-wrap: wrap;
+      gap: 8px;
+      display: none;
+    }
+
+    .of-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .of-right {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .quality-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border: 1px solid #86efac;
+      border-radius: var(--rF);
+      padding: 4px 11px;
+      font-family: var(--fd);
+      font-size: .72rem;
+      font-weight: 700;
+      color: #15803d;
+    }
+
+    .quality-badge svg {
+      width: 10px;
+      height: 10px;
+      stroke: #15803d;
+    }
+
+    /* ── TOAST ── */
+    .toast {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 9999;
+      background: var(--g900);
+      color: #fff;
+      border-radius: var(--r3);
+      padding: 12px 18px;
+      font-family: var(--fd);
+      font-weight: 600;
+      font-size: .85rem;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      box-shadow: var(--s4);
+      transform: translateY(80px);
+      opacity: 0;
+      transition: transform var(--tsp), opacity var(--tb);
+      pointer-events: none;
+      max-width: 320px;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .toast svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    .t-ok svg {
+      stroke: #4ade80;
+    }
+
+    .t-err svg {
+      stroke: #fca5a5;
+    }
+
+    .t-inf svg {
+      stroke: #93c5fd;
+    }
+
+    /* ═══════ HOW IT WORKS ═══════ */
+    .how-sec {
+      background: #fff;
+      border-top: 1px solid var(--bd);
+      padding: clamp(36px, 5vw, 60px) 0;
+    }
+
+    .how-hd {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .chip-sm {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--fd);
+      font-size: .71rem;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: var(--ac);
+      background: var(--acL);
+      border: 1px solid var(--b200);
+      padding: 5px 13px;
+      border-radius: var(--rF);
+      margin-bottom: 12px;
+    }
+
+    .chip-sm-dot {
+      width: 5px;
+      height: 5px;
+      background: var(--ac);
+      border-radius: 50%;
+      animation: blink 2.2s ease-in-out infinite;
+    }
+
+    .how-hd h2 {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+      letter-spacing: -.022em;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .how-hd p {
+      font-size: .9rem;
+      color: var(--mu);
+      max-width: 440px;
+      margin: 0 auto;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .step-card {
+      background: var(--g50);
+      border: 1px solid var(--bd);
+      border-radius: var(--r4);
+      padding: clamp(18px, 2.5vw, 26px);
+      text-align: center;
+      transition: transform var(--tsp), box-shadow var(--tb);
+    }
+
+    .step-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--s3);
+    }
+
+    .step-n {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--b600), var(--b500));
+      color: #fff;
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 14px;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, .26);
+    }
+
+    .step-t {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: .88rem;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .step-d {
+      font-size: .8rem;
+      color: var(--mu);
+      line-height: 1.55;
+    }
+
+    /* ═══════ TIPS ═══════ */
+    .tips-sec {
+      background: var(--g50);
+      border-top: 1px solid var(--bd);
+      padding: clamp(32px, 4vw, 52px) 0;
+    }
+
+    .tips-hd {
+      margin-bottom: clamp(20px, 3vw, 28px);
+    }
+
+    .tips-hd h2 {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: clamp(1.2rem, 2vw, 1.55rem);
+      letter-spacing: -.02em;
+      color: var(--ink);
+      margin-bottom: 5px;
+    }
+
+    .tips-hd p {
+      font-size: .88rem;
+      color: var(--mu);
+    }
+
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .tip-card {
+      background: #fff;
+      border: 1px solid var(--bd);
+      border-radius: var(--r3);
+      padding: 16px 18px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      transition: border-color var(--tb), transform var(--tsp);
+    }
+
+    .tip-card:hover {
+      border-color: var(--b200);
+      transform: translateX(4px);
+    }
+
+    .tip-ico {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--r2);
+      background: var(--acL);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background var(--tb), transform var(--tsp);
+    }
+
+    .tip-ico svg {
+      width: 17px;
+      height: 17px;
+      stroke: var(--ac);
+    }
+
+    .tip-card:hover .tip-ico {
+      background: var(--acM);
+      transform: scale(1.08) rotate(-4deg);
+    }
+
+    .tip-t {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: .87rem;
+      color: var(--ink);
+      margin-bottom: 3px;
+    }
+
+    .tip-d {
+      font-size: .8rem;
+      color: var(--mu);
+      line-height: 1.55;
+    }
+
+    /* ═══════ MORE TOOLS ═══════ */
+    .more-sec {
+      background: #fff;
+      border-top: 1px solid var(--bd);
+      padding: clamp(32px, 4vw, 52px) 0;
+    }
+
+    .more-hd {
+      margin-bottom: clamp(18px, 2.5vw, 26px);
+    }
+
+    .more-hd h2 {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: clamp(1.2rem, 2vw, 1.55rem);
+      letter-spacing: -.02em;
+      color: var(--ink);
+      margin-bottom: 5px;
+    }
+
+    .more-hd p {
+      font-size: .88rem;
+      color: var(--mu);
+    }
+
+    .more-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+      gap: 12px;
+    }
+
+    .more-card {
+      background: var(--g50);
+      border: 1px solid var(--bd);
+      border-radius: var(--r3);
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      transition: border-color var(--tb), transform var(--tsp), box-shadow var(--tb);
+    }
+
+    .more-card:hover {
+      border-color: var(--b200);
+      transform: translateY(-3px);
+      box-shadow: var(--s2);
+    }
+
+    .more-ico {
+      width: 34px;
+      height: 34px;
+      background: var(--acL);
+      border-radius: var(--r2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background var(--tb), transform var(--tsp);
+    }
+
+    .more-ico svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--ac);
+    }
+
+    .more-card:hover .more-ico {
+      background: var(--acM);
+      transform: scale(1.1) rotate(-4deg);
+    }
+
+    .more-name {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: .81rem;
+      color: var(--ink);
+    }
+
+    .more-sub {
+      font-size: .69rem;
+      color: var(--mu);
+    }
+
+    /* ═══════ FOOTER ═══════ */
+    footer {
+      background: var(--g950);
+      padding: clamp(36px, 5vw, 52px) 0 28px;
+    }
+
+    .foot-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, .08);
+    }
+
+    .f-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: #fff;
+    }
+
+    .flm {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--b600), var(--b400));
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, .28);
+    }
+
+    .flm svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .f-nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .f-nav a {
+      font-size: .84rem;
+      color: rgba(255, 255, 255, .42);
+      transition: color var(--tf);
+    }
+
+    .f-nav a:hover {
+      color: #fff;
+    }
+
+    .f-bot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .f-copy {
+      font-size: .8rem;
+      color: rgba(255, 255, 255, .26);
+    }
+
+    .f-tag span {
+      color: rgba(255, 255, 255, .46);
+    }
+
+    .f-tag {
+      font-size: .8rem;
+      color: rgba(255, 255, 255, .26);
+    }
+
+    /* ═══════ SCROLL REVEAL ═══════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      will-change: opacity, transform;
+      transition: opacity .6s var(--ez), transform .6s var(--ez);
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .d1 {
+      transition-delay: .07s
+    }
+
+    .d2 {
+      transition-delay: .14s
+    }
+
+    .d3 {
+      transition-delay: .21s
+    }
+
+    .d4 {
+      transition-delay: .28s
+    }
+
+    /* ═══════ RESPONSIVE ═══════ */
+    @media(max-width:1000px) {
+      .tool-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media(max-width:820px) {
+
+      .nav-links,
+      .nav-acts .btn-g {
+        display: none;
+      }
+
+      .burger {
+        display: flex;
+      }
+
+      .ph-right {
+        display: none;
+      }
+
+      .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .tips-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media(max-width:600px) {
+      .act-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .act-row .btn {
+        justify-content: center;
+      }
+
+      .fc-mark-row {
+        flex-direction: row;
+      }
+
+      .btn-know,
+      .btn-dunno {
+        flex: 1;
+        justify-content: center;
+      }
+
+      .more-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .foot-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .f-bot {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+    }
+
+    @media(max-width:380px) {
+      .more-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @supports(padding:max(0px)) {
+      .nav-row {
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+      }
+
+      footer {
+        padding-bottom: max(28px, env(safe-area-inset-bottom));
+      }
+    }
+
+    /* Dark Mode Transitions */
+    body {
+      transition: background .25s var(--ez), color .25s var(--ez);
+    }
+
+    [data-theme="dark"] {
+      --g0: #080c12; --g50: #0d1117; --g100: #161b22; --g200: #21262d; --g300: #30363d;
+      --g400: #484f58; --g500: #6e7681; --g600: #8b949e; --g700: #b1bac4; --g800: #c9d1d9; --g900: #f0f6fc; --g950: #ffffff;
+      --ink: var(--g900); --ink2: var(--g700); --mu: var(--g600); --mu2: var(--g500);
+      --sf: var(--g50); --sf2: var(--g100); --bd: var(--g200); --bd2: var(--g300);
+      --acL: rgba(37, 99, 235, .15); --acM: rgba(37, 99, 235, .25);
+    }
+
+    [data-theme="dark"] body { background: var(--g50); color: var(--ink); }
+    [data-theme="dark"] .nav, [data-theme="dark"] .nav.stuck { background: rgba(13, 17, 23, .88); border-bottom-color: var(--bd); }
+    [data-theme="dark"] .page-header, [data-theme="dark"] .how-sec, [data-theme="dark"] .tips-sec, [data-theme="dark"] .ot-sec, [data-theme="dark"] .more-sec, [data-theme="dark"] footer { background: var(--g0) !important; }
+    [data-theme="dark"] .card, [data-theme="dark"] .step-card, [data-theme="dark"] .tip-card, [data-theme="dark"] .more-card, [data-theme="dark"] .drw-panel, [data-theme="dark"] .fc-empty, [data-theme="dark"] .fc-progress-wrap { background: var(--g100) !important; border-color: var(--bd) !important; }
+    [data-theme="dark"] .tool-ta, [data-theme="dark"] .sg select, [data-theme="dark"] .qst, [data-theme="dark"] .fc-back { background: var(--g50) !important; border-color: var(--bd) !important; color: inherit; }
+    [data-theme="dark"] .ph-icon, [data-theme="dark"] .tip-ico, [data-theme="dark"] .more-ico { background: var(--g50); border-color: var(--bd); }
+    [data-theme="dark"] .tnchip { background: var(--g50); border-color: var(--bd); color: var(--ink2); }
+    [data-theme="dark"] .tnchip:hover { border-color: var(--ac); background: var(--acL); }
+    [data-theme="dark"] .fc-back { box-shadow: 0 16px 48px rgba(0,0,0,.3); }
+    [data-theme="dark"] .loader { background: rgba(8, 12, 18, .9); }
+    [data-theme="dark"] .btn-g { color: var(--ink2); border-color: var(--bd); }
+    [data-theme="dark"] .btn-g:hover { background: var(--acL); color: var(--ac); }
+    [data-theme="dark"] .fc-front { border-color: rgba(255,255,255,.1); }
+
+    .dm-btn {
+      width: 40px; height: 40px; border-radius: 12px; background: var(--g50); border: 1.5px solid var(--bd);
+      display: flex; align-items: center; justify-content: center; color: #fbbf24; cursor: pointer;
+      transition: all var(--tb); position: relative; overflow: hidden; flex-shrink: 0;
+    }
+    .dm-btn:hover { background: var(--g100); transform: translateY(-2px); border-color: var(--ac); }
+    .dm-btn svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2.2; }
+    .dm-btn .moon-ico { display: none; color: #94a3b8; }
+    [data-theme="dark"] .dm-btn .sun-ico { display: none; }
+    [data-theme="dark"] .dm-btn .moon-ico { display: block; }
+    [data-theme="dark"] .dm-btn { background: #1e293b; border-color: rgba(148, 163, 184, .2); }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══════ NAVBAR ══════ -->
+  <nav class="nav" id="navbar">
+    <div class="wrap">
+      <div class="nav-row">
+        <a href="../index.html" class="nav-logo" aria-label="Study Hub AI home">
+          <div class="nlm"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" />
+              <path d="M2 17l10 5 10-5" />
+              <path d="M2 12l10 5 10-5" />
+            </svg></div>
+          Study Hub AI
+        </a>
+        <ul class="nav-links" role="list">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../tools.html" class="cur">Tools</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../about.html">About</a></li>
+        </ul>
+        <div class="nav-acts">
+          <button class="dm-btn" id="dm-btn" aria-label="Toggle dark mode">
+            <svg class="sun-ico" viewBox="0 0 24 24" stroke="currentColor" fill="none"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="moon-ico" viewBox="0 0 24 24" stroke="currentColor" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+          <a href="../tools.html" class="btn btn-g btn-sm" style="display:inline-flex;">All Tools</a>
+          <a href="../tools.html" class="btn btn-p btn-sm">Start Studying</a>
+          <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+            <div class="bw"><span class="bb"></span><span class="bb"></span><span class="bb"></span></div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- DRAWER -->
+  <div class="drw" id="drw" role="dialog" aria-modal="true" aria-label="Navigation">
+    <div class="db" id="drw-back"></div>
+    <div class="dp">
+      <div class="dh">
+        <div class="nav-logo" style="font-size:1rem;">
+          <div class="nlm" style="width:30px;height:30px;border-radius:8px;"><svg viewBox="0 0 24 24" fill="none"
+              stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+              style="width:15px;height:15px;">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" />
+              <path d="M2 17l10 5 10-5" />
+              <path d="M2 12l10 5 10-5" />
+            </svg></div>
+          Study Hub AI
+        </div>
+        <button class="dx" id="drw-x" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg></button>
+      </div>
+      <nav class="dnav">
+        <a href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+            <polyline points="9 22 9 12 15 12 15 22" />
+          </svg>Home</a>
+        <a href="../tools.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+            <polyline points="14 2 14 8 20 8" />
+          </svg>All Tools</a>
+        <a href="../blog.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+          </svg>Blog</a>
+        <a href="../about.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <line x1="12" y1="8" x2="12" y2="12" />
+            <line x1="12" y1="16" x2="12.01" y2="16" />
+          </svg>About</a>
+      </nav>
+      <div class="df"><a href="../tools.html" class="btn btn-p btn-lg">Browse All Tools</a></div>
+    </div>
+  </div>
+
+
+  <!-- ══════ PAGE HEADER ══════ -->
+  <div class="page-header">
+    <div class="wrap">
+      <div class="ph-inner">
+        <div>
+          <nav class="ph-breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+            <a href="../tools.html">Tools</a>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+            <span style="color:var(--ink2);font-weight:600;">Flashcard Generator</span>
+          </nav>
+          <div class="ph-title">
+            <div class="ph-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="2" y="5" width="20" height="14" rx="2" />
+                <line x1="2" y1="10" x2="22" y2="10" />
+              </svg>
+            </div>
+            <h1 class="ph-h1">Flashcard Generator</h1>
+          </div>
+          <p class="ph-desc">Paste any notes or study text and instantly convert them into interactive Q&A flashcards
+            with 3D flip animation. Study smarter, remember longer.</p>
+          <div class="ph-badge"><span class="ph-badge-dot"></span>Free · Interactive flip · No signup</div>
+        </div>
+        <div class="ph-right">
+          <span style="font-size:.78rem;font-weight:600;font-family:var(--fd);color:var(--mu);">Try other tools:</span>
+          <div class="ph-tools-row">
+            <a href="notes-generator.html" class="tnchip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+              </svg>Notes</a>
+            <a href="bullet-converter.html" class="tnchip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="9" y1="6" x2="20" y2="6" />
+                <line x1="9" y1="12" x2="20" y2="12" />
+                <line x1="9" y1="18" x2="20" y2="18" />
+              </svg>Bullets</a>
+            <a href="essay-rewriter.html" class="tnchip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+              </svg>Rewriter</a>
+            <a href="study-planner.html" class="tnchip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>Planner</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════ WORKSPACE ══════ -->
+  <main class="tool-main">
+    <div class="wrap-md">
+      <div class="tool-grid">
+
+        <!-- ── INPUT PANEL ── -->
+        <div class="card" id="input-card">
+          <div class="loader" id="loader">
+            <div class="spinner"></div>
+            <div class="loader-txt">Generating cards<span class="dots"></span></div>
+          </div>
+
+          <div class="card-hdr">
+            <div class="card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+              </svg>
+              Paste Your Notes
+            </div>
+            <div class="card-acts">
+              <button class="btn btn-g btn-sm" id="example-btn">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                </svg>
+                Example
+              </button>
+              <button class="btn btn-red btn-sm" id="clear-in-btn">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+                Clear
+              </button>
+            </div>
+          </div>
+
+          <textarea id="input-ta" class="tool-ta" placeholder="Paste your study notes here.
+
+The tool detects Q&A pairs (Q: … A: …) automatically, or converts any sentences into flashcards.
+
+Example:
+Q: What is photosynthesis?
+A: The process by which plants convert sunlight into glucose using CO₂ and water.
+
+Q: Where does photosynthesis occur?
+A: In the chloroplasts of plant cells, specifically in the thylakoid membranes.
+
+Or just paste plain notes and the tool will create Q&A pairs from each sentence."
+            aria-label="Paste notes to convert into flashcards" spellcheck="false"></textarea>
+
+          <!-- settings -->
+          <div class="input-settings">
+            <div class="sg">
+              <label for="card-limit">Max cards:</label>
+              <select class="sel" id="card-limit" aria-label="Maximum number of cards to generate">
+                <option value="10">10</option>
+                <option value="20" selected>20</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+                <option value="999">No limit</option>
+              </select>
+            </div>
+            <div class="sg">
+              <label for="card-style">Card style:</label>
+              <select class="sel" id="card-style" aria-label="Flashcard style">
+                <option value="auto">Auto-detect</option>
+                <option value="qa">Q&A format (Q:/A:)</option>
+                <option value="define">Definition style</option>
+                <option value="sentence">Sentence split</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- progress -->
+          <div class="prog-wrap" id="prog-wrap">
+            <div class="prog-bg">
+              <div class="prog-fill" id="prog-fill"></div>
+            </div>
+            <div class="prog-lbl" id="prog-lbl">Parsing notes…</div>
+          </div>
+
+          <!-- generate button -->
+          <div class="act-row">
+            <button class="btn btn-p" id="gen-btn" disabled>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="5" width="20" height="14" rx="2" />
+                <line x1="2" y1="10" x2="22" y2="10" />
+              </svg>
+              Generate Flashcards
+            </button>
+            <span style="font-size:.74rem;color:var(--mu2);font-family:var(--fd);">
+              <kbd
+                style="background:var(--sf2);border:1px solid var(--bd);border-radius:4px;padding:1px 6px;font-size:.73rem;font-weight:700;color:var(--ink2);">Ctrl</kbd>+<kbd
+                style="background:var(--sf2);border:1px solid var(--bd);border-radius:4px;padding:1px 6px;font-size:.73rem;font-weight:700;color:var(--ink2);">↵</kbd>
+            </span>
+          </div>
+        </div>
+
+        <!-- ── FLASHCARD VIEWER ── -->
+        <div class="fc-panel" id="fc-panel">
+
+          <!-- empty state -->
+          <div class="fc-empty" id="fc-empty">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="5" width="20" height="14" rx="2" />
+              <line x1="2" y1="10" x2="22" y2="10" />
+            </svg>
+            <h3>No flashcards yet</h3>
+            <p>Paste your study notes on the left and click <strong>Generate Flashcards</strong>.</p>
+          </div>
+
+          <!-- progress strip -->
+          <div class="fc-progress-wrap" id="fc-prog-wrap">
+            <div class="fc-prog-top">
+              <span class="fc-prog-label" id="fc-prog-label">Card 1 of 20</span>
+              <span class="fc-prog-pct" id="fc-prog-pct">0%</span>
+            </div>
+            <div class="fc-prog-bg">
+              <div class="fc-prog-fill" id="fc-prog-fill"></div>
+            </div>
+            <div class="fc-prog-stats">
+              <div class="fc-stat">
+                <div class="fc-stat-dot" style="background:#22c55e;"></div><span class="fc-stat-lbl" id="stat-known">0
+                  known</span>
+              </div>
+              <div class="fc-stat">
+                <div class="fc-stat-dot" style="background:#dc2626;"></div><span class="fc-stat-lbl" id="stat-dunno">0
+                  still learning</span>
+              </div>
+              <div class="fc-stat">
+                <div class="fc-stat-dot" style="background:var(--bd2);"></div><span class="fc-stat-lbl"
+                  id="stat-unseen">0 unseen</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3D FLIP CARD -->
+          <div class="fc-scene" id="fc-scene" role="button" aria-label="Flashcard — click to flip" tabindex="0">
+            <div class="fc-inner" id="fc-inner">
+              <!-- FRONT -->
+              <div class="fc-face fc-front">
+                <div class="fc-label"><span class="fc-label-dot"></span>Question</div>
+                <div class="fc-text" id="fc-question">—</div>
+                <div class="fc-hint"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M3 12h18M12 5l7 7-7 7" />
+                  </svg>Click to reveal answer</div>
+                <div class="fc-num" id="fc-num-front">1/1</div>
+              </div>
+              <!-- BACK -->
+              <div class="fc-face fc-back">
+                <div class="fc-label"><span class="fc-label-dot"></span>Answer</div>
+                <div class="fc-text" id="fc-answer">—</div>
+                <div class="fc-hint"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M3 12h18M12 5l7 7-7 7" />
+                  </svg>Click to see question</div>
+                <div class="fc-num" id="fc-num-back">1/1</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ✓ / ✗ mark buttons -->
+          <div class="fc-mark-row" id="fc-mark-row">
+            <button class="btn-know" id="know-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              Got it
+            </button>
+            <button class="btn-dunno" id="dunno-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+              Still learning
+            </button>
+          </div>
+
+          <!-- navigation -->
+          <div class="fc-nav" id="fc-nav">
+            <div class="fc-nav-btns">
+              <button class="btn btn-g btn-sm" id="prev-btn" disabled>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="15 18 9 12 15 6" />
+                </svg>
+                Prev
+              </button>
+              <button class="btn btn-g btn-sm" id="next-btn">
+                Next
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </button>
+            </div>
+            <div class="fc-nav-ctr">
+              <div class="fc-dots" id="fc-dots" aria-label="Card navigation dots" role="group"></div>
+            </div>
+            <button class="btn btn-g btn-sm" id="shuffle-btn" title="Shuffle cards">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 3 21 3 21 8" />
+                <line x1="4" y1="20" x2="21" y2="3" />
+                <polyline points="21 16 21 21 16 21" />
+                <line x1="15" y1="15" x2="21" y2="21" />
+              </svg>
+              Shuffle
+            </button>
+          </div>
+
+          <!-- deck overview -->
+          <div class="deck-wrap" id="deck-wrap">
+            <div class="deck-hdr">
+              <span class="deck-title">All Cards</span>
+              <button class="btn btn-g btn-sm" id="tog-deck-btn">Hide</button>
+            </div>
+            <div class="deck-grid" id="deck-grid" role="list" aria-label="All flashcards"></div>
+          </div>
+
+          <!-- output footer -->
+          <div class="out-foot" id="out-foot">
+            <div class="of-left">
+              <span class="quality-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span id="card-count-badge">0 cards ready</span>
+              </span>
+            </div>
+            <div class="of-right">
+              <button class="btn btn-g btn-sm" id="restart-btn" disabled>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="1 4 1 10 7 10" />
+                  <path d="M3.51 15a9 9 0 1 0 .49-3" />
+                </svg>
+                Restart
+              </button>
+              <button class="btn btn-g btn-sm" id="copy-btn" disabled>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                </svg>
+                Copy All
+              </button>
+              <button class="btn btn-g btn-sm" id="download-btn" disabled>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                Download
+              </button>
+            </div>
+          </div>
+
+        </div><!-- /fc-panel -->
+      </div><!-- /tool-grid -->
+    </div>
+  </main>
+
+
+  <!-- ══════ HOW IT WORKS ══════ -->
+  <section class="how-sec">
+    <div class="wrap-md">
+      <div class="how-hd reveal">
+        <div class="chip-sm"><span class="chip-sm-dot"></span>How To Use</div>
+        <h2>Study smarter in four steps</h2>
+        <p>Paste, generate, flip, and track — no account needed.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card reveal d1">
+          <div class="step-n">1</div>
+          <div class="step-t">Paste Your Notes</div>
+          <div class="step-d">Paste any study notes, a chapter summary, or Q&A pairs formatted as "Q: … A: …" into the
+            input box.</div>
+        </div>
+        <div class="step-card reveal d2">
+          <div class="step-n">2</div>
+          <div class="step-t">Generate Cards</div>
+          <div class="step-d">The tool detects Q&A pairs automatically or converts sentences into flashcards. Set a card
+            limit and style before generating.</div>
+        </div>
+        <div class="step-card reveal d3">
+          <div class="step-n">3</div>
+          <div class="step-t">Flip & Study</div>
+          <div class="step-d">Click any card to flip it with a smooth 3D animation. Navigate with Prev/Next buttons or
+            swipe on mobile. Mark each card as "Got it" or "Still learning".</div>
+        </div>
+        <div class="step-card reveal d4">
+          <div class="step-n">4</div>
+          <div class="step-t">Download & Review</div>
+          <div class="step-d">Download all flashcards as a .txt file to study offline, or copy them to paste into any
+            notes app or study tool.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════ TIPS ══════ -->
+  <section class="tips-sec">
+    <div class="wrap-md">
+      <div class="tips-hd reveal">
+        <h2>Tips for Effective Flashcard Revision</h2>
+        <p>Use these techniques alongside the flashcards for maximum retention.</p>
+      </div>
+      <div class="tips-grid">
+        <div class="tip-card reveal d1">
+          <div class="tip-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="5" width="20" height="14" rx="2" />
+              <line x1="2" y1="10" x2="22" y2="10" />
+            </svg></div>
+          <div>
+            <div class="tip-t">Use Q:/A: format in your notes for best results</div>
+            <div class="tip-d">If your notes already use Q: and A: labels, the tool detects them automatically and
+              creates highly accurate flashcards. This is especially useful for revision guides and past paper answers.
+            </div>
+          </div>
+        </div>
+        <div class="tip-card reveal d2">
+          <div class="tip-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg></div>
+          <div>
+            <div class="tip-t">Use the "Got it / Still learning" buttons honestly</div>
+            <div class="tip-d">Only mark a card as "Got it" if you could recall the answer without hesitation. The
+              progress tracker shows you exactly which cards to focus on in your next study session.</div>
+          </div>
+        </div>
+        <div class="tip-card reveal d3">
+          <div class="tip-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 3 21 3 21 8" />
+              <line x1="4" y1="20" x2="21" y2="3" />
+              <polyline points="21 16 21 21 16 21" />
+              <line x1="15" y1="15" x2="21" y2="21" />
+            </svg></div>
+          <div>
+            <div class="tip-t">Shuffle cards after each pass to fight familiarity bias</div>
+            <div class="tip-d">Your brain adapts to order very quickly. Shuffling after every round forces you to recall
+              answers without relying on position cues — making revision far more effective.</div>
+          </div>
+        </div>
+        <div class="tip-card reveal d4">
+          <div class="tip-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg></div>
+          <div>
+            <div class="tip-t">Study in short, frequent sessions rather than long ones</div>
+            <div class="tip-d">20 minutes of focused flashcard study three times a day outperforms one 60-minute
+              session. Use the Pomodoro Timer alongside flashcards for optimal memory formation.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════ MORE TOOLS ══════ -->
+  <section class="more-sec">
+    <div class="wrap-md">
+      <div class="more-hd reveal">
+        <h2>More Free Study Tools</h2>
+        <p>Every tool is free — no signup, no limits.</p>
+      </div>
+      <div class="more-grid">
+        <a href="notes-generator.html" class="more-card reveal d1">
+          <div class="more-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+            </svg></div>
+          <div>
+            <div class="more-name">Notes Generator</div>
+            <div class="more-sub">Text → Study Notes</div>
+          </div>
+        </a>
+        <a href="exam-answer.html" class="more-card reveal d2">
+          <div class="more-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 11l3 3L22 4" />
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+            </svg></div>
+          <div>
+            <div class="more-name">Exam Answers</div>
+            <div class="more-sub">Question → Answer</div>
+          </div>
+        </a>
+        <a href="pomodoro-timer.html" class="more-card reveal d3">
+          <div class="more-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg></div>
+          <div>
+            <div class="more-name">Pomodoro Timer</div>
+            <div class="more-sub">Focus Sessions</div>
+          </div>
+        </a>
+        <a href="bullet-converter.html" class="more-card reveal d4">
+          <div class="more-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="9" y1="6" x2="20" y2="6" />
+              <line x1="9" y1="12" x2="20" y2="12" />
+              <line x1="9" y1="18" x2="20" y2="18" />
+              <circle cx="4" cy="6" r="1.5" fill="currentColor" stroke="none" />
+              <circle cx="4" cy="12" r="1.5" fill="currentColor" stroke="none" />
+              <circle cx="4" cy="18" r="1.5" fill="currentColor" stroke="none" />
+            </svg></div>
+          <div>
+            <div class="more-name">Bullet Converter</div>
+            <div class="more-sub">Para → Bullets</div>
+          </div>
+        </a>
+        <a href="study-planner.html" class="more-card reveal d5">
+          <div class="more-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg></div>
+          <div>
+            <div class="more-name">Study Planner</div>
+            <div class="more-sub">Build a Schedule</div>
+          </div>
+        </a>
+        <a href="word-counter.html" class="more-card reveal d6">
+          <div class="more-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+            </svg></div>
+          <div>
+            <div class="more-name">Word Counter</div>
+            <div class="more-sub">Live Stats</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════ FOOTER ══════ -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-row">
+        <div class="f-logo">
+          <div class="flm"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" />
+              <path d="M2 17l10 5 10-5" />
+              <path d="M2 12l10 5 10-5" />
+            </svg></div>
+          Study Hub AI
+        </div>
+        <nav class="f-nav" aria-label="Footer navigation">
+          <a href="../index.html">Home</a>
+          <a href="../tools.html">All Tools</a>
+          <a href="../blog.html">Blog</a>
+          <a href="../about.html">About</a>
+          <a href="../privacy.html">Privacy</a>
+        </nav>
+      </div>
+      <div class="f-bot">
+        <p class="f-copy">© 2026 Study Hub AI. All rights reserved.</p>
+        <p class="f-tag">Free tools for <span>smarter studying</span>.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <svg id="toast-svg" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"
+      stroke-linejoin="round"></svg>
+    <span id="toast-msg"></span>
+  </div>
+
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Flashcard Generator – Study Hub AI","url":"https://studyhubai.com/tools/flashcard-generator.html","description":"Convert any study notes into interactive Q&A flashcards with 3D flip animation. Free and instant.","applicationCategory":"EducationApplication","isAccessibleForFree":true,"operatingSystem":"Any"}
+</script>
+
+  <script>
+    /* ════════════════════════════════════════════════════
+       STUDY HUB AI — FLASHCARD GENERATOR
+       Pure Vanilla JS, zero dependencies
+    ════════════════════════════════════════════════════ */
+    (function () {
+      'use strict';
+
+      /* ── rAF throttle ── */
+      function raf(fn) { let id; return () => { cancelAnimationFrame(id); id = requestAnimationFrame(fn); }; }
+
+      /* ── DOM ── */
+      const navbar = document.getElementById('navbar');
+      const burger = document.getElementById('burger');
+      const drw = document.getElementById('drw');
+      const drwBack = document.getElementById('drw-back');
+      const drwX = document.getElementById('drw-x');
+      const inputTa = document.getElementById('input-ta');
+      const exBtn = document.getElementById('example-btn');
+      const clearInBtn = document.getElementById('clear-in-btn');
+      const cardLimit = document.getElementById('card-limit');
+      const cardStyle = document.getElementById('card-style');
+      const progWrap = document.getElementById('prog-wrap');
+      const progFill = document.getElementById('prog-fill');
+      const progLbl = document.getElementById('prog-lbl');
+      const genBtn = document.getElementById('gen-btn');
+      const loader = document.getElementById('loader');
+
+      const fcEmpty = document.getElementById('fc-empty');
+      const fcProgWrap = document.getElementById('fc-prog-wrap');
+      const fcProgFill = document.getElementById('fc-prog-fill');
+      const fcProgLbl = document.getElementById('fc-prog-label');
+      const fcProgPct = document.getElementById('fc-prog-pct');
+      const statKnown = document.getElementById('stat-known');
+      const statDunno = document.getElementById('stat-dunno');
+      const statUnseen = document.getElementById('stat-unseen');
+
+      const fcScene = document.getElementById('fc-scene');
+      const fcInner = document.getElementById('fc-inner');
+      const fcQuestion = document.getElementById('fc-question');
+      const fcAnswer = document.getElementById('fc-answer');
+      const fcNumFront = document.getElementById('fc-num-front');
+      const fcNumBack = document.getElementById('fc-num-back');
+
+      const fcMarkRow = document.getElementById('fc-mark-row');
+      const knowBtn = document.getElementById('know-btn');
+      const dunnoBtn = document.getElementById('dunno-btn');
+      const fcNav = document.getElementById('fc-nav');
+      const prevBtn = document.getElementById('prev-btn');
+      const nextBtn = document.getElementById('next-btn');
+      const fcDots = document.getElementById('fc-dots');
+      const shuffleBtn = document.getElementById('shuffle-btn');
+      const deckWrap = document.getElementById('deck-wrap');
+      const deckGrid = document.getElementById('deck-grid');
+      const togDeckBtn = document.getElementById('tog-deck-btn');
+      const outFoot = document.getElementById('out-foot');
+      const cntBadge = document.getElementById('card-count-badge');
+      const restartBtn = document.getElementById('restart-btn');
+      const copyBtn = document.getElementById('copy-btn');
+      const downloadBtn = document.getElementById('download-btn');
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-msg');
+      const toastSvg = document.getElementById('toast-svg');
+
+      /* ── STATE ── */
+      let cards = [];          // [{q, a, status: 'unseen'|'known'|'unknown'}]
+      let idx = 0;
+      let flipped = false;
+      let toastTmr = null;
+      let drawerOpen = false;
+
+      /* ═════════ NAVBAR ═════════ */
+      let lastY = -1;
+      window.addEventListener('scroll', raf(() => { const y = window.scrollY; if (y === lastY) return; lastY = y; navbar.classList.toggle('stuck', y > 14); }), { passive: true });
+
+      /* ═════════ DRAWER ═════════ */
+      function openD() { if (drawerOpen) return; drawerOpen = true; drw.classList.add('on'); burger.classList.add('on'); burger.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; drwX.focus(); }
+      function closeD() { if (!drawerOpen) return; drawerOpen = false; drw.classList.remove('on'); burger.classList.remove('on'); burger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; burger.focus(); }
+      burger.addEventListener('click', openD); drwX.addEventListener('click', closeD); drwBack.addEventListener('click', closeD);
+      drw.querySelectorAll('.dnav a,.df .btn').forEach(a => a.addEventListener('click', closeD));
+      document.addEventListener('keydown', e => {
+        if (!drawerOpen && e.key === 'ArrowRight' && cards.length) { e.preventDefault(); navigate(1); return; }
+        if (!drawerOpen && e.key === 'ArrowLeft' && cards.length) { e.preventDefault(); navigate(-1); return; }
+        if (!drawerOpen && e.key === ' ' && cards.length) { e.preventDefault(); flip(); return; }
+        if ((e.ctrlKey || e.metaKey) && e.key === 'Enter' && !genBtn.disabled) { e.preventDefault(); genBtn.click(); return; }
+        if (!drawerOpen) return;
+        if (e.key === 'Escape') { closeD(); return; }
+        if (e.key === 'Tab') { const f = [...drw.querySelectorAll('a,button')], fi = f[0], la = f[f.length - 1]; if (e.shiftKey) { if (document.activeElement === fi) { e.preventDefault(); la.focus(); } } else { if (document.activeElement === la) { e.preventDefault(); fi.focus(); } } }
+      });
+      let tsx = 0; drw.addEventListener('touchstart', e => { tsx = e.touches[0].clientX; }, { passive: true }); drw.addEventListener('touchend', e => { if (e.changedTouches[0].clientX - tsx > 60) closeD(); }, { passive: true });
+
+      /* ═════════ SCROLL REVEAL ═════════ */
+      const revEls = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) { const ro = new IntersectionObserver(entries => { entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); ro.unobserve(en.target); } }); }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' }); revEls.forEach(el => ro.observe(el)); }
+      else { revEls.forEach(el => el.classList.add('in')); }
+
+      /* ═════════ INPUT EVENTS ═════════ */
+      inputTa.addEventListener('input', raf(() => { genBtn.disabled = inputTa.value.trim().length < 10; }));
+      genBtn.disabled = true;
+
+      /* ═════════ EXAMPLE TEXT ═════════ */
+      const EXAMPLE = `Q: What is photosynthesis?
+A: The process by which green plants convert sunlight, CO₂, and water into glucose and oxygen.
+
+Q: Where does photosynthesis take place?
+A: In the chloroplasts of plant cells, specifically in the thylakoid membranes and stroma.
+
+Q: What is the chemical equation for photosynthesis?
+A: 6CO₂ + 6H₂O + light energy → C₆H₁₂O₆ + 6O₂
+
+Q: What are the two main stages of photosynthesis?
+A: The light-dependent reactions (in the thylakoid) and the light-independent reactions, also called the Calvin cycle (in the stroma).
+
+Q: What pigment is responsible for absorbing light in photosynthesis?
+A: Chlorophyll — primarily chlorophyll a and chlorophyll b.
+
+Q: What is the role of stomata in photosynthesis?
+A: Stomata are tiny pores in leaves that allow CO₂ to enter and O₂ to exit during photosynthesis.
+
+Q: What factors affect the rate of photosynthesis?
+A: Light intensity, carbon dioxide concentration, temperature, and water availability.
+
+Q: What is the Calvin cycle?
+A: The light-independent stage where CO₂ is fixed into organic molecules using ATP and NADPH from the light reactions.`;
+
+      exBtn.addEventListener('click', () => {
+        inputTa.value = EXAMPLE;
+        genBtn.disabled = false;
+        showToast('Example notes loaded!', 'inf');
+        inputTa.focus();
+      });
+
+      clearInBtn.addEventListener('click', () => {
+        inputTa.value = '';
+        genBtn.disabled = true;
+        inputTa.focus();
+        showToast('Input cleared.', 'inf');
+      });
+
+      /* ═════════════════════════════════════════
+         CARD GENERATION ENGINE
+      ═════════════════════════════════════════ */
+
+      /* Detect whether text contains explicit Q:/A: markers */
+      function hasQAMarkers(text) {
+        return /\bQ\s*:/i.test(text) && /\bA\s*:/i.test(text);
+      }
+
+      /* ── Parser 1: Explicit Q: / A: format ── */
+      function parseQA(text) {
+        const pairs = [];
+        // Split on Q: markers (case-insensitive, handles leading whitespace)
+        const blocks = text.split(/(?=(?:^|\n)\s*Q\s*:)/im).filter(Boolean);
+        for (const block of blocks) {
+          const qMatch = block.match(/Q\s*:\s*(.+?)(?=A\s*:|$)/is);
+          const aMatch = block.match(/A\s*:\s*([\s\S]+?)(?=\n\s*Q\s*:|$)/i);
+          if (qMatch && aMatch) {
+            const q = qMatch[1].trim();
+            const a = aMatch[1].trim();
+            if (q && a) pairs.push({ q, a });
+          }
+        }
+        return pairs;
+      }
+
+      /* ── Parser 2: Definition style (Term: definition) ── */
+      function parseDefinitions(text) {
+        const pairs = [];
+        const lines = text.split(/\n/).map(l => l.trim()).filter(Boolean);
+        for (const line of lines) {
+          const m = line.match(/^(.{4,60}?)\s*[:\-–—]\s*(.{10,})$/);
+          if (m) {
+            const term = m[1].trim();
+            const def = m[2].trim();
+            if (term && def && def.length > term.length)
+              pairs.push({ q: `What is ${term}?`, a: def });
+          }
+        }
+        return pairs;
+      }
+
+      /* ── Parser 3: Sentence-to-flashcard ── */
+      function parseSentences(text) {
+        const pairs = [];
+        const sents = text.match(/[^.!?]+[.!?]+/g) || [];
+        for (const s of sents) {
+          const clean = s.trim();
+          if (clean.length < 20) continue;
+          // Try to turn "X is/are Y" into a Q/A
+          const defM = clean.match(/^(.{4,50}?)\s+(?:is|are|was|were|refers to|means|defined as)\s+(.{10,})\.?$/i);
+          if (defM) {
+            const subject = defM[1].trim();
+            const content = defM[2].trim().replace(/\.$/, '');
+            const subjectCap = subject[0].toUpperCase() + subject.slice(1);
+            pairs.push({
+              q: `What ${/^[aeiou]/i.test(subject) ? 'is' : 'is'} ${subjectCap}?`,
+              a: `${subjectCap} ${clean.match(/\b(is|are|was|were)\b/i)?.[0] || 'is'} ${content}.`
+            });
+          } else {
+            // Generic: blank the last 3+ words as question
+            const words = clean.split(/\s+/);
+            if (words.length >= 6) {
+              const cutAt = Math.max(3, Math.floor(words.length * 0.6));
+              const q = words.slice(0, cutAt).join(' ') + '…';
+              pairs.push({ q: `Complete: "${q}"`, a: clean });
+            }
+          }
+        }
+        return pairs;
+      }
+
+      /* ── Master parser ── */
+      function parseCards(text, style) {
+        const limit = parseInt(cardLimit.value) || 20;
+        let pairs = [];
+
+        if (style === 'qa' || (style === 'auto' && hasQAMarkers(text))) {
+          pairs = parseQA(text);
+          if (pairs.length === 0 && style === 'auto') pairs = parseSentences(text);
+        } else if (style === 'define') {
+          pairs = parseDefinitions(text);
+          if (pairs.length < 3) pairs = [...pairs, ...parseSentences(text)];
+        } else if (style === 'sentence') {
+          pairs = parseSentences(text);
+        } else {
+          // auto: try QA, then definition, then sentence
+          if (hasQAMarkers(text)) pairs = parseQA(text);
+          if (pairs.length < 3) {
+            const defPairs = parseDefinitions(text);
+            if (defPairs.length > pairs.length) pairs = defPairs;
+          }
+          if (pairs.length < 3) pairs = parseSentences(text);
+        }
+
+        // Deduplicate by question
+        const seen = new Set();
+        pairs = pairs.filter(p => {
+          const k = p.q.toLowerCase().slice(0, 40);
+          if (seen.has(k)) return false;
+          seen.add(k); return true;
+        });
+
+        return pairs.slice(0, limit).map(p => ({ ...p, status: 'unseen' }));
+      }
+
+      /* ═════════ PROGRESS ANIMATION ═════════ */
+      function animateProgress(dur, done) {
+        progWrap.classList.add('show');
+        progFill.style.width = '0%';
+        const stages = [{ pct: 30, lbl: 'Parsing notes…' }, { pct: 58, lbl: 'Extracting Q&A pairs…' }, { pct: 82, lbl: 'Building flashcards…' }, { pct: 96, lbl: 'Finalising deck…' }];
+        let i = 0;
+        function next() { if (i >= stages.length) { setTimeout(done, 160); return; } const s = stages[i++]; progFill.style.width = s.pct + '%'; progLbl.textContent = s.lbl; setTimeout(next, dur / stages.length); }
+        next();
+      }
+
+      /* ═════════ GENERATE ═════════ */
+      genBtn.addEventListener('click', function () {
+        const text = inputTa.value.trim();
+        if (text.length < 10) { showToast('Please paste some notes first.', 'err'); return; }
+        genBtn.disabled = true;
+        loader.classList.add('show');
+        const delay = Math.min(700 + text.length * 0.015, 1600);
+        animateProgress(delay, function () {
+          try {
+            const parsed = parseCards(text, cardStyle.value);
+            if (parsed.length === 0) { showToast('No cards could be extracted. Try the Q:/A: format.', 'err'); }
+            else { cards = parsed; idx = 0; flipped = false; initViewer(); showToast('✓ ' + cards.length + ' flashcard' + (cards.length !== 1 ? 's' : '') + ' generated!', 'ok'); }
+          } catch (e) { showToast('Something went wrong. Please try again.', 'err'); }
+          finally { loader.classList.remove('show'); progWrap.classList.remove('show'); progFill.style.width = '0%'; genBtn.disabled = inputTa.value.trim().length < 10; }
+        });
+      });
+
+      /* ═════════ VIEWER INIT ═════════ */
+      function initViewer() {
+        fcEmpty.style.display = 'none';
+        fcProgWrap.classList.add('show');
+        fcScene.classList.add('show');
+        fcMarkRow.classList.add('show');
+        fcNav.classList.add('show');
+        deckWrap.classList.add('show');
+        outFoot.style.display = 'flex';
+        restartBtn.disabled = false;
+        copyBtn.disabled = false;
+        downloadBtn.disabled = false;
+
+        cntBadge.textContent = cards.length + ' card' + (cards.length !== 1 ? 's' : '') + ' ready';
+        buildDeck();
+        goTo(0, false);
+      }
+
+      /* ═════════ GO TO CARD ═════════ */
+      function goTo(newIdx, animate = true) {
+        if (!cards.length) return;
+        idx = ((newIdx % cards.length) + cards.length) % cards.length;
+        flipped = false;
+        fcInner.classList.remove('flipped');
+
+        fcQuestion.textContent = cards[idx].q;
+        fcAnswer.textContent = cards[idx].a;
+        const lbl = `${idx + 1}/${cards.length}`;
+        fcNumFront.textContent = lbl;
+        fcNumBack.textContent = lbl;
+
+        prevBtn.disabled = idx === 0;
+        nextBtn.disabled = idx === cards.length - 1;
+
+        updateProgress();
+        updateDots();
+        if (animate) triggerEnterAnim();
+        // update deck grid active state
+        const items = [...deckGrid.querySelectorAll('.deck-item')];
+        items.forEach((el, i) => { el.classList.toggle('active', i === idx); });
+        if (items[idx]) items[idx].scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+
+        // mark as seen if unseen
+        if (cards[idx].status === 'unseen') cards[idx].status = 'unseen'; // keeps unseen until user marks
+      }
+
+      function navigate(dir) { goTo(idx + dir); }
+
+      function triggerEnterAnim() {
+        fcScene.classList.remove('entering');
+        void fcScene.offsetWidth;
+        fcScene.classList.add('entering');
+        setTimeout(() => fcScene.classList.remove('entering'), 500);
+      }
+
+      /* ═════════ FLIP ═════════ */
+      function flip() {
+        flipped = !flipped;
+        fcInner.classList.toggle('flipped', flipped);
+      }
+      fcScene.addEventListener('click', flip);
+      fcScene.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flip(); } });
+
+      /* ═════════ SWIPE ON MOBILE ═════════ */
+      let touchX0 = 0, touchY0 = 0;
+      fcScene.addEventListener('touchstart', e => { touchX0 = e.touches[0].clientX; touchY0 = e.touches[0].clientY; }, { passive: true });
+      fcScene.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].clientX - touchX0;
+        const dy = e.changedTouches[0].clientY - touchY0;
+        if (Math.abs(dx) > Math.abs(dy) + 10) {
+          if (dx < -40 && idx < cards.length - 1) navigate(1);
+          else if (dx > 40 && idx > 0) navigate(-1);
+        }
+      }, { passive: true });
+
+      /* ═════════ NAV BUTTONS ═════════ */
+      prevBtn.addEventListener('click', () => navigate(-1));
+      nextBtn.addEventListener('click', () => navigate(1));
+
+      /* ═════════ MARK ═════════ */
+      knowBtn.addEventListener('click', () => {
+        cards[idx].status = 'known';
+        updateProgress();
+        updateDots();
+        syncDeckItem();
+        if (idx < cards.length - 1) setTimeout(() => navigate(1), 200);
+        else showToast('🎉 All cards reviewed!', 'ok');
+      });
+      dunnoBtn.addEventListener('click', () => {
+        cards[idx].status = 'unknown';
+        updateProgress();
+        updateDots();
+        syncDeckItem();
+        if (idx < cards.length - 1) setTimeout(() => navigate(1), 200);
+      });
+
+      function syncDeckItem() {
+        const items = [...deckGrid.querySelectorAll('.deck-item')];
+        if (items[idx]) {
+          items[idx].classList.remove('known', 'unknown');
+          if (cards[idx].status === 'known') items[idx].classList.add('known');
+          if (cards[idx].status === 'unknown') items[idx].classList.add('unknown');
+        }
+      }
+
+      /* ═════════ PROGRESS ═════════ */
+      function updateProgress() {
+        const total = cards.length;
+        const known = cards.filter(c => c.status === 'known').length;
+        const unknown = cards.filter(c => c.status === 'unknown').length;
+        const unseen = total - known - unknown;
+        const seen = known + unknown;
+        const pct = total ? Math.round(seen / total * 100) : 0;
+
+        fcProgLbl.textContent = `Card ${idx + 1} of ${total}`;
+        fcProgPct.textContent = pct + '%';
+        fcProgFill.style.width = pct + '%';
+        statKnown.textContent = known + ' known';
+        statDunno.textContent = unknown + ' still learning';
+        statUnseen.textContent = unseen + ' unseen';
+      }
+
+      /* ═════════ DOTS ═════════ */
+      function updateDots() {
+        const MAX_DOTS = 12;
+        fcDots.innerHTML = '';
+        const show = Math.min(cards.length, MAX_DOTS);
+        const step = Math.ceil(cards.length / show);
+        for (let i = 0; i < show; i++) {
+          const ci = i * step;
+          const dot = document.createElement('div');
+          dot.className = 'fc-dot';
+          if (ci === idx || Math.abs(ci - idx) < step / 2) dot.classList.add('active');
+          else if (cards[ci] && cards[ci].status !== 'unseen') dot.classList.add('seen');
+          dot.title = `Card ${ci + 1}`;
+          dot.setAttribute('role', 'button');
+          dot.setAttribute('aria-label', `Go to card ${ci + 1}`);
+          dot.setAttribute('tabindex', '0');
+          dot.addEventListener('click', () => goTo(ci));
+          dot.addEventListener('keydown', e => { if (e.key === 'Enter') goTo(ci); });
+          fcDots.appendChild(dot);
+        }
+      }
+
+      /* ═════════ DECK GRID ═════════ */
+      function buildDeck() {
+        deckGrid.innerHTML = '';
+        cards.forEach((c, i) => {
+          const div = document.createElement('div');
+          div.className = 'deck-item' + (i === idx ? ' active' : '');
+          div.setAttribute('role', 'listitem');
+          div.setAttribute('tabindex', '0');
+          div.innerHTML = `<div class="di-n">Card ${i + 1}</div><div class="di-q">${esc(c.q)}</div>`;
+          div.addEventListener('click', () => goTo(i));
+          div.addEventListener('keydown', e => { if (e.key === 'Enter') goTo(i); });
+          deckGrid.appendChild(div);
+        });
+      }
+
+      togDeckBtn.addEventListener('click', function () {
+        const hidden = deckGrid.style.display === 'none';
+        deckGrid.style.display = hidden ? '' : 'none';
+        this.textContent = hidden ? 'Hide' : 'Show';
+      });
+
+      /* ═════════ SHUFFLE ═════════ */
+      shuffleBtn.addEventListener('click', () => {
+        if (!cards.length) return;
+        for (let i = cards.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[cards[i], cards[j]] = [cards[j], cards[i]]; }
+        idx = 0; flipped = false; fcInner.classList.remove('flipped');
+        buildDeck(); goTo(0);
+        showToast('Cards shuffled!', 'inf');
+      });
+
+      /* ═════════ RESTART ═════════ */
+      restartBtn.addEventListener('click', () => {
+        cards.forEach(c => c.status = 'unseen');
+        idx = 0; flipped = false; fcInner.classList.remove('flipped');
+        buildDeck(); goTo(0);
+        showToast('Deck restarted — all cards reset.', 'inf');
+      });
+
+      /* ═════════ COPY ═════════ */
+      copyBtn.addEventListener('click', () => {
+        if (!cards.length) return;
+        const txt = cards.map((c, i) => `Card ${i + 1}\nQ: ${c.q}\nA: ${c.a}`).join('\n\n');
+        if (navigator.clipboard?.writeText) { navigator.clipboard.writeText(txt).then(() => showToast('All flashcards copied!', 'ok')).catch(() => fbCopy(txt)); }
+        else fbCopy(txt);
+      });
+
+      function fbCopy(text) { const ta = document.createElement('textarea'); ta.value = text; ta.style.cssText = 'position:fixed;left:-9999px;opacity:0;'; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); showToast('Copied!', 'ok'); } catch { showToast('Copy failed.', 'err'); } document.body.removeChild(ta); }
+
+      /* ═════════ DOWNLOAD ═════════ */
+      downloadBtn.addEventListener('click', () => {
+        if (!cards.length) return;
+        const dateStr = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+        const known = cards.filter(c => c.status === 'known').length;
+        const hdr = ['════════════════════════════════════════════', '  FLASHCARDS — Study Hub AI', `  Date   : ${dateStr}`, `  Cards  : ${cards.length}`, `  Known  : ${known} / ${cards.length}`, '════════════════════════════════════════════', ''].join('\n');
+        const body = cards.map((c, i) => [`Card ${i + 1} [${c.status}]`, `Q: ${c.q}`, `A: ${c.a}`, '']).flat().join('\n');
+        const ftr = ['\n════════════════════════════════════════════', '  Generated with Study Hub AI', '  https://studyhubai.com', '  Free AI study tools for every student.', '════════════════════════════════════════════'].join('\n');
+        const blob = new Blob([hdr + body + ftr], { type: 'text/plain;charset=utf-8' });
+        const url = URL.createObjectURL(blob), a = document.createElement('a');
+        a.href = url; a.download = 'flashcards-' + new Date().toISOString().slice(0, 10) + '.txt';
+        document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+        showToast('Flashcards downloaded!', 'ok');
+      });
+
+      /* ═════════ TOAST ═════════ */
+      const ICONS = { ok: '<polyline points="20 6 9 17 4 12"/>', err: '<circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>', inf: '<circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>' };
+      const COLORS = { ok: '#4ade80', err: '#fca5a5', inf: '#93c5fd' };
+      function showToast(msg, type = 'ok') { if (toastTmr) clearTimeout(toastTmr); toastMsg.textContent = msg; toastSvg.innerHTML = ICONS[type] || ICONS.inf; toastSvg.style.stroke = COLORS[type] || COLORS.inf; toast.className = 'toast t-' + type; toast.classList.add('show'); toastTmr = setTimeout(() => toast.classList.remove('show'), 3400); }
+
+      function esc(s) { return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+
+      /* smooth scroll */
+      document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', e => { const t = document.querySelector(a.getAttribute('href')); if (!t) return; e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }); });
+
+    })();
+  </script>
+  <script>
+    (function () {
+      const dmBtn = document.getElementById('dm-btn');
+      const html = document.documentElement;
+      const key = 'sh-theme';
+      if (dmBtn) {
+        dmBtn.addEventListener('click', () => {
+          const isDark = html.getAttribute('data-theme') === 'dark';
+          const target = isDark ? 'light' : 'dark';
+          html.setAttribute('data-theme', target);
+          html.style.colorScheme = target;
+          localStorage.setItem(key, target);
+        });
+      }
+    })();
+  </script>
+</body>
+
+</html>
